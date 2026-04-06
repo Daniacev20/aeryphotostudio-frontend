@@ -1,0 +1,159 @@
+/* index.css */
+/* reglas para la pagina de inicio */
+
+/* estandares del cliente */
+/* colores primarios: #562912 = rgb(86, 41, 18), #744A27 = rgb(116, 74, 39) */
+/* colores secundarios: #D3D3D3 = rgb(211, 211, 211) */
+
+/* tipografia pirmaria y secundaria: DM sans, helvetica world */
+
+/* HEADER: seccion para el encabezado y menu de navegacion */
+
+header {
+	height: auto;
+	padding: 3vh 0;
+}
+
+/* contenedor del logo y el menu del sitio 
+	para mostrar horizontalmente */
+.main-menu-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+/* logo y nombre de la marca a modo de titulo */
+.logo-container {
+	display: flex;
+	margin: auto;
+	align-items: center;
+}
+
+.logo { /* contenedor img logo */
+	max-height: 150px;
+	max-width: 150px;
+	margin-right: 1.5rem;
+}
+
+.logo img {
+	object-position: 0 25%;
+	object-fit: scale-down;
+	pointer-events: none;
+	user-select: none;
+}
+
+.logo, .logo a, .logo img {
+	outline: none;
+}
+
+/* fin de seccion: HEADER */
+
+/* CAROUSEL: para hacer rotar las imagenes */
+
+#carousel-container {
+	display: flex;
+	flex-flow: row;
+	overflow-x: auto;
+}
+
+/* ocultar scrollbar. necesario, pero invisible */
+#carousel-container::-webkit-scrollbar {
+	display: none;
+}
+
+.carousel-group {
+	display: flex;
+	animation: spin 60s infinite linear;
+	height: auto;
+}
+
+.carousel-img img {
+	height: 100%;
+	width: calc(100vw/3); /* el total de imagenes debe ser multiplo del divisor en este calculo */
+}
+
+@keyframes spin {
+	from { translate: 0; }
+	to { translate: -100% }
+}
+
+.carousel-wrapper {
+	position: relative;
+}
+
+.carousel-overlay {
+	background-color: transparent;
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	user-select: none;
+	pointer-events: auto;
+}
+
+/* fin de seccion: CAROUSEL */
+
+/* ARTICLES: seccion de las secciones del cuerpo de pagina */
+
+.sections {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	margin: 5vh 5vw;
+}
+
+/* renglones principales del main (cuerpo) */
+.sections section {
+	margin: 5vh 0;
+	text-align: center;
+}
+
+/* estilos elementos de cada seccion */
+.sections-h > h3, .sections-h > h2 {
+	margin: 1.2rem 0;
+}
+
+.sections-h > h3 {
+	font-size: 1rem;
+}
+
+.sections-h > h2 {
+	font-size: 2.5rem;
+}
+
+.sections-img {
+	display: flex;
+	flex-flow: row nowrop;
+	gap: 1rem;
+	justify-content: space-evenly;
+	height: clamp(600px, 75vh, 800px);
+}
+
+.sections-img img {
+	width: calc(90%/2);
+	height: auto;
+	object-fit: contain;
+}
+
+/* fin de seccion: ARTICLES */
+
+/* MEDIA QUERIES: para visusalizacion en dispositivos moviles */
+
+/* celulares */
+@media only screen and (max-width: 712px) {
+	.logo-container hgroup {
+		font-size: 1em;
+	}
+
+	.sections-img {
+		flex-flow: row wrap;
+	}
+
+	.sections-img img {
+		width: 100%;
+		height: calc(100%/2);
+		object-fit: cover;
+		object-position: 0 0;
+	}
+}
+
+/* fin de seccion: MEDIA QUERIES */

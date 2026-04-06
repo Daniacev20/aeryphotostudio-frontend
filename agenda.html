@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/estilos_base.css">
+	<link rel="stylesheet" href="css/estilos_paginas.css">
+	<title>Aery-Calendario</title>
+</head>
+<body>
+	<header>
+		<nav class="main-menu-container">
+			<hgroup class="header-title">
+				<h1>Agenda de sesiones</h1>
+			</hgroup>
+
+			<div class="toggle-container">
+				<span id="btn-toggle">
+					<i class="fas fa-bars"></i>
+				</span>
+				
+				<ul class="navigation-menu">
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="galeria.html">Galeria</a></li>
+					<li class="submenu">
+						<a href="servicios.html" tabindex="0">Servicios</a>
+						<ul class="submenu-content">
+							<li><a href="agenda.html">Agenda de sesiones</a></li>
+							<li><a href="entrega.html">Entrega de fotos</a></li>
+						</ul>
+					</li>
+					<li><a href="contacto.html">Contacto</a></li>
+					<li><a href="sobre_nosotros.html">Sobre nosotros</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="body-header">
+			<hgroup>
+				<h2>Agenda o haz un seguimiento a tu sesi&oacute;n</h2>
+			</hgroup>
+		</section>
+
+		<article class="selection-container">
+			<section>
+				<form action="#" id="frm-calendar">
+					<fieldset>
+						<legend>Datos de la cita</legend>
+						<label for="txt-nombre" class="form-info">Los recuadros marcados con * son necesarios.</label>
+
+						<input type="text" name="txt-nombre" id="txt-nombre" placeholder="Nombre *" maxlength="50" inputmode="text" required>
+						<input type="text" name="txt-telefono" id="txt-telefono" placeholder="Tel&eacute;fono *" maxlength="15" inputmode="tel" required>
+						<input type="email" name="txt-email" id="txt-email" placeholder="e-mail *" maxlength="100" inputmode="email" required>
+						<textarea name="txta-preferencias" id="txta-preferencias" placeholder="Cu&eacute;ntanos tus preferencias para la sesi&oacute;n" maxlength="500" inputmode="text"></textarea>
+
+						<label for="date-calendar">Seleccione una fecha aqu&iacute;<span class="hideable-portion"> o m&uacute;ltiples en el calendario</span></label>
+						<input type="date" name="date-calendar" id="date-calendar">
+
+						<label for="time-schedule">Seleccione una hora (solo horas en punto o media hora)</label>
+						<input type="time" name="time-schedule" id="time-schedule" min="08:00" max="20:00" step="1800">
+						
+						<button id="btn-confirm-date" class="form-button">Enviar solicitud</button>
+						
+						<p id="p-error"></p>
+					</fieldset>
+				</form>
+			</section>
+
+			<section>
+				<div class="div-calendar">
+					<div class="calendar-header">
+						<button class="current-month-arrows previous-month">
+							<i class="fas fa-angle-left"></i>
+						</button>
+
+						<span class="current-month">
+							<span id="month-number">1</span>
+							<span id="month-name">Enero</span>
+						</span>
+						
+						<button class="current-month-arrows next-month">
+							<i class="fas fa-angle-right"></i>
+						</button>
+					</div>
+
+					<div class="week">
+						<div>D</div>
+						<div>L</div>
+						<div>Ma</div>
+						<div>Mi</div>
+						<div>J</div>
+						<div>V</div>
+						<div>S</div>
+					</div>
+
+					<div class="days-container" id="days-container">
+						<!-- div para pruebas. Clases: calendar-day, day-selected, day-scheduled
+							comentar script para mejor visualizacion -->
+							
+						<!-- Ejemplo: div con estilos base mas el estilo de cuando se selecciona el dia
+							cada uno de estos divs tendra al menos 2 Event Listeners
+							<div class="calendar-day day-selected">1</div>
+						-->
+					</div>
+				</div>
+			</section>
+		</article>
+	</main>
+
+	<!-- cuadros de dialogo al nivel del body para hacer mas facil el posicionamiento -->
+	<dialog id="dialog-cancel-appointment">KLK</dialog>
+
+	<footer>
+		<address>
+			<span><i class="iconos fas fa-phone"></i><a href="tel:+18097804566">809-780-4566</a></span>
+			<span><i class="iconos fab fa-whatsapp"></i><a href="whatsapp:wa.me/message/MN5Z3DKONWAUE1">809-780-4566</a></span>
+			<br>
+			<span><i class="iconos fas fa-envelope"></i><a href="mailto:piggybanked.business@gmail.com">piggybanked.business@gmail.com</a></span>
+			<br>
+			<span><i class="iconos fab fa-instagram"></i><a href="www.instagram.com/aery_photography_studio/">@aery_photography_studio</a></span>
+			<br>
+			<small>© 2024 Aery Photo Studio</small>
+		</address>
+	</footer>
+
+	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
+	<script src="js/effects.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+/* estilos_paginas.css */
+/* reglas generales para los sitios secundarion con header diferente al index */
+
+/* estandares del cliente */
+/* colores primarios: #562912 = rgb(86, 41, 18), #744A27 = rgb(116, 74, 39) */
+/* colores secundarios: #D3D3D3 = rgb(211, 211, 211) */
+
+/* tipografia pirmaria y secundaria: DM sans, helvetica world */
+
+/* HEADER: comun a todas las paginas secundarias del sitio */
+
+header {
+	display: flex;
+	flex-direction: column;
+	padding: 3vh 0;
+}
+
+.header-title, .main-menu-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.header-title {
+	margin: 1em auto;
+	text-align: center;
+}
+
+.header-subtitle {
+	display: flex;
+	flex-flow: column nowrap;
+	text-align: center;
+	margin: 0 auto;
+	padding-bottom: 1rem; /* separacion de la seccion principal */
+}
+
+/* margen vertical entre titulos y subtitulos del cuerpo */
+.header-subtitle h1,
+.header-subtitle h2,
+.header-subtitle h3 {
+	margin: .8rem 0;
+}
+
+/* fin de seccion: HEADER */
+
+/* GALERIA: estilos especificos para la pagina galeria */
+
+/* formulario de busqueda */
+#frm-gallery-search {
+	position: relative;
+	display: flex;
+	width: 90vw;
+	margin: 1rem auto;
+}
+
+#search-gallery {
+	padding: 1rem;
+	padding-left: 2rem;
+	flex-grow: 1;
+	border-radius: .5rem 0 0 .5rem;
+}
+
+#search-gallery:focus {
+	outline: none;
+	box-shadow: inset -1px -1px 5px var(--primary-color2);
+}
+
+#btn-search {
+	border-radius: 0 .5rem .5rem 0;
+	margin: auto;
+}
+
+/* label del formulario con el icono */
+.search-icon {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 0 .5rem;
+}
+
+.thumbnails {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin: 1rem 0;
+}
+
+/* contenedor de la caratula (thumbnail) de cada galeria, su icono y su caption */
+.thumbnail-item {
+	position: relative;
+}
+
+.thumbnail-item img {
+	height: clamp(300px, 20vh, 80vh);
+	width: calc(80vw/3);
+	object-position: 0 0;
+	object-fit: cover;
+}
+
+.locked-gallery img {
+	opacity: .5;
+}
+
+.unlocked-gallery img {
+	filter: brightness(.9) contrast(.9);
+}
+
+/* contenedor de iconos de candado usado de fondo del icono */
+.icon-wrapper {
+	position: absolute;
+	top: .8rem;
+	right: .8rem;
+	background-color: var(--icon-bg-color1);
+	padding: .5rem;
+	border-radius: 50%;
+	color: black; /* color de icono */
+}
+
+/* separacion de estilos de caratulas bloqueadas y desbloqueadas
+	para las paginas entrega y galeria respectivamente */
+.img-captions {
+	position: absolute;
+	bottom: .8rem;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	color: var(--bg-color1);
+	font-family: "Freight Big Pro", serif;
+	font-weight: bold;
+	font-size: 1.5rem;
+	text-shadow: -1px -2px 5px black;
+	padding: .2rem .4rem;
+	border-radius: .2rem;
+}
+
+/* fin de seccion: GALERIA */
+
+/* SERVICIOS: estilos para la pagina de servicios */
+
+.table-wrapper {
+	overflow-x: auto;
+	margin: 1.5rem 0;
+}
+
+.tbl-services {
+	 border-collapse: collapse;
+	 margin: 0 auto;
+	 caption-side: bottom;
+	 color: white;
+}
+
+.tbl-services caption {
+	padding: .4rem;
+	color: black;
+}
+
+.tbl-services th, .tbl-services td {
+	text-align: center;
+	padding: 1.2rem;
+	border: 1px solid black;
+}
+
+.tbl-services tr:nth-child(even) {
+	background-color: #744A27;
+	color: white;
+}
+
+.tbl-services tr:nth-child(odd) {
+	background-color: #744A27EB;
+}
+
+.tbl-services th {
+	background-color: #562912A5;
+}
+
+/* fin de seccion: SERVICIOS */
+
+
+/* AGENDA: estilos especificos para la pagina de agenda */
+
+.body-header {
+	text-align: center;
+	margin: 2rem 0;
+	margin-bottom: 0;
+}
+
+.selection-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 2rem 0;
+}
+
+/* formulario para agendar */
+#frm-calendar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+}
+
+#frm-calendar fieldset {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 1rem;
+	border-radius: .8rem;
+}
+
+#frm-calendar label:not(.form-info) {
+	margin-top: 1rem;
+}
+
+#frm-calendar textarea {
+	min-height: 5rem;
+	max-height: 10rem;
+	resize: vertical;
+}
+
+#date-calendar {
+	padding: .5rem;
+	font-weight: bold;
+}
+
+#date-calendar::-webkit-calendar-picker-indicator {
+    background-color: var(--primary-color2);
+    padding: .5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+#date-calendar::-webkit-datetime-edit-fields-wrapper {
+	color: var(--primary-color2);
+}
+
+#time-schedule {
+	padding: .5rem;
+	font-weight: bold;
+}
+
+#time-schedule::-webkit-calendar-picker-indicator {
+	background-color: var(--primary-color2);
+	padding: .5rem;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#time-schedule::-webkit-datetime-edit-fields-wrapper {
+	color: var(--primary-color2);
+}
+
+.form-info {
+	margin: .4rem 0;
+}
+
+#p-error {
+	color: crimson;
+	font-size: .9rem;
+}
+
+/* calendario dinamico */
+.div-calendar {
+	margin: auto;
+}
+
+.calendar-header {
+	display: flex;
+	justify-content: space-between;
+	/*align-items: stretch;*/
+	text-align: center;
+	background-color: var(--primary-color2);
+	color: white;
+}
+
+.current-month-arrows {
+	user-select: none;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	color: white;
+	opacity: .7;
+	cursor: pointer;
+}
+
+.current-month-arrows:hover {
+	background-color: transparent;
+	opacity: .5;
+}
+
+.current-month-arrows:active {
+	opacity: 1;
+}
+
+.calendar-header .current-month-arrows,
+.calendar-header .current-month {
+	font-weight: bold;
+	font-size: clamp(1.5rem, 2rem + 1rem, 3rem);
+	padding: .5rem 0;
+}
+
+.current-month {
+	display: flex;
+	flex-direction: column;
+}
+
+.days-container {
+	display: grid;
+	gap: .1rem;
+	grid-template-columns: repeat(7, auto);
+	grid-template-rows: repeat(auto-fit, 1fr);
+	position: relative;
+}
+
+.week {
+	display: grid;
+	grid-template-rows: repeat(auto-fit, 1fr);
+	grid-template-columns: repeat(7, auto);
+	justify-items: center;
+	color: var(--primary-color2);
+	font-weight: bold;
+	user-select: none;
+}
+
+.calendar-day {
+	background-color: var(--bg-color2);
+	color: var(--primary-color2);
+	font-size: 3.5rem;
+	text-align: right;
+	padding: 0 .4rem;
+	padding-bottom: .4rem;
+	cursor: pointer;
+	user-select: none;
+	position: relative;
+}
+
+.calendar-day:not(.day-scheduled):not(.day-selected):hover {
+	background-color: var(--bg-color1);
+}
+
+.day-selected {
+	background-color: var(--primary-color2);
+	color: white;
+}
+
+.day-scheduled {
+	opacity: .5;
+	cursor: default;
+}
+
+/* fin de seccion: AGENDA */
+
+/* CONTACTO: estilos para la pagina de contacto */
+
+#frm-contact {
+	display: flex;
+	justify-content: center;
+	width: clamp(50vw, 55vw, 65vw);
+	margin: 1.5rem auto;
+}
+
+#frm-contact fieldset {
+	display: flex;
+	flex-flow: column;
+	flex-grow: 2;
+	padding: 1.5rem;
+}
+
+#frm-contact input,
+#frm-contact textarea {
+	autline: none;
+	margin: .4rem 0;
+}
+
+#frm-contact textarea {
+	height: 10rem;
+	font-family: inherit;
+	font-weight: normal;
+}
+
+/* el boton tiene estilos comunes a todos los formularios del sitio
+	la clase esta definida en estilos_base.css */
+
+/* fin de seccion: CONTACTO */
+
+/* SOBRE_NOSOTROS: estilos de la pagina 'sobre nosotros' */
+
+/* contenedor flex principal (engloba todo el contenido en 2 filas) */
+.article-body {
+	display: flex;
+	flex-direction: column;
+	width: clamp(370px, 80vw, 1200px);
+	margin: auto;
+	padding: 2rem 1.2rem;
+}
+
+/* estilo general de parrafos en esta pagina */
+.section-introduction p,
+.section-objective p {
+	text-align: justify;
+	margin-bottom: 1rem;
+	white-space: wrap;
+}
+
+/* primera fila del flex */
+.section-introduction {
+	display: flex;
+	flex-flow: row nowrop;
+	gap: 3rem;
+	margin: 3rem 0;
+	justify-content: space-evenly;
+}
+
+/* columna 1 y su contenido */
+.section-introduction > div {
+	width: clamp(500px, calc(100%/2), 35vw);
+	padding-top: 12rem;
+}
+
+.img-wrapper img {
+	display: block;
+	width: 90%;
+	height: auto;
+	max-height: 300px;
+	margin: auto;
+	object-fit: contain;
+	filter: invert(.5);
+}
+
+/* columna 2 y su imagen */
+.aside-exhibit1 {
+	align-self: stretch;
+	width: clamp(500px, calc(100%/2), 35vw);
+}
+
+.aside-exhibit1 img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* segunda fila del flex */
+.section-objective {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+	gap: 3rem;
+}
+
+/* columna 1 y sus imagenes */
+.aside-exhibit2 {
+	display: flex;
+	flex-direction: row;
+	gap: .3rem;
+	width: clamp(500px, calc(100%/2), 35vw);
+}
+
+.aside-exhibit2 img {
+	width: calc(100%/2);
+	height: 100%;
+	object-fit: contain;
+}
+
+/* columna 2 y su contenido */
+.section-objective > div {
+	width: clamp(500px, calc(100%/2), 35vw);
+}
+
+/* fin de seccion: SOBRE_NOSOTROS */
+
+/* MEDIA QUERIES: para vista en dispositivos moviles */
+
+/* celulares */
+@media only screen and (max-width: 375px) {
+	/* celulares muy estrechos */
+
+	/* vista de galeria */
+	/* ocultar el icono de lupa cuando no cabe en el search bar */
+	#search-gallery {
+		text-indent: 0;
+	}
+
+	.search-icon {
+		/* no se ve bien en pantallas muy estrechas */
+		display: none;
+	}
+
+	/* vista de agenda */
+	.div-calendar {
+		display: none;
+	}
+
+	.hideable-portion {
+		display: none;
+	}
+
+	/* vista de contacto */
+	#frm-contact {
+		width: clamp(320px, 85vw, 90vw);
+	}
+
+	/* vista de sobre nosotros */
+
+	/* reducir el ancho total del contenedor para tener
+		mas margen a los lados de las pantallas moviles */
+	.article-body {
+		width: 90vw;
+	}
+
+	.section-introduction,
+	.section-objective,
+	.aside-exhibit2 {
+		flex-direction: column;
+	}
+
+	.aside-exhibit2 img {
+		width: 100%;
+		max-height: 400px;
+		object-fit: scale-down;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	/* celulares estandar */
+	/* vista de galeria y entrega */
+	.thumbnails {
+		flex-direction: column;
+	}
+
+	.thumbnail-item img {
+		height: 40vh;
+		width: 100%;
+	}
+
+	#frm-gallery-search {
+		margin: 0 1rem;
+	}
+
+	/* vista de agenda */
+	.selection-container {
+		flex-direction: column;
+		width: 90vw;
+		margin: auto;
+	}
+
+	.selection-container > section {
+		margin-top: .8rem;
+		margin-bottom: .8rem;
+	}
+
+	#frm-calendar {
+		flex-direction: column;
+	}
+
+	#frm-calendar fieldset {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	#date-calendar {
+		width: 100%;
+	}
+
+	.div-calendar {
+		display: none;
+	}
+
+	.hideable-portion {
+		display: none;
+	}
+
+	/* vista de contacto */
+	#frm-contact {
+		width: clamp(320px, 80vw, 85vw);
+	}
+
+	/* vista de sobre nosotros */
+	.article-body {
+		width: 100vw;
+		padding-top: 0;
+	}
+
+	.section-introduction,
+	.section-objective {
+		flex-flow: row wrap;
+	}
+
+	.section-introduction {
+		margin-top: 0;
+	}
+
+	.img-wrapper img {
+		margin: auto;
+	}
+
+	.aside-exhibit1 img {
+		width: 90%;
+		max-height: 500px;
+		object-fit: contain;
+	}
+
+	.aside-exhibit2 {
+		order: 2;
+	}
+
+	.aside-exhibit2 img {
+		max-height: 300px;
+		object-position: 0;
+		object-fit: scale-down;
+	}
+
+}
+
+/* telefonos grandes y tablets */
+@media only screen and (min-width: 601px) and (max-width: 772px) {
+	/* tablets estandar */
+
+	/* vista de agenda */
+	.selection-container {
+		flex-direction: column;
+		width: 90vw;
+		margin: auto;
+	}
+
+	.selection-container > section {
+		margin-top: .8rem;
+		margin-bottom: .8rem;
+	}
+
+	#frm-calendar {
+		flex-direction: column;
+	}
+
+	#frm-calendar fieldset {
+		display: flex;
+		justify-content: center;
+	}
+
+	#date-calendar {
+		width: 100%;
+	}
+
+	/* vista de contacto */
+	#frm-contact {
+		width: clamp(320px, 80vw, 85vw);
+	}
+
+	/* vista de sobre nosotros */
+	.section-introduction {
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.section-introduction > div {
+		padding-top: 0;
+	}
+
+	.aside-exhibit1 {
+		padding-top: 12rem
+	}
+
+	.aside-exhibit2 {
+		flex-direction: row;
+		object-fit: contain;
+	}
+}
+
+@media only screen and (min-width: 773px) and (max-width: 1024px) {
+	/* tablets mas grandes */
+	/* algunos estilos por defecto quedan mal en estas */
+
+	/* vista de agenda */
+	.selection-container {
+		flex-direction: column;
+		width: 90vw;
+		margin: auto;
+	}
+
+	.selection-container > section {
+		margin-top: .8rem;
+		margin-bottom: .8rem;
+	}
+
+	#frm-calendar {
+		flex-direction: column;
+	}
+
+	#frm-calendar fieldset {
+		display: flex;
+		justify-content: center;
+	}
+
+	/* vista de contacto */
+	#frm-contact {
+		width: clamp(320px, 80vw, 85vw);
+	}
+
+	/* vista de sobre nosotros */
+	.section-introduction > div {
+		padding-top: 2rem;
+	}
+
+	.aside-exhibit1 {
+		/* necesario por estetica */
+		padding-top: 3rem; 
+	}
+
+	.aside-exhibit2 {
+		flex-direction: row;
+		object-fit: contain;
+	}
+}
+
+/* fin de seccion: MEDIA QUERIES*/

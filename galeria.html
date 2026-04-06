@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Aery-Galer&iacute;a</title>
+	<link rel="stylesheet" href="css/estilos_base.css">
+	<link rel="stylesheet" href="css/estilos_paginas.css">
+	<link rel="icon" type="image/png" href="imgs/aery-logo.png">
+</head>
+<body>
+	<header>
+		<nav class="main-menu-container">
+			<hgroup class="header-title">
+				<h1>Galer&iacute;a</h1>
+				<h3>Revisa nuestro trabajo</h3>
+			</hgroup>
+
+			<div class="toggle-container">
+				<span id="btn-toggle">
+					<i class="fas fa-bars"></i>
+				</span>
+				
+				<ul class="navigation-menu">
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="galeria.html">Galeria</a></li>
+					<li class="submenu">
+						<a href="servicios.html" tabindex="0">Servicios</a>
+						<ul class="submenu-content">
+							<li><a href="agenda.html">Agenda de sesiones</a></li>
+							<li><a href="entrega.html">Entrega de fotos</a></li>
+						</ul>
+					</li>
+					<li><a href="contacto.html">Contacto</a></li>
+					<li><a href="sobre_nosotros.html">Sobre nosotros</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<article>
+			<!-- galerias abiertas a explorar -->
+			<form action="#" id="frm-gallery-search">
+				<label for="search-gallery" class="search-icon">
+					<i class="fas fa-search"></i>
+				</label>
+
+				<input type="search" name="search-gallery" id="search-gallery" placeholder="Busca por nombre o apodo">
+				
+				<button id="btn-search"><i class="fas fa-search"></i></button>
+			</form>
+
+			<article class="thumbnails">
+				<!-- caratulas (thumbnail) de cada galeria -->
+				<a href="#">
+					<div class="thumbnail-item unlocked-gallery overlay-wrapper">
+						<div class="overlay"></div>
+						
+						<img src="imgs/gigi/session1/gigi4.jpg" alt="Foto bonita" height="200" width="260">
+						
+						<span class="img-captions">Gigi</span>
+					</div>
+				</a>
+
+				<a href="#">
+					<div class="thumbnail-item unlocked-gallery overlay-wrapper">
+						<div class="overlay"></div>
+						
+						<img src="imgs/xanne/session1/xanne4.jpg" alt="Foto bonita" height="200" width="260">
+						
+						<span class="img-captions">Xanne</span>
+					</div>
+				</a>
+
+
+				<a href="#">
+					<div class="thumbnail-item unlocked-gallery overlay-wrapper">
+						<div class="overlay"></div>
+						
+						<img src="imgs/josefina/session2/josefina1.jpg" alt="Foto bonita" height="200" width="260">
+						
+						<span class="img-captions">Josefina</span>
+					</div>
+				</a>
+			</article>
+
+			<article class="thumbnails">
+				<a href="#">
+					<div class="thumbnail-item unlocked-gallery overlay-wrapper">
+						<div class="overlay"></div>
+						
+						<img src="imgs/jardin-de-esperanza/session1/thumbnail.jpg" alt="Foto bonita" height="200" width="260">
+
+						<span class="img-captions">Jardin de esperanza</span>
+					</div>
+				</a>
+
+				<a href="#">
+					<div class="thumbnail-item unlocked-gallery overlay-wrapper">
+						<div class="overlay"></div>
+						
+						<img src="imgs/saho/session1/thumbnail.jpg" alt="Foto bonita" height="200" width="260">
+
+						<span class="img-captions">Saho</span>
+					</div>
+				</a>
+
+				<a href="#">
+					<div class="thumbnail-item unlocked-gallery overlay-wrapper">
+						<div class="overlay"></div>
+						
+						<img src="imgs/ashley-nicole/session1/thumbnail.jpg" alt="Foto bonita" height="200" width="260">
+
+						<span class="img-captions">Ashley Nicole</span>
+					</div>
+				</a>
+			</article>
+		</article>
+	</main>
+
+	<footer>
+		<address>
+			<span><i class="iconos fas fa-phone"></i><a href="tel:+18097804566">809-780-4566</a></span>
+			<span><i class="iconos fab fa-whatsapp"></i><a href="whatsapp:wa.me/message/MN5Z3DKONWAUE1">809-780-4566</a></span>
+			<br>
+			<span><i class="iconos fas fa-envelope"></i><a href="mailto:piggybanked.business@gmail.com">piggybanked.business@gmail.com</a></span>
+			<br>
+			<span><i class="iconos fab fa-instagram"></i><a href="www.instagram.com/aery_photography_studio/">@aery_photography_studio</a></span>
+			<br>
+			<small>© 2024 Aery Photo Studio</small>
+		</address>
+	</footer>
+	
+	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
+	<script src="js/effects.js"></script>
+</body>
+</html>
