@@ -1,12 +1,16 @@
 // main app
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
 	// inicializacion de la aplicacion al cargar la pagina
 
+	await fetchFromServer();
 	renderMonth(); // mostrar el calendario del mes actual
 
 	// DECLARACION DE VARIABLES Y CONSTANTES
-	const monthSet = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+	const monthSet = [
+		"Enero", "Febrero", "Marzo", "Abril",
+		 "Mayo", "Junio", "Julio", "Agosto", 
+		 "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
 	// objetos interactivos de la pagina
 	const timeSchedule = document.getElementById("time-schedule");
@@ -135,14 +139,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
 		timeSchedule.value = `${dateToSet.getHours()}:${dateToSet.getMinutes()}`;
 	}
-});
 
-async function fetchFromServer() {
-	try {
-		const response = await fetch("/api/index").json();
-		console.log(JSON.stringify(response));
-	} catch (err) {
-		console.error(err);
+	async function fetchFromServer() {
+		try {
+			const response = await fetch("/api/index");
+			const data = await response.json();
+			console.log(data);
+		} catch (err) {
+			console.error(err);
+		}
 	}
-
-}
+});

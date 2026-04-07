@@ -2,6 +2,7 @@ node_modules/
 testing/
 tmp/
 imgs/
+logs/
 .well-known/
 .log
 .DS_Store
