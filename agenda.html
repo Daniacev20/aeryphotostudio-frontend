@@ -50,19 +50,17 @@
 						<legend>Datos de la cita</legend>
 						<label for="txt-nombre" class="form-info">Los recuadros marcados con * son necesarios.</label>
 
+						<label for="ck-same-as-profile">
+							Misma informacion que en mi perfil:
+							<input type="checkbox" id="ck-same-as-profile" name="ck-same-as-profile" title="Iniciar sesi&oacute;n para habilitar" disabled>
+						</label>
 						<input type="text" name="txt-nombre" id="txt-nombre" placeholder="Nombre *" maxlength="50" inputmode="text" required>
-						<input type="text" name="txt-telefono" id="txt-telefono" placeholder="Tel&eacute;fono *" maxlength="15" inputmode="tel" required>
+						<input type="tel" name="txt-telefono" id="txt-telefono" placeholder="Tel&eacute;fono *" maxlength="15" inputmode="tel" required>
 						<input type="email" name="txt-email" id="txt-email" placeholder="e-mail *" maxlength="100" inputmode="email" required>
+						<input type="tel" name="txt-telefono2" id="txt-telefono2" placeholder="Tel&eacute;fono alternativo" maxlength="15" inputmode="tel">
+						<input type="email" name="txt-email2" id="txt-email2" placeholder="e-mail alternativo" maxlength="100" inputmode="email">
 						<textarea name="txta-preferencias" id="txta-preferencias" placeholder="Cu&eacute;ntanos tus preferencias para la sesi&oacute;n" maxlength="500" inputmode="text"></textarea>
-
-						<label for="date-calendar">Seleccione una fecha aqu&iacute;<span class="hideable-portion"> o m&uacute;ltiples en el calendario</span></label>
-						<input type="date" name="date-calendar" id="date-calendar">
-
-						<label for="time-schedule">Seleccione una hora (solo horas en punto o media hora)</label>
-						<input type="time" name="time-schedule" id="time-schedule" min="08:00" max="20:00" step="1800">
-						
-						<button id="btn-confirm-date" class="form-button">Enviar solicitud</button>
-						
+												
 						<p id="p-error"></p>
 					</fieldset>
 				</form>
@@ -70,13 +68,14 @@
 
 			<section id="datetime-list-container">
 				<div id="datetime-list">
-					<div id="datetime-month-controls">
+					<div id="month-controls">
 						<button class="previous-month">
 							<i class="fas fa-angle-left"></i>
 						</button>
 
 						<span class="current-month">
 							<span id="month-number">1</span>
+							<span>-</span>
 							<span id="month-name">Enero</span>
 						</span>
 						
@@ -85,29 +84,54 @@
 						</button>
 					</div>
 
-					<ul id="days-list">
+					<ol id="days-list">
+						<!-- no IDs a partir de aqui -->
 						<li class="day">
-							<span>1</span>
-							<ul class="hours-list">
-								<li>08:00 AM</li>
-								<li>08:00 AM</li>
-							</ul>
+							<span>
+								<span>1</span>
+								<span>-</span>
+								<span name="day-of-week"></span>
+							</span>
+							<ol class="hours-list">
+								<li>08:00</li>
+								<li>09:00</li>
+							</ol>
 						</li>
 						<li class="day">
-							<span>2</span>
-							<ul class="hours-list">
-								<li>08:00 AM</li>
-								<li>08:00 AM</li>
-							</ul>
+							<span>
+								<span>2</span>
+								<span>-</span>
+								<span name="day-of-week"></span>
+							</span>
+							<ol class="hours-list">
+								<li>08:00</li>
+								<li>09:00</li>
+							</ol>
 						</li>
 						<li class="day">
-							<span>3</span>
-							<ul class="hours-list">
-								<li>08:00 AM</li>
-								<li>08:00 AM</li>
-							</ul>
+							<span>
+								<span>3</span>
+								<span>-</span>
+								<span name="day-of-week"></span>
+							</span>
+							<ol class="hours-list">
+								<li>08:00</li>
+								<li>09:00</li>
+							</ol>
 						</li>
-					</ul>
+					</ol>
+
+					<form action="#" id="frm-send-booking">
+						<button id="btn-send-booking">
+							Enviar selecci&oacute;n
+							<i class="fas fa-paper-plane"></i>
+						</button>
+						<button id="btn-clear">
+							Borrar selecci&oacute;n
+							<i class="fas fa-eraser"></i>
+						</button>
+					</form>
+				</div>
 			</section>
 		</article>
 	</main>

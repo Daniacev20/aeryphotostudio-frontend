@@ -7,15 +7,14 @@
 
 /* tipografia pirmaria y secundaria: DM sans, helvetica world */
 
-/* ELIMINAR LAS CLASES EN DESUSO:
-	* .form-button */
-
 :root {
 	--primary-color1: #562912;
 	--primary-color2: #744A27;
 	--bg-color1: #F4F4F4;
 	--bg-color2: #D3D3D3;
 	--bg-color3: #DDDDDD;
+	--bg-hover1: #EFEFEF;
+	--bg-hover2: #C7C7C7;
 	--icon-bg-color1: #FCFCFC;
 }
 
@@ -35,7 +34,6 @@ body {
  header {
 	font-family: helvetica, arial, sans-serif;
 	background-color: var(--primary-color1);
-	opacity: .89;
 	color: white;
 }
 
@@ -96,7 +94,7 @@ body {
 	list-style-type: none;
 	position: absolute;
 	display: none;
-	z-index: 2;
+	z-index: 3;
 }
 
 .submenu-content li {

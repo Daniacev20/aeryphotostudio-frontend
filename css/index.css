@@ -54,6 +54,7 @@ header {
 	display: flex;
 	flex-flow: row;
 	overflow-x: auto;
+	z-index: 1;
 }
 
 /* ocultar scrollbar. necesario, pero invisible */
@@ -85,7 +86,7 @@ header {
 	background-color: transparent;
 	position: absolute;
 	inset: 0;
-	z-index: 1;
+	z-index: 2;
 	user-select: none;
 	pointer-events: auto;
 }
