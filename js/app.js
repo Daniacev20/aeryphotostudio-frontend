@@ -4,7 +4,6 @@ window.addEventListener("DOMContentLoaded", async () => {
 	// inicializacion de la aplicacion al cargar la pagina
 
 	await fetchFromServer();
-	renderMonth(); // mostrar el calendario del mes actual
 
 	// DECLARACION DE VARIABLES Y CONSTANTES
 	const monthSet = [

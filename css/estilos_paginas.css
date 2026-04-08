@@ -260,6 +260,10 @@ header {
 
 /* lista de fechas y horas -wip */
 
+#datetime-list-container {
+	border: 1px solid cyan;
+}
+
 /* fin de seccion: AGENDA */
 
 /* CONTACTO: estilos para la pagina de contacto */
