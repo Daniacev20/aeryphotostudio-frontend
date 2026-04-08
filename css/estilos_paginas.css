@@ -220,6 +220,14 @@ header {
 	color: crimson;
 	font-size: .9rem;
 }
+#frm-calendar .buttons-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+#frm-calendar .buttons-row > button {
+	flex: 1;
+}
 
 /* lista de fechas y horas -wip */
 
@@ -293,7 +301,7 @@ header {
 #days-list {
 	display: flex;
 	flex-direction: column;
-	max-height: 60vh;
+	max-height: 65vh;
 	overflow-y: scroll;
 }
 
@@ -341,20 +349,6 @@ header {
 
 .hours-list .time-selected {
 	background-color: #AAA;
-}
-
-/* form con botones para enviar o 
-	cancelar seleccion */
-#frm-send-booking {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	margin-top: 1rem;
-}
-
-/* size equitativo de los botones */
-#frm-send-booking > button {
-	flex: 1;
 }
 
 /* fin de seccion: AGENDA */
