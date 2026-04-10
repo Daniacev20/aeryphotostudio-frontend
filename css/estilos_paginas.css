@@ -472,6 +472,29 @@ header {
 
 /* fin de seccion: SOBRE_NOSOTROS */
 
+/* LOGIN: estilos de formulario para iniciar sesion */
+
+#frm-login fieldset {
+	display: flex;
+	flex-direction: column;
+	max-width: clamp(300px, 500px, 50vw);
+	margin: 2rem auto;
+	padding: .8rem;
+	/*justify-self: center;*/
+}
+
+.login-buttons-container {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.login-buttons-container > button {
+	flex: 1;
+}
+
+/* fin de seccion: LOGIN */
+
 /* MEDIA QUERIES: para vista en dispositivos moviles */
 
 /* celulares */

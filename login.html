@@ -5,11 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/estilos_base.css">
 	<link rel="stylesheet" href="css/estilos_paginas.css">
-	<title>Aery-Contacto</title>
+	<title>Aery-Iniciar sesi&ocute;n</title>
 </head>
 <body>
 	<header>
 		<nav class="main-menu-container">
+			<hgroup class="header-title">
+				<h1>Inicia sesi&oacute;n</h1>
+			</hgroup>
+
 			<div class="toggle-container">
 				<span id="btn-toggle">
 					<i class="fas fa-bars"></i>
@@ -72,26 +76,26 @@
 	</header>
 
 	<main>
-		<section>
-			<hgroup class="header-title">
-				<h1>Cont&aacute;ctanos</h1>
-			</hgroup>
-		</section>
-
-		<article>
-			<form action="#" id="frm-contact">
-				<fieldset>
-					<legend>Env&iacute;anos un correo</legend>
-					<input type="text" maxlength="50" placeholder="Nombre *" inputmode="text" required>
-					<input type="email" maxlength="100" placeholder="Email@ejemplo.com *" inputmode="email" required>
-					<textarea id="" maxlength="2000" placeholder="Deje su mensaje *" inputmode="text" required></textarea>
-					<button id="btn-send" class="form-button">
-						Enviar mensaje
-						<i class="fa-solid fa-paper-plane"></i>
+		<form action="#" id="frm-login" novalidate>
+			<fieldset>
+				<legend>Datos de usuario</legend>
+				
+				<input type="email" id="txt-email-username" name="email-username" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" required>
+				<input type="password" id="txt-password" name="password" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" required>
+				
+				<div class="login-buttons-container">
+					<button id="btn-login" class="form-button">
+						Ingresar
+						<i class="fa-solid fa-key"></i>
 					</button>
-				</fieldset>
-			</form>
-		</article>
+
+					<button id="btn-back" class="form-button">
+						Regresar
+						<i class="fas fa-arrow-left"></i>
+					</button>
+				</div>
+			</fieldset>
+		</form>
 	</main>
 
 	<footer>

@@ -166,6 +166,7 @@ input[type=date],
 input[type=time],
 input[type=email],
 input[type=search],
+input[type=button],
 textarea,
 button {
 	border: 1px solid var(--primary-color2);
@@ -173,7 +174,7 @@ button {
 	color: var(--primary-color2);
 	font-family: inherit;
 	font-size: 1.1rem;
-	margin: .3rem 0;
+	margin: .5rem 0;
 	padding: .5rem 1rem;
 	outline: none;
 	user-select: none;
@@ -196,11 +197,13 @@ input[type=date]:hover,
 input[type=time]:hover,
 input[type=email]:hover,
 input[type=search]:hover,
+input[type=button]:hover,
 textarea:hover,
 button:hover {
 	box-shadow: inset -1px -1px 3px var(--primary-color2);
 }
 
+input[type=button]:hover,
 button:hover {
 	box-shadow: inset -1px -1px 3px var(--primary-color2);
  	background-color: #B1B1B1;
@@ -214,11 +217,13 @@ input[type=date]:focus,
 input[type=time]:focus,
 input[type=email]:focus,
 input[type=search]:focus,
+input[type=button]:focus,
 textarea:focus,
 button:focus {
 	box-shadow: inset -1px -1px 1.5px var(--primary-color2);
 }
 
+input[type=button]:hover,
 button:active {
 	background-color: #A0A0A0;
 	box-shadow: none;
