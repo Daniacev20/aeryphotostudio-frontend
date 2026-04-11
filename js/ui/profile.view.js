@@ -1,4 +1,4 @@
-// login.test.js
+// profile.view.js
 
 // users de prueba
 const adminUser = JSON.parse(

@@ -5,4 +5,4 @@ import { loadView } from './ui/profile.view.js'
 
 initEffects();
 
-if (/login.html?/.test(document.location)) loadView();
+if (/perfil.html?/.test(document.location)) loadView();
