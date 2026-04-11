@@ -40,6 +40,16 @@ function showView(view) {
 	views[view].classList.add("active");
 }
 
+function changeViewOnClick(event) {
+	const target = event.target.closest("a");
+
+	if (!target) return;
+
+	if (target.dataset.view) {
+		showView(target.dataset.view);
+	}
+}
+
 function loginButtonsClickEvents(event) {
 	event.preventDefault();
 
@@ -73,8 +83,12 @@ function loginButtonsClickEvents(event) {
 
 export function loadView() {
 	if (!initialized) {
-		document.querySelector("#frm-login").addEventListener("click", loginButtonsClickEvents, false);
-		document.querySelector("#a-sign-out").addEventListener("click", signOut, false);
+		document.querySelector("#frm-login")
+			.addEventListener("click", loginButtonsClickEvents, false);
+		document.querySelector("#a-sign-out")
+			.addEventListener("click", signOut, false);
+		[...document.querySelectorAll("a[data-view]")]
+			.forEach(a => a.addEventListener("click", changeViewOnClick, false));
 		initialized = true;
 	}
 
