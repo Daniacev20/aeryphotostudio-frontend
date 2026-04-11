@@ -18,7 +18,7 @@ const views = {
 let initialized = false;
 
 function signIn(inputUser) {
-	if ((user.email === inputUser.emailOrUsername ||
+	if ((user.email === inputUser.emailOrUsername.toLowerCase() ||
 		user.username === inputUser.emailOrUsername) &&
 			user.password === inputUser.password) {
 		// login
@@ -44,28 +44,30 @@ function loginButtonsClickEvents(event) {
 	event.preventDefault();
 
 	const target = event.target.closest("button");
+	const currentForm = event.target.closest("form");
 
 	if (!target) return;
-
-	if (target.dataset.yesno == "yes") {
-		const currentForm = target.closest("form");
-		if (currentForm.id == "frm-login") {
-			const givenUser = {
-				emailOrUsername: currentForm.querySelector("#txt-email-username-login").value,
-				password: currentForm.querySelector("#txt-password-login").value
-			}
-
+	
+	if (currentForm.id == "frm-login") {
+		const pError = currentForm.querySelector("#frm-login .p-error");
+		const givenUser = {
+			emailOrUsername: currentForm.querySelector("#txt-email-username-login").value,
+			password: currentForm.querySelector("#txt-password-login").value
+		};
+		
+		if (target.dataset.yesno == "yes") {
 			if (signIn(givenUser)) 
 				showView("profile");
 			else
-				alert("Wrong credentials");
+				pError.innerText = "Credenciales invalidas.";
 		}
-	}
-	else {
-		const frmLoginControls = document.querySelectorAll("#frm-login input");
+		else {
+			const frmLoginControls = document.querySelectorAll("#frm-login input");
 
-		for (let c of frmLoginControls)
-			if (c.value) c.value = "";
+			pError.innerText = "";
+			for (let c of frmLoginControls)
+				if (c.value) c.value = "";
+		}
 	}
 }
 

@@ -281,7 +281,7 @@ footer address {
 /* MEDIA QUERIES: reglas para vista en dispositivos moviles */
 
 /* celulares y tablets estandar */
-@media only screen and (max-width: 772px) { /* debe coincidir con effect.js */
+@media only screen and (max-width: 772px) { /* debe coincidir con effects.js */
 	/* vista de menu en vertical */
 	.navigation-menu, .submenu-content {
 		flex-direction: column;
@@ -315,6 +315,10 @@ footer address {
 		display: block;
 		position: relative;
 		text-indent: 5vw;
+	}
+
+	.submenu-content li i {
+		text-indent: 0;
 	}
 
 	.toggle-container {

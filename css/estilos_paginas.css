@@ -219,7 +219,7 @@ header {
 	justify-content: space-between;
 }
 
-#p-error {
+.p-error {
 	color: crimson;
 	font-size: .9rem;
 }
