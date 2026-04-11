@@ -519,7 +519,7 @@ header {
 	visibility: hidden;
 }
 
-section {
+section[id|=view] {
 	display: none;
 }
 

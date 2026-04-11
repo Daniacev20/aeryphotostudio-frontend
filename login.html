@@ -90,8 +90,8 @@
 					<fieldset>
 						<legend>Datos de usuario</legend>
 						
-						<input type="email" id="txt-email-username" name="email-username" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" autocomplete="email" required>
-						<input type="password" id="txt-password" name="password" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" autocomplete="current-password" required>
+						<input type="email" id="txt-email-username-login" name="email-username-login" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" autocomplete="email" required>
+						<input type="password" id="txt-password-login" name="password-login" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" autocomplete="current-password" required>
 						
 						<div class="login-buttons-container">
 							<button class="form-button" data-yesno="yes">
@@ -123,12 +123,12 @@
 						
 						<label for="txt-nombre" class="form-info">Los recuadros marcados con * son necesarios.</label>
 
-						<input type="text" id="txt-name" name="name", maxlength="50", placeholder="Nombre *" autocomplete="name" required>
-						<input type="tel" id="txt-phone" name="phone" maxlength="10" placeholder="Tel&eacute;fono (s&oacute;lo n&uacute;meros) *" inputmode="tel" autocomplete="phone" required>
-						<input type="email" id="txt-email" name="email" maxlength="100" placeholder="Email *" inputmode="email" autocomplete="email" required>
-						<input type="text" id="txt-username" name="username" maxlength="30" placeholder="Nombre de usuario (sin espacios)" inputmode="email" autocomplete="username">
-						<input type="password" id="txt-password" name="password" maxlength="100" placeholder="Contrase&ntilde;a *" inputmode="email" autocomplete="current-password" required>
-						<input type="password" id="txt-confirm-password" name="confirm-password" maxlength="100" placeholder="Confirmar contrase&ntilde;a *" inputmode="email" autocomplete="off" required>
+						<input type="text" id="txt-name-register" name="name-register", maxlength="50", placeholder="Nombre *" autocomplete="name" required>
+						<input type="tel" id="txt-phone-register" name="phone-register" maxlength="10" placeholder="Tel&eacute;fono (s&oacute;lo n&uacute;meros) *" inputmode="tel" autocomplete="phone" required>
+						<input type="email" id="txt-email-register" name="email-register" maxlength="100" placeholder="Email *" inputmode="email" autocomplete="email" required>
+						<input type="text" id="txt-username-register" name="username-register" maxlength="30" placeholder="Nombre de usuario (sin espacios)" inputmode="email" autocomplete="username">
+						<input type="password" id="txt-password-register" name="password-register" maxlength="100" placeholder="Contrase&ntilde;a *" inputmode="email" autocomplete="current-password" required>
+						<input type="password" id="txt-confirm-password-register" name="confirm-password-register" maxlength="100" placeholder="Confirmar contrase&ntilde;a *" inputmode="email" autocomplete="off" required>
 						
 						<div class="login-buttons-container">
 							<button class="form-button" data-yesno="yes">
@@ -165,15 +165,15 @@
 								<i id="edit-pencil" class="fas fa-pencil"></i>
 								<input type="checkbox" id="ck-edit" name="ck-edit">
 							</span>
-							<a href="#" class="a-right">Cerrar sesi&oacute;n</a>
+							<a href="#" id="a-sign-out" class="a-right">Cerrar sesi&oacute;n</a>
 						</label>
 
-						<input type="text" id="txt-name" name="name", maxlength="50" autocomplete="off" disabled>
-						<input type="tel" id="txt-phone" name="phone" maxlength="10" autocomplete="off" disabled>
-						<input type="email" id="txt-email" name="email" maxlength="100" autocomplete="off" disabled>
-						<input type="email" id="txt-username" name="username" maxlength="30" autocomplete="off" disabled>
-						<input type="password" id="txt-password" name="password" maxlength="100" autocomplete="off" disabled>
-						<input type="password" id="txt-confirm-password" name="confirm-password" maxlength="100" autocomplete="off" disabled>
+						<input type="text" id="txt-name-profile" name="name-profile", maxlength="50" autocomplete="off" disabled>
+						<input type="tel" id="txt-phone-profile" name="phone-profile" maxlength="10" autocomplete="off" disabled>
+						<input type="email" id="txt-email-profile" name="email-profile" maxlength="100" autocomplete="off" disabled>
+						<input type="email" id="txt-username-profile" name="username-profile" maxlength="30" autocomplete="off" disabled>
+						<input type="password" id="txt-password-profile" name="password-profile" maxlength="100" autocomplete="off" disabled>
+						<input type="password" id="txt-confirm-password-profile" name="confirm-password-profile" maxlength="100" autocomplete="off" disabled>
 						
 						<div class="login-buttons-container">
 							<button class="form-button" data-yesno="yes">
@@ -207,6 +207,5 @@
 
 	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
 	<script type="module" src="js/main.js"></script>
-	<!-- <script src="js/effects.js"></script> -->
 </body>
 </html>
