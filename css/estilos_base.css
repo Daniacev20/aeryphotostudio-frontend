@@ -37,6 +37,14 @@ body {
 	color: white;
 }
 
+main a {
+	color: var(--primary-color1);
+}
+
+main a:hover {
+	text-decoration: none;
+}
+
 /* MENU: seccion para el menu de navegacion */
 /* comunes a todas las paginas del sitio */
 

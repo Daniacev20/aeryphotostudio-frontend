@@ -5,15 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/estilos_base.css">
 	<link rel="stylesheet" href="css/estilos_paginas.css">
-	<title>Aery-Iniciar sesi&ocute;n</title>
+	<title>Aery-Crear perfil</title>
 </head>
 <body>
 	<header>
 		<nav class="main-menu-container">
-			<hgroup class="header-title">
-				<h1>Inicia sesi&oacute;n</h1>
-			</hgroup>
-
 			<div class="toggle-container">
 				<span id="btn-toggle">
 					<i class="fas fa-bars"></i>
@@ -52,6 +48,20 @@
 							</li>
 						</ul>
 					</li>
+					<li class="submenu">
+						<a href="#">
+							<i class="fas fa-user"></i>
+							<span>Guest</span>
+						</a>
+						<ul class="submenu-content">
+							<li>
+								<a href="login.html">
+									<i class="fas fa-user"></i>
+									Iniciar sesi&oacute;n
+								</a>
+							</li>
+						</ul>
+					</li>
 					<li>
 						<a href="contacto.html">
 							<i class="fas fa-phone"></i>
@@ -64,38 +74,122 @@
 							Sobre nosotros
 						</a>
 					</li>
-					<li>
-						<a href="login.html">
-							<i class="fas fa-user"></i>
-							Iniciar sesi&oacute;n
-						</a>
-					</li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 
 	<main>
-		<form action="#" id="frm-login" novalidate>
-			<fieldset>
-				<legend>Datos de usuario</legend>
-				
-				<input type="email" id="txt-email-username" name="email-username" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" required>
-				<input type="password" id="txt-password" name="password" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" required>
-				
-				<div class="login-buttons-container">
-					<button id="btn-login" class="form-button">
-						Ingresar
-						<i class="fa-solid fa-key"></i>
-					</button>
+		<article id="account-container">
+			<section id="view-login">
+				<hgroup class="header-title">
+					<h1>Iniciar sesi&oacute;n</h1>
+				</hgroup>
 
-					<button id="btn-back" class="form-button">
-						Regresar
-						<i class="fas fa-arrow-left"></i>
-					</button>
-				</div>
-			</fieldset>
-		</form>
+				<form action="#" id="frm-login" class="profile-form" novalidate>
+					<fieldset>
+						<legend>Datos de usuario</legend>
+						
+						<input type="email" id="txt-email-username" name="email-username" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" autocomplete="email" required>
+						<input type="password" id="txt-password" name="password" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" autocomplete="current-password" required>
+						
+						<div class="login-buttons-container">
+							<button class="form-button" data-yesno="yes">
+								Ingresar
+								<i class="fa-solid fa-key"></i>
+							</button>
+
+							<button class="form-button" data-yesno="no">
+								Limpiar
+								<i class="fas fa-eraser"></i>
+							</button>
+						</div>
+
+						<div>
+							<p>Si no tienes un prefil, por favor, <a href="#" data-view="register">crea uno</a>.</p>
+						</div>
+					</fieldset>
+				</form>
+			</section>
+
+			<section id="view-register">
+				<hgroup class="header-title">
+					<h1>Register</h1>
+				</hgroup>
+
+				<form action="#" id="frm-register" class="profile-form" novalidate>
+					<fieldset>
+						<legend>Datos de usuario</legend>
+						
+						<label for="txt-nombre" class="form-info">Los recuadros marcados con * son necesarios.</label>
+
+						<input type="text" id="txt-name" name="name", maxlength="50", placeholder="Nombre *" autocomplete="name" required>
+						<input type="tel" id="txt-phone" name="phone" maxlength="10" placeholder="Tel&eacute;fono (s&oacute;lo n&uacute;meros) *" inputmode="tel" autocomplete="phone" required>
+						<input type="email" id="txt-email" name="email" maxlength="100" placeholder="Email *" inputmode="email" autocomplete="email" required>
+						<input type="text" id="txt-username" name="username" maxlength="30" placeholder="Nombre de usuario (sin espacios)" inputmode="email" autocomplete="username">
+						<input type="password" id="txt-password" name="password" maxlength="100" placeholder="Contrase&ntilde;a *" inputmode="email" autocomplete="current-password" required>
+						<input type="password" id="txt-confirm-password" name="confirm-password" maxlength="100" placeholder="Confirmar contrase&ntilde;a *" inputmode="email" autocomplete="off" required>
+						
+						<div class="login-buttons-container">
+							<button class="form-button" data-yesno="yes">
+								Crear perfil
+								<i class="fa-solid fa-asterisk"></i>
+							</button>
+
+							<button class="form-button" data-yesno="no">
+								Limpiar
+								<i class="fas fa-eraser"></i>
+							</button>
+						</div>
+
+						<div>
+							<p>Si ya tienes un prefil, <a href="#" data-view="login">inicia sesi&oacute;n</a>.</p>
+						</div>
+					</fieldset>
+				</form>
+			</section>
+
+			<section id="view-profile">
+				<hgroup class="header-title">
+					<h1>Profile</h1>
+				</hgroup>
+
+				<form action="#" id="frm-edit-profile" class="profile-form" novalidate>
+					<fieldset>
+						<legend>Datos de usuario</legend>
+						
+
+						<label for="ck-edit" class="form-info">
+							<span>
+								Edit
+								<i id="edit-pencil" class="fas fa-pencil"></i>
+								<input type="checkbox" id="ck-edit" name="ck-edit">
+							</span>
+							<a href="#" class="a-right">Cerrar sesi&oacute;n</a>
+						</label>
+
+						<input type="text" id="txt-name" name="name", maxlength="50" autocomplete="off" disabled>
+						<input type="tel" id="txt-phone" name="phone" maxlength="10" autocomplete="off" disabled>
+						<input type="email" id="txt-email" name="email" maxlength="100" autocomplete="off" disabled>
+						<input type="email" id="txt-username" name="username" maxlength="30" autocomplete="off" disabled>
+						<input type="password" id="txt-password" name="password" maxlength="100" autocomplete="off" disabled>
+						<input type="password" id="txt-confirm-password" name="confirm-password" maxlength="100" autocomplete="off" disabled>
+						
+						<div class="login-buttons-container">
+							<button class="form-button" data-yesno="yes">
+								Guardar
+								<i class="fa-solid fa-save"></i>
+							</button>
+
+							<button class="form-button" data-yesno="no">
+								Cancelar
+								<i class="fas fa-x"></i>
+							</button>
+						</div>
+					</fieldset>
+				</form>
+			</section>
+		</article>
 	</main>
 
 	<footer>
@@ -112,6 +206,7 @@
 	</footer>
 
 	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
-	<script src="js/effects.js"></script>
+	<script type="module" src="js/main.js"></script>
+	<!-- <script src="js/effects.js"></script> -->
 </body>
 </html>

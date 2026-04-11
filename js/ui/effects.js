@@ -1,7 +1,13 @@
 // effects.js
 // para manipular comportamientos por defecto de elementos y validaciones
 
-window.addEventListener("load", () => {
+function toggleMenu() {
+	for (let item of menuLIs) {
+		item.style.display = item.style.display == "block" ? "none" : "block";
+	}
+}
+
+export function initEffects() {
 	const btnToggleMenu = document.getElementById("btn-toggle");
 	const menuLIs = document.querySelectorAll(".navigation-menu li");
 
@@ -25,13 +31,4 @@ window.addEventListener("load", () => {
 
 	// deshabilitar el drag and drop de las imagenes
 	document.querySelectorAll("img").forEach(img => img.draggable = false);
-
-
-	// DEFINICION DE FUNCIONES
-
-	function toggleMenu() {
-		for (let item of menuLIs) {
-			item.style.display = item.style.display == "block" ? "none" : "block";
-		}
-	}
-});
+}
