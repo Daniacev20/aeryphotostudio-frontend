@@ -45,8 +45,16 @@ function changeViewOnClick(event) {
 
 	if (!target) return;
 
-	if (target.dataset.view) {
-		showView(target.dataset.view);
+	const view = target.dataset.view;
+
+	if (view) {
+		if (view === "login" &&
+			event.target.closest("form").id === "frm-edit-profile") {
+			signOut();
+			showView("login");
+		}
+
+		showView(view);
 	}
 }
 
@@ -107,8 +115,6 @@ export function loadView() {
 		document.querySelectorAll("form").forEach(frm => {
 			frm.addEventListener("click", formButtonsClickEvents, false);
 		});
-		document.querySelector("#a-sign-out")
-			.addEventListener("click", signOut, false);
 		document.querySelectorAll("a[data-view]")
 			.forEach(a => a.addEventListener("click", changeViewOnClick, false));
 		initialized = true;
