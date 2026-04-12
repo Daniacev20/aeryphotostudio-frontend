@@ -505,11 +505,13 @@ header {
 }
 
 /* efectos con el mouse del icono de editar */
-#edit-pencil:hover {
+#edit-pencil:hover,
+span:hover > #edit-pencil {
 	color: var(--primary-color1);
 }
 
-#edit-pencil:active {
+#edit-pencil:active,
+span:active > #edit-pencil {
 	color: #D3D3D3;
 }
 

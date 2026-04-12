@@ -40,7 +40,7 @@ function showView(view) {
 	views[view].classList.add("active");
 }
 
-function changeViewOnClick(event) {
+function changeView_aClickEvents(event) {
 	const target = event.target.closest("a");
 
 	if (!target) return;
@@ -59,7 +59,7 @@ function changeViewOnClick(event) {
 }
 
 function clearControls(form) {
-	form.querySelectorAll("input, textarea").forEach(c => {
+	form.querySelectorAll("input:not([typ=checkbox]), textarea").forEach(c => {
 		if ("value" in c)
 			c.value = "";
 	});
@@ -70,18 +70,31 @@ function clearControls(form) {
 
 }
 
-function enableDisableProfile(event) {}
+function toggleControlsDisableStatus(form) {
+	form.querySelectorAll("input:not([type=checkbox]), textarea")
+		.forEach(control => {
+			if (control.type === "submit" ||
+				control.type === "button") return;
+
+			control.disabled = !control.disabled;
+		});
+}
+
+function ckEditChangeEvent(event) {
+	const form = event.target.closest("form");
+	toggleControlsDisableStatus(form);
+}
 
 function loadProfile(userData) {}
 
 function createProfile(formData) {}
 
 function formButtonsClickEvents(event) {
-	event.preventDefault();
-
 	const targetBtn = event.target.closest("button");
 
-	if (!targetBtn) return;
+	if (!targetBtn)
+		return;
+	event.preventDefault();
 	
 	const behavior = targetBtn.dataset.behavior;
 	const currentForm = event.target.closest("form");
@@ -123,7 +136,10 @@ export function loadView() {
 		});
 
 		document.querySelectorAll("a[data-view]")
-			.forEach(a => a.addEventListener("click", changeViewOnClick, false));
+			.forEach(a => a.addEventListener("click", changeView_aClickEvents, false));
+
+		document.querySelector("#ck-edit")
+			.addEventListener("change", ckEditChangeEvent, false);
 		
 		initialized = true;
 	}
