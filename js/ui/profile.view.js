@@ -70,6 +70,12 @@ function clearControls(form) {
 
 }
 
+function enableDisableProfile(event) {}
+
+function loadProfile(userData) {}
+
+function createProfile(formData) {}
+
 function formButtonsClickEvents(event) {
 	event.preventDefault();
 
@@ -115,8 +121,10 @@ export function loadView() {
 		document.querySelectorAll("form").forEach(frm => {
 			frm.addEventListener("click", formButtonsClickEvents, false);
 		});
+
 		document.querySelectorAll("a[data-view]")
 			.forEach(a => a.addEventListener("click", changeViewOnClick, false));
+		
 		initialized = true;
 	}
 
