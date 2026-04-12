@@ -22,7 +22,7 @@ function signIn(inputUser) {
 		user.username === inputUser.emailOrUsername) &&
 			user.password === inputUser.password) {
 		// login
-		localStorage.setItem("user", user);
+		localStorage.setItem("user", JSON.stringify(user));
 		return true;
 	}
 	else {
@@ -85,7 +85,12 @@ function ckEditChangeEvent(event) {
 	toggleControlsDisableStatus(form);
 }
 
-function loadProfile(userData) {}
+function loadProfile(user) {
+	const properties = ["name", "phone" ,"email", "username"];
+
+	for (const prop of properties)
+		document.querySelector(`#txt-${prop}-profile`).value = user[prop];
+}
 
 function createProfile(formData) {}
 
@@ -107,10 +112,14 @@ function formButtonsClickEvents(event) {
 			password: currentForm.querySelector("#txt-password-login").value
 		};
 
-		if (signIn(givenUser)) 
+		if (signIn(givenUser)) {
+			const fullUser = JSON.parse(localStorage.getItem("user"));
 			showView("profile");
-		else
+			loadProfile(fullUser);
+		}
+		else {
 			pError.innerText = "Credenciales invalidas.";
+		}
 	}
 	else if (behavior === "clear") {
 		clearControls(currentForm);
@@ -144,7 +153,7 @@ export function loadView() {
 		initialized = true;
 	}
 
-	const user = localStorage.getItem("user");
+	const user = JSON.parse(localStorage.getItem("user"));
 
 	if (user) {
 		showView("profile");
