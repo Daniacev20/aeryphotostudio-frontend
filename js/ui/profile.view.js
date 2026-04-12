@@ -50,44 +50,66 @@ function changeViewOnClick(event) {
 	}
 }
 
-function loginButtonsClickEvents(event) {
+function clearControls(form) {
+	form.querySelectorAll("input, textarea").forEach(c => {
+		if ("value" in c)
+			c.value = "";
+	});
+
+	const p = form.querySelector(".p-error");
+
+	if (p) p.innerText = "";
+
+}
+
+function formButtonsClickEvents(event) {
 	event.preventDefault();
 
-	const target = event.target.closest("button");
+	const targetBtn = event.target.closest("button");
+
+	if (!targetBtn) return;
+	
+	const behavior = targetBtn.dataset.behavior;
 	const currentForm = event.target.closest("form");
 
-	if (!target) return;
 	
-	if (currentForm.id == "frm-login") {
+	if (behavior === "login") {
 		const pError = currentForm.querySelector("#frm-login .p-error");
 		const givenUser = {
 			emailOrUsername: currentForm.querySelector("#txt-email-username-login").value,
 			password: currentForm.querySelector("#txt-password-login").value
 		};
-		
-		if (target.dataset.yesno == "yes") {
-			if (signIn(givenUser)) 
-				showView("profile");
-			else
-				pError.innerText = "Credenciales invalidas.";
-		}
-		else {
-			const frmLoginControls = document.querySelectorAll("#frm-login input");
 
-			pError.innerText = "";
-			for (let c of frmLoginControls)
-				if (c.value) c.value = "";
-		}
+		if (signIn(givenUser)) 
+			showView("profile");
+		else
+			pError.innerText = "Credenciales invalidas.";
+	}
+	else if (behavior === "clear") {
+		clearControls(currentForm);
+	}
+	else if (behavior === "register") {
+		// wip
+		console.log("Register behavior handler.");
+	}
+	else if (behavior === "save") {
+		// wip
+		console.log("Save behavior handler.");
+	}
+	else if (behavior === "discard") {
+		// wip
+		console.log("Discard behavior handler.");
 	}
 }
 
 export function loadView() {
 	if (!initialized) {
-		document.querySelector("#frm-login")
-			.addEventListener("click", loginButtonsClickEvents, false);
+		document.querySelectorAll("form").forEach(frm => {
+			frm.addEventListener("click", formButtonsClickEvents, false);
+		});
 		document.querySelector("#a-sign-out")
 			.addEventListener("click", signOut, false);
-		[...document.querySelectorAll("a[data-view]")]
+		document.querySelectorAll("a[data-view]")
 			.forEach(a => a.addEventListener("click", changeViewOnClick, false));
 		initialized = true;
 	}
