@@ -64,9 +64,10 @@ function clearControls(form) {
 			c.value = "";
 	});
 
-	const p = form.querySelector(".p-error");
+	const msg = form.querySelectorAll(".error-m");
 
-	if (p) p.innerText = "";
+	if (msg)
+		msg.forEach(m => m.classList.remove("active"));
 
 }
 
@@ -106,19 +107,19 @@ function formButtonsClickEvents(event) {
 
 	
 	if (behavior === "login") {
-		const pError = currentForm.querySelector("#frm-login .p-error");
+		const pError = currentForm.querySelector("#frm-login .error-m");
 		const givenUser = {
 			emailOrUsername: currentForm.querySelector("#txt-email-username-login").value,
 			password: currentForm.querySelector("#txt-password-login").value
 		};
 
-		if (signIn(givenUser)) {
+		if (!signIn(givenUser)) {
+			pError.classList.add("active");
+		}
+		else {
 			const fullUser = JSON.parse(localStorage.getItem("user"));
 			showView("profile");
 			loadProfile(fullUser);
-		}
-		else {
-			pError.innerText = "Credenciales invalidas.";
 		}
 	}
 	else if (behavior === "clear") {
@@ -159,6 +160,6 @@ export function loadView() {
 		showView("profile");
 	}
 	else {
-		showView("login");
+		showView("register"); // default: "login"
 	}
 }

@@ -219,9 +219,18 @@ header {
 	justify-content: space-between;
 }
 
-.p-error {
+.error-m {
 	color: crimson;
-	font-size: .9rem;
+	font-size: .8rem;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	min-height: 1rem;
+	visibility: hidden;
+}
+
+.error-m.active {
+	visibility: visible;
 }
 
 #frm-calendar .buttons-row {
