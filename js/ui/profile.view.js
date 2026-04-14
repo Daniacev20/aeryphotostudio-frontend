@@ -37,6 +37,9 @@ function signOut() {
 
 function showView(view) {
 	Object.values(views).forEach(v => v.classList.remove("active"));
+
+	if (view !== "profile")
+		clearControls(views[view].querySelector("form"));
 	views[view].classList.add("active");
 }
 
@@ -50,11 +53,14 @@ function changeView_aClickEvents(event) {
 	if (view) {
 		if (view === "login" &&
 			event.target.closest("form").id === "frm-edit-profile") {
+			// in this point, user must've clicked sign out
 			signOut();
-			showView("login");
+			showView(view);
 		}
-
-		showView(view);
+		else {
+			// for everything else, just show view
+			showView(view);
+		}
 	}
 }
 
@@ -93,7 +99,7 @@ function loadProfile(user) {
 		document.querySelector(`#txt-${prop}-profile`).value = user[prop];
 }
 
-function createProfile(formData) {}
+function registerProfile(formData) {}
 
 function formButtonsClickEvents(event) {
 	const targetBtn = event.target.closest("button");
@@ -127,6 +133,11 @@ function formButtonsClickEvents(event) {
 	}
 	else if (behavior === "register") {
 		// wip
+
+
+		// debug
+		// document.querySelectorAll(".error-m")
+		// 	.forEach(m => m.classList.add("active"));
 		console.log("Register behavior handler.");
 	}
 	else if (behavior === "save") {
