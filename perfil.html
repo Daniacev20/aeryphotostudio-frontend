@@ -89,11 +89,20 @@
 				<form action="#" id="frm-login" class="profile-form" novalidate>
 					<fieldset>
 						<legend>Datos de usuario</legend>
-						
+
 						<input type="email" id="txt-email-username-login" name="email-username-login" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" autocomplete="email" required>
 
+						<div class="form-field">
+							<input type="password" id="txt-password-login" name="password-login" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" autocomplete="current-password" required>
+							
+							<span class="eye-icon">
+								<i class="fas fa-eye"></i>
+							</span>
 
-						<input type="password" id="txt-password-login" name="password-login" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" autocomplete="current-password" required>
+							<small class="error-m">
+								Credenciales invalidas.
+							</small>
+						</div>
 
 						<div class="login-buttons-container">
 							<button class="form-button" data-behavior="login">
@@ -107,11 +116,6 @@
 							</button>
 						</div>
 						
-						<div>
-							<small class="error-m">
-								Credenciales invalidas.
-							</small>
-						</div>
 
 						<div>
 							<p>Si no tienes un prefil, por favor, <a href="#" data-view="register">crea uno</a>.</p>
@@ -131,18 +135,35 @@
 						
 						<label for="txt-name-register" class="form-info">Los recuadros marcados con * son necesarios.</label>
 
-						<input type="text" id="txt-name-register" name="name-register", maxlength="50", placeholder="Nombre *" autocomplete="name" required>
-						<div><small class="error-m">Nombre requerido.</small></div>
-						<input type="tel" id="txt-phone-register" name="phone-register" maxlength="10" placeholder="Tel&eacute;fono (s&oacute;lo n&uacute;meros) *" inputmode="tel" autocomplete="phone" data-error="VALIDATOR" required>
-						<div><small class="error-m">Telefono incompleto o formato incorrecto.</small></div>
-						<input type="email" id="txt-email-register" name="email-register" maxlength="100" placeholder="Email *" inputmode="email" autocomplete="email" data-error="VALIDATOR" required>
-						<div><small class="error-m">E-mail incompleto o formato incorrecto</small></div>
-						<input type="text" id="txt-username-register" name="username-register" maxlength="30" placeholder="Nombre de usuario (sin espacios)" inputmode="email" autocomplete="username" data-error="VALIDATOR">
-						<div><small class="error-m">El nombre de usuario no debe contener espacios.</small></div>
-						<input type="password" id="txt-password-register" name="password-register" maxlength="100" placeholder="Contrase&ntilde;a *" inputmode="email" autocomplete="current-password" data-error="VALIDATOR" required>
-						<div><small class="error-m">Contrase&ntilde;a muy corta.</small></div>
-						<input type="password" id="txt-confirm-password-register" name="confirm-password-register" maxlength="100" placeholder="Confirmar contrase&ntilde;a *" inputmode="email" autocomplete="off" data-error="VALIDATOR" required>
-						<div><small class="error-m">Las contrase&ntilde;as no coinciden.</small></div>
+						<div class="form-field">
+							<input type="text" id="txt-name-register" name="name-register", maxlength="50", placeholder="Nombre *" autocomplete="name" required>
+							<small class="error-m">Nombre requerido.</small>
+						</div>
+
+						<div class="form-field">
+							<input type="tel" id="txt-phone-register" name="phone-register" maxlength="10" placeholder="Tel&eacute;fono (s&oacute;lo n&uacute;meros) *" inputmode="tel" autocomplete="phone" data-error="VALIDATOR" required>
+							<small class="error-m">Telefono incompleto o formato incorrecto.</small>
+						</div>
+
+						<div class="form-field">
+							<input type="email" id="txt-email-register" name="email-register" maxlength="100" placeholder="Email *" inputmode="email" autocomplete="email" data-error="VALIDATOR" required>
+							<small class="error-m">E-mail incompleto o formato incorrecto</small>
+						</div>
+							
+						<div class="form-field">
+							<input type="text" id="txt-username-register" name="username-register" maxlength="30" placeholder="Nombre de usuario (sin espacios)" inputmode="email" autocomplete="username" data-error="VALIDATOR">
+							<small class="error-m">El nombre de usuario no debe contener espacios.</small>
+						</div>
+						
+						<div class="form-field">
+							<input type="password" id="txt-password-register" name="password-register" maxlength="100" placeholder="Contrase&ntilde;a *" inputmode="email" autocomplete="current-password" data-error="VALIDATOR" required>
+							<small class="error-m">Contrase&ntilde;a muy corta.</small>
+						</div>
+
+						<div class="form-field">
+							<input type="password" id="txt-confirm-password-register" name="confirm-password-register" maxlength="100" placeholder="Confirmar contrase&ntilde;a *" inputmode="email" autocomplete="off" data-error="VALIDATOR" required>
+							<small class="error-m">Las contrase&ntilde;as no coinciden.</small>
+						</div>
 						
 						<div class="login-buttons-container">
 							<button class="form-button" data-behavior="register">
@@ -185,12 +206,12 @@
 							</a>
 						</label>
 
-						<input type="text" id="txt-name-profile" name="name-profile", maxlength="50" autocomplete="off" disabled>
-						<input type="tel" id="txt-phone-profile" name="phone-profile" maxlength="10" autocomplete="off" disabled>
-						<input type="email" id="txt-email-profile" name="email-profile" maxlength="100" autocomplete="off" disabled>
-						<input type="email" id="txt-username-profile" name="username-profile" maxlength="30" autocomplete="off" disabled>
-						<input type="password" id="txt-password-profile" name="password-profile" maxlength="100" autocomplete="off" disabled>
-						<input type="password" id="txt-confirm-password-profile" name="confirm-password-profile" maxlength="100" autocomplete="off" disabled>
+						<input type="text" id="txt-name-profile" name="name-profile", maxlength="50" autocomplete="off" placeholder="Nombre" disabled>
+						<input type="tel" id="txt-phone-profile" name="phone-profile" maxlength="10" autocomplete="off" placeholder="Tel&eacute;fono" disabled>
+						<input type="email" id="txt-email-profile" name="email-profile" maxlength="100" autocomplete="off" placeholder="E-mail" disabled>
+						<input type="email" id="txt-username-profile" name="username-profile" maxlength="30" autocomplete="off" placeholder="Nombre de usuario" disabled>
+						<input type="password" id="txt-password-profile" name="password-profile" maxlength="100" autocomplete="off" placeholder="Nueva contrase&ntilde;a" disabled>
+						<input type="password" id="txt-confirm-password-profile" name="confirm-password-profile" maxlength="100" autocomplete="off" placeholder="Confirmar contrase&ntilde;a" disabled>
 						
 						<div class="login-buttons-container">
 							<button class="form-button" data-behavior="save">

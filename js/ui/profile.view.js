@@ -158,8 +158,9 @@ export function loadView() {
 
 	if (user) {
 		showView("profile");
+		loadProfile(user);
 	}
 	else {
-		showView("register"); // default: "login"
+		showView("login"); // default view: "login"
 	}
 }
