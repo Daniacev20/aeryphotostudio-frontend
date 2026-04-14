@@ -51,13 +51,21 @@
 					<li class="submenu">
 						<a href="#">
 							<i class="fas fa-user"></i>
-							<span>Guest</span>
+							<span class="active" data-username>Guest</span>
 						</a>
 						<ul class="submenu-content">
 							<li>
-								<a href="perfil.html">
+								<a href="#">
 									<i class="fas fa-user"></i>
-									Iniciar sesi&oacute;n
+									<span class="active" data-user-options="signin">Iniciar sesi&oacute;n</span>
+									<span data-user-options="profile" hidden>Ir a perfil</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="fas fa-sign-in"></i>
+									<span class="active" data-user-options="signup">Registrarse</span>
+									<span data-user-options="signout" hidden>Cerrar sesi&oacute;n</span>
 								</a>
 							</li>
 						</ul>

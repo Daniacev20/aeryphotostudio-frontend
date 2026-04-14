@@ -19,12 +19,21 @@ let initialized = false;
 
 // HELPER FUNCTIONS
 
+function getUser() {
+	return JSON.parse(localStorage.getItem("user"));
+}
+
+function setUser(user) {
+	localStorage.setItem("user", JSON.stringify(user));
+}
+
 function signIn(inputUser) {
 	if ((user.email === inputUser.emailOrUsername.toLowerCase() ||
 		user.username === inputUser.emailOrUsername) &&
 			user.password === inputUser.password) {
 		// login
-		localStorage.setItem("user", JSON.stringify(user));
+		setUser(user);
+		showGuestOrUserOnMenu();
 		return true;
 	}
 	else {
@@ -32,8 +41,36 @@ function signIn(inputUser) {
 	}
 }
 
+export function showGuestOrUserOnMenu() {
+	const user = getUser();
+	const isUser = !!user?.name;
+	const state = isUser ? "user" : "guest";
+	const usernameTag = document.querySelector("[data-username]");
+
+	const userOptions = {
+		signin: document.querySelector(`[data-user-options=signin]`),
+		signup: document.querySelector(`[data-user-options=signup]`),
+		profile: document.querySelector(`[data-user-options=profile]`),
+		signout: document.querySelector(`[data-user-options=signout]`)
+	}
+
+	const menuConfig = {
+		guest: ["signin", "signup"],
+		user: ["profile", "signout"]
+	}
+
+	usernameTag.textContent = isUser ? user.name : "Guest";
+
+	Object.values(userOptions).forEach(v => v.hidden = true);
+
+	menuConfig[state].forEach(key => {
+		userOptions[key].hidden = false;
+	});
+}
+
 function signOut() {
 	localStorage.clear();
+	showGuestOrUserOnMenu();
 	showView("login");
 }
 
@@ -145,7 +182,7 @@ function formButtonsClickEvents(event) {
 			pError.classList.add("active");
 		}
 		else {
-			const fullUser = JSON.parse(localStorage.getItem("user"));
+			const fullUser = getUser();
 			showView("profile");
 			loadProfile(fullUser);
 		}
@@ -196,7 +233,7 @@ export function loadView() {
 		initialized = true;
 	}
 
-	const user = JSON.parse(localStorage.getItem("user"));
+	const user = getUser();
 
 	if (user) {
 		showView("profile");
