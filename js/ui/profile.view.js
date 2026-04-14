@@ -17,6 +17,8 @@ const views = {
 
 let initialized = false;
 
+// HELPER FUNCTIONS
+
 function signIn(inputUser) {
 	if ((user.email === inputUser.emailOrUsername.toLowerCase() ||
 		user.username === inputUser.emailOrUsername) &&
@@ -35,6 +37,10 @@ function signOut() {
 	showView("login");
 }
 
+function showPassword(control) {
+	control.type = control.type === "password" ?"text" : "password";
+}
+
 function showView(view) {
 	Object.values(views).forEach(v => v.classList.remove("active"));
 
@@ -42,6 +48,38 @@ function showView(view) {
 		clearControls(views[view].querySelector("form"));
 	views[view].classList.add("active");
 }
+
+function clearControls(form) {
+	form.querySelectorAll("input:not([type=checkbox]), textarea").forEach(c => {
+		if ("value" in c)
+			c.value = "";
+	});
+
+	const msg = form.querySelectorAll(".error-m");
+
+	if (msg)
+		msg.forEach(m => m.classList.remove("active"));
+}
+
+function toggleControlsDisableStatus(form) {
+	const formControls = form.querySelectorAll("input:not([type=checkbox]), textarea");
+	
+	formControls.forEach(control => {
+		if (control.type === "submit" ||
+			control.type === "button") return;
+
+		control.disabled = !control.disabled;
+	});
+}
+
+function loadProfile(user) {
+	const properties = ["name", "phone" ,"email", "username"];
+
+	for (const prop of properties)
+		document.querySelector(`#txt-${prop}-profile`).value = user[prop];
+}
+
+// EVENT HANLDLERS
 
 function changeView_aClickEvents(event) {
 	const target = event.target.closest("a");
@@ -53,53 +91,21 @@ function changeView_aClickEvents(event) {
 	if (view) {
 		if (view === "login" &&
 			event.target.closest("form").id === "frm-edit-profile") {
-			// in this point, user must've clicked sign out
+			// when signing out from the profile view
 			signOut();
 			showView(view);
 		}
 		else {
-			// for everything else, just show view
+			// when going to any view from anywhere else
 			showView(view);
 		}
 	}
-}
-
-function clearControls(form) {
-	form.querySelectorAll("input:not([typ=checkbox]), textarea").forEach(c => {
-		if ("value" in c)
-			c.value = "";
-	});
-
-	const msg = form.querySelectorAll(".error-m");
-
-	if (msg)
-		msg.forEach(m => m.classList.remove("active"));
-
-}
-
-function toggleControlsDisableStatus(form) {
-	form.querySelectorAll("input:not([type=checkbox]), textarea")
-		.forEach(control => {
-			if (control.type === "submit" ||
-				control.type === "button") return;
-
-			control.disabled = !control.disabled;
-		});
 }
 
 function ckEditChangeEvent(event) {
 	const form = event.target.closest("form");
 	toggleControlsDisableStatus(form);
 }
-
-function loadProfile(user) {
-	const properties = ["name", "phone" ,"email", "username"];
-
-	for (const prop of properties)
-		document.querySelector(`#txt-${prop}-profile`).value = user[prop];
-}
-
-function registerProfile(formData) {}
 
 function formButtonsClickEvents(event) {
 	const targetBtn = event.target.closest("button");
@@ -149,6 +155,8 @@ function formButtonsClickEvents(event) {
 		console.log("Discard behavior handler.");
 	}
 }
+
+// main function to initialize all
 
 export function loadView() {
 	if (!initialized) {
