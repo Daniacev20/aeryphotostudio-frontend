@@ -50,15 +50,18 @@ function showView(view) {
 }
 
 function clearControls(form) {
-	form.querySelectorAll("input:not([type=checkbox]), textarea").forEach(c => {
-		if ("value" in c)
-			c.value = "";
+	const frmControls = form.querySelectorAll("input:not([type=checkbox]), textarea");
+
+	frmControls.forEach(c => {
+		if ("value" in c) c.value = "";
 	});
 
 	const msg = form.querySelectorAll(".error-m");
 
 	if (msg)
 		msg.forEach(m => m.classList.remove("active"));
+
+	frmControls[0].focus();
 }
 
 function toggleControlsDisableStatus(form) {
@@ -108,18 +111,18 @@ function ckEditChangeEvent(event) {
 }
 
 function formButtonsClickEvents(event) {
-	const targetBtn = event.target.closest("button");
+	const targetElement = event.target.closest("button");
 
-	if (!targetBtn)
+	if (!targetElement)
 		return;
 	event.preventDefault();
 	
-	const behavior = targetBtn.dataset.behavior;
+	const behavior = targetElement.dataset.behavior;
 	const currentForm = event.target.closest("form");
 
 	
 	if (behavior === "login") {
-		const pError = currentForm.querySelector("#frm-login .error-m");
+		const pError = currentForm.querySelector(".error-m");
 		const givenUser = {
 			emailOrUsername: currentForm.querySelector("#txt-email-username-login").value,
 			password: currentForm.querySelector("#txt-password-login").value

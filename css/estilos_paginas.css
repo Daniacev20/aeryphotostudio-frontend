@@ -502,14 +502,14 @@ header {
 }
 
 /* contenedor de los botones para repartir el ancho */
-.profile-form .login-buttons-container {
+.profile-form .buttons-container {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 }
 
 /* ancho equitativo de los botones */
-.profile-form .login-buttons-container > button {
+.profile-form .buttons-container > button {
 	flex: 1;
 	margin-top: 1rem;
 }
