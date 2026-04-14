@@ -37,16 +37,29 @@ function signOut() {
 	showView("login");
 }
 
-function showPassword(control) {
-	control.type = control.type === "password" ?"text" : "password";
+function toggleShowPassword(control) {
+	control.type = control.type === "password" ? "text" : "password";
 }
 
 function showView(view) {
 	Object.values(views).forEach(v => v.classList.remove("active"));
 
-	if (view !== "profile")
-		clearControls(views[view].querySelector("form"));
+	if (view === "profile") {
+		views[view].classList.add("active");
+		return;
+	}
+
+	clearControls(views[view].querySelector("form"));
 	views[view].classList.add("active");
+
+	// capture the first writable element to autofocus
+	const cssQuery = "input:not([type=checkbox], [type=radio], [type=submit])";
+	const firstWritableElement = views[view].querySelector(cssQuery);
+
+	// need to wait for the page to render the form
+	requestAnimationFrame(() => {
+		firstWritableElement?.focus();
+	});
 }
 
 function clearControls(form) {
@@ -111,7 +124,7 @@ function ckEditChangeEvent(event) {
 }
 
 function formButtonsClickEvents(event) {
-	const targetElement = event.target.closest("button");
+	const targetElement = event.target.closest("[data-behavior]");
 
 	if (!targetElement)
 		return;
@@ -136,6 +149,13 @@ function formButtonsClickEvents(event) {
 			showView("profile");
 			loadProfile(fullUser);
 		}
+	}
+	else if (behavior === "show-password") {
+		const txtPassword = targetElement.previousElementSibling;
+
+		if (!txtPassword.type === "password" || !txtPassword.type === "text")
+			return;
+		toggleShowPassword(txtPassword);
 	}
 	else if (behavior === "clear") {
 		clearControls(currentForm);

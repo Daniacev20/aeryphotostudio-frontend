@@ -90,12 +90,14 @@
 					<fieldset>
 						<legend>Datos de usuario</legend>
 
-						<input type="email" id="txt-email-username-login" name="email-username-login" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" autocomplete="email" required>
+						<div class="form-field">
+							<input type="email" id="txt-email-username-login" name="email-username-login" maxlength="100" placeholder="Email o Nombre de usuario" inputmode="email" autocomplete="email" required>
+						</div>
 
 						<div class="form-field">
 							<input type="password" id="txt-password-login" name="password-login" maxlength="100" placeholder="Contrase&ntilde;a" inputmode="email" autocomplete="current-password" required>
 							
-							<span class="eye-icon">
+							<span class="eye-icon" data-behavior="show-password">
 								<i class="fas fa-eye"></i>
 							</span>
 
