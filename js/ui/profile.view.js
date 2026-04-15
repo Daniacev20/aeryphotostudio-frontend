@@ -19,15 +19,18 @@ let initialized = false;
 
 // HELPER FUNCTIONS
 
-function getUser() {
+function getLoggedUser() {
+	// wip: optimizar para usar cookies en lugar de localStorage
 	return JSON.parse(localStorage.getItem("user"));
 }
 
-function setUser(user) {
+function setLoggedUser(user) {
+	// wip: optimizar para usar cookies en lugar de localStorage
 	localStorage.setItem("user", JSON.stringify(user));
 }
 
 function signIn(inputUser) {
+	// wip: se necesita extraer user del servidor
 	if ((user.email === inputUser.emailOrUsername.toLowerCase() ||
 		user.username === inputUser.emailOrUsername) &&
 			user.password === inputUser.password) {
@@ -42,7 +45,7 @@ function signIn(inputUser) {
 }
 
 export function showGuestOrUserOnMenu() {
-	const user = getUser();
+	const user = getLoggedUser();
 	const isUser = !!user?.name;
 	const state = isUser ? "user" : "guest";
 	const usernameTag = document.querySelector("[data-username]");
@@ -61,14 +64,18 @@ export function showGuestOrUserOnMenu() {
 
 	usernameTag.textContent = isUser ? user.name : "Guest";
 
+	// ocultar todas las opciones dinamicas
 	Object.values(userOptions).forEach(v => v.hidden = true);
 
+	// mostrar solo las opciones dinamicas que
+	// coinciden con el state
 	menuConfig[state].forEach(key => {
 		userOptions[key].hidden = false;
 	});
 }
 
 function signOut() {
+	// wip: optimizar para usar cookies
 	localStorage.clear();
 	showGuestOrUserOnMenu();
 	showView("login");
@@ -86,14 +93,16 @@ function showView(view) {
 		return;
 	}
 
+	// este clearControls solo funciona en
+	// el primer formulario que encuentra
 	clearControls(views[view].querySelector("form"));
 	views[view].classList.add("active");
 
-	// capture the first writable element to autofocus
+	// capturar primer cuadro de texto para autoenfoque
 	const cssQuery = "input:not([type=checkbox], [type=radio], [type=submit])";
 	const firstWritableElement = views[view].querySelector(cssQuery);
 
-	// need to wait for the page to render the form
+	// esperar a que la vista cargue para el autoenfoque
 	requestAnimationFrame(() => {
 		firstWritableElement?.focus();
 	});
@@ -182,7 +191,7 @@ function formButtonsClickEvents(event) {
 			pError.classList.add("active");
 		}
 		else {
-			const fullUser = getUser();
+			const fullUser = getLoggedUser();
 			showView("profile");
 			loadProfile(fullUser);
 		}
@@ -233,7 +242,7 @@ export function loadView() {
 		initialized = true;
 	}
 
-	const user = getUser();
+	const user = getLoggedUser();
 
 	if (user) {
 		showView("profile");
