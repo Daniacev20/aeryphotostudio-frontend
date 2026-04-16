@@ -1,5 +1,7 @@
 // profile.view.js
 
+let initialized = false;
+
 // users de prueba
 const adminUser = JSON.parse(
 	'{"name": "Davian", "username": "Dave","email": "dave@gmail.com", "password": "micasa123$", "phone": "8098098809", "isAdmin": "true"}'
@@ -15,17 +17,17 @@ const views = {
 	profile: document.querySelector("#view-profile")
 }
 
-let initialized = false;
-
 // HELPER FUNCTIONS
 
 function getLoggedUser() {
 	// wip: optimizar para usar cookies en lugar de localStorage
+	// y recibir el token del usuario desde el servidor
 	return JSON.parse(localStorage.getItem("user"));
 }
 
 function setLoggedUser(user) {
 	// wip: optimizar para usar cookies en lugar de localStorage
+	// y recibir el token del usuario desde el servidor
 	localStorage.setItem("user", JSON.stringify(user));
 }
 

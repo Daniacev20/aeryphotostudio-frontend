@@ -9,13 +9,11 @@ export const regexValidators = {
 
 export class Cookie {
 	static setCookie(name, value, exp = 2) {
-		const parsedValue = typeof value === 'object' ?
-			JSON.stringify(value) : value.toString();
 		const currentDate = new Date();
 		const hours = 1000 * 60 * 60 * exp;
 		const expDateStr = new Date(currentDate.getTime() + hours).toUTCString();
 
-		document.cookie = `${name}=${parsedValue};expires=${expDateStr};path=/;`;
+		document.cookie = `${name}=${value};expires=${expDateStr};path=/;`;
 
 		return document.cookie.split(";").some(c => c.startsWith(`${name}=`));
 	}
@@ -33,7 +31,7 @@ export class Cookie {
 
 	static deleteCookie(name) {
 		if (this.getCookie(name)) {
-			this.setCookie(name, "", -1)
+			this.setCookie(name, "", -1);
 			return true;
 		}
 
