@@ -1,5 +1,6 @@
 // profile.view.js
 
+// global key for main point function
 let initialized = false;
 
 // users de prueba
@@ -8,7 +9,7 @@ const adminUser = JSON.parse(
 );
 
 const user = JSON.parse(
-	'{"name": "Justauser", "username": "NPC","email": "justauser@gmail.com", "password": "imarobot1.0", "phone": null,"isAdmin": "false"}'
+	'{"name": "Justauser", "username": "NPC","email": "justauser@gmail.com", "password": "imarobot", "phone": null,"isAdmin": "false"}'
 );
 
 const views = {
@@ -21,13 +22,13 @@ const views = {
 
 function getLoggedUser() {
 	// wip: optimizar para usar cookies en lugar de localStorage
-	// y recibir el token del usuario desde el servidor
+	// wip: recibir el token del usuario desde el servidor
 	return JSON.parse(localStorage.getItem("user"));
 }
 
 function setLoggedUser(user) {
 	// wip: optimizar para usar cookies en lugar de localStorage
-	// y recibir el token del usuario desde el servidor
+	// wip: recibir el token del usuario desde el servidor
 	localStorage.setItem("user", JSON.stringify(user));
 }
 
@@ -37,7 +38,7 @@ function signIn(inputUser) {
 		user.username === inputUser.emailOrUsername) &&
 			user.password === inputUser.password) {
 		// login
-		setUser(user);
+		setLoggedUser(user);
 		showGuestOrUserOnMenu();
 		return true;
 	}
