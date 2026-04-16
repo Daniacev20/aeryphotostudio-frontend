@@ -39,9 +39,8 @@ function signIn(inputUser) {
 		showGuestOrUserOnMenu();
 		return true;
 	}
-	else {
-		return false;
-	}
+	
+	return false;
 }
 
 export function showGuestOrUserOnMenu() {
