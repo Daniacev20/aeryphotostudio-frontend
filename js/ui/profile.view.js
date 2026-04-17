@@ -46,6 +46,23 @@ function signIn(inputUser) {
 	return false;
 }
 
+export function signOut() {
+	// wip: optimizar para usar cookies
+
+	// borrar el usuario para que no se lea su perfil
+	localStorage.clear();
+
+	// actualizar el menu para que muestre Guest
+	showGuestOrUserOnMenu();
+
+	// redirigir a perfil.html si se hace
+	// sign out desde otra pagina
+	window.location = "perfil.html";
+
+	// mostrar la vista de login una vez en perfil.html
+	showView("login");
+}
+
 export function showGuestOrUserOnMenu() {
 	const user = getLoggedUser();
 	const isUser = !!user?.name;
@@ -74,13 +91,6 @@ export function showGuestOrUserOnMenu() {
 	menuConfig[state].forEach(key => {
 		userOptions[key].hidden = false;
 	});
-}
-
-function signOut() {
-	// wip: optimizar para usar cookies
-	localStorage.clear();
-	showGuestOrUserOnMenu();
-	showView("login");
 }
 
 function toggleShowPassword(control) {
