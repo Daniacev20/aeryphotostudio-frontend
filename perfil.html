@@ -53,19 +53,31 @@
 							<i class="fas fa-user"></i>
 							<span class="active" data-username>Guest</span>
 						</a>
+
+						<!-- menu dinamico -->
 						<ul class="submenu-content">
-							<li>
-								<a href="#">
+							<li data-user-options="signin">
+								<a href="perfil.html?view=login">
 									<i class="fas fa-user"></i>
-									<span class="active" data-user-options="signin">Iniciar sesi&oacute;n</span>
-									<span data-user-options="profile" hidden>Ir a perfil</span>
+									<span>Iniciar sesi&oacute;n</span>
 								</a>
 							</li>
-							<li>
-								<a href="#">
+							<li data-user-options="profile">
+								<a href="perfil.html?view=profile">
+									<i class="fas fa-user"></i>
+									<span>Ir a perfil</span>
+								</a>
+							</li>
+							<li data-user-options="signup">
+								<a href="perfil.html?view=register">
 									<i class="fas fa-sign-in"></i>
-									<span class="active" data-user-options="signup">Registrarse</span>
-									<span data-user-options="signout" hidden>Cerrar sesi&oacute;n</span>
+									<span >Registrarse</span>
+								</a>
+							</li>
+							<li data-user-options="signout">
+								<a href="perfil.html?view=login">
+									<i class="fas fa-sign-in"></i>
+									<span>Cerrar sesi&oacute;n</span>
 								</a>
 							</li>
 						</ul>

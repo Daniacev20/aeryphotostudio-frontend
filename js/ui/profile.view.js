@@ -255,10 +255,15 @@ export function loadView() {
 	}
 
 	const user = getLoggedUser();
+	const params = new URLSearchParams(window.location.search);
+	const view = params.get("view");
 
 	if (user) {
 		showView("profile");
 		loadProfile(user);
+	}
+	else if (view && view !== "profile") {
+		showView(view);
 	}
 	else {
 		showView("login"); // default view: "login"
