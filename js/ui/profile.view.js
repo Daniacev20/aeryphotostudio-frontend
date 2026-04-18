@@ -18,7 +18,7 @@ const views = {
 	profile: document.querySelector("#view-profile")
 }
 
-// HELPER FUNCTIONS
+// FUNCTIONS
 
 function getLoggedUser() {
 	// wip: optimizar para usar cookies en lugar de localStorage
@@ -57,7 +57,10 @@ export function signOut() {
 
 	// redirigir a perfil.html si se hace
 	// sign out desde otra pagina
-	window.location = "perfil.html";
+	if (!/perfil.html?/gi.test(window.location)) {
+		window.location = "perfil.html";
+		return;
+	}
 
 	// mostrar la vista de login una vez en perfil.html
 	showView("login");
@@ -81,7 +84,7 @@ export function showGuestOrUserOnMenu() {
 		user: ["profile", "signout"]
 	}
 
-	usernameTag.textContent = isUser ? user.name : "Guest";
+	usernameTag.textContent = isUser ? user.name : "Invitado";
 
 	// ocultar todas las opciones dinamicas
 	Object.values(userOptions).forEach(v => v.hidden = true);
