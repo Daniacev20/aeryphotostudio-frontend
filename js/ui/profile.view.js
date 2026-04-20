@@ -92,6 +92,10 @@ function toggleShowPassword(control) {
 function showView(view) {
 	Object.values(views).forEach(v => v.classList.remove("active"));
 
+	const url = new URL(window.location);
+	url.searchParams.set("view", view);
+	history.replaceState(null, "", url);
+
 	if (view === "profile") {
 		views[view].classList.add("active");
 		return;
@@ -229,7 +233,7 @@ function formButtonsClickEvents(event) {
 	}
 }
 
-// main function to initialize all
+// main function to initialize perfil.html
 
 export function loadView() {
 	if (!initialized) {
@@ -242,7 +246,7 @@ export function loadView() {
 
 		document.querySelector("#ck-edit")
 			.addEventListener("change", ckEditChangeEvent, false);
-		
+
 		initialized = true;
 	}
 
