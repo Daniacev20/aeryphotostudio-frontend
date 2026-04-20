@@ -30,6 +30,12 @@ function setLoggedUser(user) {
 	// wip: optimizar para usar cookies en lugar de localStorage
 	// wip: recibir el token del usuario desde el servidor
 	localStorage.setItem("user", JSON.stringify(user));
+	document.dispatchEvent(new Event("userChanged"));
+}
+
+function clearLoggedUser() {
+	localStorage.clear();
+	document.dispatchEvent(new Event("userChanged"));
 }
 
 function signIn(inputUser) {
@@ -39,7 +45,6 @@ function signIn(inputUser) {
 			user.password === inputUser.password) {
 		// login
 		setLoggedUser(user);
-		showGuestOrUserOnMenu();
 		return true;
 	}
 	
@@ -47,23 +52,7 @@ function signIn(inputUser) {
 }
 
 export function signOut() {
-	// wip: optimizar para usar cookies
-
-	// borrar el usuario para que no se lea su perfil
-	localStorage.clear();
-
-	// actualizar el menu para que muestre Guest
-	showGuestOrUserOnMenu();
-
-	// redirigir a perfil.html si se hace
-	// sign out desde otra pagina
-	if (!/perfil.html?/gi.test(window.location)) {
-		window.location = "perfil.html";
-		return;
-	}
-
-	// mostrar la vista de login una vez en perfil.html
-	showView("login");
+	clearLoggedUser();
 }
 
 export function showGuestOrUserOnMenu() {

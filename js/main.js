@@ -17,9 +17,18 @@ document.addEventListener("click", event => {
 	signOut();
 });
 
+document.addEventListener("userChanged", () => {
+	showGuestOrUserOnMenu();
+
+	if (window.location.pathname.includes("perfil.html"))
+		loadView();
+	else
+		window.location.href = "perfil.html";
+});
+
 // main flow
 initEffects();
 showGuestOrUserOnMenu();
 
-if (/perfil.html?/.test(window.location)) loadView();
-
+if (/perfil.html?/.test(window.location))
+	loadView();
