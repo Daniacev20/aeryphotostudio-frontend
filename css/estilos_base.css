@@ -119,6 +119,10 @@ main a:hover {
 	flex-direction: column;
 }
 
+[hidden] {
+	display: none !important;
+}
+
 /* fin de seccion: MENU */
 
 /* MAIN: seccion para elementos del cuerpo de pagina */
