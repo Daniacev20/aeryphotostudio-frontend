@@ -6,7 +6,7 @@ import {
 	loadView,
 	showGuestOrUserOnMenu,
 	signOut
-} from './ui/profile.view.js';
+} from './ui/perfil.js';
 
 // event handlers
 document.addEventListener("click", event => {
