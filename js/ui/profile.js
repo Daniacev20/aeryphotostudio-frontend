@@ -1,4 +1,4 @@
-// profile.view.js
+// profile.js
 
 // global key for main point function
 let initialized = false;
@@ -51,11 +51,11 @@ function signIn(inputUser) {
 	return false;
 }
 
-export function signOut() {
+function signOut() {
 	clearLoggedUser();
 }
 
-export function showGuestOrUserOnMenu() {
+function showGuestOrUserOnMenu() {
 	const user = getLoggedUser();
 	const isUser = !!user?.name;
 	const state = isUser ? "user" : "guest";
@@ -235,7 +235,7 @@ function formButtonsClickEvents(event) {
 
 // main function to initialize perfil.html
 
-export function loadView() {
+function loadView() {
 	if (!initialized) {
 		document.querySelectorAll("form").forEach(frm => {
 			frm.addEventListener("click", formButtonsClickEvents, false);
@@ -264,4 +264,10 @@ export function loadView() {
 	else {
 		showView("login"); // default view: "login"
 	}
+}
+
+export {
+	signOut,
+	showGuestOrUserOnMenu,
+	loadView
 }

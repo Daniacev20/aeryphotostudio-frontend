@@ -1,12 +1,12 @@
 // main.js
 
 //imports
-import { initEffects } from './ui/effects.js';
+import { setMenuDisplayListeners } from './ui/menu.js';
 import {
 	loadView,
 	showGuestOrUserOnMenu,
 	signOut
-} from './ui/perfil.js';
+} from './ui/profile.js';
 
 // event handlers
 document.addEventListener("click", event => {
@@ -27,7 +27,7 @@ document.addEventListener("userChanged", () => {
 });
 
 // main flow
-initEffects();
+setMenuDisplayListeners();
 showGuestOrUserOnMenu();
 
 if (/perfil.html?/.test(window.location))

@@ -1,4 +1,4 @@
-// effects.js
+// menu.js
 // para manipular comportamientos por defecto de elementos y validaciones
 
 function toggleMenu(menuItems) {
@@ -16,17 +16,17 @@ function adjustMenuDisplay(menuItems) {
 	}
 }
 
-export function initEffects() {
+function setMenuDisplayListeners() {
 	// capturar elementos clave, menu responsive
 	const btnToggleMenu = document.querySelector("#btn-toggle");
 	const menuLIs = document.querySelectorAll(".navigation-menu li");
 
-	// MANEJO DE EVENTOS
-
 	// toggle menu al hacer click en boton hamburger
 	btnToggleMenu.addEventListener("click", () => toggleMenu(menuLIs), false);
+
 	// toggle menu al presionar una tecla en boton hamburger
 	btnToggleMenu.addEventListener("keydown", () => toggleMenu(menuLIs), false);
+	
 	// ajustar el menu responsive conforme al ancho de pantalla
 	window.addEventListener("resize", () => adjustMenuDisplay(menuLIs));
 
@@ -37,3 +37,5 @@ export function initEffects() {
 	// deshabilitar el drag and drop de las imagenes
 	document.querySelectorAll("img").forEach(img => img.draggable = false);
 }
+
+export { setMenuDisplayListeners };
