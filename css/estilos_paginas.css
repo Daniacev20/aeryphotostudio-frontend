@@ -318,7 +318,7 @@ header {
 	overflow-y: scroll;
 }
 
-/* li con los dias individuales y un ul 
+/* li con los dias individuales y un ol 
 	anidado para las horas del mismo dia */
 .day {
 	display: flex;
@@ -356,8 +356,9 @@ header {
 	background-color: var(--bg-color2);
 }
 
-.hours-list li:hover {
+.hours-list li:not(.time-selected):hover {
 	background-color: var(--bg-hover2);
+	cursor: pointer;
 }
 
 .hours-list .time-selected {

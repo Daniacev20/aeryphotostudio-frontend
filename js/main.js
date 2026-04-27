@@ -7,6 +7,12 @@ import {
 	showGuestOrUserOnMenu,
 	signOut
 } from './ui/profile.js';
+import { initApptModule } from './features/appt.js';
+
+const routes = {
+	"agenda.html": initApptModule,
+	"perfil.html": loadView
+}
 
 // event handlers
 document.addEventListener("click", event => {
@@ -30,5 +36,7 @@ document.addEventListener("userChanged", () => {
 setMenuDisplayListeners();
 showGuestOrUserOnMenu();
 
-if (/perfil.html?/.test(window.location))
-	loadView();
+const page = window.location.href.split("/").pop();
+
+routes[page]?.();
+

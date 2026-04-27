@@ -150,56 +150,38 @@
 			<section id="datetime-list-container">
 				<div id="datetime-list">
 					<div id="month-controls">
-						<button class="previous-month">
+						<!-- baner fijo, contenido dinamico -->
+						<button data-action="previous-month">
 							<i class="fas fa-angle-left"></i>
 						</button>
 
 						<span class="current-month">
-							<span id="month-number">1</span>
+							<span id="month-number"></span>
 							<span>-</span>
-							<span id="month-name">Enero</span>
+							<span id="month-name"></span>
 						</span>
 						
-						<button class="next-month">
+						<button data-action="next-month">
 							<i class="fas fa-angle-right"></i>
 						</button>
 					</div>
 
 					<ol id="days-list">
-						<!-- no IDs a partir de aqui -->
+						<!-- estructura de cada unidad de dia con sus horas
+						generados dinamicamente
+
 						<li class="day">
 							<span>
-								<span>1</span>
+								<span data-day="number"></span>
 								<span>-</span>
-								<span name="day-of-week"></span>
+								<span data-day="name"></span>
 							</span>
 							<ol class="hours-list">
 								<li>08:00</li>
 								<li>09:00</li>
 							</ol>
 						</li>
-						<li class="day">
-							<span>
-								<span>2</span>
-								<span>-</span>
-								<span name="day-of-week"></span>
-							</span>
-							<ol class="hours-list">
-								<li>08:00</li>
-								<li>09:00</li>
-							</ol>
-						</li>
-						<li class="day">
-							<span>
-								<span>3</span>
-								<span>-</span>
-								<span name="day-of-week"></span>
-							</span>
-							<ol class="hours-list">
-								<li>08:00</li>
-								<li>09:00</li>
-							</ol>
-						</li>
+						-->
 					</ol>
 				</div>
 			</section>
