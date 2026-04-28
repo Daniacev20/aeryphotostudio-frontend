@@ -1,7 +1,7 @@
 // appt.js
 
 import { DAYS, MONTHS, getCurrentMonth, getCurrentDay, getMonthLength, getDayName } from '../utils/dates.js';
-import { buildDay } from '../ui/dom.js';
+import { buildDay, buildPageNumber } from '../ui/dom.js';
 
 const SELECTION_LIMIT = 4;
 let apptInit = false;
@@ -9,6 +9,7 @@ let apptInit = false;
 const monthNumber = document.querySelector("#month-number");
 const monthName = document.querySelector("#month-name");
 const daysList = document.querySelector("#days-list");
+const calendarPages = document.querySelector("#calendar-pages");
 
 function addMonthBannerListeners() {
 	const monthBanner = document.querySelector("#month-controls");
@@ -35,7 +36,7 @@ function addMonthBannerListeners() {
 			monthName.textContent = MONTHS.get(nMonth - 1);
 		}
 
-		renderDays();
+		renderDay();
 	});
 }
 
@@ -56,30 +57,47 @@ function addDaysListListeners() {
 	});
 }
 
+function addPagesLinksListeners() {
+	calendarPages.addEventListener("click", event => {
+		const target = event.target.closest("[data-day]");
+		// wip
+	});
+}
+
 function loadCurrentMonth() {
 	const month = getCurrentMonth();
 	monthNumber.textContent = month + 1;
 	monthName.textContent = MONTHS.get(month);
-	
-	renderDays();
+	renderDay();
 }
 
-function renderDays() {
+function renderDay(day) {
+	// limpiar la lista actual para renderizar nueva
 	daysList.innerHTML = "";
-	const month = Number(monthNumber.textContent);
-	const monthLength = getMonthLength(month);
-	const startDay = month === (getCurrentMonth() + 1) ?
-								getCurrentDay() :
-								1;
+	calendarPages.innerHTML = "";
 
+	const month = Number(monthNumber.textContent);
+	const endOfMonth = getMonthLength(month);
+	const startDay = month === (getCurrentMonth() + 1) ? getCurrentDay() : 1;
+	const dayOfWeek = getDayName((month - 1), startDay);
+	const firstDayBlock = buildDay(startDay, dayOfWeek);
+
+	daysList.appendChild(firstDayBlock);
+	renderPages(calendarPages, startDay, endOfMonth);
+}
+
+function renderPages(parent, fromDay, toDay) {	
 	const fragment = document.createDocumentFragment();
 
-	for (let dayNumber = startDay; dayNumber <= monthLength; dayNumber++) {
-		const dayBlock = buildDay(dayNumber, getDayName((month - 1), dayNumber));
-		fragment.appendChild(dayBlock);
+	for (let dayNumber = fromDay; dayNumber <= toDay; dayNumber++) {
+		const a = buildPageNumber(dayNumber);
+
+		if (dayNumber === fromDay)
+			a.classList.add("active-page");
+		fragment.appendChild(a);
 	}
 
-	daysList.appendChild(fragment);
+	parent.appendChild(fragment);
 }
 
 //main module function

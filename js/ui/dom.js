@@ -1,6 +1,6 @@
 // dom.js
 
-function buildDay(number, name, dateSelectedClass = "") {
+function buildDay(number, name, classIfDateSelected = "") {
 	const li = document.createElement("li");
 	li.classList.add("day");
 
@@ -14,9 +14,6 @@ function buildDay(number, name, dateSelectedClass = "") {
 	spanChildren.number.textContent = number;
 	spanChildren.dash.textContent = "-";
 	spanChildren.name.textContent = name;
-
-	spanChildren.number.setAttribute("data-day", "number");
-	spanChildren.name.setAttribute("data-day", "name");
 
 	Object.values(spanChildren).forEach(v => {
 		spanParent.appendChild(v);
@@ -41,8 +38,8 @@ function buildDay(number, name, dateSelectedClass = "") {
 		else
 			timeSlot.textContent = `${time}:${minutes}`;
 
-		if (dateSelectedClass)
-			timeSlot.classList.add(dateSelectedClass);
+		if (classIfDateSelected)
+			timeSlot.classList.add(classIfDateSelected);
 		ol.appendChild(timeSlot);
 	}
 
@@ -51,4 +48,17 @@ function buildDay(number, name, dateSelectedClass = "") {
 	return li;
 }
 
-export { buildDay };
+function buildPageNumber(content, classIfActive = "") {
+	const a = document.createElement("a");
+
+	a.setAttribute("href", "#");
+	a.setAttribute("data-day", content);
+	a.textContent = content;
+
+	if (classIfActive)
+		a.classList.add(classIfActive);
+
+	return a;
+}
+
+export { buildDay, buildPageNumber };

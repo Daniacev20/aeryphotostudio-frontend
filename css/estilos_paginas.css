@@ -314,7 +314,7 @@ header {
 #days-list {
 	display: flex;
 	flex-direction: column;
-	max-height: 65vh;
+	max-height: 85vh;
 	overflow-y: scroll;
 }
 
@@ -356,15 +356,46 @@ header {
 	background-color: var(--bg-color2);
 }
 
+/* efecto hover de horas que no estan
+	seleccionadas */
 .hours-list li:not(.time-selected):hover {
 	background-color: var(--bg-hover2);
 	cursor: pointer;
 }
 
+/* color de fondo de horas seleccionadas */
 .hours-list .time-selected {
 	background-color: #AAA;
 }
 
+/* banner de informacion de seleccion */
+
+#selection-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#selection-info > div {
+	padding-top: 1rem;
+}
+
+#selection-info button {
+	padding: 0 !important;
+}
+
+#calendar-pages {
+	display: flex;
+	flex-direction: row;
+	gap: .5rem;
+	overflow-x: auto;
+	max-width: 350px;
+	white-space: wrap;
+}
+
+#calendar-pages .active-page {
+	font-weight: bold;
+}
 /* fin de seccion: AGENDA */
 
 /* CONTACTO: estilos para la pagina de contacto */
