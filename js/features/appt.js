@@ -20,10 +20,9 @@ function addMonthBannerListeners() {
 		if (!targetBtn) return;
 		const action = targetBtn.dataset.action;
 		let nMonth = Number(monthNumber.textContent);
+		const m = getCurrentMonth() + 1;
 
 		if (action === "previous-month") {
-			const m = getCurrentMonth() + 1;
-
 			if (nMonth === m)
 				return;
 			monthNumber.textContent = --nMonth;
@@ -36,7 +35,8 @@ function addMonthBannerListeners() {
 			monthName.textContent = MONTHS.get(nMonth - 1);
 		}
 
-		renderDay();
+		const day = nMonth === m ? getCurrentDay() : 1;
+		renderDay(daysList, calendarPages, nMonth, day);
 	});
 }
 
@@ -60,7 +60,23 @@ function addDaysListListeners() {
 function addPagesLinksListeners() {
 	calendarPages.addEventListener("click", event => {
 		const target = event.target.closest("[data-day]");
-		// wip
+
+		if (!target) return;
+
+		const dDay = Number(target.dataset.day);
+		const nMonth = Number(monthNumber.textContent);
+		renderDay(daysList, calendarPages, nMonth, dDay);
+		
+		// capturar pagina clickeada luego de crearla de nuevo
+		const newPages = document.querySelectorAll("[data-day]");
+		Object.values(newPages).forEach(v => {
+			if (v.dataset.day === dDay)
+				v.classList.add("active-page");
+			else
+				v.classList.remove("active-page");
+		});
+		
+		event.preventDefault();
 	});
 }
 
@@ -68,22 +84,21 @@ function loadCurrentMonth() {
 	const month = getCurrentMonth();
 	monthNumber.textContent = month + 1;
 	monthName.textContent = MONTHS.get(month);
-	renderDay();
+	renderDay(daysList, calendarPages, month + 1, getCurrentDay());
 }
 
-function renderDay(day) {
+function renderDay(daysBox, pagesBox, month, day) {
 	// limpiar la lista actual para renderizar nueva
-	daysList.innerHTML = "";
-	calendarPages.innerHTML = "";
+	daysBox.innerHTML = "";
+	pagesBox.innerHTML = "";
 
-	const month = Number(monthNumber.textContent);
+	const dayOfWeek = getDayName(month - 1, day);
+	const dayBlock = buildDay(day, dayOfWeek);
 	const endOfMonth = getMonthLength(month);
-	const startDay = month === (getCurrentMonth() + 1) ? getCurrentDay() : 1;
-	const dayOfWeek = getDayName((month - 1), startDay);
-	const firstDayBlock = buildDay(startDay, dayOfWeek);
+	const fromDay = (month - 1) === getCurrentMonth() ? getCurrentDay() : 1;
 
-	daysList.appendChild(firstDayBlock);
-	renderPages(calendarPages, startDay, endOfMonth);
+	daysBox.appendChild(dayBlock);
+	renderPages(pagesBox, fromDay, endOfMonth);
 }
 
 function renderPages(parent, fromDay, toDay) {	
@@ -105,8 +120,8 @@ function initApptModule() {
 	if (!apptInit) {
 		addMonthBannerListeners();
 		addDaysListListeners();
+		addPagesLinksListeners();
 		loadCurrentMonth();
-
 		apptInit = true;
 	}
 }
