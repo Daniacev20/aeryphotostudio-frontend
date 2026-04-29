@@ -45,7 +45,7 @@ function addDaysListListeners() {
 		const timeTag = event.target.closest(".hours-list > li");
 		const selected = daysList.querySelectorAll(".time-selected");
 
-		if (!timeTag) return;
+		if (!timeTag || timeTag.classList.contains("time-scheduled")) return;
 
 		if (selected.length < SELECTION_LIMIT)
 			timeTag.classList.toggle("time-selected");
@@ -115,6 +115,11 @@ function renderPages(parent, fromDay, toDay) {
 	parent.appendChild(fragment);
 }
 
+// function testCSSClass() {
+// 	const hours = document.querySelectorAll("[data-time]");
+// 	hours[4].classList.add("time-scheduled");
+// }
+
 //main module function
 function initApptModule() {
 	if (!apptInit) {
@@ -123,6 +128,8 @@ function initApptModule() {
 		addPagesLinksListeners();
 		loadCurrentMonth();
 		apptInit = true;
+
+		// testCSSClass();
 	}
 }
 

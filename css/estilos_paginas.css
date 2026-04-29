@@ -358,7 +358,7 @@ header {
 
 /* efecto hover de horas que no estan
 	seleccionadas */
-.hours-list li:not(.time-selected):hover {
+.hours-list li:not(.time-selected, .time-scheduled):hover {
 	background-color: var(--bg-hover2);
 	cursor: pointer;
 }
@@ -366,10 +366,17 @@ header {
 /* color de fondo de horas seleccionadas */
 .hours-list .time-selected {
 	background-color: #AAA;
+	cursor: pointer;
 }
 
-/* banner de informacion de seleccion */
+/* estilo de horas que no esten disponibles */
+.hours-list .time-scheduled {
+	cursor: not-allowed;
+	opacity: .4;
+}
 
+/* banner de informacion de seleccion,
+	paginacion y navegacion */
 #selection-info {
 	display: flex;
 	flex-direction: row;
@@ -384,6 +391,7 @@ header {
 	padding: 0 !important;
 }
 
+/* paginacion */
 #calendar-pages {
 	display: flex;
 	flex-direction: row;

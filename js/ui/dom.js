@@ -33,6 +33,8 @@ function buildDay(number, name, classIfDateSelected = "") {
 
 		if (minutes === "00") startTime--;
 		
+		timeSlot.setAttribute("data-time", hour); // 0-16
+
 		if (time < 10)
 			timeSlot.textContent = `0${time}:${minutes}`;
 		else
