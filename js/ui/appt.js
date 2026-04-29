@@ -1,7 +1,7 @@
 // appt.js
 
 import { DAYS, MONTHS, getCurrentMonth, getCurrentDay, getMonthLength, getDayName } from '../utils/dates.js';
-import { buildDay, buildPageNumber } from '../ui/dom.js';
+import { buildDay, buildPageNumber } from './dom.js';
 
 const SELECTION_LIMIT = 4;
 let apptInit = false;
@@ -70,7 +70,7 @@ function addPagesLinksListeners() {
 		// capturar pagina clickeada luego de crearla de nuevo
 		const newPages = document.querySelectorAll("[data-day]");
 		Object.values(newPages).forEach(v => {
-			if (v.dataset.day === dDay)
+			if (v.dataset.day == dDay) // weak "n" == n
 				v.classList.add("active-page");
 			else
 				v.classList.remove("active-page");

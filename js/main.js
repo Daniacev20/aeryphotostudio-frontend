@@ -7,7 +7,7 @@ import {
 	showGuestOrUserOnMenu,
 	signOut
 } from './ui/profile.js';
-import { initApptModule } from './features/appt.js';
+import { initApptModule } from './ui/appt.js';
 
 const routes = {
 	"agenda.html": initApptModule,
