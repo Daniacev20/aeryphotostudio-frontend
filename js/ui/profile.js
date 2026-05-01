@@ -163,7 +163,6 @@ function changeView_aClickEvents(event) {
 			event.target.closest("form").id === "frm-edit-profile") {
 			// when signing out from the profile view
 			signOut();
-			showView(view);
 		}
 		else {
 			// when going to any view from anywhere else

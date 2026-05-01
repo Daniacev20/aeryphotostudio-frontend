@@ -9,6 +9,7 @@ import {
 } from './ui/profile.js';
 import { initApptModule } from './ui/appt.js';
 
+
 const routes = {
 	"agenda.html": initApptModule,
 	"perfil.html": loadView
@@ -36,7 +37,8 @@ document.addEventListener("userChanged", () => {
 setMenuDisplayListeners();
 showGuestOrUserOnMenu();
 
-const page = window.location.href.split("/").pop();
+const rawPage = window.location.href.split("/").pop();
+const page = rawPage.substring(0, rawPage.indexOf("?"));
 
 routes[page]?.();
 
