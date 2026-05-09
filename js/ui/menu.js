@@ -1,6 +1,8 @@
 // menu.js
 // para manipular comportamientos por defecto de elementos y validaciones
 
+let menuInit = false;
+
 function toggleMenu(menuItems) {
 	for (let item of menuItems) {
 		item.style.display = item.style.display == "block" ? "none" : "block";
@@ -21,18 +23,22 @@ function setMenuDisplayListeners() {
 	const btnToggleMenu = document.querySelector("#btn-toggle");
 	const menuLIs = document.querySelectorAll(".navigation-menu li");
 
-	// toggle menu al hacer click en boton hamburger
-	btnToggleMenu.addEventListener("click", () => toggleMenu(menuLIs), false);
+	if (!menuInit) {
+		// toggle menu al hacer click en boton hamburger
+		btnToggleMenu.addEventListener("click", () => toggleMenu(menuLIs), false);
 
-	// toggle menu al presionar una tecla en boton hamburger
-	btnToggleMenu.addEventListener("keydown", () => toggleMenu(menuLIs), false);
-	
-	// ajustar el menu responsive conforme al ancho de pantalla
-	window.addEventListener("resize", () => adjustMenuDisplay(menuLIs));
+		// toggle menu al presionar una tecla en boton hamburger
+		btnToggleMenu.addEventListener("keydown", () => toggleMenu(menuLIs), false);
+		
+		// ajustar el menu responsive conforme al ancho de pantalla
+		window.addEventListener("resize", () => adjustMenuDisplay(menuLIs));
 
-	// prevencion contra descargas de fotos
-	// deshabilitar el context menu
-	document.addEventListener("contextmenu", event => { event.preventDefault() });
+		// prevencion contra descargas de fotos
+		// deshabilitar el context menu
+		document.addEventListener("contextmenu", event => { event.preventDefault() });
+
+		menuInit = true;
+	}
 
 	// deshabilitar el drag and drop de las imagenes
 	document.querySelectorAll("img").forEach(img => img.draggable = false);
