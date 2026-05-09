@@ -1,7 +1,10 @@
 // profile.js
 
-// global key for main point function
-let initialized = false;
+import { VIEWS } from '../../conf/views.conf.js';
+import { USER_SESSION } from '../../state/user.js';
+
+// inicializador: previene addEventListeners duplicados
+let profileViewsInit = false;
 
 // users de prueba
 const adminUser = JSON.parse(
@@ -12,13 +15,7 @@ const user = JSON.parse(
 	'{"name": "Justauser", "username": "NPC","email": "justauser@gmail.com", "password": "imarobot", "phone": null,"isAdmin": "false"}'
 );
 
-const views = {
-	login: document.querySelector("#view-login"),
-	register: document.querySelector("#view-register"),
-	profile: document.querySelector("#view-profile")
-}
-
-// FUNCTIONS
+// BORRAR AL TERMINAR DE MOVER
 
 function getLoggedUser() {
 	// wip: optimizar para usar cookies en lugar de localStorage
@@ -30,12 +27,11 @@ function setLoggedUser(user) {
 	// wip: optimizar para usar cookies en lugar de localStorage
 	// wip: recibir el token del usuario desde el servidor
 	localStorage.setItem("user", JSON.stringify(user));
-	document.dispatchEvent(new Event("userChanged"));
 }
 
 function clearLoggedUser() {
 	localStorage.clear();
-	document.dispatchEvent(new Event("userChanged"));
+	
 }
 
 function signIn(inputUser) {
@@ -85,35 +81,39 @@ function showGuestOrUserOnMenu() {
 	});
 }
 
-function toggleShowPassword(control) {
-	control.type = control.type === "password" ? "text" : "password";
-}
+// FUNCIONES DEL MODULO
 
 function showView(view) {
-	Object.values(views).forEach(v => v.classList.remove("active"));
+	showGuestOrUserOnMenu();
 
-	const url = new URL(window.location);
+	Object.values(VIEWS).forEach(v => v.classList.remove("active"));
+
+	const url = new URL(window.location.href);
 	url.searchParams.set("view", view);
 	history.replaceState(null, "", url);
 
 	if (view === "profile") {
-		views[view].classList.add("active");
+		VIEWS[view].classList.add("active");
 		return;
 	}
 
 	// este clearControls solo funciona en
 	// el primer formulario que encuentra
-	clearControls(views[view].querySelector("form"));
-	views[view].classList.add("active");
+	clearControls(VIEWS[view].querySelector("form"));
+	VIEWS[view].classList.add("active");
 
 	// capturar primer cuadro de texto para autoenfoque
 	const cssQuery = "input:not([type=checkbox], [type=radio], [type=submit])";
-	const firstWritableElement = views[view].querySelector(cssQuery);
+	const firstWritableElement = VIEWS[view].querySelector(cssQuery);
 
 	// esperar a que la vista cargue para el autoenfoque
 	requestAnimationFrame(() => {
 		firstWritableElement?.focus();
 	});
+}
+
+function toggleShowPassword(control) {
+	control.type = control.type === "password" ? "text" : "password";
 }
 
 function clearControls(form) {
@@ -159,8 +159,7 @@ function changeView_aClickEvents(event) {
 	const view = target.dataset.view;
 
 	if (view) {
-		if (view === "login" &&
-			event.target.closest("form").id === "frm-edit-profile") {
+		if (view === "login" && USER_SESSION.user) {
 			// when signing out from the profile view
 			signOut();
 		}
@@ -235,7 +234,7 @@ function formButtonsClickEvents(event) {
 // main function to initialize perfil.html
 
 function loadView() {
-	if (!initialized) {
+	if (!profileViewsInit) {
 		document.querySelectorAll("form").forEach(frm => {
 			frm.addEventListener("click", formButtonsClickEvents, false);
 		});
@@ -246,27 +245,45 @@ function loadView() {
 		document.querySelector("#ck-edit")
 			.addEventListener("change", ckEditChangeEvent, false);
 
-		initialized = true;
+		profileViewsInit = true;
 	}
 
-	const user = getLoggedUser();
-	const params = new URLSearchParams(window.location.search);
-	const view = params.get("view");
+	const user = USER_SESSION.user;
+	const params = new URLSearchParams(window.location.href.search);
+	const view = params.get("view") || "login";
 
-	if (user) {
+	if (view === "login" || !view) {
+		if (!user) {
+			showView("login");
+			return;
+		}
+
 		showView("profile");
 		loadProfile(user);
 	}
-	else if (view && view !== "profile") {
-		showView(view);
+	else if (view === "register") {
+		if (!user) {
+			showView("register");
+			return;
+		}
+
+		showView("profile");
+		loadProfile(user);
 	}
-	else {
-		showView("login"); // default view: "login"
+	else if (view === "profile") {
+		if (!user) {
+			showView("login");
+			return;
+		}
+
+		showView("profile");
+		loadProfile(user);
 	}
 }
 
 export {
 	signOut,
+	showView,
 	showGuestOrUserOnMenu,
 	loadView
 }

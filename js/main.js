@@ -2,12 +2,13 @@
 
 //imports
 import { setMenuDisplayListeners } from './ui/menu.js';
+import { initApptModule } from './ui/appt.js';
+import { initUserStateModule } from './state/user.js';
 import {
 	loadView,
 	showGuestOrUserOnMenu,
 	signOut
-} from './ui/profile.js';
-import { initApptModule } from './ui/appt.js';
+} from './features/profile/profile.views.js';
 
 
 const routes = {
@@ -15,30 +16,13 @@ const routes = {
 	"perfil.html": loadView
 }
 
-// event handlers
-document.addEventListener("click", event => {
-	const link = event.target.closest("[data-user-options=signout]");
-
-	if (!link) return;
-	event.preventDefault();
-	signOut();
-});
-
-document.addEventListener("userChanged", () => {
-	showGuestOrUserOnMenu();
-
-	if (window.location.pathname.includes("perfil.html"))
-		loadView();
-	else
-		window.location.href = "perfil.html";
-});
-
 // main flow
-setMenuDisplayListeners();
-showGuestOrUserOnMenu();
+setMenuDisplayListeners(); // 1
+initUserStateModule(); // 2
+showGuestOrUserOnMenu(); // 3
 
 const rawPage = window.location.href.split("/").pop();
-const page = rawPage.substring(0, rawPage.indexOf("?"));
+const page = !rawPage.includes("?") ? rawPage : rawPage.substring(0, rawPage.indexOf("?")); // temporary
 
 routes[page]?.();
 
