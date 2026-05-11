@@ -15,77 +15,9 @@ const user = JSON.parse(
 	'{"name": "Justauser", "username": "NPC","email": "justauser@gmail.com", "password": "imarobot", "phone": null,"isAdmin": "false"}'
 );
 
-// BORRAR AL TERMINAR DE MOVER
-
-function getLoggedUser() {
-	// wip: optimizar para usar cookies en lugar de localStorage
-	// wip: recibir el token del usuario desde el servidor
-	return JSON.parse(localStorage.getItem("user"));
-}
-
-function setLoggedUser(user) {
-	// wip: optimizar para usar cookies en lugar de localStorage
-	// wip: recibir el token del usuario desde el servidor
-	localStorage.setItem("user", JSON.stringify(user));
-}
-
-function clearLoggedUser() {
-	localStorage.clear();
-	
-}
-
-function signIn(inputUser) {
-	// wip: se necesita extraer user del servidor
-	if ((user.email === inputUser.emailOrUsername.toLowerCase() ||
-		user.username === inputUser.emailOrUsername) &&
-			user.password === inputUser.password) {
-		// login
-		setLoggedUser(user);
-		return true;
-	}
-	
-	return false;
-}
-
-function signOut() {
-	clearLoggedUser();
-}
-
-function showGuestOrUserOnMenu() {
-	const user = getLoggedUser();
-	const isUser = !!user?.name;
-	const state = isUser ? "user" : "guest";
-	const usernameTag = document.querySelector("[data-username]");
-
-	const userOptions = {
-		signin: document.querySelector(`[data-user-options=signin]`),
-		signup: document.querySelector(`[data-user-options=signup]`),
-		profile: document.querySelector(`[data-user-options=profile]`),
-		signout: document.querySelector(`[data-user-options=signout]`)
-	}
-
-	const menuConfig = {
-		guest: ["signin", "signup"],
-		user: ["profile", "signout"]
-	}
-
-	usernameTag.textContent = isUser ? user.name : "Invitado";
-
-	// ocultar todas las opciones dinamicas
-	Object.values(userOptions).forEach(v => v.hidden = true);
-
-	// mostrar solo las opciones dinamicas que
-	// coinciden con el state
-	menuConfig[state].forEach(key => {
-		userOptions[key].hidden = false;
-	});
-}
-
 // FUNCIONES DEL MODULO
 
 function showView(view) {
-	showGuestOrUserOnMenu();
-
 	Object.values(VIEWS).forEach(v => v.classList.remove("active"));
 
 	const url = new URL(window.location.href);
@@ -161,7 +93,7 @@ function changeView_aClickEvents(event) {
 	if (view) {
 		if (view === "login" && USER_SESSION.user) {
 			// when signing out from the profile view
-			signOut();
+			USER_SESSION.signOut();
 		}
 		else {
 			// when going to any view from anywhere else
@@ -193,11 +125,11 @@ function formButtonsClickEvents(event) {
 			password: currentForm.querySelector("#txt-password-login").value
 		};
 
-		if (!signIn(givenUser)) {
+		if (!USER_SESSION.signIn(givenUser)) {
 			pError.classList.add("active");
 		}
 		else {
-			const fullUser = getLoggedUser();
+			const fullUser = USER_SESSION.user;
 			showView("profile");
 			loadProfile(fullUser);
 		}
@@ -205,7 +137,7 @@ function formButtonsClickEvents(event) {
 	else if (behavior === "show-password") {
 		const txtPassword = targetElement.previousElementSibling;
 
-		if (!txtPassword.type === "password" || !txtPassword.type === "text")
+		if (txtPassword.type !== "password" && txtPassword.type !== "text")
 			return;
 		toggleShowPassword(txtPassword);
 	}
@@ -249,7 +181,7 @@ function loadView() {
 	}
 
 	const user = USER_SESSION.user;
-	const params = new URLSearchParams(window.location.href.search);
+	const params = new URLSearchParams(window.location.search);
 	const view = params.get("view") || "login";
 
 	if (view === "login" || !view) {
@@ -282,8 +214,5 @@ function loadView() {
 }
 
 export {
-	signOut,
-	showView,
-	showGuestOrUserOnMenu,
 	loadView
 }

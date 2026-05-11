@@ -1,5 +1,7 @@
 // menu.js
-// para manipular comportamientos por defecto de elementos y validaciones
+
+import { USER_SESSION, showGuestOrUserOnMenu } from '../state/user.js';
+import { loadView } from '../features/profile/profile.views.js';
 
 let menuInit = false;
 
@@ -36,6 +38,26 @@ function setMenuDisplayListeners() {
 		// prevencion contra descargas de fotos
 		// deshabilitar el context menu
 		document.addEventListener("contextmenu", event => { event.preventDefault() });
+
+		document.addEventListener("userChanged", event => {
+			if (window.location.pathname.includes("perfil.html")) {
+				showGuestOrUserOnMenu();
+				loadView();
+			}
+			else {
+				window.location.href = "perfil.html?view=login";
+				// showGuestOrUserOnMenu al cargar perfil.html a traves del main.js
+				// tambien loadView al leer el objeto routes
+			}
+		});
+
+		document.addEventListener("click", event => {
+			const link = event.target.closest("[data-user-options=signout]");
+
+			if (!link) return;
+			event.preventDefault();
+			USER_SESSION.signOut();
+		});
 
 		menuInit = true;
 	}

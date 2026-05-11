@@ -3,13 +3,8 @@
 //imports
 import { setMenuDisplayListeners } from './ui/menu.js';
 import { initApptModule } from './ui/appt.js';
-import { initUserStateModule } from './state/user.js';
-import {
-	loadView,
-	showGuestOrUserOnMenu,
-	signOut
-} from './features/profile/profile.views.js';
-
+import { showGuestOrUserOnMenu } from './state/user.js';
+import { loadView } from './features/profile/profile.views.js';
 
 const routes = {
 	"agenda.html": initApptModule,
@@ -17,12 +12,8 @@ const routes = {
 }
 
 // main flow
-setMenuDisplayListeners(); // 1
-initUserStateModule(); // 2
-showGuestOrUserOnMenu(); // 3
+setMenuDisplayListeners();
+showGuestOrUserOnMenu();
 
-const rawPage = window.location.href.split("/").pop();
-const page = !rawPage.includes("?") ? rawPage : rawPage.substring(0, rawPage.indexOf("?")); // temporary
-
+const page = window.location.pathname.split("/").pop();
 routes[page]?.();
-
