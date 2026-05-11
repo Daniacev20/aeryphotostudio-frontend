@@ -1,0 +1,11 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Aery Photo Studio",
+  "image": "https://aeryphotostudio.ddns.net/imgs/aery-logo.png",
+  "telephone": "+1-809-780-4566",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "DO"
+  }
+}
