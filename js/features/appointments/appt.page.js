@@ -1,7 +1,15 @@
-// appt.js
+// appt.page.js
 
-import { DAYS, MONTHS, getCurrentMonth, getCurrentDay, getMonthLength, getDayName } from '../utils/dates.js';
-import { buildDay, buildPageNumber } from './dom.js';
+import {
+	DAYS,
+	MONTHS,
+	getCurrentMonth,
+	getCurrentDay,
+	getMonthLength,
+	getDayName
+} from '../../utils/dates.js';
+
+import { buildDay, buildPageNumber } from '../../ui/dom.js';
 
 const SELECTION_LIMIT = 4;
 let apptInit = false;
@@ -121,16 +129,15 @@ function renderPages(parent, fromDay, toDay) {
 // }
 
 //main module function
-function initApptModule() {
-	if (!apptInit) {
-		addMonthBannerListeners();
-		addDaysListListeners();
-		addPagesLinksListeners();
-		loadCurrentMonth();
-		apptInit = true;
-
-		// testCSSClass();
-	}
+function initAgendaModule() {
+	if (apptInit) return;
+	
+	addMonthBannerListeners();
+	addDaysListListeners();
+	addPagesLinksListeners();
+	loadCurrentMonth();
+	
+	apptInit = true;
 }
 
-export { initApptModule };
+export { initAgendaModule };

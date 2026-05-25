@@ -1,33 +1,27 @@
 // user.js
 
-// users de prueba
-const adminUser = JSON.parse(
-	'{"name": "Davian", "username": "Dave","email": "dave@gmail.com", "password": "micasa123$", "phone": "8098098809", "isAdmin": "true"}'
-);
-
-const user = JSON.parse(
-	'{"name": "Justauser", "username": "NPC","email": "justauser@gmail.com", "password": "imarobot", "phone": null,"isAdmin": "false"}'
-);
+import { menuConfig } from '../conf/menu.conf.js';
+import { _user } from './mock-users.js';
 
 const USER_SESSION = {
 	get state() {
 		return getLoggedUser()?.name ? "user" : "guest";
 	},
-	get user() { return getLoggedUser() },
+	get user() { return getLoggedUser(); },
 	signIn(inputUser) {
 		// wip: se necesita extraer user del servidor
 		// const user = await fetch("http://userrequest")
-		if ((user.email === inputUser.emailOrUsername.toLowerCase() ||
-			user.username === inputUser.emailOrUsername) &&
-				user.password === inputUser.password) {
+		if ((_user.email === inputUser.emailOrUsername.toLowerCase() ||
+			_user.username === inputUser.emailOrUsername) &&
+				_user.password === inputUser.password) {
 			// login
-			setLoggedUser(user);
+			setLoggedUser(_user);
 			return true;
 		}
 		
 		return false;
 	},
-	signOut() { clearLoggedUser() }
+	signOut() { clearLoggedUser(); }
 }
 
 function getLoggedUser() {
@@ -60,11 +54,6 @@ function showGuestOrUserOnMenu() {
 		signout: document.querySelector(`[data-user-options=signout]`)
 	}
 
-	const menuConfig = {
-		guest: ["signin", "signup"],
-		user: ["profile", "signout"]
-	}
-
 	usernameTag.textContent = user?.name || "Invitado";
 
 	// ocultar todas las opciones dinamicas
@@ -76,8 +65,6 @@ function showGuestOrUserOnMenu() {
 		userOptions[key].hidden = false;
 	});
 }
-
-// LISTENERS
 
 export {
 	showGuestOrUserOnMenu,
