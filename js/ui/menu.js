@@ -60,7 +60,7 @@ function setMenuDisplayListeners() {
 
 		if (!link) return;
 		event.preventDefault();
-		USER_SESSION.signOut();
+		USER_SESSION.end();
 	});
 
 	menuInit = true;

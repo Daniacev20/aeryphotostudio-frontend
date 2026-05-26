@@ -1,27 +1,21 @@
 // user.js
 
 import { menuConfig } from '../conf/menu.conf.js';
-import { _user } from './mock-users.js';
 
 const USER_SESSION = {
 	get state() {
 		return getLoggedUser()?.name ? "user" : "guest";
 	},
+
 	get user() { return getLoggedUser(); },
-	signIn(inputUser) {
-		// wip: se necesita extraer user del servidor
-		// const user = await fetch("http://userrequest")
-		if ((_user.email === inputUser.emailOrUsername.toLowerCase() ||
-			_user.username === inputUser.emailOrUsername) &&
-				_user.password === inputUser.password) {
-			// login
-			setLoggedUser(_user);
-			return true;
-		}
-		
-		return false;
+
+	isAuthenticated: false,
+
+	start(user) {
+		setLoggedUser(user);
 	},
-	signOut() { clearLoggedUser(); }
+	
+	end() { clearLoggedUser(); }
 }
 
 function getLoggedUser() {
@@ -33,11 +27,15 @@ function getLoggedUser() {
 function setLoggedUser(user) {
 	// wip: optimizar para usar cookies en lugar de localStorage
 	// wip: recibir el token del usuario desde el servidor
-	localStorage.setItem("user", JSON.stringify(user));
-	document.dispatchEvent(new Event("userChanged"));
+	if (user) {
+		USER_SESSION.isAuthenticated = true;
+		localStorage.setItem("user", JSON.stringify(user));
+		document.dispatchEvent(new Event("userChanged"));
+	}
 }
 
 function clearLoggedUser() {
+	USER_SESSION.isAuthenticated = false;
 	localStorage.removeItem("user");
 	document.dispatchEvent(new Event("userChanged"));
 }

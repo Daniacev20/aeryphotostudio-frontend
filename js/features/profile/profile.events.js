@@ -1,6 +1,8 @@
 // profile.events.js
 
 import { USER_SESSION } from '../../state/user.js';
+import { handleLogin } from '../auth/login.js';
+import { handleLogout } from '../auth/logout.js';
 import {
 	showView,
 	toggleShowPassword,
@@ -22,7 +24,7 @@ function changeView_aClickEvents(event) {
 	if (view) {
 		if (view === "login" && USER_SESSION.user) {
 			// when signing out from the profile view
-			USER_SESSION.signOut();
+			USER_SESSION.end();
 		}
 		else {
 			// when going to any view from anywhere else
@@ -36,7 +38,7 @@ function ckEditChangeEvent(event) {
 	toggleControlsDisableStatus(form);
 }
 
-function formButtonsClickEvents(event) {
+async function formButtonsClickEvents(event) {
 	const targetElement = event.target.closest("[data-behavior]");
 
 	if (!targetElement) return;
@@ -48,19 +50,30 @@ function formButtonsClickEvents(event) {
 	
 	if (behavior === "login") {
 		const pError = currentForm.querySelector(".error-m");
-		const givenUser = {
-			emailOrUsername: currentForm.querySelector("#txt-email-username-login").value,
+		const userInput = {
+			email: currentForm.querySelector("#txt-email-username-login").value,
 			password: currentForm.querySelector("#txt-password-login").value
 		};
 
-		if (!USER_SESSION.signIn(givenUser)) {
+		if (!userInput.email || !userInput.password) {
+			pError.textContent = "Favor colocar usuario y clave.";
 			pError.classList.add("active");
+			return;
 		}
-		else {
-			const fullUser = USER_SESSION.user;
-			showView("profile");
-			loadProfile(fullUser);
+
+		pError.textContent = "";
+		pError.classList.remove("active");
+
+		try {
+			await handleLogin(userInput);
+		} catch (err) {
+			pError.textContent = err.message;
+			pError.classList.add("active");
+			return;
 		}
+
+		showView("profile");
+		loadProfile(USER_SESSION.user);
 	}
 	else if (behavior === "show-password") {
 		const txtPassword = targetElement.previousElementSibling;
