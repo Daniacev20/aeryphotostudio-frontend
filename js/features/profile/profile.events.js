@@ -14,7 +14,7 @@ import {
 // inicializador: previene addEventListeners duplicados
 let profileViewsInit = false;
 
-function changeView_aClickEvents(event) {
+async function changeView_aClickEvents(event) {
 	const target = event.target.closest("a[data-view]");
 
 	if (!target) return;
@@ -24,12 +24,15 @@ function changeView_aClickEvents(event) {
 	if (view) {
 		if (view === "login" && USER_SESSION.user) {
 			// when signing out from the profile view
-			USER_SESSION.end();
+			try	{
+				await handleLogout();
+			} catch (err) {
+				console.log(err.message);
+				return;
+			}
 		}
-		else {
-			// when going to any view from anywhere else
-			showView(view);
-		}
+		
+		showView(view);
 	}
 }
 

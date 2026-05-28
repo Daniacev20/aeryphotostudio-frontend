@@ -34,7 +34,7 @@ async function logout() {
 	return content.data;
 }
 
-async function getSession() {
+async function getMe() {
 	const response = await fetch(`${BASE_URL}/me`, {
 		credentials: 'include'
 	});
@@ -47,5 +47,5 @@ async function getSession() {
 export {
 	login,
 	logout, 
-	getSession
+	getMe
 }
