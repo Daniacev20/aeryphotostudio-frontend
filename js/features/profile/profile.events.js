@@ -54,12 +54,18 @@ async function formButtonsClickEvents(event) {
 	if (behavior === "login") {
 		const pError = currentForm.querySelector(".error-m");
 		const userInput = {
-			email: currentForm.querySelector("#txt-email-username-login").value,
-			password: currentForm.querySelector("#txt-password-login").value
+			identifier:
+				currentForm
+					.querySelector("#txt-email-username-login")
+					.value,
+			password:
+				currentForm
+					.querySelector("#txt-password-login")
+					.value
 		};
 
-		if (!userInput.email || !userInput.password) {
-			pError.textContent = "Favor colocar usuario y clave.";
+		if (!userInput.identifier || !userInput.password) {
+			pError.textContent = "Por favor, ingrese usuario y clave.";
 			pError.classList.add("active");
 			return;
 		}
