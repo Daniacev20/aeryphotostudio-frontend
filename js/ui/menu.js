@@ -2,6 +2,7 @@
 
 import { USER_SESSION, showGuestOrUserOnMenu } from '../state/user.js';
 import { loadView } from '../features/profile/profile.views.js';
+import { handleLogout } from '../features/auth/logout.js';
 
 let menuInit = false;
 
@@ -24,11 +25,11 @@ function setMenuDisplayListeners() {
 	// deshabilitar el drag and drop de las imagenes
 	document.querySelectorAll("img").forEach(img => img.draggable = false);
 
+	if (menuInit) return;
+
 	// capturar elementos clave, menu responsive
 	const btnToggleMenu = document.querySelector("#btn-toggle");
 	const menuLIs = document.querySelectorAll(".navigation-menu li");
-
-	if (menuInit) return;
 
 	// toggle menu al hacer click en boton hamburger
 	btnToggleMenu.addEventListener("click", () => toggleMenu(menuLIs), false);
@@ -55,12 +56,12 @@ function setMenuDisplayListeners() {
 		}
 	});
 
-	document.addEventListener("click", event => {
+	document.addEventListener("click", async event => {
 		const link = event.target.closest("[data-user-options=signout]");
 
 		if (!link) return;
+		await handleLogout();
 		event.preventDefault();
-		USER_SESSION.end();
 	});
 
 	menuInit = true;
