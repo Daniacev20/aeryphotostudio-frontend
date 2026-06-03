@@ -172,7 +172,7 @@
 						</div>
 							
 						<div class="form-field">
-							<input type="text" id="txt-username-register" name="username-register" maxlength="30" placeholder="Nombre de usuario (sin espacios)" inputmode="email" autocomplete="username" data-error="VALIDATOR">
+							<input type="text" id="txt-username-register" name="username-register" maxlength="30" placeholder="Nombre de usuario (sin espacios) *" inputmode="email" autocomplete="username" data-error="VALIDATOR" required>
 							<small class="error-m">El nombre de usuario no debe contener espacios.</small>
 						</div>
 						
@@ -227,10 +227,10 @@
 							</a>
 						</label>
 
-						<input type="text" id="txt-name-profile" name="name-profile", maxlength="50" autocomplete="off" placeholder="Nombre" disabled>
-						<input type="tel" id="txt-phone-profile" name="phone-profile" maxlength="10" autocomplete="off" placeholder="Tel&eacute;fono" disabled>
-						<input type="email" id="txt-email-profile" name="email-profile" maxlength="100" autocomplete="off" placeholder="E-mail" disabled>
-						<input type="email" id="txt-username-profile" name="username-profile" maxlength="30" autocomplete="off" placeholder="Nombre de usuario" disabled>
+						<input type="text" id="txt-name-profile" name="name-profile" maxlength="50" autocomplete="off" placeholder="Nombre" required disabled>
+						<input type="tel" id="txt-phone-profile" name="phone-profile" maxlength="10" autocomplete="off" placeholder="Tel&eacute;fono" required disabled>
+						<input type="email" id="txt-email-profile" name="email-profile" maxlength="100" autocomplete="off" placeholder="E-mail" required disabled>
+						<input type="email" id="txt-username-profile" name="username-profile" maxlength="30" autocomplete="off" placeholder="Nombre de usuario" required disabled>
 						<input type="password" id="txt-password-profile" name="password-profile" maxlength="100" autocomplete="off" placeholder="Nueva contrase&ntilde;a" disabled>
 						<input type="password" id="txt-confirm-password-profile" name="confirm-password-profile" maxlength="100" autocomplete="off" placeholder="Confirmar contrase&ntilde;a" disabled>
 						
