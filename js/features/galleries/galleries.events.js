@@ -18,16 +18,14 @@ async function getGalleries_loadEvents(event) {
 	let row = buildCardsRow();
 
 	for (let i = 0; i < galleries.length - 1; i++) {
-		console.log({
-		    slug: galleries[i].slug,
-		    cover: galleries[i].coverImage,
-		    url: `/api/gallery-image/${galleries[i].slug}/${galleries[i].coverImage}`
-		});
+		const src = galleries[i].coverImage
+			? `/api/gallery-image/${galleries[i].slug}/${galleries[i].coverImage}`
+			: "/assets/empty.jpg"
 
 		row.appendChild(
 			buildGalleryCard(
-				`/api/gallery-image/${galleries[i].slug}/${galleries[i].coverImage}`,
-				galleries[i].coverImage
+				src,
+				galleries[i].coverImage || "Galer\u00EDa vac\u00EDa."
 			)
 		);
 
