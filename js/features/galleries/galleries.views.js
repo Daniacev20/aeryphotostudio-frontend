@@ -1,1 +1,61 @@
 // galleries.views.js
+
+import { makeTag } from '../../ui/dom.js';
+
+function buildGalleryCard(imgSrc, caption, locked = true) {
+	const a = makeTag("a", { href: "#" });
+	
+	const divThumbnail = makeTag("div", {
+		className:
+			"thumbnail-item locked-gallery overlay-wrapper",
+	});
+
+	const divOverlay = makeTag("div", {
+		className: "overlay"
+	});
+
+	const imgCover = makeTag("img", {
+		src: imgSrc
+	});
+
+	const spanIconWrapper = makeTag("span", {
+		className: "icon-wrapper"
+	});
+
+	if (locked) {
+		spanIconWrapper.appendChild(
+			makeTag("i", {
+				className: "fas fa-lock"
+			})
+		);
+	}
+
+	const spanCaption = makeTag("span", {
+		className: "img-captions",
+		text: caption
+	});
+
+	divThumbnail.append(
+		divOverlay,
+		imgCover,
+		spanIconWrapper,
+		spanCaption
+	);
+
+	a.appendChild(divThumbnail);
+
+	return a;
+}
+
+function buildCardsRow() {
+	const articleRow = makeTag("article", {
+		className: "thumbnails"
+	});
+
+	return articleRow;
+}
+
+export {
+	buildGalleryCard,
+	buildCardsRow
+}

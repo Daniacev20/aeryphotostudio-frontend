@@ -1,11 +1,17 @@
 // galleries.page.js
 
-import {
-	getPrivateGalleries
-} from "../../services/gallery.service.js";
+import { getGalleries_loadEvents } from './galleries.events.js';
 
-export async function initGalleryPage() {
-	const galleries = await getPrivateGalleries();
+let galleriesInit = false;
 
-	console.log(galleries);
+export function initGalleryPage() {
+	if (galleriesInit) return;
+
+	document.addEventListener(
+		"DOMContentLoaded",
+		getGalleries_loadEvents,
+		false
+	);
+
+	galleriesInit = true;
 }

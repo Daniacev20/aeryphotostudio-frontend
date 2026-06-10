@@ -9,6 +9,7 @@ import {
 	getCurrentDay,
 	getDayName
 } from '../../utils/dates.js';
+import { makeTag } from '../../ui/dom.js';
 
 const monthNumber = document.querySelector("#month-number");
 const monthName = document.querySelector("#month-name");
@@ -16,19 +17,20 @@ const daysList = document.querySelector("#days-list");
 const calendarPages = document.querySelector("#calendar-pages");
 
 function buildDay(number, name, classIfDateSelected = "") {
-	const li = document.createElement("li");
-	li.classList.add("day");
+	const li = makeTag("li", {
+		className: "day"
+	});
 
-	const spanParent = document.createElement("span");
+	const spanParent = makeTag("span");
 	const spanChildren = {
-		number: document.createElement("span"),
-		dash: document.createElement("span"),
-		name: document.createElement("span")
+		number: makeTag("span", {
+			text: number
+		}),
+		dash: makeTag("span", { text: "-" }),
+		name: makeTag("span", {
+			text: name
+		})
 	}
-
-	spanChildren.number.textContent = number;
-	spanChildren.dash.textContent = "-";
-	spanChildren.name.textContent = name;
 
 	Object.values(spanChildren).forEach(v => {
 		spanParent.appendChild(v);
@@ -36,13 +38,14 @@ function buildDay(number, name, classIfDateSelected = "") {
 
 	li.appendChild(spanParent);
 
-	const ol = document.createElement("ol");
-	ol.classList.add("hours-list");
+	const ol = makeTag("ol", {
+		className: "hours-list"
+	});
 
 	let startTime = 9;
 
 	for (let hour = 0; hour <= 16; hour++) {
-		const timeSlot = document.createElement("li");
+		const timeSlot = makeTag("li");
 		let time = hour + startTime;
 		let minutes = hour % 2 === 0 ? "00" : "30";
 
@@ -66,11 +69,12 @@ function buildDay(number, name, classIfDateSelected = "") {
 }
 
 function buildPageNumber(content, classIfActive = "") {
-	const a = document.createElement("a");
+	const a = makeTag("a", {
+		href: "#",
+		text: content
+	});
 
-	a.setAttribute("href", "#");
 	a.setAttribute("data-day", content);
-	a.textContent = content;
 
 	if (classIfActive)
 		a.classList.add(classIfActive);
