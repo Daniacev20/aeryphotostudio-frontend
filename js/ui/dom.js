@@ -1,28 +1,19 @@
 // dom.js
 
-function makeTag(tag, {
-	className,
-	text,
-	id,
-	src,
-	href
-} = {}) {
+function makeTag(tag, properties = {}) {
 	const element = document.createElement(tag);
 
-	if (className)
-		element.className = className;
+	for (const [k, v] of Object.entries(properties)) {
 
-	if (text)
-		element.textContent = text;
-
-	if (id)
-		element.id = id;
-
-	if (src)
-		element.src = src;
-
-	if (href)
-		element.id = href;
+		if (k === "classes")
+			element.classList.add(...v);
+		else if (k === "style")
+			Object.assign(element.style, v);
+		else if (k in element)
+			element[k] = v;
+		else
+			element.setAttribute(k, v);
+	}
 
 	return element;
 }
