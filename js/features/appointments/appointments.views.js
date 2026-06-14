@@ -24,11 +24,11 @@ function buildDay(number, name, classIfDateSelected = "") {
 	const spanParent = makeTag("span");
 	const spanChildren = {
 		number: makeTag("span", {
-			text: number
+			textContent: number
 		}),
-		dash: makeTag("span", { text: "-" }),
+		dash: makeTag("span", { textContent: "-" }),
 		name: makeTag("span", {
-			text: name
+			textContent: name
 		})
 	}
 
@@ -71,7 +71,7 @@ function buildDay(number, name, classIfDateSelected = "") {
 function buildPageNumber(content, classIfActive = "") {
 	const a = makeTag("a", {
 		href: "#",
-		text: content
+		textContent: content
 	});
 
 	a.setAttribute("data-day", content);

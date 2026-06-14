@@ -1,7 +1,7 @@
 // galleries.events.js
 
 import {
-	getPrivateGalleries
+	getClientsList
 } from "../../services/gallery.service.js";
 import {
 	buildGalleryCard,
@@ -10,10 +10,42 @@ import {
 
 const LIMIT_PER_ROW = 3;
 
+async function getClients_loadEvents(event) {
+	const galleriesContainer =
+		document.querySelector("#galleries");
+	const clients = await getClientsList();
+	const fragment = document.createDocumentFragment();
+	let row = buildCardsRow();
+
+	for (let currentClient of clients) {
+		if (!currentClient.preview)
+			continue;
+
+		row.appendChild(
+			buildGalleryCard(
+				currentClient.preview,
+				currentClient.name
+			)
+		);
+
+		if (row.childElementCount === LIMIT_PER_ROW) {
+			fragment.appendChild(row);
+			row = buildCardsRow();
+		}
+
+		if (row.childElementCount < LIMIT_PER_ROW &&
+			currentClient === clients[clients.length - 1]) {
+			fragment.appendChild(row);
+		}
+	}
+
+	galleriesContainer.appendChild(fragment)
+}
+
 async function getGalleries_loadEvents(event) {
 	const galleriesContainer =
 		document.querySelector("#galleries");
-	const galleries = await getPrivateGalleries();
+	const galleries = await getGalleries();
 	const mainFragment = document.createDocumentFragment();
 	let row = buildCardsRow();
 
@@ -44,5 +76,5 @@ async function getGalleries_loadEvents(event) {
 }
 
 export {
-	getGalleries_loadEvents
+	getClients_loadEvents
 };

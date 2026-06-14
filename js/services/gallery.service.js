@@ -1,13 +1,5 @@
 // services/gallery.service.js
 
-async function getGallery(slug) {
-	const response = await fetch(
-		`/api/galleries/${slug}`
-	);
-
-	return await response.json();
-}
-
 async function getPublicGalleries() {
 	const response = await fetch(
 		"/api/galleries?visibility=public"
@@ -24,8 +16,25 @@ async function getPrivateGalleries() {
 	return await response.json();
 }
 
+async function getGalleryBySlug(slug) {
+	const response = await fetch(
+		`/api/galleries/${slug}`
+	);
+
+	return await response.json();
+}
+
+async function getClientsList() {
+	const response = await fetch(
+		"/api/clients"
+	);
+
+	return await response.json();
+}
+
 export {
-	getGallery,
+	getGalleryBySlug,
 	getPublicGalleries,
-	getPrivateGalleries
+	getPrivateGalleries,
+	getClientsList
 }

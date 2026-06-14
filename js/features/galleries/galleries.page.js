@@ -1,6 +1,6 @@
 // galleries.page.js
 
-import { getGalleries_loadEvents } from './galleries.events.js';
+import { getClients_loadEvents } from './galleries.events.js';
 
 let galleriesInit = false;
 
@@ -9,7 +9,7 @@ export function initGalleryPage() {
 
 	document.addEventListener(
 		"DOMContentLoaded",
-		getGalleries_loadEvents,
+		getClients_loadEvents,
 		false
 	);
 

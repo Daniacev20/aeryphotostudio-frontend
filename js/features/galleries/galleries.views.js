@@ -32,7 +32,7 @@ function buildGalleryCard(imgSrc, caption, locked = true) {
 
 	const spanCaption = makeTag("span", {
 		className: "img-captions",
-		text: caption
+		textContent: caption
 	});
 
 	divThumbnail.append(
