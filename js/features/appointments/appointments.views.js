@@ -1,7 +1,5 @@
 // appointment.views.js
 
-// dom.js
-
 import {
 	MONTHS,
 	getMonthLength,

@@ -32,9 +32,18 @@ async function getClientsList() {
 	return await response.json();
 }
 
+async function getClientGalleries(clientId) {
+	const response = await fetch(
+		`/api/clients/${clientId}/galleries`
+	);
+
+	return await response.json();
+}
+
 export {
-	getGalleryBySlug,
 	getPublicGalleries,
 	getPrivateGalleries,
-	getClientsList
+	getGalleryBySlug,
+	getClientsList,
+	getClientGalleries
 }

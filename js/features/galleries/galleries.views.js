@@ -2,8 +2,13 @@
 
 import { makeTag } from '../../ui/dom.js';
 
-function buildGalleryCard(imgSrc, caption, locked = true) {
-	const a = makeTag("a", { href: "#" });
+function buildGalleryCard(
+	imgSrc,
+	caption,
+	href = "#",
+	locked = true) {
+	
+	const a = makeTag("a", { href });
 	
 	const divThumbnail = makeTag("div", {
 		className:

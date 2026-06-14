@@ -1,7 +1,8 @@
 // galleries.events.js
 
 import {
-	getClientsList
+	getClientsList,
+	getClientGalleries
 } from "../../services/gallery.service.js";
 import {
 	buildGalleryCard,
@@ -10,9 +11,12 @@ import {
 
 const LIMIT_PER_ROW = 3;
 
-async function getClients_loadEvents(event) {
+async function renderClientsPreview() {
 	const galleriesContainer =
 		document.querySelector("#galleries");
+
+	galleriesContainer.textContent = "";
+
 	const clients = await getClientsList();
 	const fragment = document.createDocumentFragment();
 	let row = buildCardsRow();
@@ -24,7 +28,8 @@ async function getClients_loadEvents(event) {
 		row.appendChild(
 			buildGalleryCard(
 				currentClient.preview,
-				currentClient.name
+				currentClient.name,
+				`/entrega.html?client=${currentClient._id}`
 			)
 		);
 
@@ -39,40 +44,60 @@ async function getClients_loadEvents(event) {
 		}
 	}
 
-	galleriesContainer.appendChild(fragment)
+	galleriesContainer.appendChild(fragment);
 }
 
-async function getGalleries_loadEvents(event) {
+async function renderClientGalleries() {
 	const galleriesContainer =
 		document.querySelector("#galleries");
-	const galleries = await getGalleries();
-	const mainFragment = document.createDocumentFragment();
+
+	galleriesContainer.textContent = "";
+		
+	const params = new URLSearchParams(location.search);
+	const clientGalleries = await getClientGalleries(
+		params.get("client")
+	);
+
+	console.log(clientGalleries)
+
+	if (!clientGalleries) return;
+
+	const fragment = document.createDocumentFragment();
 	let row = buildCardsRow();
 
-	for (let i = 0; i < galleries.length - 1; i++) {
-		const src = galleries[i].coverImage
-			? `/api/gallery-image/${galleries[i].slug}/${galleries[i].coverImage}`
-			: "/assets/empty.jpg"
+	for (let gallery of clientGalleries) {
+		if (!gallery.preview)
+			continue;
 
 		row.appendChild(
 			buildGalleryCard(
-				src,
-				galleries[i].coverImage || "Galer\u00EDa vac\u00EDa."
+				gallery.preview,
+				gallery.coverImage,
+				`/entrega.html?slug=${gallery.slug}`
 			)
 		);
 
 		if (row.childElementCount === LIMIT_PER_ROW) {
-			mainFragment.appendChild(row);
+			fragment.appendChild(row);
 			row = buildCardsRow();
 		}
 
-		if (row.childElementCount < LIMIT_PER_ROW && 
-			i === galleries.length) {
-			mainFragment.appendChild(row);
+		if (row.childElementCount < LIMIT_PER_ROW &&
+			gallery === clientGalleries[clientGalleries.length - 1]) {
+			fragment.appendChild(row);
 		}
 	}
-	
-	galleriesContainer.appendChild(mainFragment);
+
+	galleriesContainer.appendChild(fragment);
+}
+
+async function getClients_loadEvents(event) {
+	const params = new URLSearchParams(location.search);
+
+	if (!params.get("client"))
+		await renderClientsPreview();
+	else
+		await renderClientGalleries();
 }
 
 export {
