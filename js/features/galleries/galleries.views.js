@@ -27,13 +27,11 @@ function buildGalleryCard(
 		className: "icon-wrapper"
 	});
 
-	if (locked) {
-		spanIconWrapper.appendChild(
-			makeTag("i", {
-				className: "fas fa-lock"
-			})
-		);
-	}
+	spanIconWrapper.appendChild(
+		makeTag("i", {
+			className: "fas fa-lock"
+		})
+	);
 
 	const spanCaption = makeTag("span", {
 		className: "img-captions",
@@ -43,7 +41,7 @@ function buildGalleryCard(
 	divThumbnail.append(
 		divOverlay,
 		imgCover,
-		spanIconWrapper,
+		locked ? spanIconWrapper : "",
 		spanCaption
 	);
 

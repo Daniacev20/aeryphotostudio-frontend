@@ -29,7 +29,8 @@ async function renderClientsPreview() {
 			buildGalleryCard(
 				currentClient.preview,
 				currentClient.name,
-				`/entrega.html?client=${currentClient._id}`
+				`/entrega.html?client=${currentClient._id}`,
+				false
 			)
 		);
 
