@@ -11,9 +11,6 @@ import {
 	loadProfile
 } from './profile.views.js';
 
-// inicializador: previene addEventListeners duplicados
-let profileViewsInit = false;
-
 async function changeView_aClickEvents(event) {
 	const target = event.target.closest("a[data-view]");
 
@@ -109,17 +106,8 @@ async function formButtonsClickEvents(event) {
 	}
 }
 
-function initProfileViewsListeners() {
-	if (profileViewsInit) return;
-
-	document.addEventListener("click", formButtonsClickEvents, false);
-	document.addEventListener("click", changeView_aClickEvents, false);
-	document.querySelector("#ck-edit")
-		?.addEventListener("change", ckEditChangeEvent, false);
-
-	profileViewsInit = true;
-}
-
 export {
-	initProfileViewsListeners
+	formButtonsClickEvents,
+	changeView_aClickEvents,
+	ckEditChangeEvent
 }

@@ -3,7 +3,7 @@
 import { setMenuDisplayListeners } from './ui/menu.js';
 import { showGuestOrUserOnMenu } from './state/user.js';
 import { loadView } from './features/profile/profile.views.js';
-import { initProfileViewsListeners } from './features/profile/profile.events.js';
+import { initProfilePage } from './features/profile/profile.page.js';
 import { initAgendaModule } from './features/appointments/appointments.page.js';
 import { initGalleryPage } from './features/galleries/galleries.page.js';
 
@@ -23,7 +23,7 @@ function bootstrapApp() {
 function initGlobalUI() {
 	setMenuDisplayListeners();
 	showGuestOrUserOnMenu();
-	initProfileViewsListeners();
+	initProfilePage();
 }
 
 function getCurrentPage() {

@@ -6,7 +6,7 @@ import { USER_SESSION } from '../../state/user.js';
 function showView(view) {
 	Object.values(VIEWS).forEach(v => v.classList.remove("active"));
 
-	const url = new URL(window.location.href);
+	const url = new URL(location.href);
 	url.searchParams.set("view", view);
 	history.replaceState(null, "", url);
 
@@ -21,7 +21,8 @@ function showView(view) {
 	VIEWS[view].classList.add("active");
 
 	// capture first textbox to autofocus
-	const cssQuery = "input:not([type=checkbox], [type=radio], [type=submit])";
+	const cssQuery =
+		"input:not([type=checkbox], [type=radio], [type=submit])";
 	const firstWritableElement = VIEWS[view].querySelector(cssQuery);
 
 	// await view rendering to autofocus
@@ -31,7 +32,10 @@ function showView(view) {
 }
 
 function toggleShowPassword(control) {
-	control.type = control.type === "password" ? "text" : "password";
+	control.type =
+		control.type === "password"
+		? "text"
+		: "password";
 }
 
 function clearControls(form) {
@@ -69,7 +73,7 @@ function loadProfile(user) {
 
 function loadView() {
 	const user = USER_SESSION.user;
-	const params = new URLSearchParams(window.location.search);
+	const params = new URLSearchParams(location.search);
 	const view = params.get("view") || "login";
 
 	if (view === "login" || !view) {
