@@ -16,9 +16,9 @@ async function getPrivateGalleries() {
 	return await response.json();
 }
 
-async function getGalleryBySlug(slug) {
+async function getGalleryImagesBySlug(slug) {
 	const response = await fetch(
-		`/api/galleries/${slug}`
+		`/api/galleries/${slug}/images`
 	);
 
 	return await response.json();
@@ -43,7 +43,7 @@ async function getClientGalleries(clientId) {
 export {
 	getPublicGalleries,
 	getPrivateGalleries,
-	getGalleryBySlug,
+	getGalleryImagesBySlug,
 	getClientsList,
 	getClientGalleries
 }

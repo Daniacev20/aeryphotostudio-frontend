@@ -2,11 +2,13 @@
 
 import {
 	getClientsList,
-	getClientGalleries
+	getClientGalleries,
+	getGalleryImagesBySlug
 } from "../../services/gallery.service.js";
 import {
 	buildGalleryCard,
-	buildCardsRow
+	buildCardsRow,
+	buildImage
 } from './galleries.views.js';
 
 const LIMIT_PER_ROW = 3;
@@ -15,9 +17,12 @@ async function renderClientsPreview() {
 	const galleriesContainer =
 		document.querySelector("#galleries");
 
+	const clients = await getClientsList();
+
+	if (clients.length === 0) return;
+
 	galleriesContainer.textContent = "";
 
-	const clients = await getClientsList();
 	const fragment = document.createDocumentFragment();
 	let row = buildCardsRow();
 
@@ -51,17 +56,15 @@ async function renderClientsPreview() {
 async function renderClientGalleries() {
 	const galleriesContainer =
 		document.querySelector("#galleries");
-
-	galleriesContainer.textContent = "";
 		
 	const params = new URLSearchParams(location.search);
 	const clientGalleries = await getClientGalleries(
 		params.get("client")
 	);
 
-	console.log(clientGalleries)
+	if (clientGalleries.length === 0) return;
 
-	if (!clientGalleries) return;
+	galleriesContainer.textContent = "";
 
 	const fragment = document.createDocumentFragment();
 	let row = buildCardsRow();
@@ -92,13 +95,56 @@ async function renderClientGalleries() {
 	galleriesContainer.appendChild(fragment);
 }
 
+async function renderGalleryImages() {
+	const galleriesContainer =
+		document.querySelector("#galleries");
+	const params = new URLSearchParams(location.search);
+	const imagesData = await getGalleryImagesBySlug(
+		params.get("slug")
+	);
+
+	if (!imagesData) {
+		console.log("Error abriendo galeria.");
+		return;
+	}
+
+	galleriesContainer.textContent = "";
+
+	const fragment = document.createDocumentFragment();
+	let row = buildCardsRow();
+
+	for (const image of imagesData) {
+		row.appendChild(
+			buildImage(
+				image.src,
+			)
+		);
+
+		if (row.childElementCount === LIMIT_PER_ROW) {
+			fragment.appendChild(row);
+			row = buildCardsRow();
+		}
+
+		if (row.childElementCount < LIMIT_PER_ROW &&
+			image === imagesData[imagesData.length - 1]) {
+			fragment.appendChild(row);
+		}
+	}
+
+	galleriesContainer.appendChild(fragment);
+}
+
 async function getClients_loadEvents(event) {
 	const params = new URLSearchParams(location.search);
+	const client = params.get("client");
+	const slug = params.get("slug");
 
-	if (!params.get("client"))
+	if (!client && !slug)
 		await renderClientsPreview();
-	else
+	else if (client && !slug)
 		await renderClientGalleries();
+	else if (!client && slug)
+		renderGalleryImages();
 }
 
 export {

@@ -58,7 +58,33 @@ function buildCardsRow() {
 	return articleRow;
 }
 
+function buildImage(src) {
+	const divFrame = makeTag("div", {
+		classes: [
+			"thumbnail-item",
+			"locked-gallery",
+			"overlay-wrapper"
+		]
+	});
+
+	const divOverlay = makeTag("div", {
+		className: "overlay"
+	});
+
+	const img = makeTag("img", {
+		src
+	});
+
+	divFrame.append(
+		divOverlay,
+		img
+	);
+
+	return divFrame;
+}
+
 export {
 	buildGalleryCard,
-	buildCardsRow
+	buildCardsRow,
+	buildImage
 }
