@@ -12,8 +12,11 @@ function buildGalleryCard(
 	
 	const divThumbnail = makeTag("div", {
 		className:
-			"thumbnail-item locked-gallery overlay-wrapper",
+			"thumbnail-item overlay-wrapper",
 	});
+
+	if (locked)
+		divThumbnail.classList.add("locked-gallery");
 
 	const divOverlay = makeTag("div", {
 		className: "overlay"

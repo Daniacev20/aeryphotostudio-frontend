@@ -69,6 +69,18 @@ header {
 	margin: auto;
 }
 
+/* banner para mostrar link de vuelta a la entrada
+	principal a entrega.html. Este banner solo debe
+	mostrarse cuando se entra a las galerias de un cliente */
+#back-to {
+	width: 90vw;
+	display: flex;
+	justify-content: end;
+	margin: auto;
+	padding: 1.5rem 0;
+	display: flex;
+}
+
 /* label del formulario con el icono */
 .search-icon {
 	position: absolute;
@@ -85,7 +97,8 @@ header {
 	margin: 1rem 0;
 }
 
-/* contenedor de la caratula (thumbnail) de cada galeria, su icono y su caption */
+/* contenedor de la caratula (thumbnail) de cada
+	galeria, su icono y su caption */
 .thumbnail-item {
 	position: relative;
 }

@@ -134,10 +134,18 @@ async function renderGalleryImages() {
 	galleriesContainer.appendChild(fragment);
 }
 
+function handleBackToLinkDisplay(params) {
+	const backTo = document.querySelector("#back-to");
+
+	backTo.hidden = params.size === 0;
+}
+
 async function getClients_loadEvents(event) {
 	const params = new URLSearchParams(location.search);
 	const client = params.get("client");
 	const slug = params.get("slug");
+
+	handleBackToLinkDisplay(params);
 
 	if (!client && !slug)
 		await renderClientsPreview();
