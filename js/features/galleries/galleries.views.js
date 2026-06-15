@@ -64,24 +64,15 @@ function buildCardsRow() {
 function buildImage(src) {
 	const divFrame = makeTag("div", {
 		classes: [
-			"thumbnail-item",
-			"locked-gallery",
-			"overlay-wrapper"
+			"thumbnail-item"
 		]
-	});
-
-	const divOverlay = makeTag("div", {
-		className: "overlay"
 	});
 
 	const img = makeTag("img", {
 		src
 	});
 
-	divFrame.append(
-		divOverlay,
-		img
-	);
+	divFrame.append(img);
 
 	return divFrame;
 }
