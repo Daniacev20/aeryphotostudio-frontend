@@ -44,7 +44,7 @@ function buildGalleryCard(
 	divThumbnail.append(
 		divOverlay,
 		imgCover,
-		locked ? spanIconWrapper : "",
+		...(locked ? [spanIconWrapper] : []),
 		spanCaption
 	);
 

@@ -11,7 +11,7 @@ import {
 	buildImage
 } from './galleries.views.js';
 
-const LIMIT_PER_ROW = 3;
+const LIMIT_PER_ROW = 5;
 
 async function renderClientsPreview() {
 	const galleriesContainer =
@@ -43,12 +43,10 @@ async function renderClientsPreview() {
 			fragment.appendChild(row);
 			row = buildCardsRow();
 		}
-
-		if (row.childElementCount < LIMIT_PER_ROW &&
-			currentClient === clients[clients.length - 1]) {
-			fragment.appendChild(row);
-		}
 	}
+
+	if (row.childElementCount > 0)
+		fragment.appendChild(row);
 
 	galleriesContainer.appendChild(fragment);
 }
@@ -85,12 +83,10 @@ async function renderClientGalleries() {
 			fragment.appendChild(row);
 			row = buildCardsRow();
 		}
-
-		if (row.childElementCount < LIMIT_PER_ROW &&
-			gallery === clientGalleries[clientGalleries.length - 1]) {
-			fragment.appendChild(row);
-		}
 	}
+
+	if (row.childElementCount > 0)
+		fragment.appendChild(row);
 
 	galleriesContainer.appendChild(fragment);
 }
@@ -124,12 +120,10 @@ async function renderGalleryImages() {
 			fragment.appendChild(row);
 			row = buildCardsRow();
 		}
-
-		if (row.childElementCount < LIMIT_PER_ROW &&
-			image === imagesData[imagesData.length - 1]) {
-			fragment.appendChild(row);
-		}
 	}
+
+	if (row.childElementCount > 0)
+		fragment.appendChild(row);
 
 	galleriesContainer.appendChild(fragment);
 }

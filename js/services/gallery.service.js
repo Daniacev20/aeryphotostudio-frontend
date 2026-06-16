@@ -16,14 +16,6 @@ async function getPrivateGalleries() {
 	return await response.json();
 }
 
-async function getGalleryImagesBySlug(slug) {
-	const response = await fetch(
-		`/api/galleries/${slug}/images`
-	);
-
-	return await response.json();
-}
-
 async function getClientsList() {
 	const response = await fetch(
 		"/api/clients"
@@ -35,6 +27,14 @@ async function getClientsList() {
 async function getClientGalleries(clientId) {
 	const response = await fetch(
 		`/api/clients/${clientId}/galleries`
+	);
+
+	return await response.json();
+}
+
+async function getGalleryImagesBySlug(slug) {
+	const response = await fetch(
+		`/api/galleries/${slug}/images`
 	);
 
 	return await response.json();

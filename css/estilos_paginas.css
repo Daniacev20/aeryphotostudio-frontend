@@ -94,20 +94,30 @@ header {
 	display: flex;
 	justify-content: center;
 	gap: 1rem;
-	margin: 1rem 0;
+	margin: 1rem auto;
+	width: 90vw;
+}
+
+.thumbnails > a {
+	flex: 1 1 0;
 }
 
 /* contenedor de la caratula (thumbnail) de cada
 	galeria, su icono y su caption */
 .thumbnail-item {
 	position: relative;
+	aspect-ratio: 1;
+	width: 100%;
+	background-color: #E8E8E8;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .thumbnail-item img {
-	height: clamp(300px, 20vh, 80vh);
-	width: calc(80vw/3);
-	object-position: 0 0;
-	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
 }
 
 .locked-gallery img {
