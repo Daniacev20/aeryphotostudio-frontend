@@ -2,6 +2,14 @@
 
 import { makeTag } from '../../ui/dom.js';
 
+function buildCardsRow() {
+	const articleRow = makeTag("article", {
+		className: "thumbnails"
+	});
+
+	return articleRow;
+}
+
 function buildGalleryCard(
 	imgSrc,
 	caption,
@@ -26,6 +34,10 @@ function buildGalleryCard(
 		src: imgSrc
 	});
 
+	const iconBox = makeTag("div", {
+		className: "icon-box"
+	});
+
 	const spanIconWrapper = makeTag("span", {
 		className: "icon-wrapper"
 	});
@@ -36,6 +48,8 @@ function buildGalleryCard(
 		})
 	);
 
+	iconBox.appendChild(spanIconWrapper);
+
 	const spanCaption = makeTag("span", {
 		className: "img-captions",
 		textContent: caption
@@ -44,21 +58,13 @@ function buildGalleryCard(
 	divThumbnail.append(
 		divOverlay,
 		imgCover,
-		...(locked ? [spanIconWrapper] : []),
+		...(locked ? [iconBox] : []),
 		spanCaption
 	);
 
 	a.appendChild(divThumbnail);
 
 	return a;
-}
-
-function buildCardsRow() {
-	const articleRow = makeTag("article", {
-		className: "thumbnails"
-	});
-
-	return articleRow;
 }
 
 function buildImageCard(src, { imageId, filename = "",
