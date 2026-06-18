@@ -32,7 +32,7 @@ async function getClientGalleries(clientId) {
 	return await response.json();
 }
 
-async function getGalleryImagesBySlug(slug) {
+async function getGalleryAndImagesBySlug(slug) {
 	const response = await fetch(
 		`/api/galleries/${slug}/images`
 	);
@@ -40,10 +40,36 @@ async function getGalleryImagesBySlug(slug) {
 	return await response.json();
 }
 
+async function downloadImage(imageId, filename) {
+	const response = await fetch(
+		`/api/gallery-image/${imageId}/download`
+	);
+
+	if (!response.ok) {
+		const error = await response.json();
+		console.error(error.message);
+		return;
+	}
+
+	const blob = await response.blob();
+	const url = URL.createObjectURL(blob);
+
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = filename;
+
+	document.body.appendChild(a);
+	a.click();
+	a.remove();
+
+	URL.revokeObjectURL(url);
+}
+
 export {
 	getPublicGalleries,
 	getPrivateGalleries,
-	getGalleryImagesBySlug,
+	getGalleryAndImagesBySlug,
 	getClientsList,
-	getClientGalleries
+	getClientGalleries,
+	downloadImage
 }

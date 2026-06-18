@@ -3,12 +3,13 @@
 import {
 	getClientsList,
 	getClientGalleries,
-	getGalleryImagesBySlug
+	getGalleryAndImagesBySlug,
+	downloadImage
 } from "../../services/gallery.service.js";
 import {
 	buildGalleryCard,
 	buildCardsRow,
-	buildImage
+	buildImageCard
 } from './galleries.views.js';
 
 const LIMIT_PER_ROW = 5;
@@ -60,7 +61,7 @@ async function renderClientGalleries() {
 		params.get("client")
 	);
 
-	if (clientGalleries.length === 0) return;
+	if (clientGalleries.length === 0) return; // wip
 
 	galleriesContainer.textContent = "";
 
@@ -74,7 +75,7 @@ async function renderClientGalleries() {
 		row.appendChild(
 			buildGalleryCard(
 				gallery.preview,
-				gallery.coverImage,
+				gallery.title,
 				`/entrega.html?slug=${gallery.slug}`
 			)
 		);
@@ -95,11 +96,11 @@ async function renderGalleryImages() {
 	const galleriesContainer =
 		document.querySelector("#galleries");
 	const params = new URLSearchParams(location.search);
-	const imagesData = await getGalleryImagesBySlug(
+	const galleryAndImages = await getGalleryAndImagesBySlug(
 		params.get("slug")
 	);
 
-	if (!imagesData) {
+	if (!galleryAndImages) {
 		console.log("Error abriendo galeria.");
 		return;
 	}
@@ -109,11 +110,13 @@ async function renderGalleryImages() {
 	const fragment = document.createDocumentFragment();
 	let row = buildCardsRow();
 
-	for (const image of imagesData) {
+	for (const image of galleryAndImages.images) {
 		row.appendChild(
-			buildImage(
-				image.src,
-			)
+			buildImageCard(image.src, {
+				imageId: image._id,
+				filename: image.filename,
+				download: galleryAndImages.downloadsEnabled
+			})
 		);
 
 		if (row.childElementCount === LIMIT_PER_ROW) {
@@ -132,6 +135,17 @@ function handleBackToLinkDisplay(params) {
 	const backTo = document.querySelector("#back-to");
 
 	backTo.hidden = params.size === 0;
+}
+
+async function downloadImage_clickEvents(event) {
+	const btnDownload = event.target.closest(".btn-download");
+
+	if (!btnDownload) return;
+
+	await downloadImage(
+		btnDownload.dataset.imageId,
+		btnDownload.dataset.filename
+	);
 }
 
 async function getClients_loadEvents(event) {

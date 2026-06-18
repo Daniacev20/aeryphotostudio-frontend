@@ -61,7 +61,9 @@ function buildCardsRow() {
 	return articleRow;
 }
 
-function buildImage(src) {
+function buildImageCard(src, { imageId, filename = "",
+	download = false }) {
+	
 	const divFrame = makeTag("div", {
 		classes: [
 			"thumbnail-item"
@@ -72,7 +74,40 @@ function buildImage(src) {
 		src
 	});
 
-	divFrame.append(img);
+	const iconBox = makeTag("div", {
+		className: "icon-box"
+	});
+
+	const spanStarWrapper = makeTag("span", {
+		className: "icon-wrapper",
+		"data-image-id": imageId,
+		"data-filename": filename
+	});
+
+	const spanDownloadWrapper = makeTag("span", {
+		className: "icon-wrapper btn-download",
+		"data-image-id": imageId,
+		"data-filename": filename
+	});
+
+	spanStarWrapper.appendChild(
+		makeTag("i", {
+			className: "fas fa-star"
+		})
+	);
+	
+	spanDownloadWrapper.appendChild(
+		makeTag("i", {
+			className: "fas fa-download"
+		})
+	);
+
+	iconBox.append(
+		spanStarWrapper,
+		...(download ? [spanDownloadWrapper] : [])
+	);
+
+	divFrame.append(img, iconBox);
 
 	return divFrame;
 }
@@ -80,5 +115,5 @@ function buildImage(src) {
 export {
 	buildGalleryCard,
 	buildCardsRow,
-	buildImage
+	buildImageCard
 }

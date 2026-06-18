@@ -128,19 +128,40 @@ header {
 	filter: brightness(.9) contrast(.9);
 }
 
-/* contenedor de iconos de candado usado de fondo del icono */
-.icon-wrapper {
+/* contenedor de iconos en caso de que haya mas de uno
+	de momento: locked, star/favorite y download*/
+.icon-box {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
 	position: absolute;
-	top: .8rem;
-	right: .8rem;
-	background-color: var(--icon-bg-color1);
-	padding: .5rem;
+	top: .3rem;
+	right: .3rem;
+	background-color: transparent;
+	color: black; /* color de icono */
+}
+
+.icon-box > .icon-wrapper:hover {
+	color: var(--icon-color1);
+}
+
+.icon-box > .icon-wrapper:active {
+	color: var(--icon-color2);
+}
+
+.icon-box > .icon-wrapper .active {
+	color: var(--primary-color2) !important;
+}
+
+/* contenedor de iconos usado de fondo del icono */
+.icon-wrapper {
+	background-color: transparent;
+	padding: .3rem;
 	border-radius: 50%;
 	color: black; /* color de icono */
 }
 
-/* separacion de estilos de caratulas bloqueadas y desbloqueadas
-	para las paginas entrega y galeria respectivamente */
+/* captions de las caratulas/previews */
 .img-captions {
 	position: absolute;
 	bottom: .8rem;
