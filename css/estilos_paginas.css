@@ -90,21 +90,21 @@ header {
 	padding: 0 .5rem;
 }
 
-.thumbnails {
-	display: flex;
+#galleries {
+	--card-size: 250px;
+	--gap: 1rem;
+	display: grid;
+	gap: var(--gap);
+	grid-template-columns: repeat(auto-fit, var(--card-size));
 	justify-content: center;
-	gap: 1rem;
-	margin: 1rem auto;
-	width: 90vw;
-}
-
-.thumbnails > a {
-	flex: 1 1 0;
+	max-width: calc(5 * var(--card-size) + 4 * var(--gap));
+	margin-inline: auto;
+	padding-bottom: 1rem;
 }
 
 /* contenedor de la caratula (thumbnail) de cada
 	galeria, su icono y su caption */
-.thumbnail-item {
+.thumbnail {
 	position: relative;
 	aspect-ratio: 1;
 	width: 100%;
@@ -114,7 +114,7 @@ header {
 	align-items: center;
 }
 
-.thumbnail-item img {
+.thumbnail img {
 	height: 100%;
 	width: 100%;
 	object-fit: contain;
@@ -724,11 +724,8 @@ section.active {
 @media only screen and (max-width: 600px) {
 	/* celulares estandar */
 	/* vista de galeria y entrega */
-	.thumbnails {
-		flex-direction: column;
-	}
 
-	.thumbnail-item img {
+	.thumbnail img {
 		height: 40vh;
 		width: 100%;
 	}

@@ -8,11 +8,8 @@ import {
 } from "../../services/gallery.service.js";
 import {
 	buildGalleryCard,
-	buildCardsRow,
 	buildImageCard
 } from './galleries.views.js';
-
-const LIMIT_PER_ROW = 5;
 
 async function renderClientsPreview() {
 	const galleriesContainer =
@@ -20,18 +17,17 @@ async function renderClientsPreview() {
 
 	const clients = await getClientsList();
 
-	if (clients.length === 0) return;
+	if (clients.length === 0) return; // wip
 
-	galleriesContainer.textContent = "";
+	galleriesContainer.innerHTML = "";
 
 	const fragment = document.createDocumentFragment();
-	let row = buildCardsRow();
 
 	for (let currentClient of clients) {
 		if (!currentClient.preview)
 			continue;
 
-		row.appendChild(
+		fragment.appendChild(
 			buildGalleryCard(
 				currentClient.preview,
 				currentClient.name,
@@ -39,15 +35,7 @@ async function renderClientsPreview() {
 				false
 			)
 		);
-
-		if (row.childElementCount === LIMIT_PER_ROW) {
-			fragment.appendChild(row);
-			row = buildCardsRow();
-		}
 	}
-
-	if (row.childElementCount > 0)
-		fragment.appendChild(row);
 
 	galleriesContainer.appendChild(fragment);
 }
@@ -63,31 +51,22 @@ async function renderClientGalleries() {
 
 	if (clientGalleries.length === 0) return; // wip
 
-	galleriesContainer.textContent = "";
+	galleriesContainer.innerHTML = "";
 
 	const fragment = document.createDocumentFragment();
-	let row = buildCardsRow();
 
 	for (let gallery of clientGalleries) {
 		if (!gallery.preview)
 			continue;
 
-		row.appendChild(
+		fragment.appendChild(
 			buildGalleryCard(
 				gallery.preview,
 				gallery.title,
 				`/entrega.html?slug=${gallery.slug}`
 			)
 		);
-
-		if (row.childElementCount === LIMIT_PER_ROW) {
-			fragment.appendChild(row);
-			row = buildCardsRow();
-		}
 	}
-
-	if (row.childElementCount > 0)
-		fragment.appendChild(row);
 
 	galleriesContainer.appendChild(fragment);
 }
@@ -102,31 +81,22 @@ async function renderGalleryImages() {
 
 	if (!galleryAndImages) {
 		console.log("Error abriendo galeria.");
-		return;
+		return; // wip
 	}
 
-	galleriesContainer.textContent = "";
+	galleriesContainer.innerHTML = "";
 
 	const fragment = document.createDocumentFragment();
-	let row = buildCardsRow();
 
 	for (const image of galleryAndImages.images) {
-		row.appendChild(
+		fragment.appendChild(
 			buildImageCard(image.src, {
 				imageId: image._id,
 				filename: image.filename,
 				download: galleryAndImages.downloadsEnabled
 			})
 		);
-
-		if (row.childElementCount === LIMIT_PER_ROW) {
-			fragment.appendChild(row);
-			row = buildCardsRow();
-		}
 	}
-
-	if (row.childElementCount > 0)
-		fragment.appendChild(row);
 
 	galleriesContainer.appendChild(fragment);
 }

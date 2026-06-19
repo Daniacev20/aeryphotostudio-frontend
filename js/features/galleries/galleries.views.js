@@ -2,14 +2,6 @@
 
 import { makeTag } from '../../ui/dom.js';
 
-function buildCardsRow() {
-	const articleRow = makeTag("article", {
-		className: "thumbnails"
-	});
-
-	return articleRow;
-}
-
 function buildGalleryCard(
 	imgSrc,
 	caption,
@@ -20,7 +12,7 @@ function buildGalleryCard(
 	
 	const divThumbnail = makeTag("div", {
 		className:
-			"thumbnail-item overlay-wrapper",
+			"thumbnail overlay-wrapper",
 	});
 
 	if (locked)
@@ -72,7 +64,7 @@ function buildImageCard(src, { imageId, filename = "",
 	
 	const divFrame = makeTag("div", {
 		classes: [
-			"thumbnail-item"
+			"thumbnail"
 		]
 	});
 
@@ -120,6 +112,5 @@ function buildImageCard(src, { imageId, filename = "",
 
 export {
 	buildGalleryCard,
-	buildCardsRow,
 	buildImageCard
 }
