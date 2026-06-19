@@ -113,13 +113,22 @@ function handleBackToLinkDisplay(params) {
 async function toggleFavorite_clickEvents(event) {
 	const btnFavorite = event.target.closest(".btn-favorite");
 
-	if (!btnFavorite) return;
+	if (!btnFavorite || btnFavorite.disabled)
+		return;
 
 	const imageId = btnFavorite.dataset.imageId;
+	btnFavorite.disabled = true;
 
-	const success = await toggleFavorite(imageId);
+	try {
+		const image = await toggleFavorite(imageId);
 
-	btnFavorite.classList.toggle("active");
+		if (!image) return;
+
+		btnFavorite.classList.toggle("is-favorite", image.favorite);
+	}
+	finally {
+		btnFavorite.disabled = false;
+	}
 }
 
 async function downloadImage_clickEvents(event) {

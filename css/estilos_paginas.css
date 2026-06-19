@@ -149,7 +149,8 @@ header {
 	color: var(--icon-color2);
 }
 
-.icon-box > .icon-wrapper.active {
+.icon-box > .icon-wrapper.is-favorite,
+.icon-box > .icon-wrapper.is-downloaded {
 	color: var(--primary-color2) !important;
 }
 

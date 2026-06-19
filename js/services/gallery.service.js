@@ -81,14 +81,7 @@ async function toggleFavorite(imageId) {
 		return false;
 	}
 
-	try {
-		const result = await response.json();
-		const success = Number(result.message) > 0;
-		return success;
-	} catch (err) {
-		console.log(err);
-		return false;
-	}
+	return await response.json();
 }
 
 export {

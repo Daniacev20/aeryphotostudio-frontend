@@ -88,7 +88,7 @@ function buildImageCard(src, {
 	});
 
 	if (favoriteStatus)
-		spanStarWrapper.classList.add("active");
+		spanStarWrapper.classList.add("is-favorite");
 
 	const spanDownloadWrapper = makeTag("span", {
 		className: "icon-wrapper btn-download",
@@ -97,7 +97,7 @@ function buildImageCard(src, {
 	});
 
 	if (downloadedStatus)
-		spanDownloadWrapper.classList.add("active");
+		spanDownloadWrapper.classList.add("is-downloaded");
 
 	spanStarWrapper.appendChild(
 		makeTag("i", {
