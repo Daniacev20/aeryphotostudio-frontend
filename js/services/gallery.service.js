@@ -42,7 +42,7 @@ async function getGalleryAndImagesBySlug(slug) {
 
 async function downloadImage(imageId, filename) {
 	const response = await fetch(
-		`/api/gallery-image/${imageId}/download`
+		`/api/gallery-images/${imageId}/download`
 	);
 
 	if (!response.ok) {

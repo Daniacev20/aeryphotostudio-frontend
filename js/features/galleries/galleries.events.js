@@ -164,5 +164,6 @@ async function getClients_loadEvents(event) {
 }
 
 export {
-	getClients_loadEvents
+	getClients_loadEvents,
+	downloadImage_clickEvents
 };
