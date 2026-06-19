@@ -4,6 +4,7 @@ import {
 	getClientsList,
 	getClientGalleries,
 	getGalleryAndImagesBySlug,
+	toggleFavorite,
 	downloadImage
 } from "../../services/gallery.service.js";
 import {
@@ -93,7 +94,9 @@ async function renderGalleryImages() {
 			buildImageCard(image.src, {
 				imageId: image._id,
 				filename: image.filename,
-				download: galleryAndImages.downloadsEnabled
+				favoriteStatus: image.favorite,
+				downloadButton: galleryAndImages.downloadsEnabled,
+				downloadedStatus: image.downloaded
 			})
 		);
 	}
@@ -105,6 +108,18 @@ function handleBackToLinkDisplay(params) {
 	const backTo = document.querySelector("#back-to");
 
 	backTo.hidden = params.size === 0;
+}
+
+async function toggleFavorite_clickEvents(event) {
+	const btnFavorite = event.target.closest(".btn-favorite");
+
+	if (!btnFavorite) return;
+
+	const imageId = btnFavorite.dataset.imageId;
+
+	const success = await toggleFavorite(imageId);
+
+	btnFavorite.classList.toggle("active");
 }
 
 async function downloadImage_clickEvents(event) {
@@ -135,5 +150,6 @@ async function getClients_loadEvents(event) {
 
 export {
 	getClients_loadEvents,
+	toggleFavorite_clickEvents,
 	downloadImage_clickEvents
 };

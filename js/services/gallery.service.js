@@ -1,8 +1,10 @@
 // services/gallery.service.js
 
+const BASE_URL = '/api';
+
 async function getPublicGalleries() {
 	const response = await fetch(
-		"/api/galleries?visibility=public"
+		`${BASE_URL}/galleries?visibility=public`
 	);
 
 	return await response.json();
@@ -10,7 +12,7 @@ async function getPublicGalleries() {
 
 async function getPrivateGalleries() {
 	const response = await fetch(
-		"/api/galleries?visibility=private"
+		`${BASE_URL}/galleries?visibility=private`
 	);
 
 	return await response.json();
@@ -18,7 +20,7 @@ async function getPrivateGalleries() {
 
 async function getClientsList() {
 	const response = await fetch(
-		"/api/clients"
+		`${BASE_URL}/clients`
 	);
 
 	return await response.json();
@@ -26,7 +28,7 @@ async function getClientsList() {
 
 async function getClientGalleries(clientId) {
 	const response = await fetch(
-		`/api/clients/${clientId}/galleries`
+		`${BASE_URL}/clients/${clientId}/galleries`
 	);
 
 	return await response.json();
@@ -34,7 +36,7 @@ async function getClientGalleries(clientId) {
 
 async function getGalleryAndImagesBySlug(slug) {
 	const response = await fetch(
-		`/api/galleries/${slug}/images`
+		`${BASE_URL}/galleries/${slug}/images`
 	);
 
 	return await response.json();
@@ -42,7 +44,7 @@ async function getGalleryAndImagesBySlug(slug) {
 
 async function downloadImage(imageId, filename) {
 	const response = await fetch(
-		`/api/gallery-images/${imageId}/download`
+		`${BASE_URL}/gallery-images/${imageId}/download`
 	);
 
 	if (!response.ok) {
@@ -65,11 +67,36 @@ async function downloadImage(imageId, filename) {
 	URL.revokeObjectURL(url);
 }
 
+async function toggleFavorite(imageId) {
+	const response = await fetch(
+		`${BASE_URL}/gallery-image/${imageId}/toggle-favorite`,
+		{
+			method: "PATCH"
+		}
+	);
+
+	if (!response.ok) {
+		const error = await response.json();
+		console.error(error);
+		return false;
+	}
+
+	try {
+		const result = await response.json();
+		const success = Number(result.message) > 0;
+		return success;
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+}
+
 export {
 	getPublicGalleries,
 	getPrivateGalleries,
 	getGalleryAndImagesBySlug,
 	getClientsList,
 	getClientGalleries,
-	downloadImage
+	downloadImage,
+	toggleFavorite
 }

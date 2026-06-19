@@ -59,8 +59,13 @@ function buildGalleryCard(
 	return a;
 }
 
-function buildImageCard(src, { imageId, filename = "",
-	download = false }) {
+function buildImageCard(src, {
+		imageId,
+		filename = "",
+		favoriteStatus = false,
+		downloadButton = false,
+		downloadedStatus = false
+	}) {
 	
 	const divFrame = makeTag("div", {
 		classes: [
@@ -77,16 +82,22 @@ function buildImageCard(src, { imageId, filename = "",
 	});
 
 	const spanStarWrapper = makeTag("span", {
-		className: "icon-wrapper",
+		className: "icon-wrapper btn-favorite",
 		"data-image-id": imageId,
 		"data-filename": filename
 	});
+
+	if (favoriteStatus)
+		spanStarWrapper.classList.add("active");
 
 	const spanDownloadWrapper = makeTag("span", {
 		className: "icon-wrapper btn-download",
 		"data-image-id": imageId,
 		"data-filename": filename
 	});
+
+	if (downloadedStatus)
+		spanDownloadWrapper.classList.add("active");
 
 	spanStarWrapper.appendChild(
 		makeTag("i", {
@@ -102,7 +113,7 @@ function buildImageCard(src, { imageId, filename = "",
 
 	iconBox.append(
 		spanStarWrapper,
-		...(download ? [spanDownloadWrapper] : [])
+		...(downloadButton ? [spanDownloadWrapper] : [])
 	);
 
 	divFrame.append(img, iconBox);

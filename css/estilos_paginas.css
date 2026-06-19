@@ -149,7 +149,7 @@ header {
 	color: var(--icon-color2);
 }
 
-.icon-box > .icon-wrapper .active {
+.icon-box > .icon-wrapper.active {
 	color: var(--primary-color2) !important;
 }
 
@@ -167,7 +167,7 @@ header {
 	bottom: .8rem;
 	left: 50%;
 	transform: translateX(-50%);
-	white-space: nowrap;
+	text-align: center;
 	color: var(--bg-color1);
 	font-family: "Freight Big Pro", serif;
 	font-weight: bold;
