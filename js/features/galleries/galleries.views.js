@@ -81,7 +81,7 @@ function buildImageCard(src, {
 		className: "icon-box"
 	});
 
-	const spanStarWrapper = makeTag("span", {
+	const spanStarWrapper = makeTag("button", {
 		className: "icon-wrapper btn-favorite",
 		"data-image-id": imageId,
 		"data-filename": filename
@@ -90,7 +90,7 @@ function buildImageCard(src, {
 	if (favoriteStatus)
 		spanStarWrapper.classList.add("is-favorite");
 
-	const spanDownloadWrapper = makeTag("span", {
+	const spanDownloadWrapper = makeTag("button", {
 		className: "icon-wrapper btn-download",
 		"data-image-id": imageId,
 		"data-filename": filename

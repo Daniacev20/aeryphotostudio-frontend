@@ -142,7 +142,7 @@ header {
 }
 
 .icon-box > .icon-wrapper:hover {
-	color: var(--icon-color1);
+	color: #A65729;
 }
 
 .icon-box > .icon-wrapper:active {
@@ -155,6 +155,11 @@ header {
 }
 
 /* contenedor de iconos usado de fondo del icono */
+button.icon-wrapper {
+	all: unset;
+}
+
+button.icon-wrapper,
 .icon-wrapper {
 	background-color: transparent;
 	padding: .3rem;

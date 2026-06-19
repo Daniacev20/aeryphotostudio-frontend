@@ -17,7 +17,7 @@
 	--bg-hover2: #C7C7C7;
 	--icon-bg-color1: #FCFCFC;
 	--icon-color1: #3AA6EB;
-	--icon-color2: #0F7EC5;
+	--icon-color2: #A65729;
 
 }
 
@@ -183,7 +183,7 @@ input[type=email],
 input[type=search],
 input[type=button],
 textarea,
-button {
+button:not(.icon-wrapper) {
 	border: 1px solid var(--primary-color2);
 	border-radius: .3rem;
 	color: var(--primary-color2);
@@ -195,7 +195,7 @@ button {
 	user-select: none;
 }
 
-button {
+button:not(.icon-wrapper) {
 	margin: .4rem 0;
 	background-color: var(--bg-color2);
 	color: var(--primary-color1);
@@ -214,12 +214,12 @@ input[type=email]:hover,
 input[type=search]:hover,
 input[type=button]:hover,
 textarea:hover,
-button:hover {
+button:not(.icon-wrapper):hover {
 	box-shadow: inset -1px -1px 3px var(--primary-color2);
 }
 
 input[type=button]:hover,
-button:hover {
+button:not(.icon-wrapper):hover {
 	box-shadow: inset -1px -1px 3px var(--primary-color2);
  	background-color: #B1B1B1;
 }
@@ -234,12 +234,12 @@ input[type=email]:focus,
 input[type=search]:focus,
 input[type=button]:focus,
 textarea:focus,
-button:focus {
+button:not(.icon-wrapper):focus {
 	box-shadow: inset -1px -1px 1.5px var(--primary-color2);
 }
 
 input[type=button]:hover,
-button:active {
+button:not(.icon-wrapper):active {
 	background-color: #A0A0A0;
 	box-shadow: none;
 }
