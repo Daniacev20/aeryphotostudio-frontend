@@ -110,6 +110,21 @@ function handleBackToLinkDisplay(params) {
 	backTo.hidden = params.size === 0;
 }
 
+async function getClients_loadEvents(event) {
+	const params = new URLSearchParams(location.search);
+	const client = params.get("client");
+	const slug = params.get("slug");
+
+	handleBackToLinkDisplay(params);
+
+	if (!client && !slug)
+		await renderClientsPreview();
+	else if (client && !slug)
+		await renderClientGalleries();
+	else if (!client && slug)
+		renderGalleryImages();
+}
+
 async function toggleFavorite_clickEvents(event) {
 	const btnFavorite = event.target.closest(".btn-favorite");
 
@@ -142,23 +157,17 @@ async function downloadImage_clickEvents(event) {
 	);
 }
 
-async function getClients_loadEvents(event) {
-	const params = new URLSearchParams(location.search);
-	const client = params.get("client");
-	const slug = params.get("slug");
+function openImage_clickEvents(event) {
+	const img = event.target.closest(".thumbnail > img");
 
-	handleBackToLinkDisplay(params);
+	if (!img) return;
 
-	if (!client && !slug)
-		await renderClientsPreview();
-	else if (client && !slug)
-		await renderClientGalleries();
-	else if (!client && slug)
-		renderGalleryImages();
+	const modal = document.querySelector("#image-modal-dialog");
 }
 
 export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
-	downloadImage_clickEvents
+	downloadImage_clickEvents,
+	openImage_clickEvents
 };

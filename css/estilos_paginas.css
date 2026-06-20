@@ -141,17 +141,17 @@ header {
 	color: black; /* color de icono */
 }
 
-.icon-box > .icon-wrapper:hover {
-	color: #A65729;
+.icon-wrapper:hover {
+	color: var(--icon-color1);
 }
 
-.icon-box > .icon-wrapper:active {
-	color: var(--icon-color2);
+.icon-wrapper:active {
+	color: var(--primary-color2);
 }
 
-.icon-box > .icon-wrapper.is-favorite,
-.icon-box > .icon-wrapper.is-downloaded {
-	color: var(--primary-color2) !important;
+.is-favorite,
+.is-downloaded {
+	color: var(--primary-color1) !important;
 }
 
 /* contenedor de iconos usado de fondo del icono */
@@ -165,6 +165,7 @@ button.icon-wrapper,
 	padding: .3rem;
 	border-radius: 50%;
 	color: black; /* color de icono */
+	cursor: pointer;
 }
 
 /* captions de las caratulas/previews */
@@ -181,6 +182,88 @@ button.icon-wrapper,
 	text-shadow: -1px -2px 5px black;
 	padding: .2rem .4rem;
 	border-radius: .2rem;
+}
+
+/* estilos de ventana modal */
+#image-modal-dialog {
+	/* reset de estilos */
+	border: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	position: fixed;
+	overflow: hidden;
+	inset: 0;
+	height: auto;
+	width: auto;
+	max-height: unset;
+	max-width: unset;
+	background-color: rgba(0, 0, 0, 0.9);
+	color: white;
+	z-index: 1000;
+}
+
+#image-modal-dialog[open] {
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-header {
+	display: flex;
+	flex-shrink: 0;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 1rem;
+	height: 50px;
+}
+
+#modal-actions {
+	display: flex;
+	gap: 1.5rem;
+}
+
+button.modal-icon {
+	all: unset;
+}
+
+button.modal-icon:hover {
+	background-color: transparent;
+	border: none;
+	color: var(--icon-color1);
+}
+
+button.modal-icon:active {
+	background-color: transparent;
+	color: var(--primary-color2);
+}
+
+.modal-main {
+	height: 100%;
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+}
+
+#prev-image, #next-image {
+	padding: 0;
+	margin: 0;
+	outline: none;
+	border: none;
+	background-color: transparent;
+	color: white;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+#modal-image {
+	max-height: 90%;
+	max-width: 90%;
+	object-fit: contain;
 }
 
 /* fin de seccion: GALERIA */

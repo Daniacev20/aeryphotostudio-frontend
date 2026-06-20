@@ -121,6 +121,20 @@ function buildImageCard(src, {
 	return divFrame;
 }
 
+function openModalDialog(modalDialog, image) {
+	renderModalImage(image);
+	modalDialog.showModal();
+}
+
+function renderModalImage(modalImage, image) {
+	modalImage.src = image.src;
+	modalImage.alt = image.name;
+}
+
+function closeModalDialog(modalDialog) {
+	modalDialog.close();
+}
+
 export {
 	buildGalleryCard,
 	buildImageCard
