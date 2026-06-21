@@ -9,8 +9,15 @@ import {
 } from "../../services/gallery.service.js";
 import {
 	buildGalleryCard,
-	buildImageCard
+	buildImageCard,
+	openModalDialog,
+	renderModalImage,
+	closeModalDialog
 } from './galleries.views.js';
+import { galleryState } from '../../conf/gallery.state.js';
+
+const modalDialog = document.querySelector("#image-modal-dialog");
+const modalImage = document.querySelector("#modal-image");
 
 async function renderClientsPreview() {
 	const galleriesContainer =
@@ -85,13 +92,17 @@ async function renderGalleryImages() {
 		return; // wip
 	}
 
+	// track gallery status for events
+	galleryState.images = galleryAndImages.images;
+
 	galleriesContainer.innerHTML = "";
 
 	const fragment = document.createDocumentFragment();
+	let index = 0;
 
 	for (const image of galleryAndImages.images) {
 		fragment.appendChild(
-			buildImageCard(image.src, {
+			buildImageCard(image.src, index, {
 				imageId: image._id,
 				filename: image.filename,
 				favoriteStatus: image.favorite,
@@ -99,6 +110,8 @@ async function renderGalleryImages() {
 				downloadedStatus: image.downloaded
 			})
 		);
+
+		index++;
 	}
 
 	galleriesContainer.appendChild(fragment);
@@ -158,16 +171,27 @@ async function downloadImage_clickEvents(event) {
 }
 
 function openImage_clickEvents(event) {
-	const img = event.target.closest(".thumbnail > img");
+	const img = event.target.closest(".gallery-image");
 
 	if (!img) return;
 
-	const modal = document.querySelector("#image-modal-dialog");
+	galleryState.currentImageIndex = Number(img.dataset.index);
+
+	openModalDialog(modalDialog, modalImage, img);
+}
+
+function closeImage_clickEvents(event) {
+	const btnClose = event.target.closest("#btn-close-modal");
+
+	if (!btnClose) return;
+
+	closeModalDialog(modalDialog);
 }
 
 export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,
-	openImage_clickEvents
+	openImage_clickEvents,
+	closeImage_clickEvents
 };

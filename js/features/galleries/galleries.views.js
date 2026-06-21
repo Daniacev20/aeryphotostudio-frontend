@@ -59,7 +59,7 @@ function buildGalleryCard(
 	return a;
 }
 
-function buildImageCard(src, {
+function buildImageCard(src, index, {
 		imageId,
 		filename = "",
 		favoriteStatus = false,
@@ -74,7 +74,9 @@ function buildImageCard(src, {
 	});
 
 	const img = makeTag("img", {
-		src
+		src,
+		classes: ["gallery-image"],
+		"data-index": index
 	});
 
 	const iconBox = makeTag("div", {
@@ -121,14 +123,14 @@ function buildImageCard(src, {
 	return divFrame;
 }
 
-function openModalDialog(modalDialog, image) {
-	renderModalImage(image);
+function openModalDialog(modalDialog, modalImage, image) {
+	renderModalImage(modalImage, image);
 	modalDialog.showModal();
 }
 
 function renderModalImage(modalImage, image) {
 	modalImage.src = image.src;
-	modalImage.alt = image.name;
+	modalImage.alt = image.filename;
 }
 
 function closeModalDialog(modalDialog) {
@@ -137,5 +139,8 @@ function closeModalDialog(modalDialog) {
 
 export {
 	buildGalleryCard,
-	buildImageCard
+	buildImageCard,
+	openModalDialog,
+	renderModalImage,
+	closeModalDialog
 }
