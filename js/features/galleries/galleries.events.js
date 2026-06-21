@@ -8,114 +8,21 @@ import {
 	downloadImage
 } from "../../services/gallery.service.js";
 import {
-	buildGalleryCard,
-	buildImageCard,
+	renderClientsPreview,
+	renderClientGalleries,
+	renderGalleryImages,
 	openModalDialog,
-	renderModalImage,
-	closeModalDialog
+	closeModalDialog,
+	showNextModalImage,
+	showPreviousModalImage
 } from './galleries.views.js';
 import { galleryState } from '../../conf/gallery.state.js';
 
+const galleries = document.querySelector("#galleries");
 const modalDialog = document.querySelector("#image-modal-dialog");
 const modalImage = document.querySelector("#modal-image");
 
-async function renderClientsPreview() {
-	const galleriesContainer =
-		document.querySelector("#galleries");
 
-	const clients = await getClientsList();
-
-	if (clients.length === 0) return; // wip
-
-	galleriesContainer.innerHTML = "";
-
-	const fragment = document.createDocumentFragment();
-
-	for (let currentClient of clients) {
-		if (!currentClient.preview)
-			continue;
-
-		fragment.appendChild(
-			buildGalleryCard(
-				currentClient.preview,
-				currentClient.name,
-				`/entrega.html?client=${currentClient._id}`,
-				false
-			)
-		);
-	}
-
-	galleriesContainer.appendChild(fragment);
-}
-
-async function renderClientGalleries() {
-	const galleriesContainer =
-		document.querySelector("#galleries");
-		
-	const params = new URLSearchParams(location.search);
-	const clientGalleries = await getClientGalleries(
-		params.get("client")
-	);
-
-	if (clientGalleries.length === 0) return; // wip
-
-	galleriesContainer.innerHTML = "";
-
-	const fragment = document.createDocumentFragment();
-
-	for (let gallery of clientGalleries) {
-		if (!gallery.preview)
-			continue;
-
-		fragment.appendChild(
-			buildGalleryCard(
-				gallery.preview,
-				gallery.title,
-				`/entrega.html?slug=${gallery.slug}`
-			)
-		);
-	}
-
-	galleriesContainer.appendChild(fragment);
-}
-
-async function renderGalleryImages() {
-	const galleriesContainer =
-		document.querySelector("#galleries");
-	const params = new URLSearchParams(location.search);
-	const galleryAndImages = await getGalleryAndImagesBySlug(
-		params.get("slug")
-	);
-
-	if (!galleryAndImages) {
-		console.log("Error abriendo galeria.");
-		return; // wip
-	}
-
-	// track gallery status for events
-	galleryState.images = galleryAndImages.images;
-
-	galleriesContainer.innerHTML = "";
-
-	const fragment = document.createDocumentFragment();
-	let index = 0;
-
-	for (const image of galleryAndImages.images) {
-		fragment.appendChild(
-			buildImageCard(image.src, index, {
-				imageId: image._id,
-				filename: image.filename,
-				favoriteStatus: image.favorite,
-				downloadButton: galleryAndImages.downloadsEnabled,
-				downloadedStatus: image.downloaded
-			})
-		);
-
-		index++;
-	}
-
-	galleriesContainer.appendChild(fragment);
-}
 
 function handleBackToLinkDisplay(params) {
 	const backTo = document.querySelector("#back-to");
@@ -130,12 +37,26 @@ async function getClients_loadEvents(event) {
 
 	handleBackToLinkDisplay(params);
 
-	if (!client && !slug)
-		await renderClientsPreview();
-	else if (client && !slug)
-		await renderClientGalleries();
-	else if (!client && slug)
-		renderGalleryImages();
+	if (!client && !slug) {
+		const clients = await getClientsList();
+		await renderClientsPreview(galleries, clients);
+	}
+	else if (client && !slug) {
+		const clientGalleries =
+			await getClientGalleries(params.get("client"));
+
+		await renderClientGalleries(galleries, clientGalleries);
+	}
+	else if (!client && slug) {
+		const galleryAndImages =
+			await getGalleryAndImagesBySlug(params.get("slug"));
+
+		await renderGalleryImages(
+			galleries,
+			galleryAndImages,
+			galleryState
+		);
+	}
 }
 
 async function toggleFavorite_clickEvents(event) {
@@ -188,10 +109,28 @@ function closeImage_clickEvents(event) {
 	closeModalDialog(modalDialog);
 }
 
+function previousImage_clickEvents(event) {
+	const btnPrev = event.target.closest("#prev-image");
+
+	if (!btnPrev) return;
+
+	showPreviousModalImage(modalImage, galleryState);
+}
+
+function nextImage_clickEvents(event) {
+	const btnNext = event.target.closest("#next-image");
+
+	if (!btnNext) return;
+
+	showNextModalImage(modalImage, galleryState);
+}
+
 export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,
 	openImage_clickEvents,
-	closeImage_clickEvents
+	closeImage_clickEvents,
+	previousImage_clickEvents,
+	nextImage_clickEvents
 };

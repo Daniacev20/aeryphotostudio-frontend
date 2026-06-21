@@ -123,6 +123,88 @@ function buildImageCard(src, index, {
 	return divFrame;
 }
 
+async function renderClientsPreview(container, clients) {
+	if (clients.length === 0) return; // wip
+
+	container.innerHTML = "";
+
+	const fragment = document.createDocumentFragment();
+
+	for (let currentClient of clients) {
+		if (!currentClient.preview)
+			continue;
+
+		fragment.appendChild(
+			buildGalleryCard(
+				currentClient.preview,
+				currentClient.name,
+				`/entrega.html?client=${currentClient._id}`,
+				false
+			)
+		);
+	}
+
+	container.appendChild(fragment);
+}
+
+
+async function renderClientGalleries(container, galleries) {		
+	if (galleries.length === 0) return; // wip
+	
+	container.innerHTML = "";
+
+	const params = new URLSearchParams(location.search);
+	const fragment = document.createDocumentFragment();
+
+	for (let gallery of galleries) {
+		if (!gallery.preview)
+			continue;
+
+		fragment.appendChild(
+			buildGalleryCard(
+				gallery.preview,
+				gallery.title,
+				`/entrega.html?slug=${gallery.slug}`
+			)
+		);
+	}
+
+	container.appendChild(fragment);
+}
+
+async function renderGalleryImages(container, galleryAndImages, stateObject) {
+	if (!galleryAndImages) {
+		console.log("Error abriendo galeria.");
+		return; // wip
+	}
+
+	container.innerHTML = "";
+	
+	const params = new URLSearchParams(location.search);
+
+	// track gallery status for events
+	stateObject.images = galleryAndImages.images;
+
+	const fragment = document.createDocumentFragment();
+	let index = 0;
+
+	for (const image of galleryAndImages.images) {
+		fragment.appendChild(
+			buildImageCard(image.src, index, {
+				imageId: image._id,
+				filename: image.filename,
+				favoriteStatus: image.favorite,
+				downloadButton: galleryAndImages.downloadsEnabled,
+				downloadedStatus: image.downloaded
+			})
+		);
+
+		index++;
+	}
+
+	container.appendChild(fragment);
+}
+
 function openModalDialog(modalDialog, modalImage, image) {
 	renderModalImage(modalImage, image);
 	modalDialog.showModal();
@@ -137,10 +219,31 @@ function closeModalDialog(modalDialog) {
 	modalDialog.close();
 }
 
+function showNextModalImage(modalImage, stateObject) {
+	stateObject.currentImageIndex++;
+	renderModalImage(
+		modalImage,
+		stateObject.images[stateObject.currentImageIndex]
+	);
+}
+
+function showPreviousModalImage(modalImage, stateObject) {
+	stateObject.currentImageIndex--;
+	renderModalImage(
+		modalImage,
+		stateObject.images[stateObject.currentImageIndex]
+	);
+}
+
 export {
 	buildGalleryCard,
 	buildImageCard,
+	renderClientsPreview,
+	renderClientGalleries,
+	renderGalleryImages,
 	openModalDialog,
 	renderModalImage,
-	closeModalDialog
+	closeModalDialog,
+	showNextModalImage,
+	showPreviousModalImage
 }
