@@ -42,7 +42,7 @@ header {
 
 /* fin de seccion: HEADER */
 
-/* GALERIA: estilos especificos para la pagina galeria */
+/* PORTAFOLIO: estilos especificos para la pagina portafiolio */
 
 /* formulario de busqueda */
 #frm-gallery-search {
@@ -143,16 +143,16 @@ header {
 }
 
 .icon-wrapper:hover {
-	color: var(--icon-color1);
+	color: var(--bg-hover1);
 }
 
 .icon-wrapper:active {
-	color: var(--primary-color2);
+	color: var(--bg-hover2);
 }
 
 .is-favorite,
 .is-downloaded {
-	color: var(--primary-color1) !important;
+	color: var(--icon-color1) !important;
 }
 
 /* contenedor de iconos usado de fondo del icono */
@@ -227,21 +227,23 @@ button.icon-wrapper,
 
 button.modal-icon {
 	all: unset;
+	color: white;
 }
 
 button.modal-icon:hover {
 	background-color: transparent;
 	border: none;
-	color: var(--icon-color1);
+	/*color: var(--primary-color1);*/
+	color: var(--bg-color2);
 }
 
 button.modal-icon:active {
 	background-color: transparent;
-	color: var(--primary-color2);
+	/*color: var(--primary-color2);*/
+	color: var(--bg-hover2);
 }
 
 .modal-main {
-	height: 100%;
 	display: flex;
 	flex: 1;
 	flex-direction: row;
@@ -251,6 +253,7 @@ button.modal-icon:active {
 }
 
 #prev-image, #next-image {
+	flex-shrink: 0;
 	padding: 0;
 	margin: 0;
 	outline: none;
@@ -259,15 +262,16 @@ button.modal-icon:active {
 	color: white;
 	font-weight: bold;
 	font-size: 2rem;
+	width: 3rem;
 }
 
 #modal-image {
 	max-height: 90%;
-	max-width: 90%;
+	max-width: calc(100% - 8rem);
 	object-fit: contain;
 }
 
-/* fin de seccion: GALERIA */
+/* fin de seccion: PORTAFOLIO */
 
 /* SERVICIOS: estilos para la pagina de servicios */
 
@@ -769,7 +773,7 @@ section.active {
 @media only screen and (max-width: 375px) {
 	/* celulares muy estrechos */
 
-	/* vista de galeria */
+	/* vista de portafolio/entrega */
 	/* ocultar el icono de lupa cuando no cabe en el search bar */
 	#search-gallery {
 		text-indent: 0;
@@ -813,7 +817,7 @@ section.active {
 
 @media only screen and (max-width: 600px) {
 	/* celulares estandar */
-	/* vista de galeria y entrega */
+	/* vista de portafolio y entrega */
 
 	.thumbnail img {
 		height: 40vh;
@@ -822,6 +826,31 @@ section.active {
 
 	#frm-gallery-search {
 		margin: 0 1rem;
+	}
+
+	/* modal de portafilo/entrega */
+	.modal-header {
+		justify-content: space-between;
+	}
+
+	#modal-title {
+		width:100%;
+		text-align: center;
+		order: 3;
+		margin-top: 1rem;
+	}
+
+	.modal-actions {
+		gap: 1rem;
+	}
+
+	#prev-image, #next-image {
+		width: 2rem;
+		font-size: 1.5rem;
+	}
+
+	#modal-image {
+		max-width: calc(100% - 5rem);
 	}
 
 	/* vista de agenda */
