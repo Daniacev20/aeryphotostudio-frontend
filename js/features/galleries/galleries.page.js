@@ -9,11 +9,11 @@ import {
 	previousImage_clickEvents,
 	nextImage_clickEvents
 } from './galleries.events.js';
+import { Modal } from '../../conf/gallery.state.js';
 
 let galleriesInit = false;
 
 const galleries = document.querySelector("#galleries");
-const modalDialog = document.querySelector("#image-modal-dialog");
 
 export function initGalleryPage() {
 	if (galleriesInit) return;
@@ -22,9 +22,9 @@ export function initGalleryPage() {
 	document.addEventListener("click", toggleFavorite_clickEvents, false);
 	document.addEventListener("click", downloadImage_clickEvents, false);
 	galleries.addEventListener("click", openImage_clickEvents, false);
-	modalDialog.addEventListener("click", closeImage_clickEvents, false);
-	modalDialog.addEventListener("click", previousImage_clickEvents, false);
-	modalDialog.addEventListener("click", nextImage_clickEvents, false);
+	Modal.dialog.addEventListener("click", closeImage_clickEvents, false);
+	Modal.dialog.addEventListener("click", previousImage_clickEvents, false);
+	Modal.dialog.addEventListener("click", nextImage_clickEvents, false);
 
 	galleriesInit = true;
 }

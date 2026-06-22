@@ -1,6 +1,7 @@
 // galleries.views.js
 
 import { makeTag } from '../../ui/dom.js';
+import { Modal } from '../../conf/gallery.state.js';
 
 function buildGalleryCard(
 	imgSrc,
@@ -76,7 +77,7 @@ function buildImageCard(src, index, {
 	const img = makeTag("img", {
 		src,
 		classes: ["gallery-image"],
-		"data-index": index
+		"data-index": index,
 	});
 
 	const iconBox = makeTag("div", {
@@ -184,11 +185,13 @@ async function renderGalleryImages(container, galleryAndImages, stateObject) {
 
 	// track gallery status for events
 	stateObject.images = galleryAndImages.images;
+	stateObject.title = galleryAndImages.title;
+	stateObject.downloadsEnabled = galleryAndImages.downloadsEnabled;
 
 	const fragment = document.createDocumentFragment();
 	let index = 0;
 
-	for (const image of galleryAndImages.images) {
+	for (const image of stateObject.images) {
 		fragment.appendChild(
 			buildImageCard(image.src, index, {
 				imageId: image._id,
@@ -205,34 +208,35 @@ async function renderGalleryImages(container, galleryAndImages, stateObject) {
 	container.appendChild(fragment);
 }
 
-function openModalDialog(modalDialog, modalImage, image) {
-	renderModalImage(modalImage, image);
-	modalDialog.showModal();
-}
+function renderModal(stateObject) {
+	const image =
+		stateObject.images[stateObject.currentImageIndex];
 
-function renderModalImage(modalImage, image) {
-	modalImage.src = image.src;
-	modalImage.alt = image.filename;
-}
+	Modal.image.src = image.src;
+	Modal.image.alt = image.filename;
 
-function closeModalDialog(modalDialog) {
-	modalDialog.close();
-}
-
-function showNextModalImage(modalImage, stateObject) {
-	stateObject.currentImageIndex++;
-	renderModalImage(
-		modalImage,
-		stateObject.images[stateObject.currentImageIndex]
+	Modal.btnFavorite.classList.toggle(
+		"is-favorite",
+		image.favorite
 	);
-}
 
-function showPreviousModalImage(modalImage, stateObject) {
-	stateObject.currentImageIndex--;
-	renderModalImage(
-		modalImage,
-		stateObject.images[stateObject.currentImageIndex]
+
+	Modal.btnDownload.classList.toggle(
+		"is-downloaded",
+		image.downloaded
 	);
+
+	Modal.btnDownload.hidden = !stateObject.downloadsEnabled;
+
+	Modal.btnFavorite.dataset.imageId = image._id;
+	Modal.btnDownload.dataset.imageId = image._id;
+	Modal.btnDownload.dataset.filename = image.filename;
+
+	Modal.count.textContent =
+		`${stateObject.currentImageIndex + 1}/${stateObject.images.length}`;
+
+	Modal.title.textContent = stateObject.title;
+
 }
 
 export {
@@ -241,9 +245,5 @@ export {
 	renderClientsPreview,
 	renderClientGalleries,
 	renderGalleryImages,
-	openModalDialog,
-	renderModalImage,
-	closeModalDialog,
-	showNextModalImage,
-	showPreviousModalImage
+	renderModal
 }
