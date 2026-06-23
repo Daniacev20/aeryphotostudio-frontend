@@ -84,6 +84,12 @@ async function toggleFavorite(imageId) {
 	return await response.json();
 }
 
+async function downloadGallery(slug) {
+	window.open(
+		`${BASE_URL}/gallery/${slug}/download`
+	);
+}
+
 export {
 	getPublicGalleries,
 	getPrivateGalleries,
@@ -91,5 +97,6 @@ export {
 	getClientsList,
 	getClientGalleries,
 	downloadImage,
-	toggleFavorite
+	toggleFavorite,
+	downloadGallery
 }

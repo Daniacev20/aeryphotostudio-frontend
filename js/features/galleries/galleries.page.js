@@ -4,6 +4,7 @@ import {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,
+	downloadGallery_clickEvents,
 	openImage_clickEvents,
 	closeImage_clickEvents,
 	previousImage_clickEvents,
@@ -21,6 +22,7 @@ export function initGalleryPage() {
 	document.addEventListener("DOMContentLoaded", getClients_loadEvents, false);
 	document.addEventListener("click", toggleFavorite_clickEvents, false);
 	document.addEventListener("click", downloadImage_clickEvents, false);
+	document.addEventListener("click", downloadGallery_clickEvents, false);
 	galleries.addEventListener("click", openImage_clickEvents, false);
 	Modal.dialog.addEventListener("click", closeImage_clickEvents, false);
 	Modal.dialog.addEventListener("click", previousImage_clickEvents, false);

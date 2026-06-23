@@ -5,7 +5,8 @@ import {
 	getClientGalleries,
 	getGalleryAndImagesBySlug,
 	toggleFavorite,
-	downloadImage
+	downloadImage,
+	downloadGallery
 } from "../../services/gallery.service.js";
 import {
 	renderClientsPreview,
@@ -72,6 +73,26 @@ async function downloadImage_clickEvents(event) {
 		btnDownload.dataset.imageId,
 		btnDownload.dataset.filename
 	);
+}
+
+async function downloadGallery_clickEvents(event) {
+	const btnDownloadAll =
+		event.target.closest("#download-full-gallery");
+
+	if (!btnDownloadAll) return;
+
+	const params = new URLSearchParams(location.search);
+	const slug = params.get("slug");
+
+	if (!slug) return; // wip
+
+	btnDownloadAll.disabled = true;
+
+	try {
+		await downloadGallery(slug);
+	} finally {
+		btnDownloadAll.disabled = false;
+	}
 }
 
 function openImage_clickEvents(event) {
@@ -155,6 +176,7 @@ export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,
+	downloadGallery_clickEvents,
 	openImage_clickEvents,
 	closeImage_clickEvents,
 	previousImage_clickEvents,
