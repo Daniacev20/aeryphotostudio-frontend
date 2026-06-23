@@ -22,9 +22,9 @@ function getCircularIndex(array, index) {
 }
 
 function handleBackToLinkDisplay(params) {
-	const backTo = document.querySelector("#back-to");
-
-	backTo.hidden = params.size === 0;
+	// show the element where the back-to button is
+	const clientPanel = document.querySelector("#client-panel");
+	clientPanel.hidden = params.size === 0;
 }
 
 async function toggleFavorite_clickEvents(event) {

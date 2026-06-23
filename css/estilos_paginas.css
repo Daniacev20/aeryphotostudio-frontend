@@ -72,7 +72,7 @@ header {
 /* banner para mostrar link de vuelta a la entrada
 	principal a entrega.html. Este banner solo debe
 	mostrarse cuando se entra a las galerias de un cliente */
-#back-to {
+#client-panel {
 	width: 90vw;
 	display: flex;
 	justify-content: end;
