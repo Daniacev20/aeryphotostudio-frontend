@@ -112,7 +112,7 @@ async function getClients_loadEvents(event) {
 	const client = params.get("client");
 	const slug = params.get("slug");
 
-	handleBackToLinkDisplay(params);
+	// handleBackToLinkDisplay(params);
 
 	if (!client && !slug) {
 		const clients = await getClientsList();

@@ -73,12 +73,32 @@ header {
 	principal a entrega.html. Este banner solo debe
 	mostrarse cuando se entra a las galerias de un cliente */
 #client-panel {
+	min-height: 50px;
 	width: 90vw;
 	display: flex;
-	justify-content: end;
-	margin: auto;
-	padding: 1.5rem 0;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	margin-inline: auto;
+	padding-inline: .8rem;
 	display: flex;
+}
+
+#client-panel i.fas {
+	font-size: 1.4rem;
+	color: black;
+}
+
+#download-full-gallery {
+	all: unset;
+}
+
+#download-full-gallery:hover i.fas {
+	color: var(--bg-color3);
+}
+
+#download-full-gallery:active i.fas {
+	color: var(--bg-color2);
 }
 
 /* label del formulario con el icono */
