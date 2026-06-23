@@ -21,10 +21,25 @@ function getCircularIndex(array, index) {
 	return ((index % array.length) + array.length) % array.length;
 }
 
-function handleBackToLinkDisplay(params) {
-	// show the element where the back-to button is
-	const clientPanel = document.querySelector("#client-panel");
-	clientPanel.hidden = params.size === 0;
+function handleInfoBarDisplay(params) {
+	// show the back, download button and title based on the stage
+	const backTo = document.querySelector(".back-to");
+	const galleryTitle = document.querySelector("#gallery-title");
+	const downloadAll =
+		document.querySelector("#download-full-gallery");
+
+	backTo.hidden = params.size === 0;
+	downloadAll.hidden = !params.has("slug");
+
+	if (params.size === 0) {
+		galleryTitle.textContent = "Personas";
+	}
+	else if (params.has("client")) {
+		galleryTitle.textContent = "Galer\u00EDas";
+	}
+	else if (params.has("slug")) {
+		galleryTitle.textContent = "Im\u00E1genes";
+	}
 }
 
 async function toggleFavorite_clickEvents(event) {
@@ -112,7 +127,7 @@ async function getClients_loadEvents(event) {
 	const client = params.get("client");
 	const slug = params.get("slug");
 
-	// handleBackToLinkDisplay(params);
+	handleInfoBarDisplay(params);
 
 	if (!client && !slug) {
 		const clients = await getClientsList();

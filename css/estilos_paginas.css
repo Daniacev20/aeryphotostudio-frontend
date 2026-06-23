@@ -77,11 +77,14 @@ header {
 	width: 90vw;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 	margin-bottom: 1rem;
 	margin-inline: auto;
 	padding-inline: .8rem;
-	display: flex;
+	text-align: center;
+}
+
+#gallery-title {
+	flex: 1;
 }
 
 #client-panel i.fas {
@@ -91,14 +94,17 @@ header {
 
 #download-full-gallery {
 	all: unset;
+	color: black;
 }
 
+#download-full-gallery:hover,
 #download-full-gallery:hover i.fas {
-	color: var(--bg-color3);
+	color: var(--primary-color1);
 }
 
+#download-full-gallery:active,
 #download-full-gallery:active i.fas {
-	color: var(--bg-color2);
+	color: var(--primary-color2);
 }
 
 /* label del formulario con el icono */
