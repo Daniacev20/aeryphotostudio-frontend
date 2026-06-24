@@ -70,8 +70,13 @@ function buildImageCard(src, index, {
 	
 	const divFrame = makeTag("div", {
 		classes: [
-			"thumbnail"
+			"thumbnail",
+			"overlay-wrapper"
 		]
+	});
+
+	const divOverlay = makeTag("div", {
+		className: "overlay"
 	});
 
 	const img = makeTag("img", {
@@ -119,7 +124,7 @@ function buildImageCard(src, index, {
 		...(downloadButton ? [spanDownloadWrapper] : [])
 	);
 
-	divFrame.append(img, iconBox);
+	divFrame.append(divOverlay, img, iconBox);
 
 	return divFrame;
 }
