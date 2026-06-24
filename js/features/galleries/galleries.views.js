@@ -174,10 +174,7 @@ async function renderClientGalleries(container, galleries) {
 }
 
 async function renderGalleryImages(container, galleryAndImages, stateObject) {
-	if (!galleryAndImages) {
-		console.log("Error abriendo galeria.");
-		return; // wip
-	}
+	if (!galleryAndImages) return;
 
 	container.innerHTML = "";
 	

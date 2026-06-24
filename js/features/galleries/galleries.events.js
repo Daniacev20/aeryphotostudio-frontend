@@ -43,6 +43,40 @@ function handleInfoBarDisplay(params) {
 	}
 }
 
+async function getClients_loadEvents(event) {
+	const params = new URLSearchParams(location.search);
+	const client = params.get("client");
+	const slug = params.get("slug");
+
+	handleInfoBarDisplay(params);
+
+	if (!client && !slug) {
+		const clients = await getClientsList();
+		await renderClientsPreview(galleries, clients);
+	}
+	else if (client && !slug) {
+		const clientGalleries =
+			await getClientGalleries(params.get("client"));
+
+		await renderClientGalleries(galleries, clientGalleries);
+	}
+	else if (!client && slug) {
+		try {
+			let galleryAndImages =
+				await getGalleryAndImagesBySlug(params.get("slug"));
+
+			await renderGalleryImages(
+				galleries,
+				galleryAndImages,
+				galleryState
+			);
+		} catch (err) {
+			console.log(err);
+			return;
+		}
+	}
+}
+
 async function toggleFavorite_clickEvents(event) {
 	const btnFavorite = event.target.closest(".btn-favorite");
 
@@ -141,35 +175,6 @@ function nextImage_clickEvents(event) {
 		);
 
 	renderModal(galleryState);
-}
-
-async function getClients_loadEvents(event) {
-	const params = new URLSearchParams(location.search);
-	const client = params.get("client");
-	const slug = params.get("slug");
-
-	handleInfoBarDisplay(params);
-
-	if (!client && !slug) {
-		const clients = await getClientsList();
-		await renderClientsPreview(galleries, clients);
-	}
-	else if (client && !slug) {
-		const clientGalleries =
-			await getClientGalleries(params.get("client"));
-
-		await renderClientGalleries(galleries, clientGalleries);
-	}
-	else if (!client && slug) {
-		const galleryAndImages =
-			await getGalleryAndImagesBySlug(params.get("slug"));
-
-		await renderGalleryImages(
-			galleries,
-			galleryAndImages,
-			galleryState
-		);
-	}
 }
 
 export {
