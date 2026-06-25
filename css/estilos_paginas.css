@@ -211,6 +211,51 @@ button.icon-wrapper,
 	border-radius: .2rem;
 }
 
+#pin-prompt-modal {
+	/* reset de estilos */
+	border: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	position: fixed;
+	overflow: hidden;
+	inset: 50% 50%;
+	border-radius: .8rem;
+	transform: translate(-50%, -50%);
+	height: clamp(350px, 400px - 1rem, 100%);
+	width: clamp(350px, 400px - 1rem, 100%);
+	max-height: unset;
+	max-width: unset;
+	z-index: 900;
+}
+
+#pin-prompt-modal[open] {
+	display: flex;
+	flex-direction: column;
+}
+
+#pin-prompt-modal .modal-header {
+	justify-content: flex-end;
+	margin-top: .8rem;
+}
+
+#frm-gallery-pin {
+	display: flex;
+	gap: .5rem;
+	flex-direction: column;
+	margin-inline: auto;
+}
+
+#txt-pin {
+	font-size: 1.2rem;
+	padding: .8rem;
+}
+
+#btn-send-pin {
+	/*flex: 1;*/
+}
+
 /* estilos de ventana modal */
 #image-modal-dialog {
 	/* reset de estilos */

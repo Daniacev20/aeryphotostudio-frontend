@@ -148,10 +148,28 @@
 			</div> -->
 		</article>
 
+		<dialog id="pin-prompt-modal">
+			<section class="modal-header">
+				<button class="btn-close-modal">
+					<i class="fas fa-x"></i>
+				</button>
+			</section>
+
+			<section class="modal-main">
+				<form action="#" id="frm-gallery-pin">
+					<input type="password" name="txt-pin" id="txt-pin" placeholder="Ingrese su pin" autocomplete="current-password">
+					<button id="btn-send-pin">
+						<span>Enviar pin</span>
+						<i class="fas fa-paper-plane"></i>
+					</button>
+				</form>
+			</section>
+		</dialog>
+
 		<dialog id="image-modal-dialog">
 			<section class="modal-header">
 				<h2 id="modal-count">1/8</h2>
-				
+
 				<h2 id="modal-title">Galeria</h2>
 
 				<div id="modal-actions">

@@ -53,6 +53,9 @@ async function getClients_loadEvents(event) {
 	if (!client && !slug) {
 		const clients = await getClientsList();
 		await renderClientsPreview(galleries, clients);
+
+		// temporarily always on display for designing purposes
+		document.querySelector("#pin-prompt-modal").showModal();
 	}
 	else if (client && !slug) {
 		const clientGalleries =
