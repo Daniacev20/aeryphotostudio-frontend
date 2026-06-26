@@ -204,8 +204,46 @@ async function protectedGallery_clickEvents(event) {
 	// if (result.hasAccess) {
 	// 	location.href = `/entrega.html?slug=${slug}`;
 	// }
-	
+
 	PinModal.dialog.showModal();
+}
+
+async function sendPin_clickEvents(event) {
+	const btnSendPin = event.target.closest("#btn-send-pin");
+
+	if (!btnSendPin) return;
+
+	const PIN_REQUIRED_LENGTH = 4;
+	const pin = PinModal.txtPin.value.trim();
+
+	// validacion preliminar
+	if (!pin) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = "Pin requerido.";
+		return;
+	}
+	else if (pin.length < PIN_REQUIRED_LENGTH) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = "Pin muy corto.";
+		return;
+	}
+
+	btnSendPin.disabled = true;
+
+	try {
+		await validateGalleryPin(pin, galleryState.slug);
+
+		PinModal.lblError.textContent = "";
+		PinModal.lblError.hidden = true;
+		PinModal.dialog.close();
+
+		location.href = `/entrega.html?slug=${galleryState.slug}`;
+	} catch (err) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = err.message;
+	} finally {
+		btnSendPin.disabled = false;
+	}
 }
 
 export {
@@ -217,5 +255,6 @@ export {
 	closeImage_clickEvents,
 	previousImage_clickEvents,
 	nextImage_clickEvents,
-	protectedGallery_clickEvents
+	protectedGallery_clickEvents,
+	sendPin_clickEvents
 };

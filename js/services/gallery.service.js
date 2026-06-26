@@ -56,6 +56,11 @@ async function validateGalleryPin(pin, slug) {
 		}
 	);
 
+	if (!response.ok) {
+		const error = await response.json();
+		throw new Error(error.message);
+	}
+
 	return await response.json();
 }
 

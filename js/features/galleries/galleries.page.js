@@ -1,7 +1,6 @@
 // galleries.page.js
 
 import {
-	protectedGallery_clickEvents,
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,
@@ -9,7 +8,9 @@ import {
 	openImage_clickEvents,
 	closeImage_clickEvents,
 	previousImage_clickEvents,
-	nextImage_clickEvents
+	nextImage_clickEvents,
+	protectedGallery_clickEvents,
+	sendPin_clickEvents
 } from './galleries.events.js';
 import { GalleryModal, PinModal } from '../../conf/gallery.state.js';
 
@@ -29,6 +30,7 @@ export function initGalleryPage() {
 	GalleryModal.dialog.addEventListener("click", closeImage_clickEvents, false);
 	GalleryModal.dialog.addEventListener("click", previousImage_clickEvents, false);
 	GalleryModal.dialog.addEventListener("click", nextImage_clickEvents, false);
+	PinModal.dialog.addEventListener("click", sendPin_clickEvents, false);
 
 	galleriesInit = true;
 }
