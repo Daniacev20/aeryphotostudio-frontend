@@ -81,8 +81,14 @@ async function getClients_loadEvents(event) {
 				galleryState
 			);
 		} catch (err) {
-			console.log(err);
-			return;
+			if (/Pin requerido./gi.test(err.message)) {
+				galleryState.slug = slug;
+				galleryState.directAccess = true;
+				PinModal.dialog.showModal();
+				return;
+			}
+
+			throw err;
 		}
 	}
 }
@@ -255,6 +261,10 @@ function closePinModal_clickEvents(event) {
 	PinModal.lblError.textContent = "";
 	PinModal.lblError.hidden = true;
 	PinModal.dialog.close();
+
+	if (galleryState.directAccess) {
+		location.href = "/";
+	}
 }
 
 export {

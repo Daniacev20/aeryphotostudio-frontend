@@ -39,7 +39,10 @@ async function getGalleryAndImagesBySlug(slug) {
 		`${BASE_URL}/galleries/${slug}/images`
 	);
 	
-	if (!response.ok) {
+	if (response.status === 401) {
+		throw new Error("Pin requerido.");
+	}
+	else if (!response.ok) {
 		const error = response.json();
 		throw new Error(error.message);
 	}

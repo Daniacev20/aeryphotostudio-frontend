@@ -1,6 +1,7 @@
 // gallery.state.js
 
 const galleryState = {
+	directAccess: false,
 	slug: "",
 	images: [],
 	currentImageIndex: 0,
