@@ -150,14 +150,22 @@
 
 		<dialog id="pin-prompt-modal">
 			<section class="modal-header">
-				<button class="btn-close-modal">
+				<h2 class="pin-title">
+					Accesso a galer&iacute;a
+				</h2>
+				<span class="btn-close-pin-modal">
 					<i class="fas fa-x"></i>
-				</button>
+				</span>
 			</section>
 
 			<section class="modal-main">
-				<form action="#" id="frm-gallery-pin">
-					<input type="password" name="txt-pin" id="txt-pin" placeholder="Ingrese su pin" autocomplete="current-password">
+				<form action="#" id="frm-gallery-pin" novalidate>
+					<div class="pin-field">
+						<input type="text" name="email" class="to-hide" autocomplete="current-password">
+						<input type="password" name="txt-pin" id="txt-pin" placeholder="Ingrese su pin" maxlength="4" autocomplete="current-password">
+						<small class="pin-error" hidden></small>
+					</div>
+
 					<button id="btn-send-pin">
 						<span>Enviar pin</span>
 						<i class="fas fa-paper-plane"></i>

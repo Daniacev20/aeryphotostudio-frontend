@@ -6,15 +6,23 @@ import {
 	getGalleryAndImagesBySlug,
 	toggleFavorite,
 	downloadImage,
-	downloadGallery
+	downloadGallery,
+	validateGalleryPin,
+	verifyGalleryAccess
 } from "../../services/gallery.service.js";
+
 import {
 	renderClientsPreview,
 	renderClientGalleries,
 	renderGalleryImages,
 	renderModal
 } from './galleries.views.js';
-import { galleryState, Modal } from '../../conf/gallery.state.js';
+
+import {
+	galleryState,
+	GalleryModal,
+	PinModal
+} from '../../conf/gallery.state.js';
 
 const galleries = document.querySelector("#galleries");
 
@@ -52,23 +60,22 @@ async function getClients_loadEvents(event) {
 
 	if (!client && !slug) {
 		const clients = await getClientsList();
-		await renderClientsPreview(galleries, clients);
-
-		// temporarily always on display for designing purposes
-		document.querySelector("#pin-prompt-modal").showModal();
+		renderClientsPreview(galleries, clients);
 	}
 	else if (client && !slug) {
 		const clientGalleries =
 			await getClientGalleries(params.get("client"));
 
-		await renderClientGalleries(galleries, clientGalleries);
+		renderClientGalleries(galleries, clientGalleries);
 	}
 	else if (!client && slug) {
 		try {
-			let galleryAndImages =
-				await getGalleryAndImagesBySlug(params.get("slug"));
-
-			await renderGalleryImages(
+			const galleryAndImages =
+				await getGalleryAndImagesBySlug(
+					params.get("slug")
+				);
+			
+			renderGalleryImages(
 				galleries,
 				galleryAndImages,
 				galleryState
@@ -133,13 +140,15 @@ async function downloadGallery_clickEvents(event) {
 }
 
 function openImage_clickEvents(event) {
-	const img = event.target.closest(".gallery-image");
+	const params = new URLSearchParams(location.search);
+	if (!params.get("client")) return;
 
+	const img = event.target.closest(".gallery-image");
 	if (!img) return;
 
 	galleryState.currentImageIndex = Number(img.dataset.index);
 	renderModal(galleryState);
-	Modal.dialog.showModal();
+	GalleryModal.dialog.showModal();
 }
 
 function closeImage_clickEvents(event) {
@@ -147,7 +156,7 @@ function closeImage_clickEvents(event) {
 
 	if (!btnClose) return;
 
-	Modal.dialog.close();
+	GalleryModal.dialog.close();
 }
 
 function previousImage_clickEvents(event) {
@@ -180,6 +189,25 @@ function nextImage_clickEvents(event) {
 	renderModal(galleryState);
 }
 
+async function protectedGallery_clickEvents(event) {
+	const gallery = event.target.closest("[data-slug]");
+
+	if (!gallery) return;
+
+	if (gallery.dataset.isProtected !== "true") return;
+
+	event.preventDefault();
+
+	galleryState.slug = gallery.dataset.slug;
+
+	// const result = await verifyGalleryAccess(slug);
+	// if (result.hasAccess) {
+	// 	location.href = `/entrega.html?slug=${slug}`;
+	// }
+	
+	PinModal.dialog.showModal();
+}
+
 export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
@@ -188,5 +216,6 @@ export {
 	openImage_clickEvents,
 	closeImage_clickEvents,
 	previousImage_clickEvents,
-	nextImage_clickEvents
+	nextImage_clickEvents,
+	protectedGallery_clickEvents
 };

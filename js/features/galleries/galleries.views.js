@@ -1,15 +1,22 @@
 // galleries.views.js
 
 import { makeTag } from '../../ui/dom.js';
-import { Modal } from '../../conf/gallery.state.js';
+import { GalleryModal } from '../../conf/gallery.state.js';
 
 function buildGalleryCard(
 	imgSrc,
 	caption,
 	href = "#",
-	locked = true) {
+	locked = true,
+	{
+		slug = null,
+		isProtected = false
+	} = {}) {
 	
 	const a = makeTag("a", { href });
+
+	if (slug) a.dataset.slug = slug;
+	if (isProtected) a.dataset.isProtected = "true";
 	
 	const divThumbnail = makeTag("div", {
 		className:
@@ -129,7 +136,7 @@ function buildImageCard(src, index, {
 	return divFrame;
 }
 
-async function renderClientsPreview(container, clients) {
+function renderClientsPreview(container, clients) {
 	if (clients.length === 0) return; // wip
 
 	container.innerHTML = "";
@@ -153,8 +160,7 @@ async function renderClientsPreview(container, clients) {
 	container.appendChild(fragment);
 }
 
-
-async function renderClientGalleries(container, galleries) {		
+function renderClientGalleries(container, galleries) {		
 	if (galleries.length === 0) return; // wip
 	
 	container.innerHTML = "";
@@ -170,7 +176,12 @@ async function renderClientGalleries(container, galleries) {
 			buildGalleryCard(
 				gallery.preview,
 				gallery.title,
-				`/entrega.html?slug=${gallery.slug}`
+				`/entrega.html?slug=${gallery.slug}`,
+				true,
+				{
+					slug: gallery.slug,
+					isProtected: gallery.isProtected
+				}
 			)
 		);
 	}
@@ -178,7 +189,7 @@ async function renderClientGalleries(container, galleries) {
 	container.appendChild(fragment);
 }
 
-async function renderGalleryImages(container, galleryAndImages, stateObject) {
+function renderGalleryImages(container, galleryAndImages, stateObject) {
 	if (!galleryAndImages) return;
 
 	container.innerHTML = "";
@@ -214,36 +225,34 @@ function renderModal(stateObject) {
 	const image =
 		stateObject.images[stateObject.currentImageIndex];
 
-	Modal.image.src = image.src;
-	Modal.image.alt = image.filename;
+	GalleryModal.image.src = image.src;
+	GalleryModal.image.alt = image.filename;
 
-	Modal.btnFavorite.classList.toggle(
+	GalleryModal.btnFavorite.classList.toggle(
 		"is-favorite",
 		image.favorite
 	);
 
 
-	Modal.btnDownload.classList.toggle(
+	GalleryModal.btnDownload.classList.toggle(
 		"is-downloaded",
 		image.downloaded
 	);
 
-	Modal.btnDownload.hidden = !stateObject.downloadsEnabled;
+	GalleryModal.btnDownload.hidden = !stateObject.downloadsEnabled;
 
-	Modal.btnFavorite.dataset.imageId = image._id;
-	Modal.btnDownload.dataset.imageId = image._id;
-	Modal.btnDownload.dataset.filename = image.filename;
+	GalleryModal.btnFavorite.dataset.imageId = image._id;
+	GalleryModal.btnDownload.dataset.imageId = image._id;
+	GalleryModal.btnDownload.dataset.filename = image.filename;
 
-	Modal.count.textContent =
+	GalleryModal.count.textContent =
 		`${stateObject.currentImageIndex + 1}/${stateObject.images.length}`;
 
-	Modal.title.textContent = stateObject.title;
+	GalleryModal.title.textContent = stateObject.title;
 
 }
 
 export {
-	buildGalleryCard,
-	buildImageCard,
 	renderClientsPreview,
 	renderClientGalleries,
 	renderGalleryImages,

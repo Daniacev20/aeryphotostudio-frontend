@@ -223,11 +223,12 @@ button.icon-wrapper,
 	inset: 50% 50%;
 	border-radius: .8rem;
 	transform: translate(-50%, -50%);
-	height: clamp(350px, 400px - 1rem, 100%);
+	height: clamp(250px, 280px - 1rem, 100%);
 	width: clamp(350px, 400px - 1rem, 100%);
 	max-height: unset;
 	max-width: unset;
 	z-index: 900;
+	color: var(--primary-color1);
 }
 
 #pin-prompt-modal[open] {
@@ -236,8 +237,32 @@ button.icon-wrapper,
 }
 
 #pin-prompt-modal .modal-header {
-	justify-content: flex-end;
-	margin-top: .8rem;
+	display: flex;
+	justify-content: center;
+	flex-shrink: 0;
+	margin-top: 1.2rem;
+}
+
+.pin-title {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.btn-close-pin-modal {
+	align-self: start;
+}
+
+.btn-close-pin-modal:hover {
+	color: black;
+}
+
+.btn-close-pin-modal:active {
+	color: darkgrey;
+}
+
+#pin-prompt-modal .modal-main {
+	display: flex;
+	flex: 1;
 }
 
 #frm-gallery-pin {
@@ -247,13 +272,24 @@ button.icon-wrapper,
 	margin-inline: auto;
 }
 
+#frm-gallery-pin .to-hide {
+	display: none;
+}
+
+.pin-field {
+	position: relative;
+}
+
+.pin-error {
+	color: crimson;
+	position: absolute;
+	left: 0;
+	bottom: -0.5rem;
+}
+
 #txt-pin {
 	font-size: 1.2rem;
 	padding: .8rem;
-}
-
-#btn-send-pin {
-	/*flex: 1;*/
 }
 
 /* estilos de ventana modal */

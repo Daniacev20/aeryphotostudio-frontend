@@ -38,20 +38,7 @@ async function getGalleryAndImagesBySlug(slug) {
 	const response = await fetch(
 		`${BASE_URL}/galleries/${slug}/images`
 	);
-
-	// temporary for debugging
-	if (response.status === 401) {
-		const pin = prompt("Ingrese su pin: ");
-
-		if (!pin)
-			throw new Error("Pin requerido.");
-		if (pin === null)
-			throw new Error("Autenticacion cancelada.");
-
-		await validateGalleryPin(pin, slug);
-		return await getGalleryAndImagesBySlug(slug);
-	}
-
+	
 	if (!response.ok) {
 		const error = response.json();
 		throw new Error(error.message);
@@ -68,6 +55,19 @@ async function validateGalleryPin(pin, slug) {
 			body: JSON.stringify({ pin })
 		}
 	);
+
+	return await response.json();
+}
+
+async function verifyGalleryAccess(slug) {
+	const response = await fetch(
+		`${BASE_URL}/gallery/${slug}/access`
+	);
+
+	if (!response.ok) {
+		const error = await response.json();
+		throw new Error(error.message);
+	}
 
 	return await response.json();
 }
@@ -126,6 +126,8 @@ export {
 	getGalleryAndImagesBySlug,
 	getClientsList,
 	getClientGalleries,
+	validateGalleryPin,
+	verifyGalleryAccess,
 	downloadImage,
 	toggleFavorite,
 	downloadGallery

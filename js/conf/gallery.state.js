@@ -1,13 +1,14 @@
 // gallery.state.js
 
 const galleryState = {
+	slug: "",
 	images: [],
 	currentImageIndex: 0,
 	title: "",
 	downloadsEnabled: false
 };
 
-const Modal = {
+const GalleryModal = {
 	dialog: document.querySelector("#image-modal-dialog"),
 	count: document.querySelector("#modal-count"),
 	title: document.querySelector("#modal-title"),
@@ -19,4 +20,16 @@ const Modal = {
 	image: document.querySelector("#modal-image")
 };
 
-export { galleryState, Modal };
+const PinModal = {
+	dialog: document.querySelector("#pin-prompt-modal"),
+	btnClose: document.querySelector(".btn-close-modal"),
+	txtPin: document.querySelector("#txt-pin"),
+	lblError: document.querySelector(".pin-error"),
+	btnSend: document.querySelector("#btn-send-pin")
+};
+
+export {
+	galleryState,
+	GalleryModal,
+	PinModal
+};
