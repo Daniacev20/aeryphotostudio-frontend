@@ -193,19 +193,20 @@ async function protectedGallery_clickEvents(event) {
 	const gallery = event.target.closest("[data-slug]");
 
 	if (!gallery) return;
-
 	if (gallery.dataset.isProtected !== "true") return;
 
 	event.preventDefault();
 
-	galleryState.slug = gallery.dataset.slug;
-
-	// const result = await verifyGalleryAccess(slug);
-	// if (result.hasAccess) {
-	// 	location.href = `/entrega.html?slug=${slug}`;
-	// }
-
-	PinModal.dialog.showModal();
+	const slug = gallery.dataset.slug;
+	
+	try {
+		await verifyGalleryAccess(slug);
+		location.href =
+			`/entrega.html?slug=${slug}`;
+	} catch {
+		galleryState.slug = slug;
+		PinModal.dialog.showModal();
+	}
 }
 
 async function sendPin_clickEvents(event) {
@@ -246,6 +247,16 @@ async function sendPin_clickEvents(event) {
 	}
 }
 
+function closePinModal_clickEvents(event) {
+	const btnClose = event.target.closest(".btn-close-pin-modal");
+
+	if (!btnClose) return;
+
+	PinModal.lblError.textContent = "";
+	PinModal.lblError.hidden = true;
+	PinModal.dialog.close();
+}
+
 export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
@@ -256,5 +267,6 @@ export {
 	previousImage_clickEvents,
 	nextImage_clickEvents,
 	protectedGallery_clickEvents,
-	sendPin_clickEvents
+	sendPin_clickEvents,
+	closePinModal_clickEvents
 };

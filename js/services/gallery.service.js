@@ -69,12 +69,12 @@ async function verifyGalleryAccess(slug) {
 		`${BASE_URL}/gallery/${slug}/access`
 	);
 
-	if (!response.ok) {
-		const error = await response.json();
-		throw new Error(error.message);
-	}
+	const result = await response.json();
 
-	return await response.json();
+	if (!result.hasAccess)
+		throw new Error("Pin requerido.");
+
+	return result.hasAccess;
 }
 
 async function downloadImage(imageId, filename) {
