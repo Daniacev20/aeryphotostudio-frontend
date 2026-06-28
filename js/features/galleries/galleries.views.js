@@ -165,7 +165,6 @@ function renderClientGalleries(container, galleries) {
 	
 	container.innerHTML = "";
 
-	const params = new URLSearchParams(location.search);
 	const fragment = document.createDocumentFragment();
 
 	for (let gallery of galleries) {
@@ -194,8 +193,6 @@ function renderGalleryImages(container, galleryAndImages, stateObject) {
 
 	container.innerHTML = "";
 	
-	const params = new URLSearchParams(location.search);
-
 	// track gallery status for events
 	stateObject.images = galleryAndImages.images;
 	stateObject.title = galleryAndImages.title;
@@ -253,6 +250,7 @@ function renderModal(stateObject) {
 }
 
 export {
+	buildImageCard,
 	renderClientsPreview,
 	renderClientGalleries,
 	renderGalleryImages,
