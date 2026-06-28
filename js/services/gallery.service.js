@@ -2,22 +2,6 @@
 
 const BASE_URL = '/api';
 
-async function getPublicGalleries() {
-	const response = await fetch(
-		`${BASE_URL}/galleries?visibility=public`
-	);
-
-	return await response.json();
-}
-
-async function getPrivateGalleries() {
-	const response = await fetch(
-		`${BASE_URL}/galleries?visibility=private`
-	);
-
-	return await response.json();
-}
-
 async function getClientsList() {
 	const response = await fetch(
 		`${BASE_URL}/clients`
@@ -129,8 +113,6 @@ async function downloadGallery(slug) {
 }
 
 export {
-	getPublicGalleries,
-	getPrivateGalleries,
 	getGalleryAndImagesBySlug,
 	getClientsList,
 	getClientGalleries,
