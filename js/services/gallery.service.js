@@ -4,7 +4,7 @@ const BASE_URL = '/api';
 
 async function getClientsList() {
 	const response = await fetch(
-		`${BASE_URL}/clients`
+		`${BASE_URL}/clients-protected`
 	);
 
 	return await response.json();
