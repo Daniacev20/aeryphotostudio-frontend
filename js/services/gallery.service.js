@@ -34,6 +34,19 @@ async function getGalleryAndImagesBySlug(slug) {
 	return await response.json();
 }
 
+async function getPortfolioGalleries() {
+	const response = await fetch(
+		`${BASE_URL}/galleries/portfolio`
+	);
+
+	if (!response.ok) {
+		const error = await response.json();
+		throw new Error(error.message);
+	}
+
+	return await response.json();
+}
+
 async function validateGalleryPin(pin, slug) {
 	const response = await fetch(
 		`${BASE_URL}/gallery/${slug}/auth`,
@@ -113,9 +126,10 @@ async function downloadGallery(slug) {
 }
 
 export {
-	getGalleryAndImagesBySlug,
 	getClientsList,
 	getClientGalleries,
+	getGalleryAndImagesBySlug,
+	getPortfolioGalleries,
 	validateGalleryPin,
 	verifyGalleryAccess,
 	downloadImage,

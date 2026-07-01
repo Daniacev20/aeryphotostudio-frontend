@@ -43,6 +43,29 @@ function buildPortfolioGalleryCard(
 	return a;
 }
 
+function buildPortfolioImage(src, index) {
+	const divFrame = makeTag("div", {
+		classes: [
+			"thumbnail",
+			"overlay-wrapper"
+		]
+	});
+
+	const divOverlay = makeTag("div", {
+		className: "overlay"
+	});
+
+	const img = makeTag("img", {
+		src,
+		classes: ["gallery-image"],
+		"data-index": index,
+	});
+
+	divFrame.append(divOverlay, img);
+
+	return divFrame;
+}
+
 function renderPortfolioGalleries(container, galleries) {
 	if (galleries.length === 0) return; // wip
 	
@@ -57,9 +80,9 @@ function renderPortfolioGalleries(container, galleries) {
 		fragment.appendChild(
 			buildPortfolioGalleryCard(
 				gallery.preview,
-				slug: gallery.slug,
+				gallery.slug,
 				gallery.title,
-				`/entrega.html?slug=${gallery.slug}`
+				`/portafolio.html?slug=${gallery.slug}`
 			)
 		);
 	}
@@ -67,7 +90,9 @@ function renderPortfolioGalleries(container, galleries) {
 	container.appendChild(fragment);
 }
 
-function renderPortfolioGalleryImages(container, galleryAndImages, stateObject) {
+function renderPortfolioGalleryImages(container,
+	galleryAndImages, stateObject) {
+
 	if (!galleryAndImages) return;
 
 	container.innerHTML = "";
@@ -81,10 +106,7 @@ function renderPortfolioGalleryImages(container, galleryAndImages, stateObject) 
 
 	for (const image of stateObject.images) {
 		fragment.appendChild(
-			buildPortfolioGalleryCard(image.src, index, {
-				imageId: image._id,
-				filename: image.filename,
-			})
+			buildPortfolioImage(image.src, index)
 		);
 
 		index++;
@@ -95,5 +117,6 @@ function renderPortfolioGalleryImages(container, galleryAndImages, stateObject) 
 
 export {
 	buildPortfolioGalleryCard,
-	renderPortfolioGalleries
+	renderPortfolioGalleries,
+	renderPortfolioGalleryImages
 }

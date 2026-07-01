@@ -6,11 +6,13 @@ import { loadView } from './features/profile/profile.views.js';
 import { initProfilePage } from './features/profile/profile.page.js';
 import { initAgendaModule } from './features/appointments/appointments.page.js';
 import { initGalleryPage } from './features/galleries/galleries.page.js';
+import { initPortfolio } from './features/galleries/portfolio.page.js';
 
 const PAGE_ROUTES = {
 	"agenda.html": initAgendaModule,
 	"perfil.html": loadView,
-	"entrega.html": initGalleryPage
+	"entrega.html": initGalleryPage,
+	"portafolio.html": initPortfolio
 };
 
 function bootstrapApp() {
