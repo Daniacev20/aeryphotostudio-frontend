@@ -11,7 +11,8 @@ import {
 	nextImage_clickEvents,
 	protectedGallery_clickEvents,
 	sendPin_clickEvents,
-	closePinModal_clickEvents
+	closePinModal_clickEvents,
+	txtPinEnter_keyEvents
 } from './galleries.events.js';
 import { GalleryModal, PinModal } from '../../conf/gallery.state.js';
 
@@ -33,6 +34,7 @@ export function initGalleryPage() {
 	GalleryModal.dialog.addEventListener("click", nextImage_clickEvents, false);
 	PinModal.dialog.addEventListener("click", sendPin_clickEvents, false);
 	PinModal.dialog.addEventListener("click", closePinModal_clickEvents, false);
+	PinModal.dialog.addEventListener("keydown", txtPinEnter_keyEvents, false);
 
 	galleriesInit = true;
 }

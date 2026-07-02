@@ -24,6 +24,7 @@ import {
 	PinModal
 } from '../../conf/gallery.state.js';
 
+const PIN_REQUIRED_LENGTH = 4;
 const galleries = document.querySelector("#galleries");
 
 function getCircularIndex(array, index) {
@@ -108,6 +109,8 @@ async function toggleFavorite_clickEvents(event) {
 		if (!image) return;
 
 		btnFavorite.classList.toggle("is-favorite", image.favorite);
+	} catch (err) {
+		console.log(err);
 	}
 	finally {
 		btnFavorite.disabled = false;
@@ -220,7 +223,6 @@ async function sendPin_clickEvents(event) {
 
 	if (!btnSendPin) return;
 
-	const PIN_REQUIRED_LENGTH = 4;
 	const pin = PinModal.txtPin.value.trim();
 
 	// validacion preliminar
@@ -267,6 +269,45 @@ function closePinModal_clickEvents(event) {
 	}
 }
 
+async function txtPinEnter_keyEvents(event) {
+	if (event.key !== "Enter") return;
+
+	const txtPin = event.target.closest("#txt-pin");
+
+	if (!txtPin) return;
+
+	const pin = PinModal.txtPin.value.trim();
+
+	// validacion preliminar
+	if (!pin) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = "Pin requerido.";
+		return;
+	}
+	else if (pin.length < PIN_REQUIRED_LENGTH) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = "Pin muy corto.";
+		return;
+	}
+
+	PinModal.btnSend.disabled = true;
+
+	try {
+		await validateGalleryPin(pin, galleryState.slug);
+
+		PinModal.lblError.textContent = "";
+		PinModal.lblError.hidden = true;
+		PinModal.dialog.close();
+
+		location.href = `/entrega.html?slug=${galleryState.slug}`;
+	} catch (err) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = err.message;
+	} finally {
+		PinModal.btnSend.disabled = false;
+	}
+}
+
 export {
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
@@ -278,5 +319,6 @@ export {
 	nextImage_clickEvents,
 	protectedGallery_clickEvents,
 	sendPin_clickEvents,
-	closePinModal_clickEvents
+	closePinModal_clickEvents,
+	txtPinEnter_keyEvents
 };
