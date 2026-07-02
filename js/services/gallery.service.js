@@ -112,6 +112,12 @@ async function toggleFavorite(imageId) {
 
 	if (!response.ok) {
 		const error = await response.json();
+
+		if (response.status === 400 &&
+				error.message === "L\u00EDmite de favoritos alcanzado.") {
+			alert(error.message);
+		}
+
 		console.error(error);
 		return false;
 	}

@@ -149,9 +149,6 @@ async function downloadGallery_clickEvents(event) {
 }
 
 function openImage_clickEvents(event) {
-	const params = new URLSearchParams(location.search);
-	if (!params.get("client")) return;
-
 	const img = event.target.closest(".gallery-image");
 	if (!img) return;
 

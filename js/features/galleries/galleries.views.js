@@ -77,13 +77,8 @@ function buildImageCard(src, index, {
 	
 	const divFrame = makeTag("div", {
 		classes: [
-			"thumbnail",
-			"overlay-wrapper"
+			"thumbnail"
 		]
-	});
-
-	const divOverlay = makeTag("div", {
-		className: "overlay"
 	});
 
 	const img = makeTag("img", {
@@ -131,7 +126,7 @@ function buildImageCard(src, index, {
 		...(downloadButton ? [spanDownloadWrapper] : [])
 	);
 
-	divFrame.append(divOverlay, img, iconBox);
+	divFrame.append(img, iconBox);
 
 	return divFrame;
 }
@@ -197,6 +192,7 @@ function renderGalleryImages(container, galleryAndImages, stateObject) {
 	stateObject.images = galleryAndImages.images;
 	stateObject.title = galleryAndImages.title;
 	stateObject.downloadsEnabled = galleryAndImages.downloadsEnabled;
+	stateObject.favoriteLimit = galleryAndImages.favoriteLimit;
 
 	const fragment = document.createDocumentFragment();
 	let index = 0;
