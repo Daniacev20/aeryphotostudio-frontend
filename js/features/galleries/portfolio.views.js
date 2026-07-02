@@ -1,7 +1,7 @@
 // portfolio.views.js
 
 import { makeTag } from '../../ui/dom.js';
-import { GalleryModal } from '../../conf/gallery.state.js';
+import { PortfolioModal } from '../../conf/gallery.state.js';
 
 function buildPortfolioGalleryCard(
 	imgSrc,
@@ -47,8 +47,10 @@ function buildPortfolioImage(src, index) {
 	const divFrame = makeTag("div", {
 		classes: [
 			"thumbnail",
-			"overlay-wrapper"
-		]
+			"overlay-wrapper",
+			"gallery-image"
+		],
+		"data-index": index
 	});
 
 	const divOverlay = makeTag("div", {
@@ -56,9 +58,7 @@ function buildPortfolioImage(src, index) {
 	});
 
 	const img = makeTag("img", {
-		src,
-		classes: ["gallery-image"],
-		"data-index": index,
+		src
 	});
 
 	divFrame.append(divOverlay, img);
@@ -115,8 +115,19 @@ function renderPortfolioGalleryImages(container,
 	container.appendChild(fragment);
 }
 
+function renderModal(stateObject) {
+	const image =
+		stateObject.images[stateObject.currentImageIndex];
+
+	PortfolioModal.image.src = image.src;
+	PortfolioModal.image.alt = image.filename;
+	PortfolioModal.count.textContent =
+		`${stateObject.currentImageIndex + 1}/${stateObject.images.length}`;
+	PortfolioModal.title.textContent = stateObject.title;
+}
+
 export {
-	buildPortfolioGalleryCard,
 	renderPortfolioGalleries,
-	renderPortfolioGalleryImages
+	renderPortfolioGalleryImages,
+	renderModal
 }

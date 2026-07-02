@@ -43,5 +43,6 @@ const PortfolioModal = {
 export {
 	galleryState,
 	GalleryModal,
-	PinModal
+	PinModal,
+	PortfolioModal
 };
