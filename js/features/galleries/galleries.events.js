@@ -195,6 +195,22 @@ function nextImage_clickEvents(event) {
 	renderModal(galleryState);
 }
 
+function changeImage_keydownEvents(event) {
+	const modal = event.target.closest("dialog");
+
+	if (!modal) return;
+	
+	if (event.key === "ArrowLeft" ||
+		event.key === "ArrowUp") {
+		modal.querySelector("#prev-image").click();
+		return;
+	}
+	else if (event.key === "ArrowRight" ||
+		event.key === "ArrowDown") {
+		modal.querySelector("#next-image").click();
+	}
+}
+
 async function protectedGallery_clickEvents(event) {
 	const gallery = event.target.closest("[data-slug]");
 
@@ -314,6 +330,7 @@ export {
 	closeImage_clickEvents,
 	previousImage_clickEvents,
 	nextImage_clickEvents,
+	changeImage_keydownEvents,
 	protectedGallery_clickEvents,
 	sendPin_clickEvents,
 	closePinModal_clickEvents,

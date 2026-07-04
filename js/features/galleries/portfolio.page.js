@@ -8,6 +8,8 @@ import {
 	nextImage_clickEvents
 } from './portfolio.events.js';
 
+import { changeImage_keydownEvents } from './galleries.events.js';
+
 import { PortfolioModal } from '../../conf/gallery.state.js';
 
 let portfolioIsInit = false;
@@ -22,6 +24,7 @@ function initPortfolio() {
 	PortfolioModal.dialog.addEventListener("click", closeImage_clickEvents, false);
 	PortfolioModal.dialog.addEventListener("click", previousImage_clickEvents, false);
 	PortfolioModal.dialog.addEventListener("click", nextImage_clickEvents, false);
+	PortfolioModal.dialog.addEventListener("keydown", changeImage_keydownEvents, false);
 
 	portfolioIsInit = true;
 }
