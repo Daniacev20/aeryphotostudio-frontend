@@ -7,8 +7,8 @@ const galleryState = {
 	currentImageIndex: 0,
 	slug: "",
 	title: "",
-	directAccess: false,
-	downloadsEnabled: false
+	downloadsEnabled: false,
+	directAccess: false
 };
 
 const GalleryModal = {

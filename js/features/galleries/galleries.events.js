@@ -29,6 +29,8 @@ import {
 	filterGalleries
 } from '../../utils/galleryfiltering.js';
 
+import * as GALLERY_SESSION from "../../utils/gallery.navigation.js";
+
 const PIN_REQUIRED_LENGTH = 4;
 const galleries = document.querySelector("#galleries");
 
@@ -70,6 +72,21 @@ function handleSearchDisplay(params) {
 	}
 }
 
+function backToButton_clickEvents(event) {
+	const btn = event.target.closest(".back-to");
+
+	if (!btn) return;
+	event.preventDefault();
+
+	if (galleryState.directAccess) {
+		GALLERY_SESSION.clearInternalNavigation();
+		location.href = "/";
+		return;
+	}
+
+	history.back();
+}
+
 async function getClients_loadEvents(event) {
 	const params = new URLSearchParams(location.search);
 	const client = params.get("client");
@@ -88,6 +105,9 @@ async function getClients_loadEvents(event) {
 		renderClientGalleries(galleries, clientGalleries, galleryState);
 	}
 	else if (!client && slug) {
+		galleryState.directAccess =
+			!GALLERY_SESSION.checkInternalNavigation() || false;
+
 		try {
 			const galleryAndImages =
 				await getGalleryAndImagesBySlug(
@@ -102,7 +122,6 @@ async function getClients_loadEvents(event) {
 		} catch (err) {
 			if (/Pin requerido./gi.test(err.message)) {
 				galleryState.slug = slug;
-				galleryState.directAccess = true;
 				PinModal.dialog.showModal();
 				return;
 			}
@@ -110,6 +129,91 @@ async function getClients_loadEvents(event) {
 			throw err;
 		}
 	}
+}
+
+async function protectedGallery_clickEvents(event) {
+	const gallery = event.target.closest("[data-slug]");
+
+	if (!gallery) return;
+	if (gallery.dataset.isProtected !== "true") return;
+
+	event.preventDefault();
+
+	const slug = gallery.dataset.slug;
+	
+	try {
+		await verifyGalleryAccess(slug);
+
+		// important to maintain correct navigation
+		GALLERY_SESSION.setInternalNavigation(true);
+
+		location.href =
+			`/entrega.html?slug=${slug}`;
+	} catch {
+		galleryState.slug = slug;
+		PinModal.dialog.showModal();
+	}
+}
+
+async function sendPin_clickEvents(event) {
+	const btnSendPin = event.target.closest("#btn-send-pin");
+
+	if (!btnSendPin) return;
+
+	const pin = PinModal.txtPin.value.trim();
+
+	// validacion preliminar
+	if (!pin) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = "Pin requerido.";
+		return;
+	}
+	else if (pin.length < PIN_REQUIRED_LENGTH) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = "Pin muy corto.";
+		return;
+	}
+
+	btnSendPin.disabled = true;
+
+	try {
+		await validateGalleryPin(pin, galleryState.slug);
+
+		PinModal.lblError.textContent = "";
+		PinModal.lblError.hidden = true;
+		PinModal.dialog.close();
+		
+		location.href = `/entrega.html?slug=${galleryState.slug}`;
+	} catch (err) {
+		PinModal.lblError.hidden = false;
+		PinModal.lblError.textContent = err.message;
+	} finally {
+		btnSendPin.disabled = false;
+	}
+}
+
+function closePinModal_clickEvents(event) {
+	const btnClose = event.target.closest(".btn-close-pin-modal");
+
+	if (!btnClose) return;
+
+	PinModal.lblError.textContent = "";
+	PinModal.lblError.hidden = true;
+	PinModal.dialog.close();
+
+	if (galleryState.directAccess) {
+		location.href = "/";
+	}
+}
+
+async function txtPinEnter_keyEvents(event) {
+	if (event.key !== "Enter") return;
+
+	const txtPin = event.target.closest("#txt-pin");
+
+	if (!txtPin) return;
+
+	PinModal.btnSend.click();
 }
 
 async function toggleFavorite_clickEvents(event) {
@@ -140,10 +244,16 @@ async function downloadImage_clickEvents(event) {
 
 	if (!btnDownload) return;
 
-	await downloadImage(
-		btnDownload.dataset.imageId,
-		btnDownload.dataset.filename
-	);
+	btnDownload.disabled = true;
+
+	try {
+		await downloadImage(
+			btnDownload.dataset.imageId,
+			btnDownload.dataset.filename
+		);
+	} finally {
+		btnDownload.disabled = false;
+	}
 }
 
 async function downloadGallery_clickEvents(event) {
@@ -229,87 +339,6 @@ function changeImage_keydownEvents(event) {
 	}
 }
 
-async function protectedGallery_clickEvents(event) {
-	const gallery = event.target.closest("[data-slug]");
-
-	if (!gallery) return;
-	if (gallery.dataset.isProtected !== "true") return;
-
-	event.preventDefault();
-
-	const slug = gallery.dataset.slug;
-	
-	try {
-		await verifyGalleryAccess(slug);
-		location.href =
-			`/entrega.html?slug=${slug}`;
-	} catch {
-		galleryState.slug = slug;
-		PinModal.dialog.showModal();
-	}
-}
-
-async function sendPin_clickEvents(event) {
-	const btnSendPin = event.target.closest("#btn-send-pin");
-
-	if (!btnSendPin) return;
-
-	const pin = PinModal.txtPin.value.trim();
-
-	// validacion preliminar
-	if (!pin) {
-		PinModal.lblError.hidden = false;
-		PinModal.lblError.textContent = "Pin requerido.";
-		return;
-	}
-	else if (pin.length < PIN_REQUIRED_LENGTH) {
-		PinModal.lblError.hidden = false;
-		PinModal.lblError.textContent = "Pin muy corto.";
-		return;
-	}
-
-	btnSendPin.disabled = true;
-
-	try {
-		await validateGalleryPin(pin, galleryState.slug);
-
-		PinModal.lblError.textContent = "";
-		PinModal.lblError.hidden = true;
-		PinModal.dialog.close();
-
-		location.href = `/entrega.html?slug=${galleryState.slug}`;
-	} catch (err) {
-		PinModal.lblError.hidden = false;
-		PinModal.lblError.textContent = err.message;
-	} finally {
-		btnSendPin.disabled = false;
-	}
-}
-
-function closePinModal_clickEvents(event) {
-	const btnClose = event.target.closest(".btn-close-pin-modal");
-
-	if (!btnClose) return;
-
-	PinModal.lblError.textContent = "";
-	PinModal.lblError.hidden = true;
-	PinModal.dialog.close();
-
-	if (galleryState.directAccess) {
-		location.href = "/";
-	}
-}
-
-async function txtPinEnter_keyEvents(event) {
-	if (event.key !== "Enter") return;
-
-	const txtPin = event.target.closest("#txt-pin");
-
-	if (!txtPin) return;
-
-	PinModal.btnSend.click();
-}
-
 function searchBar_inputEvents(event) {
 	const search = event.target.closest("#search-gallery");
 
@@ -336,6 +365,7 @@ function searchBar_inputEvents(event) {
 }
 
 export {
+	backToButton_clickEvents,
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,

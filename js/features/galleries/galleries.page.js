@@ -1,6 +1,7 @@
 // galleries.page.js
 
 import {
+	backToButton_clickEvents,
 	getClients_loadEvents,
 	toggleFavorite_clickEvents,
 	downloadImage_clickEvents,
@@ -28,6 +29,7 @@ export function initGalleryPage() {
 	document.addEventListener("DOMContentLoaded", getClients_loadEvents, false);
 	document.addEventListener("click", toggleFavorite_clickEvents, false);
 	document.addEventListener("click", downloadImage_clickEvents, false);
+	document.addEventListener("click", backToButton_clickEvents, false);
 	document.addEventListener("click", downloadGallery_clickEvents, false);
 	document.addEventListener("input", searchBar_inputEvents, false);
 	galleries.addEventListener("click", protectedGallery_clickEvents, false);

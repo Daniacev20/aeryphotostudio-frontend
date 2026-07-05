@@ -246,7 +246,8 @@ function renderModal(stateObject) {
 	GalleryModal.btnDownload.dataset.filename = image.filename;
 
 	GalleryModal.count.textContent =
-		`${stateObject.currentImageIndex + 1}/${stateObject.galleries.images.length}`;
+		`${stateObject.currentImageIndex + 1}/` +
+		`${stateObject.galleries.images.length}`;
 
 	GalleryModal.title.textContent = stateObject.title;
 
