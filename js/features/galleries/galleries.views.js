@@ -204,7 +204,7 @@ function renderGalleryImages(container, galleryAndImages, stateObject) {
 	const fragment = document.createDocumentFragment();
 	let index = 0;
 
-	for (const image of stateObject.galleries.images) {
+	for (const image of galleryAndImages.images) {
 		fragment.appendChild(
 			buildImageCard(image.src, index, {
 				imageId: image._id,

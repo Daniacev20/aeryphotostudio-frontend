@@ -76,7 +76,7 @@ function renderPortfolioGalleries(container, galleries, stateObject) {
 
 	const fragment = document.createDocumentFragment();
 
-	for (let gallery of stateObject.galleries) {
+	for (let gallery of galleries) {
 		if (!gallery.preview)
 			continue;
 

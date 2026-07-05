@@ -5,7 +5,8 @@ import {
 	openImage_clickEvents,
 	closeImage_clickEvents,
 	previousImage_clickEvents,
-	nextImage_clickEvents
+	nextImage_clickEvents,
+	searchBar_inputEvents
 } from './portfolio.events.js';
 
 import { changeImage_keydownEvents } from './galleries.events.js';
@@ -20,6 +21,7 @@ function initPortfolio() {
 	if (portfolioIsInit) return;
 
 	document.addEventListener("DOMContentLoaded", getPortfolio_loadEvents, false);
+	document.addEventListener("input", searchBar_inputEvents, false);
 	galleries.addEventListener("click", openImage_clickEvents, false);
 	PortfolioModal.dialog.addEventListener("click", closeImage_clickEvents, false);
 	PortfolioModal.dialog.addEventListener("click", previousImage_clickEvents, false);

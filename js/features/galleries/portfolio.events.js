@@ -16,8 +16,13 @@ import {
 	renderModal
 } from './portfolio.views.js';
 
+import { filterGalleries } from '../../utils/galleryfiltering.js';
+
 const galleries = document.querySelector("#galleries");
 const frmSearch = document.querySelector("#frm-gallery-search");
+const searchBar = document.querySelector("#search-gallery");
+const backTo = document.querySelector(".back-to");
+
 
 function getCircularIndex(array, index) {
 	return ((index % array.length) + array.length) % array.length;
@@ -25,9 +30,9 @@ function getCircularIndex(array, index) {
 
 function handleInfoBarDisplay(params) {
 	// show the back, download button and title based on the stage
-	const backTo = document.querySelector(".back-to");
 
 	backTo.hidden = params.size === 0;
+	handleSearchDisplay(params);
 }
 
 function handleSearchDisplay(params) {
@@ -105,10 +110,26 @@ function nextImage_clickEvents(event) {
 	renderModal(galleryState);
 }
 
+function searchBar_inputEvents(event) {
+	const search = event.target.closest("#search-gallery");
+
+	if (!search) return;
+
+	const params = new URLSearchParams(location.search);
+
+	const portfolio = filterGalleries(
+		search.value.trim(),
+		galleryState
+		);
+
+	renderPortfolioGalleries(galleries, portfolio, null);
+}
+
 export {
 	getPortfolio_loadEvents,
 	openImage_clickEvents,
 	closeImage_clickEvents,
 	previousImage_clickEvents,
-	nextImage_clickEvents
+	nextImage_clickEvents,
+	searchBar_inputEvents
 }
