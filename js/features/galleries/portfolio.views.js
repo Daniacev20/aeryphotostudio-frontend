@@ -66,14 +66,17 @@ function buildPortfolioImage(src, index) {
 	return divFrame;
 }
 
-function renderPortfolioGalleries(container, galleries) {
+function renderPortfolioGalleries(container, galleries, stateObject) {
 	if (galleries.length === 0) return; // wip
 	
 	container.innerHTML = "";
 
+	if (stateObject)
+		stateObject.galleries = galleries;
+
 	const fragment = document.createDocumentFragment();
 
-	for (let gallery of galleries) {
+	for (let gallery of stateObject.galleries) {
 		if (!gallery.preview)
 			continue;
 
@@ -98,13 +101,15 @@ function renderPortfolioGalleryImages(container,
 	container.innerHTML = "";
 	
 	// track gallery status for events
-	stateObject.images = galleryAndImages.images;
-	stateObject.title = galleryAndImages.title;
+	if (stateObject) {
+		stateObject.galleries = galleryAndImages;
+		stateObject.title = galleryAndImages.title;
+	}
 
 	const fragment = document.createDocumentFragment();
 	let index = 0;
 
-	for (const image of stateObject.images) {
+	for (const image of stateObject.galleries.images) {
 		fragment.appendChild(
 			buildPortfolioImage(image.src, index)
 		);
@@ -117,12 +122,12 @@ function renderPortfolioGalleryImages(container,
 
 function renderModal(stateObject) {
 	const image =
-		stateObject.images[stateObject.currentImageIndex];
+		stateObject.galleries.images[stateObject.currentImageIndex];
 
 	PortfolioModal.image.src = image.src;
 	PortfolioModal.image.alt = image.filename;
 	PortfolioModal.count.textContent =
-		`${stateObject.currentImageIndex + 1}/${stateObject.images.length}`;
+		`${stateObject.currentImageIndex + 1}/${stateObject.galleries.images.length}`;
 	PortfolioModal.title.textContent = stateObject.title;
 }
 

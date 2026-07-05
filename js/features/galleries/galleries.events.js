@@ -42,7 +42,7 @@ function getCircularIndex(array, index) {
 	return ((index % array.length) + array.length) % array.length;
 }
 
-function handleInfoBarDisplay(params) {
+function handleClientPanelDisplay(params) {
 	backTo.hidden = params.size === 0;
 	downloadAll.hidden = !params.has("slug");
 
@@ -75,7 +75,7 @@ async function getClients_loadEvents(event) {
 	const client = params.get("client");
 	const slug = params.get("slug");
 
-	handleInfoBarDisplay(params);
+	handleClientPanelDisplay(params);
 
 	if (!client && !slug) {
 		const clients = await getClientsList();
@@ -192,7 +192,7 @@ function previousImage_clickEvents(event) {
 
 	galleryState.currentImageIndex = 
 		getCircularIndex(
-			galleryState.images, galleryState.currentImageIndex
+			galleryState.galleries.images, galleryState.currentImageIndex
 		);
 
 	renderModal(galleryState);
@@ -207,7 +207,7 @@ function nextImage_clickEvents(event) {
 
 	galleryState.currentImageIndex = 
 		getCircularIndex(
-			galleryState.images, galleryState.currentImageIndex
+			galleryState.galleries.images, galleryState.currentImageIndex
 		);
 
 	renderModal(galleryState);
@@ -310,7 +310,7 @@ async function txtPinEnter_keyEvents(event) {
 	PinModal.btnSend.click();
 }
 
-async function searchBar_inputEvents(event) {
+function searchBar_inputEvents(event) {
 	const search = event.target.closest("#search-gallery");
 
 	if (!search) return;
@@ -330,7 +330,7 @@ async function searchBar_inputEvents(event) {
 			search.value.trim(),
 			galleryState
 		);
-		
+
 		renderClientsPreview(galleries, clientGalleries, null);
 	}
 }

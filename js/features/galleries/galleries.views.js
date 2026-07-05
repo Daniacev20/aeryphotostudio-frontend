@@ -223,7 +223,7 @@ function renderGalleryImages(container, galleryAndImages, stateObject) {
 
 function renderModal(stateObject) {
 	const image =
-		stateObject.images[stateObject.currentImageIndex];
+		stateObject.galleries.images[stateObject.currentImageIndex];
 
 	GalleryModal.image.src = image.src;
 	GalleryModal.image.alt = image.filename;
@@ -246,7 +246,7 @@ function renderModal(stateObject) {
 	GalleryModal.btnDownload.dataset.filename = image.filename;
 
 	GalleryModal.count.textContent =
-		`${stateObject.currentImageIndex + 1}/${stateObject.images.length}`;
+		`${stateObject.currentImageIndex + 1}/${stateObject.galleries.images.length}`;
 
 	GalleryModal.title.textContent = stateObject.title;
 

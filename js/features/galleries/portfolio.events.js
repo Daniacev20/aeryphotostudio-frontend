@@ -17,6 +17,7 @@ import {
 } from './portfolio.views.js';
 
 const galleries = document.querySelector("#galleries");
+const frmSearch = document.querySelector("#frm-gallery-search");
 
 function getCircularIndex(array, index) {
 	return ((index % array.length) + array.length) % array.length;
@@ -27,6 +28,14 @@ function handleInfoBarDisplay(params) {
 	const backTo = document.querySelector(".back-to");
 
 	backTo.hidden = params.size === 0;
+}
+
+function handleSearchDisplay(params) {
+	frmSearch.hidden = params.has("slug");
+
+	if (params.size === 0) {
+		searchBar.placeholder = "Buscar galer\u00EDa";
+	}
 }
 
 async function getPortfolio_loadEvents(event) {
@@ -45,7 +54,7 @@ async function getPortfolio_loadEvents(event) {
 	}
 	else {
 		const portfolio = await getPortfolioGalleries();
-		renderPortfolioGalleries(galleries, portfolio);
+		renderPortfolioGalleries(galleries, portfolio, galleryState);
 	}
 }
 
@@ -75,7 +84,7 @@ function previousImage_clickEvents(event) {
 
 	galleryState.currentImageIndex = 
 		getCircularIndex(
-			galleryState.images, galleryState.currentImageIndex
+			galleryState.galleries.images, galleryState.currentImageIndex
 		);
 
 	renderModal(galleryState);
@@ -90,7 +99,7 @@ function nextImage_clickEvents(event) {
 
 	galleryState.currentImageIndex = 
 		getCircularIndex(
-			galleryState.images, galleryState.currentImageIndex
+			galleryState.galleries.images, galleryState.currentImageIndex
 		);
 
 	renderModal(galleryState);

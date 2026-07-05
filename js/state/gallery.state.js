@@ -19,7 +19,7 @@ const GalleryModal = {
 	btnDownload: document.querySelector(".btn-download"),
 	btnClose: document.querySelector(".btn-close-modal"),
 	btnPrevious: document.querySelector("#prev-image"),
-	btnNext: document.querySelector("#nex-image"),
+	btnNext: document.querySelector("#next-image"),
 	image: document.querySelector("#modal-image")
 };
 
