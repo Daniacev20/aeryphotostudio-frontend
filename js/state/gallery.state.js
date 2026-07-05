@@ -1,13 +1,14 @@
 // gallery.state.js
 
 const galleryState = {
+	clients: [],
+	galleries: [],
 	images: [],
 	currentImageIndex: 0,
 	slug: "",
 	title: "",
 	directAccess: false,
-	downloadsEnabled: false,
-	favoriteLimit: 0
+	downloadsEnabled: false
 };
 
 const GalleryModal = {

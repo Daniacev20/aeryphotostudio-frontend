@@ -10,7 +10,7 @@ import {
 
 import { changeImage_keydownEvents } from './galleries.events.js';
 
-import { PortfolioModal } from '../../conf/gallery.state.js';
+import { PortfolioModal } from '../../state/gallery.state.js';
 
 let portfolioIsInit = false;
 

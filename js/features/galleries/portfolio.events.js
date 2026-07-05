@@ -3,7 +3,7 @@
 import {
 	galleryState,
 	PortfolioModal
-} from '../../conf/gallery.state.js';
+} from '../../state/gallery.state.js';
 
 import {
 	getPortfolioGalleries,

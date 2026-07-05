@@ -1,7 +1,7 @@
 // galleries.views.js
 
 import { makeTag } from '../../ui/dom.js';
-import { GalleryModal } from '../../conf/gallery.state.js';
+import { GalleryModal } from '../../state/gallery.state.js';
 
 function buildGalleryCard(
 	imgSrc,
@@ -131,10 +131,13 @@ function buildImageCard(src, index, {
 	return divFrame;
 }
 
-function renderClientsPreview(container, clients) {
+function renderClientsPreview(container, clients, stateObject) {
 	if (clients.length === 0) return; // wip
 
 	container.innerHTML = "";
+
+	if (stateObject)
+		stateObject.clients = clients;
 
 	const fragment = document.createDocumentFragment();
 
@@ -155,10 +158,13 @@ function renderClientsPreview(container, clients) {
 	container.appendChild(fragment);
 }
 
-function renderClientGalleries(container, galleries) {		
+function renderClientGalleries(container, galleries, stateObject) {		
 	if (galleries.length === 0) return; // wip
 	
 	container.innerHTML = "";
+
+	if (stateObject)
+		stateObject.galleries = galleries;
 
 	const fragment = document.createDocumentFragment();
 
@@ -189,15 +195,16 @@ function renderGalleryImages(container, galleryAndImages, stateObject) {
 	container.innerHTML = "";
 	
 	// track gallery status for events
-	stateObject.images = galleryAndImages.images;
-	stateObject.title = galleryAndImages.title;
-	stateObject.downloadsEnabled = galleryAndImages.downloadsEnabled;
-	stateObject.favoriteLimit = galleryAndImages.favoriteLimit;
+	if (stateObject) {
+		stateObject.galleries = galleryAndImages;
+		stateObject.title = galleryAndImages.title;
+		stateObject.downloadsEnabled = galleryAndImages.downloadsEnabled;
+	}
 
 	const fragment = document.createDocumentFragment();
 	let index = 0;
 
-	for (const image of stateObject.images) {
+	for (const image of stateObject.galleries.images) {
 		fragment.appendChild(
 			buildImageCard(image.src, index, {
 				imageId: image._id,

@@ -5,5 +5,6 @@ export const regexValidators = {
 	PHONE: /^\(?\d{3}\)?(\s|\.|-)?\d{3}(\s|\.|-)?\d{4}$/,
 	EMAIL: /^(?!.*\.\.)[a-zA-z0-9._%+-]+@[a-zA-z0-9.-]+\.[a-zA-Z]{2,}$/,
 	WHITESPACE: /\s+/g,
+	NOREGEXP: 
 	DATE: null // wip
 }

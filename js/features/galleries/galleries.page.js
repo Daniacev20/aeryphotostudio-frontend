@@ -13,9 +13,10 @@ import {
 	protectedGallery_clickEvents,
 	sendPin_clickEvents,
 	closePinModal_clickEvents,
-	txtPinEnter_keyEvents
+	txtPinEnter_keyEvents,
+	searchBar_inputEvents
 } from './galleries.events.js';
-import { GalleryModal, PinModal } from '../../conf/gallery.state.js';
+import { GalleryModal, PinModal } from '../../state/gallery.state.js';
 
 let galleriesInit = false;
 
@@ -28,6 +29,7 @@ export function initGalleryPage() {
 	document.addEventListener("click", toggleFavorite_clickEvents, false);
 	document.addEventListener("click", downloadImage_clickEvents, false);
 	document.addEventListener("click", downloadGallery_clickEvents, false);
+	document.addEventListener("input", searchBar_inputEvents, false);
 	galleries.addEventListener("click", protectedGallery_clickEvents, false);
 	galleries.addEventListener("click", openImage_clickEvents, false);
 	GalleryModal.dialog.addEventListener("click", closeImage_clickEvents, false);

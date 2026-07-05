@@ -22,22 +22,27 @@ import {
 	galleryState,
 	GalleryModal,
 	PinModal
-} from '../../conf/gallery.state.js';
+} from '../../state/gallery.state.js';
+
+import {
+	filterClients,
+	filterGalleries
+} from '../../utils/galleryfiltering.js';
 
 const PIN_REQUIRED_LENGTH = 4;
 const galleries = document.querySelector("#galleries");
+
+const frmSearch = document.querySelector("#frm-gallery-search");
+const searchBar = document.querySelector("#search-gallery");
+const backTo = document.querySelector(".back-to");
+const galleryTitle = document.querySelector("#gallery-title");
+const downloadAll = document.querySelector("#download-full-gallery");
 
 function getCircularIndex(array, index) {
 	return ((index % array.length) + array.length) % array.length;
 }
 
 function handleInfoBarDisplay(params) {
-	// show the back, download button and title based on the stage
-	const backTo = document.querySelector(".back-to");
-	const galleryTitle = document.querySelector("#gallery-title");
-	const downloadAll =
-		document.querySelector("#download-full-gallery");
-
 	backTo.hidden = params.size === 0;
 	downloadAll.hidden = !params.has("slug");
 
@@ -50,6 +55,19 @@ function handleInfoBarDisplay(params) {
 	else if (params.has("slug")) {
 		galleryTitle.textContent = "Im\u00E1genes";
 	}
+
+	handleSearchDisplay(params);
+}
+
+function handleSearchDisplay(params) {
+	frmSearch.hidden = params.has("slug");
+
+	if (params.size === 0) {
+		searchBar.placeholder = "Buscar nombre";
+	}
+	else if (params.has("client")) {
+		searchBar.placeholder = "Buscar galer\u00EDa";
+	}
 }
 
 async function getClients_loadEvents(event) {
@@ -61,13 +79,13 @@ async function getClients_loadEvents(event) {
 
 	if (!client && !slug) {
 		const clients = await getClientsList();
-		renderClientsPreview(galleries, clients);
+		renderClientsPreview(galleries, clients, galleryState);
 	}
 	else if (client && !slug) {
 		const clientGalleries =
 			await getClientGalleries(params.get("client"));
 
-		renderClientGalleries(galleries, clientGalleries);
+		renderClientGalleries(galleries, clientGalleries, galleryState);
 	}
 	else if (!client && slug) {
 		try {
@@ -202,12 +220,12 @@ function changeImage_keydownEvents(event) {
 	
 	if (event.key === "ArrowLeft" ||
 		event.key === "ArrowUp") {
-		modal.querySelector("#prev-image").click();
+		GalleryModal.btnPrevious.click();
 		return;
 	}
 	else if (event.key === "ArrowRight" ||
 		event.key === "ArrowDown") {
-		modal.querySelector("#next-image").click();
+		GalleryModal.btnNext.click();
 	}
 }
 
@@ -289,35 +307,31 @@ async function txtPinEnter_keyEvents(event) {
 
 	if (!txtPin) return;
 
-	const pin = PinModal.txtPin.value.trim();
+	PinModal.btnSend.click();
+}
 
-	// validacion preliminar
-	if (!pin) {
-		PinModal.lblError.hidden = false;
-		PinModal.lblError.textContent = "Pin requerido.";
-		return;
+async function searchBar_inputEvents(event) {
+	const search = event.target.closest("#search-gallery");
+
+	if (!search) return;
+
+	const params = new URLSearchParams(location.search);
+
+	if (params.size === 0) {
+		const clients = filterClients(
+			search.value.trim(),
+			galleryState
+		);
+
+		renderClientsPreview(galleries, clients, null);
 	}
-	else if (pin.length < PIN_REQUIRED_LENGTH) {
-		PinModal.lblError.hidden = false;
-		PinModal.lblError.textContent = "Pin muy corto.";
-		return;
-	}
-
-	PinModal.btnSend.disabled = true;
-
-	try {
-		await validateGalleryPin(pin, galleryState.slug);
-
-		PinModal.lblError.textContent = "";
-		PinModal.lblError.hidden = true;
-		PinModal.dialog.close();
-
-		location.href = `/entrega.html?slug=${galleryState.slug}`;
-	} catch (err) {
-		PinModal.lblError.hidden = false;
-		PinModal.lblError.textContent = err.message;
-	} finally {
-		PinModal.btnSend.disabled = false;
+	else if (params.has("client")) {
+		const clientGalleries = filterGalleries(
+			search.value.trim(),
+			galleryState
+		);
+		
+		renderClientsPreview(galleries, clientGalleries, null);
 	}
 }
 
@@ -334,5 +348,6 @@ export {
 	protectedGallery_clickEvents,
 	sendPin_clickEvents,
 	closePinModal_clickEvents,
-	txtPinEnter_keyEvents
+	txtPinEnter_keyEvents,
+	searchBar_inputEvents
 };

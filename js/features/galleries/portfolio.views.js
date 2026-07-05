@@ -1,7 +1,7 @@
 // portfolio.views.js
 
 import { makeTag } from '../../ui/dom.js';
-import { PortfolioModal } from '../../conf/gallery.state.js';
+import { PortfolioModal } from '../../state/gallery.state.js';
 
 function buildPortfolioGalleryCard(
 	imgSrc,
