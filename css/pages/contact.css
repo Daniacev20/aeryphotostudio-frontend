@@ -1,0 +1,42 @@
+/* constact.css */
+
+/* here are defined the styles for the contact page
+a simple contact form for the most part */
+
+#frm-contact {
+	display: flex;
+	justify-content: center;
+	width: clamp(50vw, 55vw, 65vw);
+	margin: 1.5rem auto;
+}
+
+#frm-contact fieldset {
+	display: flex;
+	flex-flow: column;
+	flex-grow: 2;
+	padding: 1.5rem;
+}
+
+#frm-contact input,
+#frm-contact textarea {
+	autline: none;
+	margin: .4rem 0;
+}
+
+#frm-contact textarea {
+	height: 10rem;
+	font-family: inherit;
+	font-weight: normal;
+}
+
+/* the button #btn-send has styles in common with
+all other buttons of a gathering form, therefore,
+it is not defined here. */
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 375px) {
+	#frm-contact {
+		width: clamp(320px, 85vw, 90vw);
+	}
+}
