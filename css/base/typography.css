@@ -1,0 +1,23 @@
+/* typography.css */
+
+/* here are defined the font styles for 
+the elements across the pages. */
+
+body {
+	font-family: helvetica, verdana, arial, sans-serif;
+	color: var(--text-color);
+}
+
+header {
+	color: var(--aery-white);
+}
+
+/* text helpers for elements/components */
+
+.iconos {
+	font-size: var(--footer-icon-size);
+}
+
+.img-captions {
+	font-family: "Freight Big Pro", serif;
+}

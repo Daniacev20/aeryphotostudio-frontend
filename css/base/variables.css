@@ -1,0 +1,56 @@
+/* variables.css */
+
+/* global variables common to all pages.
+excluding local variables*/
+
+/* variables globales comunes a todas las paginas.
+no incluye las variables locales que ayudaran un
+elemento especifico. */
+
+:root {
+
+	/* brand */
+	--aery-primary: #562912;
+	--aery-secondary: #744A27;
+	--aery-white1: #F4F4F4;
+	--aery-smokewhite1: #EFEFEF;
+	--aery-smokewhite2: #E8E8E8;
+	--aery-gray1: #DDDDDD;
+	--aery-gray2: #D3D3D3;
+	--aery-gray3: #C7C7C7;
+	--aery-reddish-brown: #A85904;
+
+	--primary-faded: #562912A5;
+	--secondary-faded: #744A27EB;
+
+	/* common colors: needed to centralize source of truth */
+	--aery-black: #000;
+	--aery-white: #FFF;
+	--aery-transparent: transparent;
+	--aery-crimson: crimson;
+	--aery-drakgray: darkgray;
+
+	/* elements */
+	--primary: var(--aery-primary);
+	--secondary: var(--aery-secondary);
+	--bg-white1: var(--aery-white1);
+	--bg-white2: var(--aery-smokewhite1);
+	--bg-gray1: var(--aery-gray1);
+	--bg-gray2: var(--aery-gray2);
+	--bg-gray3: var(--aery-gray3);
+	--icon-color1: var(--aery-reddish-brown);
+	--bg-thumbnail: var(--aery-smokewhite2);
+	--bg-table-header: var(--primary-faded);
+	--bg-table-row: var(--secondary-faded);
+
+	/* text colors */;
+	--text-color: #616161;
+	--caption-color: var(--bg-white1);
+
+	/* text sizes */
+	--footer-address-size: 1.1rem;
+
+	/* icons */
+	--footer-icon-size: 1.8rem;
+	--footer-icon-margin: .5rem;
+}

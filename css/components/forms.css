@@ -1,0 +1,84 @@
+/* forms.css */
+
+/* generic styles for form controls */
+
+input[type=text],
+input[type=number],
+input[type=tel],
+input[type=password],
+input[type=date],
+input[type=time],
+input[type=email],
+input[type=search],
+input[type=button],
+textarea,
+button:not(.icon-wrapper) {
+	border: 1px solid var(--secondary);
+	border-radius: .3rem;
+	color: var(--secondary);
+	font-family: inherit;
+	font-size: 1.1rem;
+	margin: .5rem 0;
+	padding: .5rem 1rem;
+	outline: none;
+	user-select: none;
+}
+
+button:not(.icon-wrapper) {
+	margin: .4rem 0;
+	background-color: var(--bg-white2);
+	color: var(--primary);
+	padding: 1rem;
+	font-weight: bold;
+	border: 1px solid var(--primary);
+}
+
+input[type=text]:hover,
+input[type=number]:hover,
+input[type=tel]:hover,
+input[type=password]:hover,
+input[type=date]:hover,
+input[type=time]:hover,
+input[type=email]:hover,
+input[type=search]:hover,
+input[type=button]:hover,
+textarea:hover,
+button:not(.icon-wrapper):hover {
+	box-shadow: inset -1px -1px 3px var(--secondary);
+}
+
+input[type=button]:hover,
+button:not(.icon-wrapper):hover {
+	box-shadow: inset -1px -1px 3px var(--secondary);
+ 	background-color: #B1B1B1;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+input[type=tel]:focus,
+input[type=password]:focus,
+input[type=date]:focus,
+input[type=time]:focus,
+input[type=email]:focus,
+input[type=search]:focus,
+input[type=button]:focus,
+textarea:focus,
+button:not(.icon-wrapper):focus {
+	box-shadow: inset -1px -1px 1.5px var(--secondary);
+}
+
+input[type=button]:hover,
+button:not(.icon-wrapper):active {
+	background-color: #A0A0A0;
+	box-shadow: none;
+}
+
+input[type=text]::placeholder,
+input[type=number]::placeholder,
+input[type=tel]::placeholder,
+input[type=password]::placeholder,
+input[type=email]::placeholder,
+input[type=search]::placeholder,
+textarea::placeholder {
+	color: var(--secondary);
+}

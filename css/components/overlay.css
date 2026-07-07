@@ -1,0 +1,21 @@
+/* overlay.css */
+
+/* styles for the container div and its
+first child div to make an overlay with
+watermark to protect pictures */
+
+.overlay-wrapper {
+	position: relative;
+}
+
+.overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background-image: url("../../imgs/aery-logo.png");
+	background-position: center;
+	background-size: 24rem;
+	opacity: .1;
+	user-select: none;
+	pointer-events: auto;
+}

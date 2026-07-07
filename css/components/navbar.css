@@ -1,0 +1,185 @@
+/* navbar.css */
+
+/* MENU: navigation menu common to all pages. */
+
+/* div containing toggle menu button for mobiles */
+.toggle-container {
+	position: relative;
+	margin: auto;
+}
+
+#btn-toggle {
+	display: none;
+}
+
+/* ul main container */
+.navigation-menu {
+	list-style-type: none;
+	margin: 0 auto;
+	display: flex;
+}
+
+.navigation-menu li {
+	background-color: #F4F4F4;
+}
+
+/* rounded borders of first and last ul DIRECT child's
+so it doesn't make middle subchildren look squared */
+.navigation-menu > li:first-child {
+	border-radius: .5rem 0 0 .5rem;
+}
+
+.navigation-menu > li:last-child {
+	border-radius: 0 .5rem .5rem 0;
+}
+
+.navigation-menu li a {
+	display: block;
+	color: var(--secondary);
+	text-decoration: none;
+	padding: 1rem 1.5rem;
+	font-weight: bold;
+}
+
+.navigation-menu li:hover {
+	background-color: #E4E4E4;
+}
+
+/* secondary menu (li -> ul dropdown) */
+.submenu {
+	position: relative;
+}
+
+/* li's ul child */
+.submenu-content {
+	list-style-type: none;
+	position: absolute;
+	display: none;
+	z-index: 3;
+}
+
+.submenu-content li {
+	background-color: #F4F4F4;
+	white-space: nowrap;
+}
+
+.submenu-content li:last-child {
+	border-radius: 0 0 .5rem .5rem;
+}
+
+.submenu:hover .submenu-content {
+	display: flex;
+	flex-direction: column;
+}
+
+/*[hidden] {
+	display: none !important;
+}*/
+
+/* end of section: MENU */
+
+/* MEDIA QUERIES */
+
+/* standard cellphones and tablets */
+@media only screen and (max-width: 772px) { /* MUST match menu.js */
+	/* show menu vertically */
+	.navigation-menu, .submenu-content {
+		flex-direction: column;
+		margin: 0;
+	}
+
+	/* squared borders look better on phones */
+	.navigation-menu li:first-child,
+	.navigation-menu li:last-child,
+	.submenu-content:last-child {
+		border-radius: 0;
+	}
+
+	.navigation-menu {
+		position: absolute;
+		top: 3rem;
+		z-index: 3;
+		width: 100%;
+	}
+
+	.navigation-menu li {
+		display: none;
+		background-color: #E4E4E4;
+	}
+
+	.navigation-menu li:hover {
+		background-color: var(--bg-white2);
+	}
+
+	.submenu-content {
+		display: block;
+		position: relative;
+		text-indent: 5vw;
+	}
+
+	.submenu-content li i {
+		text-indent: 0;
+	}
+
+	.toggle-container {
+		display: inline-block;
+		margin: 0;
+	}
+
+	#btn-toggle {
+		display: inline-block;
+		background-color: #E4E4E4;
+		color: black;
+		padding: 1rem;
+	}
+}
+
+/* bigger tablets */
+@media only screen and (min-width: 773px) and (max-width: 1024px) and (orientation: portrait) {
+	/* show menu vertically */
+	.navigation-menu, .submenu-content {
+		flex-direction: column;
+		margin: 0;
+	}
+
+	/* squared borders look better on phones */
+	.navigation-menu li:first-child,
+	.navigation-menu li:last-child,
+	.submenu-content:last-child {
+		border-radius: 0;
+	}
+
+	.navigation-menu {
+		position: absolute;
+		top: 3rem;
+		z-index: 3;
+		width: 30vw;
+	}
+
+	.navigation-menu li {
+		display: none;
+		background-color: #E4E4E4;
+	}
+
+	.navigation-menu li:hover {
+		background-color: var(--bg-white2);
+	}
+
+	.submenu-content {
+		display: block;
+		position: relative;
+		text-indent: 3vw;
+	}
+
+	.toggle-container {
+		display: inline-block;
+		margin: 0;
+	}
+
+	#btn-toggle {
+		display: inline-block;
+		background-color: #E4E4E4;
+		color: black;
+		padding: 1rem;
+	}
+}

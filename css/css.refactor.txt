@@ -1,0 +1,40 @@
+css/
+│
+├── base/
+│   ├── reset.css
+│   ├── variables.css
+│   ├── typography.css
+│   ├── layout.css
+│   └── utilities.css
+│
+├── components/
+│   ├── buttons.css
+│   ├── cards.css
+│   ├── modal.css
+│   ├── navbar.css
+│   ├── forms.css
+│   ├── icons.css
+│   ├── spinner.css
+│   └── alerts.css
+│
+├── pages/
+│   ├── home.css
+│   ├── portfolio.css
+│   └── gallery.css
+│
+├── admin/
+│   ├── layout.css
+│   ├── gallery.css
+│   ├── clients.css
+│   ├── images.css
+│   └── login.css
+│
+└── main.css
+
+Yo lo haría en este orden para minimizar que rompas cosas:
+
+1-Crear base/ y mover allí todo lo que sea realmente global. No debería cambiar el comportamiento del sitio.
+2-Extraer components/modal.css, ya que el modal está terminado y es un bloque muy bien delimitado.
+3-Extraer components/buttons.css (incluyendo .modal-icon y otros botones reutilizables).
+4-Convertir estilos_paginas.css en pages/gallery.css, dejando únicamente los estilos específicos del flujo de entrega.
+5-Cuando empieces el panel administrativo, crear admin/layout.css y luego un archivo por módulo administrativo (gallery.css, clients.css, etc.), ya que esa parte crecerá de forma independiente del sitio público.

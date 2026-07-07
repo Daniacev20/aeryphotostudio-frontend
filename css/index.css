@@ -48,50 +48,6 @@ header {
 
 /* fin de seccion: HEADER */
 
-/* CAROUSEL: para hacer rotar las imagenes */
-
-#carousel-container {
-	display: flex;
-	flex-flow: row;
-	overflow-x: auto;
-	z-index: 1;
-}
-
-/* ocultar scrollbar. necesario, pero invisible */
-#carousel-container::-webkit-scrollbar {
-	display: none;
-}
-
-.carousel-group {
-	display: flex;
-	animation: spin 60s infinite linear;
-	height: auto;
-}
-
-.carousel-img img {
-	height: 100%;
-	width: calc(100vw/3); /* el total de imagenes debe ser multiplo del divisor en este calculo */
-}
-
-@keyframes spin {
-	from { translate: 0; }
-	to { translate: -100% }
-}
-
-.carousel-wrapper {
-	position: relative;
-}
-
-.carousel-overlay {
-	background-color: transparent;
-	position: absolute;
-	inset: 0;
-	z-index: 2;
-	user-select: none;
-	pointer-events: auto;
-}
-
-/* fin de seccion: CAROUSEL */
 
 /* ARTICLES: seccion de las secciones del cuerpo de pagina */
 

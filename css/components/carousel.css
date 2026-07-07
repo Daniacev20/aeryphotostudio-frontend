@@ -1,0 +1,47 @@
+/* carousel.css */
+
+/* styles for rotary */
+
+#carousel-container {
+	display: flex;
+	flex-flow: row;
+	overflow-x: auto;
+	z-index: 1;
+}
+
+/* hide scrollbar, it's necessary but invisible */
+#carousel-container::-webkit-scrollbar {
+	display: none;
+}
+
+.carousel-group {
+	display: flex;
+	animation: spin 60s infinite linear;
+	height: auto;
+}
+
+.carousel-img img {
+	height: 100%;
+	width: calc(100vw/3); /* the number of images on the html
+	must be a multiplier of the divisor */
+}
+
+@keyframes spin {
+	from { translate: 0; }
+	to { translate: -100% }
+}
+
+.carousel-wrapper {
+	position: relative;
+}
+
+.carousel-overlay {
+	background-color: var(--aery-transparent);
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	user-select: none;
+	pointer-events: auto;
+}
+
+/* fin de seccion: CAROUSEL */
