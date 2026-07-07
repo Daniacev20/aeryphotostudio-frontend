@@ -7,7 +7,7 @@ visual attraction, meant for index, but reusable */
 	display: inline-block;
 	padding: 1.3rem 2rem;
 	background-color: var(--secondary);
-	color: white;
+	color: var(--aery-white);
 	text-decoration: none;
 	border-radius: .8em;
 	box-shadow: .15rem .35rem .35rem .15rem rgba(86, 41, 18, .4);

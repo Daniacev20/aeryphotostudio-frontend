@@ -35,6 +35,7 @@ it is not defined here. */
 
 /* MEDIA QUERIES */
 
+/* super small phones */
 @media only screen and (max-width: 375px) {
 	#frm-contact {
 		width: clamp(320px, 85vw, 90vw);

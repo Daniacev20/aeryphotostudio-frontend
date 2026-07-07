@@ -1,34 +1,33 @@
-/* index.css */
-/* reglas para la pagina de inicio */
+/* home.css */
 
-/* estandares del cliente */
-/* colores primarios: #562912 = rgb(86, 41, 18), #744A27 = rgb(116, 74, 39) */
-/* colores secundarios: #D3D3D3 = rgb(211, 211, 211) */
+/* These are the rules for the homepage only */
 
-/* tipografia pirmaria y secundaria: DM sans, helvetica world */
+/* Client preferences:
+primary colors: #562912 = rgb(86, 41, 18), #744A27 = rgb(116, 74, 39)
+secondary colors: #D3D3D3 = rgb(211, 211, 211) */
 
-/* HEADER: seccion para el encabezado y menu de navegacion */
+/* HEADER: homepage header, logotype and positioning */
 
 header {
 	height: auto;
 }
 
-/* contenedor del logo y el menu del sitio 
-	para mostrar horizontalmente */
+/* container for the logotype and nav menu */
 .main-menu-container {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
 }
 
-/* logo y nombre de la marca a modo de titulo */
+/* logotype and business name side to side as a title */
 .logo-container {
 	display: flex;
 	margin: auto;
 	align-items: center;
 }
 
-.logo { /* contenedor img logo */
+/* container for img logo */
+.logo {
 	max-height: 150px;
 	max-width: 150px;
 	margin-right: 1.5rem;
@@ -45,11 +44,9 @@ header {
 	outline: none;
 }
 
-/* fin de seccion: HEADER */
+/* BODY: sections/argticles of the page's body */
 
-
-/* ARTICLES: seccion de las secciones del cuerpo de pagina */
-
+/* turns main content container into flexbox */
 .sections {
 	display: flex;
 	flex-flow: column;
@@ -57,13 +54,13 @@ header {
 	margin: 5vh 5vw;
 }
 
-/* renglones principales del main (cuerpo) */
+/* main container blocks */
 .sections section {
 	margin: 5vh 0;
 	text-align: center;
 }
 
-/* estilos elementos de cada seccion */
+/* section blocks titles' styles */
 .sections-h > h3, .sections-h > h2 {
 	margin: 1.2rem 0;
 }
@@ -76,6 +73,7 @@ header {
 	font-size: 2.5rem;
 }
 
+/* section blocks img containers */
 .sections-img {
 	display: flex;
 	flex-flow: row nowrop;
@@ -84,17 +82,16 @@ header {
 	height: clamp(600px, 75vh, 800px);
 }
 
+/* img of the block container  */
 .sections-img img {
 	width: calc(90%/2);
 	height: auto;
 	object-fit: contain;
 }
 
-/* fin de seccion: ARTICLES */
+/* MEDIA QUERIES */
 
-/* MEDIA QUERIES: para visusalizacion en dispositivos moviles */
-
-/* celulares */
+/* cellphones and small tablets */
 @media only screen and (max-width: 712px) {
 	.logo-container hgroup {
 		font-size: 1em;
@@ -111,5 +108,3 @@ header {
 		object-position: 0 0;
 	}
 }
-
-/* fin de seccion: MEDIA QUERIES */
