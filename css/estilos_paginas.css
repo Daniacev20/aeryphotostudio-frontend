@@ -7,41 +7,6 @@
 
 /* tipografia pirmaria y secundaria: DM sans, helvetica world */
 
-/* HEADER: comun a todas las paginas secundarias del sitio */
-
-header {
-	display: flex;
-	flex-direction: column;
-	padding: 3vh 0;
-}
-
-.header-title, .main-menu-container {
-	display: flex;
-	flex-direction: column;
-}
-
-.header-title {
-	margin: 1.5em auto;
-	text-align: center;
-}
-
-.header-subtitle {
-	display: flex;
-	flex-flow: column nowrap;
-	text-align: center;
-	margin-inline: auto;
-	padding-bottom: 1rem; /* separacion de la seccion principal */
-}
-
-/* margen vertical entre titulos y subtitulos del cuerpo */
-.header-subtitle h1,
-.header-subtitle h2,
-.header-subtitle h3 {
-	margin: .8rem 0;
-}
-
-/* fin de seccion: HEADER */
-
 /* PORTAFOLIO: estilos especificos para la pagina portafiolio */
 
 /* formulario de busqueda */

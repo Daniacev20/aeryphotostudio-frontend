@@ -1,0 +1,38 @@
+/* header.css */
+
+/* Here are defined the styles for the generic
+header component that appears on every page
+including its children styles with specific
+classes. */
+
+header {
+	display: flex;
+	flex-direction: column;
+	padding: 3vh 0;
+	background-color: var(--primary);
+}
+
+.header-title, .main-menu-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.header-title {
+	margin: 1.5rem auto;
+	text-align: center;
+}
+
+.header-subtitle {
+	display: flex;
+	flex-flow: column nowrap;
+	text-align: center;
+	margin-inline: auto;
+	padding-bottom: 1rem; /* separacion de la seccion principal */
+}
+
+/* margen vertical entre titulos y subtitulos del cuerpo */
+.header-subtitle h1,
+.header-subtitle h2,
+.header-subtitle h3 {
+	margin: .8rem 0;
+}
