@@ -30,18 +30,3 @@
 	from { translate: 0; }
 	to { translate: -100% }
 }
-
-.carousel-wrapper {
-	position: relative;
-}
-
-.carousel-overlay {
-	background-color: var(--aery-transparent);
-	position: absolute;
-	inset: 0;
-	z-index: 2;
-	user-select: none;
-	pointer-events: auto;
-}
-
-/* fin de seccion: CAROUSEL */

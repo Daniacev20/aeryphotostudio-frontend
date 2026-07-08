@@ -4,21 +4,21 @@ import { VIEWS } from '../../conf/views.conf.js';
 import { USER_SESSION } from '../../state/user.js';
 
 function showView(view) {
-	Object.values(VIEWS).forEach(v => v.classList.remove("active"));
+	Object.values(VIEWS).forEach(v => v.classList.remove("is-active"));
 
 	const url = new URL(location.href);
 	url.searchParams.set("view", view);
 	history.replaceState(null, "", url);
 
 	if (view === "profile") {
-		VIEWS[view].classList.add("active");
+		VIEWS[view].classList.add("is-active");
 		return;
 	}
 
 	// be aware clearControls only works on
 	// the first form it finds
 	clearControls(VIEWS[view].querySelector("form"));
-	VIEWS[view].classList.add("active");
+	VIEWS[view].classList.add("is-active");
 
 	// capture first textbox to autofocus
 	const cssQuery =
@@ -48,7 +48,7 @@ function clearControls(form) {
 	const msg = form.querySelectorAll(".error-m");
 
 	if (msg)
-		msg.forEach(m => m.classList.remove("active"));
+		msg.forEach(m => m.classList.remove("is-active"));
 
 	frmControls[0].focus();
 }

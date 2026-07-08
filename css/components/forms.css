@@ -1,6 +1,7 @@
 /* forms.css */
 
-/* generic styles for form controls */
+/* generic styles for form controls,
+buttons are defined under buttons.css */
 
 input[type=text],
 input[type=number],
@@ -10,9 +11,7 @@ input[type=date],
 input[type=time],
 input[type=email],
 input[type=search],
-input[type=button],
-textarea,
-button:not(.icon-wrapper) {
+textarea {
 	border: 1px solid var(--secondary);
 	border-radius: .3rem;
 	color: var(--secondary);
@@ -24,15 +23,6 @@ button:not(.icon-wrapper) {
 	user-select: none;
 }
 
-button:not(.icon-wrapper) {
-	margin: .4rem 0;
-	background-color: var(--bg-white2);
-	color: var(--primary);
-	padding: 1rem;
-	font-weight: bold;
-	border: 1px solid var(--primary);
-}
-
 input[type=text]:hover,
 input[type=number]:hover,
 input[type=tel]:hover,
@@ -41,16 +31,8 @@ input[type=date]:hover,
 input[type=time]:hover,
 input[type=email]:hover,
 input[type=search]:hover,
-input[type=button]:hover,
-textarea:hover,
-button:not(.icon-wrapper):hover {
+textarea:hover {
 	box-shadow: inset -1px -1px 3px var(--secondary);
-}
-
-input[type=button]:hover,
-button:not(.icon-wrapper):hover {
-	box-shadow: inset -1px -1px 3px var(--secondary);
- 	background-color: #B1B1B1;
 }
 
 input[type=text]:focus,
@@ -61,16 +43,8 @@ input[type=date]:focus,
 input[type=time]:focus,
 input[type=email]:focus,
 input[type=search]:focus,
-input[type=button]:focus,
-textarea:focus,
-button:not(.icon-wrapper):focus {
+textarea:focus {
 	box-shadow: inset -1px -1px 1.5px var(--secondary);
-}
-
-input[type=button]:hover,
-button:not(.icon-wrapper):active {
-	background-color: #A0A0A0;
-	box-shadow: none;
 }
 
 input[type=text]::placeholder,

@@ -8,6 +8,14 @@
 	visibility: hidden;
 }
 
-.error-m.active {
+/* position the error labels relative
+to .form-field container */
+.form-field .error-m {
+	position: absolute;
+	left: 0;
+	bottom: -0.5rem;
+}
+
+.error-m.is-active {
 	visibility: visible;
 }

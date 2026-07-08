@@ -48,6 +48,26 @@ elements that only show up on agenda.html */
 	flex: 1;
 }
 
+/* outer section container for
+the booking selection list */
+#datetime-list-container {
+	border: 1px solid var(--aery-drakgray);
+	padding: 1rem;
+	border-radius: .8rem;
+}
+
+#datetime-list-container ul,
+#datetime-list-container ol {
+	list-style-type: none;
+}
+
+/* actual container for booking picker
+header, list, pages and controls */
+#datetime-list {
+	display: flex;
+	flex-direction: column;
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 600px) {

@@ -72,11 +72,16 @@ so it doesn't make middle subchildren look squared */
 	flex-direction: column;
 }
 
-/*[hidden] {
-	display: none !important;
-}*/
+/*
+I don't remember why I put this here
+but it used to break when deleted
+and it no longer does...
+kept it just in case.
 
-/* end of section: MENU */
+[hidden] {
+	display: none !important;
+}
+*/
 
 /* MEDIA QUERIES */
 

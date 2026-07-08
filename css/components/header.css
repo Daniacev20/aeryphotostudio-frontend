@@ -1,8 +1,9 @@
 /* header.css */
 
-/* Here are defined the styles for the generic
-header component that appears on every page
-including its children styles with specific
+/* Here are defined the styles
+for the generic header component
+that appears on every page including
+its children styles with specific
 classes. */
 
 header {
@@ -28,10 +29,12 @@ header {
 	flex-flow: column nowrap;
 	text-align: center;
 	margin-inline: auto;
-	padding-bottom: 1rem; /* separacion de la seccion principal */
+	/* separate from main section */
+	padding-bottom: 1rem;
 }
 
-/* margen vertical entre titulos y subtitulos del cuerpo */
+/* vertical spacing between
+titles and subtitles */
 .header-subtitle h1,
 .header-subtitle h2,
 .header-subtitle h3 {

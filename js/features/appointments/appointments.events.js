@@ -8,7 +8,7 @@ import {
 
 import { renderDay } from './appointments.views.js';
 
-const SELECTION_LIMIT = 4;
+const SELECTION_LIMIT = 2;
 let apptInit = false;
 
 const monthNumber = document.querySelector("#month-number");
@@ -44,16 +44,16 @@ function changeMonth_clickEvents(event) {
 
 function selectTime_clickEvents(event) {
 	const timeTag = event.target.closest(".hours-list > li");
-	const selected = daysList.querySelectorAll(".time-selected");
+	const selected = daysList.querySelectorAll(".is-selected");
 
 	if (!timeTag || timeTag.classList.contains("time-scheduled")) return;
 
 	if (selected.length < SELECTION_LIMIT)
-		timeTag.classList.toggle("time-selected");
+		timeTag.classList.toggle("is-selected");
 
 	if (selected.length === SELECTION_LIMIT) {
-		if (timeTag.classList.contains("time-selected"))
-			timeTag.classList.remove("time-selected");
+		if (timeTag.classList.contains("is-selected"))
+			timeTag.classList.remove("is-selected");
 	}
 }
 

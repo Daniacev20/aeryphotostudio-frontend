@@ -1,15 +1,11 @@
 /* variables.css */
 
-/* global variables common to all pages.
-excluding local variables*/
-
-/* variables globales comunes a todas las paginas.
-no incluye las variables locales que ayudaran un
-elemento especifico. */
+/* Global variables common to all pages
+excluding local variables. */
 
 :root {
 
-	/* brand */
+	/* BRAND */
 	--aery-primary: #562912;
 	--aery-secondary: #744A27;
 	--aery-white1: #F4F4F4;
@@ -23,14 +19,16 @@ elemento especifico. */
 	--primary-faded: #562912A5;
 	--secondary-faded: #744A27EB;
 
-	/* common colors: needed to centralize source of truth */
+	/* common colors: needed to
+	centralize source of truth */
 	--aery-black: #000;
 	--aery-white: #FFF;
 	--aery-transparent: transparent;
 	--aery-crimson: crimson;
 	--aery-drakgray: darkgray;
 
-	/* elements */
+	/* ELEMENTS: to be used on the
+	components of each page */
 	--primary: var(--aery-primary);
 	--secondary: var(--aery-secondary);
 	--bg-white1: var(--aery-white1);
@@ -42,6 +40,9 @@ elemento especifico. */
 	--bg-thumbnail: var(--aery-smokewhite2);
 	--bg-table-header: var(--primary-faded);
 	--bg-table-row: var(--secondary-faded);
+	--booking-selected: #AAA;
+	
+	/* TEXTS */
 
 	/* text colors */;
 	--text-color: #616161;
@@ -50,7 +51,13 @@ elemento especifico. */
 	/* text sizes */
 	--footer-address-size: 1.1rem;
 
-	/* icons */
+	/* ICONS */
+	
 	--footer-icon-size: 1.8rem;
 	--footer-icon-margin: .5rem;
+
+	/* BUTTONS */
+	--form-button-bg: #D3D3D3;
+	--form-button-bg-hover: #B1B1B1;
+	--form-button-bg-active: #A0A0A0;
 }

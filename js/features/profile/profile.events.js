@@ -63,18 +63,18 @@ async function formButtonsClickEvents(event) {
 
 		if (!userInput.identifier || !userInput.password) {
 			pError.textContent = "Por favor, ingrese usuario y clave.";
-			pError.classList.add("active");
+			pError.classList.add("is-active");
 			return;
 		}
 
 		pError.textContent = "";
-		pError.classList.remove("active");
+		pError.classList.remove("is-active");
 
 		try {
 			await handleLogin(userInput);
 		} catch (err) {
 			pError.textContent = err.message;
-			pError.classList.add("active");
+			pError.classList.add("is-active");
 			return;
 		}
 

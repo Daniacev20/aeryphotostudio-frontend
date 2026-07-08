@@ -3,7 +3,7 @@
 /* Here are defined the styles of the cards
 to be shown at entrega.html and portafolio.html
 includes the complete component from container
-to sub eleemnts except for the overlay
+to sub elements except for the overlay
 which is optional but applicable from the
 overlay component. */
 
@@ -25,7 +25,7 @@ overlay component. */
 	cursor: pointer;
 }
 
-/* CARD SUB-CONTAINERS */
+/* CARD BUTTONS */
 
 /* in case the cards have icons
 this is the container */
@@ -40,29 +40,28 @@ this is the container */
 	color: var(--aery-black); /* icon color */
 }
 
-/* container of individual icons
-that also acts as a background 
-defined for non-button icons*/
-.icon-wrapper:hover {
-	color: var(--bg-white2);
-}
-
-.icon-wrapper:active {
-	color: var(--bg-gray3);
-}
-
-/* action button acting as the wrapper */
-button.icon-wrapper {
-	all: unset;
-}
-
-button.icon-wrapper,
+/* containers of individual icons
+e.g. button or span*/
 .icon-wrapper {
+	border: none;
 	background-color: var(--aery-transparent);
 	padding: .3rem;
 	border-radius: 50%;
 	color: var(--aery-black); /* icon color */
 	cursor: pointer;
+}
+
+.icon-wrapper:not(.is-favorite):not(.is-downloaded):hover {
+	color: var(--bg-white2);
+}
+
+.icon-wrapper:not(.is-favorite):not(.is-downloaded):active {
+	color: var(--bg-gray3);
+}
+
+.is-favorite,
+.is-downloaded {
+	color: var(--icon-color1);
 }
 
 /* CARD CAPTIONS */
@@ -89,11 +88,6 @@ button.icon-wrapper,
 
 .unlocked-gallery img {
 	filter: brightness(.9) contrast(.9);
-}
-
-.is-favorite,
-.is-downloaded {
-	color: var(--icon-color1);
 }
 
 /* MEDIA QUERIES */

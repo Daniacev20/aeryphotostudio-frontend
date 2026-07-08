@@ -1,24 +1,11 @@
 /* booking-picker.css */
 
-/* section contenedor principal de lista */
-#datetime-list-container {
-	border: 1px solid var(--aery-drakgray);
-	padding: 1rem;
-	border-radius: .8rem;
-}
+/* PICKER HEADER:
+includes month label and
+navigation buttons */
 
-#datetime-list-container ul,
-#datetime-list-container ol {
-	list-style-type: none;
-}
-
-/* contenedor de encabezado y lista misma */
-#datetime-list {
-	display: flex;
-	flex-direction: column;
-}
-
-/* solo el encabezado, mes actual y botones */
+/* datetime-picker header:
+month label and buttons */
 #month-controls {
 	display: flex;
 	justify-content: space-between;
@@ -29,10 +16,9 @@
 	color: var(--aery-white);
 }
 
-/* botones de cambiar de mes en el encabezado */
 #month-controls button {
-	/* necesario para que ocupen
-		todo el alto del formulario */
+	/* reset needed so buttons take
+	the full height of the container */
 	border: none;
 	outline: none;
 	user-select: none;
@@ -47,18 +33,16 @@
 	opacity: .5;
 }
 
-/* efecto hover de botones de encabezado lista */
 #month-controls button:hover i {
 	opacity: .8;
 }
 
-/* efecto active de botones de encabezado lista */
 #month-controls button:active i {
 	opacity: 1;
 }
 
-/* span contenedor de 2 span con el numero y 
-	nombre del mes actual */
+/* center current month label
+between the navigation buttons */
 .current-month {
 	display: flex;
 	flex-grow: 1;
@@ -66,7 +50,11 @@
 	align-items: center;
 }
 
-/* ol contenedor de los dias */
+/* DATETIME PICKER:
+has the embedded lists with
+the days and the hours */
+
+/* ol containing the days */
 #days-list {
 	display: flex;
 	flex-direction: column;
@@ -74,16 +62,15 @@
 	overflow-y: scroll;
 }
 
-/* li con los dias individuales y un ol 
-	anidado para las horas del mismo dia */
+/* li with the days, each
+with an ol for the hours */
 .day {
 	display: flex;
 	flex-direction: column;
 	text-indent: 1rem;
 }
 
-/* header span, dia del mes y nombre del
-	dia de la semana */
+/* day of the week and month */
 .day > span {
 	font-weight: bold;
 	font-size: 1.5rem;
@@ -95,14 +82,14 @@
 	background-color: var(--bg-white2);
 }
 
-/* ol contenedor de las horas del
-	li-dia al que pertenece */
+/* ol containing hours of
+the parent day */
 .hours-list {
 	display: flex;
 	flex-direction: column;
 }
 
-/* li con horas a seleccionar */
+/* li of the hours */
 .hours-list li {
 	font-size: 1.2rem;
 	text-indent: 2.5rem;
@@ -111,27 +98,34 @@
 	background-color: var(--bg-gray2);
 }
 
-/* efecto hover de horas que no estan
-	seleccionadas */
-.hours-list li:not(.time-selected, .time-scheduled):hover {
+/* hover effect of hours
+when not selected  */
+.hours-list li:not(.is-selected):not(.is-scheduled):hover {
 	background-color: var(--bg-gray3);
 	cursor: pointer;
 }
 
-/* color de fondo de horas seleccionadas */
-.hours-list .time-selected {
-	background-color: #AAA;
+/* hours color when selected */
+.hours-list .is-selected {
+	background-color: var(--booking-selected);
 	cursor: pointer;
 }
 
-/* estilo de horas que no esten disponibles */
-.hours-list .time-scheduled {
+/* hours style when scheduled
+by the active user */
+.hours-list .is-scheduled {
+	cursor: default;
+}
+
+/* hours style when unavailable */
+.hours-list .is-unavailable {
 	cursor: not-allowed;
 	opacity: .4;
 }
 
-/* banner de informacion de seleccion,
-	paginacion y navegacion */
+/* PAGINATION */
+
+/* pagination main container */
 #selection-info {
 	display: flex;
 	flex-direction: row;
@@ -146,7 +140,8 @@
 	padding: 0 !important;
 }
 
-/* paginacion */
+/* container for pages with
+remaining days of the month */
 #calendar-pages {
 	display: flex;
 	flex-direction: row;
