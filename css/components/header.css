@@ -12,7 +12,8 @@ header {
 	background-color: var(--primary);
 }
 
-.header-title, .main-menu-container {
+.header-title,
+.main-menu-container {
 	display: flex;
 	flex-direction: column;
 }

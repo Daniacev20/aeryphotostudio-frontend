@@ -1,1 +1,37 @@
 /* service-table.css */
+
+.table-wrapper {
+	overflow-x: auto;
+	margin: 1.5rem 0;
+}
+
+.tbl-services {
+	 border-collapse: collapse;
+	 margin-inline: auto;
+	 caption-side: bottom;
+	 color: var(--aery-white);
+}
+
+.tbl-services caption {
+	padding: .4rem;
+	color: var(--aery-black);
+}
+
+.tbl-services th, .tbl-services td {
+	text-align: center;
+	padding: 1.2rem;
+	border: 1px solid var(--aery-black);
+}
+
+.tbl-services tr:nth-child(even) {
+	background-color: var(--secondary);
+	color: var(--aery-white);
+}
+
+.tbl-services tr:nth-child(odd) {
+	background-color: var(--secondary-faded);
+}
+
+.tbl-services th {
+	background-color: var(--bg-table-header);
+}

@@ -1,0 +1,40 @@
+/* client-panel.css */
+
+/* banner para mostrar link de vuelta a la entrada
+	principal a entrega.html. Este banner solo debe
+	mostrarse cuando se entra a las galerias de un cliente */
+#client-panel {
+	min-height: 50px;
+	width: 90vw;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-inline: auto;
+	padding-inline: .8rem;
+	text-align: center;
+}
+
+#gallery-title {
+	flex: 1;
+}
+
+#client-panel i.fas {
+	font-size: 1.4rem;
+	color: var(--aery-black);
+}
+
+#download-full-gallery {
+	all: unset;
+	color: var(--aery-black);
+}
+
+#download-full-gallery:hover,
+#download-full-gallery:hover i.fas {
+	color: var(--primary);
+}
+
+#download-full-gallery:active,
+#download-full-gallery:active i.fas {
+	color: var(--secondary);
+}

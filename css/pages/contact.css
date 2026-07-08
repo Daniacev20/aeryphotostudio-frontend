@@ -41,3 +41,22 @@ it is not defined here. */
 		width: clamp(320px, 85vw, 90vw);
 	}
 }
+
+@media only screen and (max-width: 600px) {
+	#frm-contact {
+		width: clamp(320px, 80vw, 85vw);
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 772px) {
+	#frm-contact {
+		width: clamp(320px, 80vw, 85vw);
+	}
+}
+
+
+@media only screen and (min-width: 773px) and (max-width: 1024px) {
+	#frm-contact {
+		width: clamp(320px, 80vw, 85vw);
+	}
+}

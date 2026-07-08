@@ -1,0 +1,13 @@
+/*error-label.css*/
+
+.error-m {
+	color: var(--aery-crimson);
+	font-size: .8rem;
+	display: inline-block;
+	min-height: 1rem;
+	visibility: hidden;
+}
+
+.error-m.active {
+	visibility: visible;
+}

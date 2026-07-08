@@ -1,1 +1,161 @@
 /* booking-picker.css */
+
+/* section contenedor principal de lista */
+#datetime-list-container {
+	border: 1px solid var(--aery-drakgray);
+	padding: 1rem;
+	border-radius: .8rem;
+}
+
+#datetime-list-container ul,
+#datetime-list-container ol {
+	list-style-type: none;
+}
+
+/* contenedor de encabezado y lista misma */
+#datetime-list {
+	display: flex;
+	flex-direction: column;
+}
+
+/* solo el encabezado, mes actual y botones */
+#month-controls {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+	font-size: 3rem;
+	background-color: var(--primary);
+	opacity: .89;
+	color: var(--aery-white);
+}
+
+/* botones de cambiar de mes en el encabezado */
+#month-controls button {
+	/* necesario para que ocupen
+		todo el alto del formulario */
+	border: none;
+	outline: none;
+	user-select: none;
+	margin: 0;
+	font-weight: inherit;
+	font-size: inherit;
+	color: var(--aery-white);
+	background-color: var(--aery-transparent);
+}
+
+#month-controls > button > i {
+	opacity: .5;
+}
+
+/* efecto hover de botones de encabezado lista */
+#month-controls button:hover i {
+	opacity: .8;
+}
+
+/* efecto active de botones de encabezado lista */
+#month-controls button:active i {
+	opacity: 1;
+}
+
+/* span contenedor de 2 span con el numero y 
+	nombre del mes actual */
+.current-month {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+	align-items: center;
+}
+
+/* ol contenedor de los dias */
+#days-list {
+	display: flex;
+	flex-direction: column;
+	max-height: 85vh;
+	overflow-y: scroll;
+}
+
+/* li con los dias individuales y un ol 
+	anidado para las horas del mismo dia */
+.day {
+	display: flex;
+	flex-direction: column;
+	text-indent: 1rem;
+}
+
+/* header span, dia del mes y nombre del
+	dia de la semana */
+.day > span {
+	font-weight: bold;
+	font-size: 1.5rem;
+	border-bottom: 1px solid var(--aery-black);
+	padding: .2rem;
+}
+
+.day > span:hover {
+	background-color: var(--bg-white2);
+}
+
+/* ol contenedor de las horas del
+	li-dia al que pertenece */
+.hours-list {
+	display: flex;
+	flex-direction: column;
+}
+
+/* li con horas a seleccionar */
+.hours-list li {
+	font-size: 1.2rem;
+	text-indent: 2.5rem;
+	padding: .3rem 0;
+	border-bottom: 1px solid var(--aery-black);
+	background-color: var(--bg-gray2);
+}
+
+/* efecto hover de horas que no estan
+	seleccionadas */
+.hours-list li:not(.time-selected, .time-scheduled):hover {
+	background-color: var(--bg-gray3);
+	cursor: pointer;
+}
+
+/* color de fondo de horas seleccionadas */
+.hours-list .time-selected {
+	background-color: #AAA;
+	cursor: pointer;
+}
+
+/* estilo de horas que no esten disponibles */
+.hours-list .time-scheduled {
+	cursor: not-allowed;
+	opacity: .4;
+}
+
+/* banner de informacion de seleccion,
+	paginacion y navegacion */
+#selection-info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#selection-info > div {
+	padding-top: 1rem;
+}
+
+#selection-info button {
+	padding: 0 !important;
+}
+
+/* paginacion */
+#calendar-pages {
+	display: flex;
+	flex-direction: row;
+	gap: .5rem;
+	overflow-x: auto;
+	max-width: 350px;
+	white-space: wrap;
+}
+
+#calendar-pages .active-page {
+	font-weight: bold;
+}

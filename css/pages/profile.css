@@ -1,0 +1,100 @@
+/* profile.css */
+
+.profile-form fieldset {
+	display: flex;
+	flex-direction: column;
+	max-width: clamp(300px, 500px, 50vw);
+	margin: 2rem auto;
+	padding: .8rem;
+}
+
+/* separar un poco el texto de los controles */
+.profile-form p {
+	margin-top: 1rem;
+}
+
+/* contenedor de los botones para repartir el ancho */
+.profile-form .buttons-container {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+/* ancho equitativo de los botones */
+.profile-form .buttons-container > button {
+	flex: 1;
+	margin-top: 1rem;
+}
+
+/* contenedor del password para posicionamiento */
+.form-field {
+	position: relative;
+}
+
+/* ajustar input password al ancho del flex que
+	ahora es el div padre */
+
+.form-field input:not([type=password]) {
+	width: 100%;
+}
+
+.form-field input[type=password] {
+	width: 100%;
+
+	/* para que el texto no entre debajo del
+		icono de ojo */
+	padding-right: 2.5rem;
+}
+
+/* posicionar los mensajes de error de
+	los campos */
+.form-field .error-m {
+	position: absolute;
+	left: 0;
+	bottom: -0.5rem;
+}
+
+/* posicionamiento absoluto del icono 
+	de mostrar password */
+.form-field .eye-icon {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: .8rem;
+	cursor: pointer;
+}
+
+/* color al hacerle hover al ojo */
+.form-field .eye-icon:hover {
+	color: var(--primary);
+}
+
+.form-field .eye-icon:active {
+	color: var(--bg-gray2);
+}
+
+/* efectos con el mouse del icono de editar */
+#edit-pencil:hover,
+span:hover > #edit-pencil {
+	color: var(--primary);
+}
+
+#edit-pencil:active,
+span:active > #edit-pencil {
+	color: var(--bg-gray2);
+}
+
+/* ocultar checkbox para la ilusion de que
+	el icono de lapiz edita */
+#ck-edit {
+	visibility: hidden;
+}
+
+section[id|=view] {
+	display: none;
+}
+
+section.active {
+	display: block;
+}

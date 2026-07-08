@@ -1,0 +1,119 @@
+/* bookings.css */
+
+/* Here are defined the styles for the
+elements that only show up on agenda.html */
+
+.selection-container {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.selection-container > section {
+	flex: 1;
+}
+
+#frm-calendar fieldset {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	border-radius: .8rem;
+}
+
+#frm-calendar label:not(.form-info) {
+	margin-top: 1rem;
+}
+
+#frm-calendar textarea {
+	min-height: 5rem;
+	max-height: 10rem;
+	resize: vertical;
+}
+
+.form-info {
+	margin: .4rem 0;
+	display: flex;
+	gap: .3rem;
+	justify-content: space-between;
+}
+
+#frm-calendar .buttons-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+#frm-calendar .buttons-row > button {
+	flex: 1;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 600px) {
+	.selection-container {
+		flex-direction: column;
+		width: 90vw;
+		margin: auto;
+	}
+
+	.selection-container > section {
+		margin-top: .8rem;
+		margin-bottom: .8rem;
+	}
+
+	#frm-calendar {
+		flex-direction: column;
+	}
+
+	#frm-calendar fieldset {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 772px) {
+	.selection-container {
+		flex-direction: column;
+		width: 90vw;
+		margin: auto;
+	}
+
+	.selection-container > section {
+		margin-top: .8rem;
+		margin-bottom: .8rem;
+	}
+
+	#frm-calendar {
+		flex-direction: column;
+	}
+
+	#frm-calendar fieldset {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media only screen and (min-width: 773px) and (max-width: 1024px) {
+	/* algunos estilos por defecto quedan mal en estas */
+	.selection-container {
+		flex-direction: column;
+		width: 90vw;
+		margin: auto;
+	}
+
+	.selection-container > section {
+		margin-top: .8rem;
+		margin-bottom: .8rem;
+	}
+
+	#frm-calendar {
+		flex-direction: column;
+	}
+
+	#frm-calendar fieldset {
+		display: flex;
+		justify-content: center;
+	}
+}

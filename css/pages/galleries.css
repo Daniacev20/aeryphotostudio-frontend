@@ -1,0 +1,59 @@
+/* galleries.css */
+
+/* Here are defined styles common to both
+entrega.html (protected galleries) and
+portafolio.html (open galleries) since they
+use similar structure with the same set of
+controls. */
+
+/*  */
+
+/* searchbar form */
+#frm-gallery-search {
+	position: relative;
+	display: flex;
+	width: 90vw;
+	margin: 1rem auto;
+}
+
+/* searchbar */
+#search-gallery {
+	padding: 1rem;
+	padding-left: 2rem;
+	flex-grow: 1;
+	border-radius: .5rem;
+}
+
+#search-gallery:focus {
+	outline: none;
+	box-shadow: inset -1px -1px 5px var(--secondary);
+}
+
+/* grid container */
+#galleries {
+	--card-size: 250px;
+	--gap: 1rem;
+	display: grid;
+	gap: var(--gap);
+	grid-template-columns: repeat(auto-fit, var(--card-size));
+	justify-content: center;
+	max-width: calc(5 * var(--card-size) + 4 * var(--gap));
+	margin-inline: auto;
+	padding-bottom: 1rem;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 375px) {
+	/* remove indentation on extra small screens
+	since the search icon is removed here */
+	#search-gallery {
+		text-indent: 0;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#frm-gallery-search {
+		margin-inline: 1rem;
+	}
+}

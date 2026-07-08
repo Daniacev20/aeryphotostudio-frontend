@@ -1,1 +1,106 @@
 /* cards.css */
+
+/* Here are defined the styles of the cards
+to be shown at entrega.html and portafolio.html
+includes the complete component from container
+to sub eleemnts except for the overlay
+which is optional but applicable from the
+overlay component. */
+
+/* CARD BASE */
+.thumbnail {
+	position: relative;
+	aspect-ratio: 1;
+	width: 100%;
+	background-color: var(--aery-smokewhite2);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.thumbnail img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+	cursor: pointer;
+}
+
+/* CARD SUB-CONTAINERS */
+
+/* in case the cards have icons
+this is the container */
+.icon-box {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	position: absolute;
+	top: .3rem;
+	right: .3rem;
+	background-color: var(--aery-transparent);
+	color: var(--aery-black); /* icon color */
+}
+
+/* container of individual icons
+that also acts as a background 
+defined for non-button icons*/
+.icon-wrapper:hover {
+	color: var(--bg-white2);
+}
+
+.icon-wrapper:active {
+	color: var(--bg-gray3);
+}
+
+/* action button acting as the wrapper */
+button.icon-wrapper {
+	all: unset;
+}
+
+button.icon-wrapper,
+.icon-wrapper {
+	background-color: var(--aery-transparent);
+	padding: .3rem;
+	border-radius: 50%;
+	color: var(--aery-black); /* icon color */
+	cursor: pointer;
+}
+
+/* CARD CAPTIONS */
+
+.img-captions {
+	position: absolute;
+	bottom: .8rem;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	color: var(--caption-color);
+	font-weight: bold;
+	font-size: 1.5rem;
+	text-shadow: -1px -2px 5px var(--aery-black);
+	padding: .2rem .4rem;
+	border-radius: .2rem;
+}
+
+/* CARD STATES */
+
+.locked-gallery img {
+	opacity: .5;
+}
+
+.unlocked-gallery img {
+	filter: brightness(.9) contrast(.9);
+}
+
+.is-favorite,
+.is-downloaded {
+	color: var(--icon-color1);
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 600px) {
+	.thumbnail img {
+		height: 40vh;
+		width: 100%;
+	}
+}
