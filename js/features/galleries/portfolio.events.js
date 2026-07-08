@@ -16,17 +16,14 @@ import {
 	renderModal
 } from './portfolio.views.js';
 
-import { filterGalleries } from '../../utils/galleryfiltering.js';
+import { getCircularIndex } from '../../utils/gallery.utils.js';
+import { filterGalleries } from '../../utils/gallery.filtering.js';
 
 const galleries = document.querySelector("#galleries");
 const frmSearch = document.querySelector("#frm-gallery-search");
 const searchBar = document.querySelector("#search-gallery");
 const backTo = document.querySelector(".back-to");
 
-
-function getCircularIndex(array, index) {
-	return ((index % array.length) + array.length) % array.length;
-}
 
 function handleInfoBarDisplay(params) {
 	// show the back, download button and title based on the stage

@@ -1,4 +1,4 @@
-// galleryfiltering.js
+// gallery.filtering.js
 
 function filterClients(search, stateObject) {
 	return stateObject.clients.filter(c => {

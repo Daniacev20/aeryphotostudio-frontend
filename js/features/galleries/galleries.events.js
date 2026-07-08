@@ -27,7 +27,9 @@ import {
 import {
 	filterClients,
 	filterGalleries
-} from '../../utils/galleryfiltering.js';
+} from '../../utils/gallery.filtering.js';
+
+import { getCircularIndex } from '../../utils/gallery.utils.js';
 
 import * as GALLERY_SESSION from "../../utils/gallery.navigation.js";
 
@@ -39,10 +41,6 @@ const searchBar = document.querySelector("#search-gallery");
 const backTo = document.querySelector(".back-to");
 const galleryTitle = document.querySelector("#gallery-title");
 const downloadAll = document.querySelector("#download-full-gallery");
-
-function getCircularIndex(array, index) {
-	return ((index % array.length) + array.length) % array.length;
-}
 
 function handleClientPanelDisplay(params) {
 	backTo.hidden = params.size === 0;
