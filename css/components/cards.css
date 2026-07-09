@@ -41,27 +41,32 @@ this is the container */
 }
 
 /* containers of individual icons
-e.g. button or span*/
+e.g. button or span.
+
+This class is very important, it is
+reused in many other files where the
+children elements are <i> icons */
 .icon-wrapper {
 	border: none;
+	outline: none; /* prevent icon ring */
 	background-color: var(--aery-transparent);
 	padding: .3rem;
 	border-radius: 50%;
-	color: var(--aery-black); /* icon color */
+	color: var(--gallerycard-button); /* icon color */
 	cursor: pointer;
 }
 
 .icon-wrapper:not(.is-favorite):not(.is-downloaded):hover {
-	color: var(--bg-white2);
+	color: var(--gallerycard-button-hover);
 }
 
 .icon-wrapper:not(.is-favorite):not(.is-downloaded):active {
-	color: var(--bg-gray3);
+	color: var(--gallerycard-button-active);
 }
 
 .is-favorite,
 .is-downloaded {
-	color: var(--icon-color1);
+	color: var(--gallerycard-button-checked);
 }
 
 /* CARD CAPTIONS */

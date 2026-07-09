@@ -19,22 +19,6 @@
 	flex: 1;
 }
 
-#client-panel i.fas {
-	font-size: 1.4rem;
-	color: var(--aery-black);
-}
-
 #download-full-gallery {
-	all: unset;
-	color: var(--aery-black);
-}
-
-#download-full-gallery:hover,
-#download-full-gallery:hover i.fas {
-	color: var(--primary);
-}
-
-#download-full-gallery:active,
-#download-full-gallery:active i.fas {
-	color: var(--secondary);
+	font-size: 1.4rem;
 }

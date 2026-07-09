@@ -51,7 +51,7 @@ elements that only show up on agenda.html */
 /* outer section container for
 the booking selection list */
 #datetime-list-container {
-	border: 1px solid var(--aery-drakgray);
+	border: 1px solid var(--aery-darkgray);
 	padding: 1rem;
 	border-radius: .8rem;
 }

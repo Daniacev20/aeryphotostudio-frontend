@@ -79,7 +79,7 @@ with an ol for the hours */
 }
 
 .day > span:hover {
-	background-color: var(--bg-white2);
+	background-color: var(--btn-white-bg1);
 }
 
 /* ol containing hours of
@@ -95,13 +95,13 @@ the parent day */
 	text-indent: 2.5rem;
 	padding: .3rem 0;
 	border-bottom: 1px solid var(--aery-black);
-	background-color: var(--bg-gray2);
+	background-color: var(--btn-gray-bg1);
 }
 
 /* hover effect of hours
 when not selected  */
 .hours-list li:not(.is-selected):not(.is-scheduled):hover {
-	background-color: var(--bg-gray3);
+	background-color: var(--btn-gray-bg2);
 	cursor: pointer;
 }
 

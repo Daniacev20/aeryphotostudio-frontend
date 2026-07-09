@@ -7,7 +7,7 @@ in the exact same order across the pages.
 For example: header>nav>main>section>footer */
 
 body {
-	background-color: var(--aery-white1);
+	background-color: var(--page-bg);
 }
 
 main a {

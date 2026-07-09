@@ -88,7 +88,7 @@ such as, navigation arrows, confirm and close */
 }
 
 .btn-close-pin-modal:active {
-	color: var(--aery-drakgray);
+	color: var(--aery-darkgray);
 }
 
 /* GALLERY MODAL */
@@ -96,6 +96,7 @@ such as, navigation arrows, confirm and close */
 /* Layout: elements inside the modal */
 #image-modal-dialog {
 	border: none;
+	outline: none;
 	position: fixed;
 	overflow: hidden;
 	inset: 0;
@@ -103,8 +104,8 @@ such as, navigation arrows, confirm and close */
 	width: auto;
 	max-height: unset;
 	max-width: unset;
-	background-color: rgba(0, 0, 0, 0.9);
-	color: var(--aery-white);
+	background-color: var(--page-bg);
+	color: var(--text-color);
 	z-index: 1000;
 }
 
@@ -136,23 +137,7 @@ such as, navigation arrows, confirm and close */
 /* Modal actions: buttons */
 #modal-actions {
 	display: flex;
-	gap: 1.5rem;
-}
-
-button.modal-icon {
-	all: unset !important;
-	color: var(--aery-white);
-}
-
-button.modal-icon:hover {
-	background-color: var(--aery-transparent);
-	border: none;
-	color: var(--bg-gray2);
-}
-
-button.modal-icon:active {
-	background-color: var(--aery-transparent);
-	color: var(--bg-gray3);
+	gap: 1rem;
 }
 
 #prev-image, #next-image {
@@ -162,7 +147,7 @@ button.modal-icon:active {
 	outline: none;
 	border: none;
 	background-color: var(--aery-transparent);
-	color: var(--aery-white);
+	color: var(--text-color);
 	font-weight: bold;
 	font-size: 2rem;
 	width: 3rem;
@@ -182,7 +167,7 @@ button.modal-icon:active {
 		margin-top: 1rem;
 	}
 
-	.modal-actions {
+	#modal-actions {
 		gap: 1rem;
 	}
 
