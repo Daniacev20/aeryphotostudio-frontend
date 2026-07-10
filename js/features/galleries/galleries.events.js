@@ -31,11 +31,9 @@ import {
 
 import { getCircularIndex } from '../../utils/gallery.utils.js';
 
-import * as GALLERY_SESSION from "../../utils/gallery.navigation.js";
-
 const PIN_REQUIRED_LENGTH = 4;
-const galleries = document.querySelector("#galleries");
 
+const galleries = document.querySelector("#galleries");
 const frmSearch = document.querySelector("#frm-gallery-search");
 const searchBar = document.querySelector("#search-gallery");
 const backTo = document.querySelector(".back-to");
@@ -76,8 +74,12 @@ function backToButton_clickEvents(event) {
 	if (!btn) return;
 	event.preventDefault();
 
-	if (galleryState.directAccess) {
-		GALLERY_SESSION.clearInternalNavigation();
+	const referrer = document.referrer;
+	const params = new URLSearchParams(location.search);
+	const slug = params.get("slug");
+
+	if (slug && (referrer === "" ||
+		!referrer.startsWith(location.origin))) {
 		location.href = "/";
 		return;
 	}
@@ -98,19 +100,14 @@ async function getClients_loadEvents(event) {
 	}
 	else if (client && !slug) {
 		const clientGalleries =
-			await getClientGalleries(params.get("client"));
+			await getClientGalleries(client);
 
 		renderClientGalleries(galleries, clientGalleries, galleryState);
 	}
 	else if (!client && slug) {
-		galleryState.directAccess =
-			!GALLERY_SESSION.checkInternalNavigation() || false;
-
 		try {
 			const galleryAndImages =
-				await getGalleryAndImagesBySlug(
-					params.get("slug")
-				);
+				await getGalleryAndImagesBySlug(slug);
 			
 			renderGalleryImages(
 				galleries,
@@ -141,9 +138,6 @@ async function protectedGallery_clickEvents(event) {
 	
 	try {
 		await verifyGalleryAccess(slug);
-
-		// important to maintain correct navigation
-		GALLERY_SESSION.setInternalNavigation(true);
 
 		location.href =
 			`/entrega.html?slug=${slug}`;
@@ -199,7 +193,10 @@ function closePinModal_clickEvents(event) {
 	PinModal.lblError.hidden = true;
 	PinModal.dialog.close();
 
-	if (galleryState.directAccess) {
+	const referrer = document.referrer;
+
+	if (referrer === "" ||
+		!referrer.startsWith(location.origin)) {
 		location.href = "/";
 	}
 }

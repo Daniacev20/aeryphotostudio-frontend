@@ -8,7 +8,6 @@ const galleryState = {
 	slug: "",
 	title: "",
 	downloadsEnabled: false,
-	directAccess: false
 };
 
 const GalleryModal = {

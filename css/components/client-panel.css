@@ -20,5 +20,9 @@
 }
 
 #download-full-gallery {
-	font-size: 1.4rem;
+	font-size: var(--client-panel-icons-size);
+}
+
+.back-to {
+	font-size: var(--client-panel-icons-size);
 }
