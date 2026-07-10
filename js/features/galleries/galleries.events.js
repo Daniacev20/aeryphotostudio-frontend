@@ -68,18 +68,21 @@ function handleSearchDisplay(params) {
 	}
 }
 
+function cameByNavigation() {
+	return document.referrer.startsWith(location.origin);
+}
+
 function backToButton_clickEvents(event) {
 	const btn = event.target.closest(".back-to");
 
 	if (!btn) return;
+
 	event.preventDefault();
 
-	const referrer = document.referrer;
 	const params = new URLSearchParams(location.search);
 	const slug = params.get("slug");
 
-	if (slug && (referrer === "" ||
-		!referrer.startsWith(location.origin))) {
+	if (slug && !cameByNavigation()) {
 		location.href = "/";
 		return;
 	}
@@ -193,10 +196,8 @@ function closePinModal_clickEvents(event) {
 	PinModal.lblError.hidden = true;
 	PinModal.dialog.close();
 
-	const referrer = document.referrer;
 
-	if (referrer === "" ||
-		!referrer.startsWith(location.origin)) {
+	if (!cameByNavigation()) {
 		location.href = "/";
 	}
 }
