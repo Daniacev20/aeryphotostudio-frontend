@@ -33,11 +33,14 @@ controls. */
 #galleries {
 	--card-size: 250px;
 	--gap: 1rem;
+	--columns-count: 5;
+	--gaps-count: calc(var(--columns-count) - 1);
 	display: grid;
 	gap: var(--gap);
 	grid-template-columns: repeat(auto-fit, var(--card-size));
 	justify-content: center;
-	max-width: calc(5 * var(--card-size) + 4 * var(--gap));
+	max-width:
+		calc(var(--columns-count) * var(--card-size) + var(--gaps-count) * var(--gap));
 	margin-inline: auto;
 	padding-bottom: 1rem;
 }
