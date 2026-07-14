@@ -26,9 +26,7 @@ visual attraction, meant for index, but reusable */
 
 /* form buttons */
 
-input[type=button],
-input[type=submit],
-button:not(.icon-wrapper) {
+.form-button {
 	background-color: var(--form-button-bg);
 	border: 1px solid var(--primary);
 	border-radius: .3rem;
@@ -42,22 +40,22 @@ button:not(.icon-wrapper) {
 	user-select: none;
 }
 
-input[type=button]:hover,
-input[type=submit]:hover,
-button:not(.icon-wrapper):hover {
+.form-button:hover,
+.form-button:hover,
+.form-button:not(.icon-wrapper):hover {
 	box-shadow: inset -1px -1px 3px var(--secondary);
  	background-color: var(--form-button-bg-hover);
 }
 
-input[type=button]:focus,
-input[type=submit]:focus,
-button:not(.icon-wrapper):focus {
+.form-button:focus,
+.form-button:focus,
+.form-button:not(.icon-wrapper):focus {
 	box-shadow: inset -1px -1px 1.5px var(--secondary);
 }
 
-input[type=button]:active,
-input[type=submit]:active,
-button:not(.icon-wrapper):active {
+.form-button:active,
+.form-button:active,
+.form-button:not(.icon-wrapper):active {
 	background-color: var(--form-button-bg-focus);
 	box-shadow: none;
 }
