@@ -6,8 +6,6 @@ portafolio.html (open galleries) since they
 use similar structure with the same set of
 controls. */
 
-/*  */
-
 /* searchbar form */
 #frm-gallery-search {
 	position: relative;
@@ -35,12 +33,16 @@ controls. */
 	--gap: 1rem;
 	--columns-count: 5;
 	--gaps-count: calc(var(--columns-count) - 1);
+	
 	display: grid;
 	gap: var(--gap);
 	grid-template-columns: repeat(auto-fit, var(--card-size));
 	justify-content: center;
 	max-width:
-		calc(var(--columns-count) * var(--card-size) + var(--gaps-count) * var(--gap));
+		calc(var(--columns-count) *
+		var(--card-size) +
+		var(--gaps-count) *
+		var(--gap));
 	margin-inline: auto;
 	padding-bottom: 1rem;
 }

@@ -33,6 +33,7 @@ btn-white-bg). */
 	centralize source of truth */
 	--aery-black: #000;
 	--aery-white: #FFF;
+	--aery-gray: #808080;
 	--aery-transparent: transparent;
 	--aery-crimson: crimson;
 	--aery-darkgray: darkgray;
@@ -50,6 +51,7 @@ btn-white-bg). */
 	--bg-table-header: var(--primary-faded);
 	--bg-table-row: var(--secondary-faded);
 	--booking-selected: #AAA;
+	--panel-bg: var(--aery-gray1);
 	
 	/* TEXTS */
 
@@ -67,6 +69,8 @@ btn-white-bg). */
 	--footer-icon-margin: .5rem;
 
 	/* BUTTONS */
+
+	/* backgrounds */
 	--btn-white-bg1: var(--aery-smokewhite1);
 	--btn-gray-bg1: var(--aery-gray2);
 	--btn-gray-bg2: var(--aery-gray3);
@@ -75,8 +79,16 @@ btn-white-bg). */
 	--form-button-bg-hover: #B1B1B1;
 	--form-button-bg-active: #A0A0A0;
 
+	/* button font color */
+	--btn-lightgray: var(--aery-smokewhite1);
+
 	--gallerycard-button: var(--aery-black);
 	--gallerycard-button-hover: var(--secondary);
 	--gallerycard-button-active: var(--primary);
 	--gallerycard-button-checked: var(--secondary-faded);
+
+	/* IMG */
+
+	/* background of img containers */
+	--img-bg: var(--aery-gray1);
 }

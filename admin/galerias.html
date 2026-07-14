@@ -4,122 +4,114 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/admin/main.css">
 	<link rel="icon" type="image/png" href="../imgs/aery-logo.png">
 	<title>Gesti&oacute;n de galer&iacute;as</title>
 </head>
 <body>
-	<header>
-		<nav class="main-menu-container">
-			<div class="toggle-container">
-				<span id="btn-toggle">
-					<i class="fas fa-bars"></i>
-				</span>
-				
-				<ul class="navigation-menu">
-					<li>
-						<a href="../index.html">
-							<i class="fas fa-home"></i>
-							Inicio
-						</a>
-					</li>
-					<li>
-						<a href="../portafolio.html">
-							<i class="fas fa-palette"></i>
-							Portafolio
-						</a>
-					</li>
-					<li class="submenu">
-						<a href="../servicios.html" tabindex="0">
-							<i class="fas fa-handshake"></i>
-							Servicios
-						</a>
-						<ul class="submenu-content">
-							<li>
-								<a href="../agenda.html">
-									<i class="fas fa-calendar"></i>
-									Agenda de sesiones
-								</a>
-							</li>
-							<li>
-								<a href="../entrega.html">
-									<i class="fas fa-image"></i>
-									Entrega de fotos
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="submenu">
-						<a href="../#">
-							<i class="fas fa-user"></i>
-							<span class="active" data-username></span>
-						</a>
+	<header class="admin-header">
+		<hgroup>
+			<h1>Galer&iacute;as</h1>
+		</hgroup>
 
-						<!-- menu dinamico -->
-						<ul class="submenu-content">
-							<li data-user-options="signin">
-								<a href="../perfil.html?view=login">
-									<i class="fas fa-user"></i>
-									<span>Iniciar sesi&oacute;n</span>
-								</a>
-							</li>
-							<li data-user-options="profile">
-								<a href="../perfil.html?view=profile">
-									<i class="fas fa-user"></i>
-									<span>Ir a perfil</span>
-								</a>
-							</li>
-							<li data-user-options="signup">
-								<a href="../perfil.html?view=register">
-									<i class="fas fa-sign-in"></i>
-									<span >Registrarse</span>
-								</a>
-							</li>
-							<li data-user-options="signout">
-								<a href="../perfil.html?view=login">
-									<i class="fas fa-sign-in"></i>
-									<span>Cerrar sesi&oacute;n</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="../contacto.html">
-							<i class="fas fa-phone"></i>
-							Contacto
-						</a>
-					</li>
-					<li>
-						<a href="../sobre_nosotros.html">
-							<i class="fas fa-address-card"></i>
-							Sobre nosotros
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+		<form id="frm-search-galleries" action="#" novalidate>
+			<input type="search" id="search-gallery" maxlength="60" autocomplete="off" placeholder="Buscar galer&iacute;a">
+		</form>
+
+		<div class="header-actions">
+			<button class="btn" id="btn-notifications">
+				<i class="fas fa-bell"></i>
+			</button>
+
+			<button class="btn" id="btn-new-gallery">
+				<span>Nueva galer&iacute;a</span>
+				<i class="fas fa-plus"></i>
+			</button>
+		</div>
 	</header>
 
 	<main>
-		<section>
-			<hgroup class="header-subtitle">
-				<h1>Crea o gestiona tus galer&iacute;as</h1>
-			</hgroup>
+		<section class="filters-panel">
+			<button class="btn" id="btn-status-filter">
+				<span>Estado</span>
+				<i class="fas fa-caret-down"></i>
+			</button>
+
+			<button class="btn" id="btn-date-filter">
+				<span>Fecha</span>
+				<i class="fas fa-caret-down"></i>
+			</button>
 		</section>
-		
-		<section>
-			<form action="#" id="frm-create-gallery" novalidate>
-				<label for="txt-client-name" class="form-field">
-					<input type="text" name="client-name" id="txt-client-name" class="" maxlength="30" autocomplete="off" placeholder="Nombre del cliente" required>
-				</label>
 
-				<label for="txt-gallery-title" class="form-field">
-					<input type="text" name="gallery-title" id="txt-gallery-title", class="", maxlength="60", autocomplete="off" placeholder="Nombre de la galer&iacute;a" required>
-				</label>
+		<section id="dashboard">
+			<aside class="sidebar">
+				<div class="cover-container">
+					<img src="/assets/carousel/gigi5.jpg">
+				</div>
 
-				<label for="txta-gallery-description" class="form-field">
-					<textarea name="gallery-description" id="txta-gallery-description" maxlength="2000" placeholder="Descripci&oacute;n de la galer&iacute;a"></textarea>
-				</label>
-			</form>
+				<section class="sidebar-actions">
+					<div class="action-container">
+						<span class="btn btn-setting">
+							<i class="fas fa-gear"></i>
+						</span>
+					</div>
+					<div class="action-container">
+						<span class="btn btn-setting">
+							<i class="fas fa-gear"></i>
+						</span>
+					</div>
+					<div class="action-container">
+						<span class="btn btn-setting">
+							<i class="fas fa-gear"></i>
+						</span>
+					</div>
+					<div class="action-container">
+						<span class="btn btn-setting">
+							<i class="fas fa-gear"></i>
+						</span>
+					</div>
+				</section>
+			</aside>
+
+			<aside class="content">
+				<article id="galleries">
+					<a href="#">
+						<div class="card">
+							<img src="/assets/carousel/gigi1.jpg">
+						</div>
+					</a>
+
+					<a href="#">
+						<div class="card">
+							<img src="/assets/carousel/gigi2.jpg">
+						</div>
+					</a>
+
+					<a href="#">
+						<div class="card">
+							<img src="/assets/carousel/gigi3.jpg">
+						</div>
+					</a>
+
+					<a href="#">
+						<div class="card">
+							<img src="/assets/carousel/gigi4.jpg">
+						</div>
+					</a>
+
+					<a href="#">
+						<div class="card">
+							<img src="/assets/carousel/gigi5.jpg">
+						</div>
+					</a>
+
+					<a href="#">
+						<div class="card">
+							<img src="/assets/carousel/gigi6.jpg">
+						</div>
+					</a>
+				</article>
+			</aside>
 		</section>
 	</main>
 
@@ -137,6 +129,5 @@
 	</footer>
 
 	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
-	<script type="module" src="../js/main.js"></script>
 </body>
 </html>

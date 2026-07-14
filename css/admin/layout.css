@@ -1,0 +1,73 @@
+/* admin.layout.css */
+
+/* admin header and
+inner elements */
+.admin-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: .5rem 1rem;
+}
+
+#search-gallery {
+	padding: .5rem;
+}
+
+#search-gallery::placeholder {
+	color: var(--aery-gray);
+}
+
+.filters-panel {
+	display: flex;
+	gap: .5rem;
+	padding-inline: 1rem;
+	margin-block: 1rem;
+	height: 2.5rem;
+}
+
+#dashboard {
+	height: 100%;
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	gap: .3rem;
+	margin-block: 1rem;
+}
+
+.sidebar {
+	background: var(--panel-bg);
+	width: 250px;
+	overflow: hidden;
+}
+
+.sidebar-actions {
+	overflow: hidden;
+	height: 50px;
+	display: flex;
+}
+
+.action-container {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.action-container.is-active {
+	box-shadow: inset 0 -2px 0 0 var(--primary);
+}
+
+.action-container.is-active .btn-setting {
+	color: var(--primary);
+}
+
+.action-container .btn-setting {
+	font-size: 1.5rem;
+	background-color: var(--aery-transparent);
+	color: var(--aery-black);
+}
+
+.content {
+	flex-grow: 1;
+}

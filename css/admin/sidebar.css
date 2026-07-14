@@ -1,0 +1,14 @@
+/* sidebar.css */
+
+.cover-container {
+	overflow: hidden;
+	height: 200px;
+	width: 100%;
+	background-color: var(--page-bg);
+}
+
+.cover-container img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}

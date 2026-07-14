@@ -1,0 +1,6 @@
+/* dashboard.css */
+
+#galleries {
+	--card-size: 200px;
+	--columns-count: 5;
+}

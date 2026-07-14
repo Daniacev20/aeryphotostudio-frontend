@@ -59,3 +59,19 @@ visual attraction, meant for index, but reusable */
 	background-color: var(--form-button-bg-focus);
 	box-shadow: none;
 }
+
+.btn {
+	outline: none;
+	border: none;
+	padding: .5rem;
+	background-color: var(--form-button-bg);
+	color: var(--primary);
+}
+
+.btn:hover {
+	background-color: var(--form-button-bg-hover);
+}
+
+.btn:active {
+	background-color: var(--form-button-bg-active);
+}
