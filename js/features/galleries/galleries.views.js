@@ -20,7 +20,7 @@ function buildGalleryCard(
 	
 	const divThumbnail = makeTag("div", {
 		className:
-			"thumbnail overlay-wrapper",
+			"card overlay-wrapper",
 	});
 
 	if (locked)
@@ -77,7 +77,7 @@ function buildImageCard(src, index, {
 	
 	const divFrame = makeTag("div", {
 		classes: [
-			"thumbnail"
+			"card"
 		]
 	});
 

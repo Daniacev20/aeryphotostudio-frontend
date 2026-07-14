@@ -8,7 +8,7 @@ which is optional but applicable from the
 overlay component. */
 
 /* CARD BASE */
-.thumbnail {
+.card {
 	position: relative;
 	aspect-ratio: 1;
 	width: 100%;
@@ -18,7 +18,7 @@ overlay component. */
 	align-items: center;
 }
 
-.thumbnail img {
+.card img {
 	height: 100%;
 	width: 100%;
 	object-fit: contain;
@@ -98,7 +98,7 @@ children elements are <i> icons */
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 600px) {
-	.thumbnail img {
+	.card img {
 		height: 40vh;
 		width: 100%;
 	}

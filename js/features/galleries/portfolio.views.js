@@ -16,7 +16,7 @@ function buildPortfolioGalleryCard(
 
 	const divThumbnail = makeTag("div", {
 		className:
-			"thumbnail overlay-wrapper unlocked-gallery",
+			"card overlay-wrapper unlocked-gallery",
 	});
 
 	const divOverlay = makeTag("div", {
@@ -46,7 +46,7 @@ function buildPortfolioGalleryCard(
 function buildPortfolioImage(src, index) {
 	const divFrame = makeTag("div", {
 		classes: [
-			"thumbnail",
+			"card",
 			"overlay-wrapper",
 			"gallery-image"
 		],
