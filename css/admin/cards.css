@@ -1,2 +1,5 @@
 /* admin.cards.css */
 
+.card {
+	aspect-ratio: 4 / 3;
+}

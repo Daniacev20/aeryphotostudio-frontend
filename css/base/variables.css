@@ -80,7 +80,8 @@ btn-white-bg). */
 	--form-button-bg-active: #A0A0A0;
 
 	/* button font color */
-	--btn-lightgray: var(--aery-smokewhite1);
+	--btn-gray-color1: var(--aery-gray3);
+	--btn-gray-color2: #AAA;
 
 	--gallerycard-button: var(--aery-black);
 	--gallerycard-button-hover: var(--secondary);
@@ -91,4 +92,16 @@ btn-white-bg). */
 
 	/* background of img containers */
 	--img-bg: var(--aery-gray1);
+
+	/* admin variables */
+	--header-height: 70px;
+	--filters-panel-height: 2.5rem;
+	--filters-panel-margin: 1rem;
+
+	--dashboard-height: calc(
+		100vh -
+		var(--header-height) -
+		var(--filters-panel-height) -
+		var(--filters-panel-margin) * 2
+	);
 }
