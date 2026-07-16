@@ -31,7 +31,8 @@ buttons width equally */
 	position: relative;
 }
 
-.form-field input:not([type=password]) {
+.form-field input:not([type=password]),
+.form-field textarea {
 	width: 100%;
 }
 
