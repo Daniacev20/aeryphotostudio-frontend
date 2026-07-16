@@ -47,7 +47,7 @@
 		calc(var(--card-data-text-size) - .3rem);
 }
 
-.status-icon.is-active {
+.status-icon.is-published {
 	color:
 		var(--status-icon-active-color);
 }

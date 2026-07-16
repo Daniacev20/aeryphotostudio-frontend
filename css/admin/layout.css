@@ -47,6 +47,7 @@ inner elements */
 	gap: .3rem;
 }
 
-.dashboard-content {
+#dashboard-content-view {
 	flex-grow: 1;
+	overflow: auto;
 }
