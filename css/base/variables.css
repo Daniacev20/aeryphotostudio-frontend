@@ -104,4 +104,9 @@ btn-white-bg). */
 		var(--filters-panel-height) -
 		var(--filters-panel-margin) * 2
 	);
+
+	--card-title-size: 1rem;
+	--card-data-text-size: .8rem;
+
+	--status-icon-active-color: #03E513;
 }

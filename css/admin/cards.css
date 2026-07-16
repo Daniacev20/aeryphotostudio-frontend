@@ -1,5 +1,61 @@
 /* admin.cards.css */
 
 .card {
-	aspect-ratio: 4 / 3;
+	/* important to show card
+	a little wider */
+	/*aspect-ratio: 4 / 3;*/
+
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	gap: .2rem;
+	padding-inline: .5rem;
+}
+
+/* card footer text */
+
+/* first row: icon + text */
+.card-presentation {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: .3rem;
+	align-items: center;
+	margin-block: .3rem;
+	font-weight: bold;
+	font-size:
+		var(--card-title-size);
+}
+
+.card-presentation .lock-icon {
+	font-size:
+		calc(var(--card-title-size) - .2rem);
+}
+
+/* second row: icon + text */
+.card-metadata {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: .3rem;
+	align-items: center;
+	margin-block: .3rem;
+	font-size:
+		var(--card-data-text-size);
+}
+
+.status-icon {
+	font-size: 
+		calc(var(--card-data-text-size) - .3rem);
+}
+
+.status-icon.is-active {
+	color:
+		var(--status-icon-active-color);
+}
+
+/* alignment of card data
+to the left */
+.card-presentation,
+.card-metadata {
+	align-self: flex-start;
+
 }
