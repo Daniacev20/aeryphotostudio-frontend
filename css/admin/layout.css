@@ -1,5 +1,16 @@
 /* admin.layout.css */
 
+/* Force all elements with
+hidden attribute to hide.
+This avoids having to toggle
+the display property in multiple
+elements and centralizes the
+dynamic manipulation through the
+hidden attribute. */
+[hidden] {
+	display: none !important;
+}
+
 /* admin header and
 inner elements */
 .admin-header {
@@ -9,6 +20,18 @@ inner elements */
 	align-items: center;
 	padding-inline: 1rem;
 	height: var(--header-height);
+}
+
+.main-title {
+	display: flex;
+}
+
+.btn-previous-view {
+	outline: none;
+	border: none;
+	cursor: pointer;
+	background-color: var(--aery-transparent);
+	color: var(--aery-white);
 }
 
 #frm-search-galleries {

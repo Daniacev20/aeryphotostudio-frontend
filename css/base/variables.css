@@ -95,8 +95,8 @@ btn-white-bg). */
 
 	/* admin variables */
 	--header-height: 70px;
-	--filters-panel-height: 2.5rem;
-	--filters-panel-margin: 1rem;
+	--filters-panel-height: 2.1rem;
+	--filters-panel-margin: 2px;
 
 	--dashboard-height: calc(
 		100vh -

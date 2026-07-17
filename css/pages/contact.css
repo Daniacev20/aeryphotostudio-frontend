@@ -25,8 +25,11 @@ a simple contact form for the most part */
 
 #frm-contact textarea {
 	height: 10rem;
+	min-height: 10rem;
+	max-height: 200px;
 	font-family: inherit;
 	font-weight: normal;
+	resize: vertical;
 }
 
 /* the button #btn-send has styles in common with

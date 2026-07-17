@@ -10,8 +10,11 @@
 </head>
 <body>
 	<header class="admin-header">
-		<hgroup>
-			<h1>Galer&iacute;as</h1>
+		<hgroup class="main-title">
+			<button class="btn-previous-view" hidden>
+				<h1 class="fas fa-angle-left"></h1>
+			</button>
+			<h1 class="view-title">Galer&iacute;as</h1>
 		</hgroup>
 
 		<form id="frm-search-galleries" action="#" novalidate>
@@ -27,11 +30,16 @@
 				<span>Nueva galer&iacute;a</span>
 				<i class="fas fa-plus"></i>
 			</button>
+
+			<button class="btn" id="btn-get-link" hidden>
+				<span>Obtener enlace</span>
+				<i class="fas fa-link"></i>
+			</button>
 		</div>
 	</header>
 
 	<main>
-		<section class="filters-panel">
+		<section class="filters-panel" hidden>
 			<button class="btn btn-filter" id="btn-status-filter">
 				<span>Estado</span>
 				<i class="fas fa-caret-down"></i>
@@ -44,7 +52,7 @@
 		</section>
 
 		<section id="dashboard">
-			<aside class="sidebar">
+			<aside class="sidebar" hidden>
 				<div class="cover-container">
 					<img src="/assets/carousel/gigi5.jpg">
 				</div>
@@ -85,7 +93,7 @@
 			</aside>
 
 			<aside id="dashboard-content-view">
-				<article id="galleries">
+				<article id="galleries" hidden>
 					<div class="card-wrapper">
 						<div class="card">
 							<img src="/assets/carousel/gigi1.jpg">
@@ -243,7 +251,32 @@
 					</div>
 				</article>
 
-				<article id="new-gallery-view"></article>
+				<article id="new-gallery-view">
+					<form action="#" id="frm-new-gallery" novalidate>
+						<fieldset>
+							<legend>
+								<h1>Crea una nueva galer&iacute;a.</h1>
+							</legend>
+
+							<label for="txt-client-name" class="form-field">
+								<input type="text" name="txt-client-name" id="txt-client-name" autocomplete="off" placeholder="Nombre del cliente" required>
+							</label>
+
+							<label for="txt-gallery-name" class="form-field">
+								<input type="text" name="txt-gallery-name" id="txt-gallery-name" autocomplete="off" placeholder="Nombre de galer&iacute;a" required>
+							</label>
+
+							<label for="txta-gallery-description" class="form-field">
+								<textarea name="txta-gallery-description" id="txta-gallery-description" maxlength="200" placeholder="Descripci&oacute;n de la galer&iacute;a"></textarea>
+							</label>
+
+							<button type="button" class="form-button">
+								<span>Crear galer&iacute;a</span>
+								<i class="fas fa-asterisk"></i>
+							</button>
+						</fieldset>
+					</form>
+				</article>
 			</aside>
 		</section>
 	</main>

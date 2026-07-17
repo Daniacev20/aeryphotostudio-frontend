@@ -4,10 +4,6 @@
 	width: 250px;
 	overflow: hidden;
 	background-color: var(--aery-white);
-
-	/* alternate between displays
-	to test the sidebar */
-	/*display: none;*/
 	display: flex;
 	flex-direction: column;
 }

@@ -51,11 +51,3 @@
 	color:
 		var(--status-icon-active-color);
 }
-
-/* alignment of card data
-to the left */
-.card-presentation,
-.card-metadata {
-	align-self: flex-start;
-
-}
