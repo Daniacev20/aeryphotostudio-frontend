@@ -15,11 +15,22 @@ hidden attribute. */
 inner elements */
 .admin-header {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+	flex-direction: column;
+	align-items: space-between;
 	padding-inline: 1rem;
-	height: var(--header-height);
+	padding-block: 0;
+	height: calc(
+		var(--header-height) +
+		var(--filters-panel-height) +
+		var(--filters-panel-margin)
+	);
+}
+
+.admin-header-top {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 1;
 }
 
 .main-title {
@@ -32,6 +43,7 @@ inner elements */
 	cursor: pointer;
 	background-color: var(--aery-transparent);
 	color: var(--aery-white);
+	font-size: 2rem;
 }
 
 #frm-search-galleries {
@@ -52,11 +64,12 @@ inner elements */
 	display: flex;
 	gap: .5rem;
 	align-items: center;
-	padding-inline: 1rem;
 	margin-block:
 		var(--filters-panel-margin);
-	height:
-		var(--filters-panel-height);
+}
+
+.btn-filter {
+	border-radius: 12rem;
 }
 
 #dashboard {
@@ -72,5 +85,5 @@ inner elements */
 
 #dashboard-content-view {
 	flex-grow: 1;
-	overflow: auto;
+	overflow-y: auto;
 }

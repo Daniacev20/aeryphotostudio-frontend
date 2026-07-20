@@ -10,35 +10,35 @@
 </head>
 <body>
 	<header class="admin-header">
-		<hgroup class="main-title">
-			<button class="btn-previous-view" hidden>
-				<h1 class="fas fa-angle-left"></h1>
-			</button>
-			<h1 class="view-title">Galer&iacute;as</h1>
-		</hgroup>
+		<section class="admin-header-top">
+			<hgroup class="main-title">
+				<button class="btn-previous-view">
+					<i class="fas fa-angle-left"></i>
+				</button>
+				<h1 class="view-title">Galer&iacute;as</h1>
+			</hgroup>
 
-		<form id="frm-search-galleries" action="#" novalidate>
-			<input type="search" id="search-gallery" maxlength="60" autocomplete="off" placeholder="Buscar galer&iacute;a">
-		</form>
+			<form id="frm-search-galleries" action="#" novalidate>
+				<input type="search" id="search-gallery" maxlength="60" autocomplete="off" inputmode="text" placeholder="Buscar galer&iacute;a">
+			</form>
 
-		<div class="header-actions">
-			<button class="btn" id="btn-notifications">
-				<i class="fas fa-bell"></i>
-			</button>
+			<div class="header-actions">
+				<button class="btn" id="btn-notifications">
+					<i class="fas fa-bell"></i>
+				</button>
 
-			<button class="btn" id="btn-new-gallery">
-				<span>Nueva galer&iacute;a</span>
-				<i class="fas fa-plus"></i>
-			</button>
+				<button class="btn" id="btn-new-gallery">
+					<span>Nueva galer&iacute;a</span>
+					<i class="fas fa-plus"></i>
+				</button>
 
-			<button class="btn" id="btn-get-link" hidden>
-				<span>Obtener enlace</span>
-				<i class="fas fa-link"></i>
-			</button>
-		</div>
-	</header>
+				<button class="btn" id="btn-get-link" hidden>
+					<span>Obtener enlace</span>
+					<i class="fas fa-link"></i>
+				</button>
+			</div>
+		</section>
 
-	<main>
 		<section class="filters-panel" hidden>
 			<button class="btn btn-filter" id="btn-status-filter">
 				<span>Estado</span>
@@ -50,9 +50,11 @@
 				<i class="fas fa-caret-down"></i>
 			</button>
 		</section>
+	</header>
 
+	<main>
 		<section id="dashboard">
-			<aside class="sidebar" hidden>
+			<aside class="sidebar">
 				<div class="cover-container">
 					<img src="/assets/carousel/gigi5.jpg">
 				</div>
@@ -251,23 +253,23 @@
 					</div>
 				</article>
 
-				<article id="new-gallery-view">
-					<form action="#" id="frm-new-gallery" novalidate>
+				<article id="new-gallery-view" hidden>
+					<form id="frm-new-gallery" action="#" novalidate>
 						<fieldset>
 							<legend>
-								<h1>Crea una nueva galer&iacute;a.</h1>
+								<h1>Crea una nueva galer&iacute;a</h1>
 							</legend>
 
-							<label for="txt-client-name" class="form-field">
-								<input type="text" name="txt-client-name" id="txt-client-name" autocomplete="off" placeholder="Nombre del cliente" required>
+							<label for="txt-new-client-name" class="form-field">
+								<input type="text" name="txt-new-client-name" id="txt-new-client-name" autocomplete="off" placeholder="Nombre del cliente" required>
 							</label>
 
-							<label for="txt-gallery-name" class="form-field">
-								<input type="text" name="txt-gallery-name" id="txt-gallery-name" autocomplete="off" placeholder="Nombre de galer&iacute;a" required>
+							<label for="txt-new-gallery-name" class="form-field">
+								<input type="text" name="txt-new-gallery-name" id="txt-new-gallery-name" autocomplete="off" placeholder="Nombre de galer&iacute;a" required>
 							</label>
 
-							<label for="txta-gallery-description" class="form-field">
-								<textarea name="txta-gallery-description" id="txta-gallery-description" maxlength="200" placeholder="Descripci&oacute;n de la galer&iacute;a"></textarea>
+							<label for="txta-new-gallery-description" class="form-field">
+								<textarea name="txta-new-gallery-description" id="txta-new-gallery-description" maxlength="200" placeholder="Descripci&oacute;n de la galer&iacute;a"></textarea>
 							</label>
 
 							<button type="button" class="form-button">
@@ -277,10 +279,94 @@
 						</fieldset>
 					</form>
 				</article>
+
+				<article id="gallery-config-view">
+					<form id="frm-gallery-config" action="#" novalidate>
+						<hgroup>
+							<h1>Opciones generales</h1>
+						</hgroup>
+
+						<fieldset class="field-set">
+							<legend>
+								T&iacute;tulo y descripci&oacute;n
+							</legend>
+
+							<label for="txt-gallery-name" class="form-field">
+								<input type="text" name="txt-gallery-name" id="txt-gallery-name" placeholder="Nombre de galer&iacute;a" autocomplete="off" required>
+							</label>
+
+							<label for="txta-gallery-description" class="form-field">
+								<textarea name="txta-gallery-description" id="txta-gallery-description" maxlength="200" placeholder="Descripci&oacute;n de la galer&iacute;a"></textarea>
+							</label>
+						</fieldset>
+
+						<fieldset class="field-set-h">
+							<legend>
+								Configuraci&oacute;n
+							</legend>
+
+							<section>
+								<div class="field-group">
+									<label for="ck-set-protection">
+										<input type="checkbox" name="ck-set-protection" id="ck-set-protection">
+										<span>Proteger con pin</span>
+									</label>
+
+									<label for="txt-gallery-pin" class="form-field">
+										<input type="password" name="txt-gallery-pin" id="txt-gallery-pin" placeholder="1234" maxlength="4" pattern="[0-9]{4}" autocomplete="off" inputmode="numeric" disabled>
+
+										<span class="eye-icon" data-behavior="show-password">
+											<i class="fas fa-eye"></i>
+										</span>
+									</label>
+								</div>
+
+								<div class="field-group">
+									<label for="ck-selection-email-required">
+										<input type="checkbox" name="ck-selection-email-required" id="ck-selection-email-required">
+										<span>Exigir email</span>
+									</label>
+								</div>
+
+								<div class="field-group">
+									<label for="ck-allow-download">
+										<input type="checkbox" name="ck-allow-download" id="ck-allow-download">
+										<span>Permitir descarga</span>
+									</label>
+								</div>
+
+								<div class="field-group">
+									<label for="number-favorite-limit">
+										<span>L&iacute;mite de favoritos</span>
+										<input type="number" name="number-favorite-limit" id="number-favorite-limit" min="0" max="99">
+									</label>
+								</div>
+							</section>
+
+							<fieldset class="field-set borderless">
+								<legend>Calidad de descarga</legend>
+
+								<label for="rdo-quality-640">
+									<input type="radio" name="rdo-quality" value="640px">
+									<span>640px</span>
+								</label>
+
+								<label for="rdo-quality-1024">
+									<input type="radio" name="rdo-quality" value="1024px" checked>
+									<span>1024px</span>
+								</label>
+
+								<label for="rdo-quality-2048">
+									<input type="radio" name="rdo-quality" value="2048px">
+									<span>2048px</span>
+								</label>
+							</fieldset>
+						</fieldset>
+					</form>
+				</article>
 			</aside>
 		</section>
 	</main>
-
 	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
 </body>
 </html>
