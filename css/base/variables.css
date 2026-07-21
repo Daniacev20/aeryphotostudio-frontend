@@ -15,21 +15,23 @@ btn-white-bg). */
 
 :root {
 
-	/* BRAND: this file's use only */
+	/* Brand pallete:
+	pure colors and properties */
 	--aery-primary: #562912;
+	--primary-faded: #562912A5;
 	--aery-secondary: #744A27;
+	--secondary-faded: #744A27EB;
 	--aery-white1: #F4F4F4;
 	--aery-smokewhite1: #EFEFEF;
 	--aery-smokewhite2: #E8E8E8;
+	--aery-smokewhite3: #E4E4E4;
 	--aery-gray1: #DDDDDD;
 	--aery-gray2: #D3D3D3;
 	--aery-gray3: #C7C7C7;
-	--aery-reddish-brown: #A85904;
+	--aery-darkgray1: #B1B1B1;
+	--aery-darkgray2: #A0A0A0;
 
-	/* CONSTANTS: to be used in other
-	files. */
-
-	/* common colors: needed to
+	/* Named colors: needed to
 	centralize source of truth */
 	--aery-black: #000;
 	--aery-white: #FFF;
@@ -38,75 +40,58 @@ btn-white-bg). */
 	--aery-crimson: crimson;
 	--aery-darkgray: darkgray;
 
-	/* main colors */
-	--primary: var(--aery-primary);
-	--secondary: var(--aery-secondary);
-	--primary-faded: #562912A5;
-	--secondary-faded: #744A27EB;
+	/* Design concepts:
+	variables with meaning
+	property-oriented names */
 
-	/* COMPONENTS: to be used on the
-	components of each page */
-
-	--page-bg: var(--aery-white1);
-	--bg-table-header: var(--primary-faded);
-	--bg-table-row: var(--secondary-faded);
-	--booking-selected: #AAA;
-	--panel-bg: var(--aery-gray1);
-	
-	/* TEXTS */
-
-	/* text colors */;
+	/* texts */
 	--text-color: #616161;
 	--caption-color: var(--aery-white1);
 
-	/* text sizes */
-	--footer-address-size: 1.1rem;
-	--client-panel-icons-size: 1.4rem;
+	/* backgrounds */
+	--bg-white1: var(--aery-white1);
+	--bg-white2: var(--aery-smokewhite1);
+	--bg-white3: var(--aery-smokewhite2);
+	--bg-white4: #E0E0E0;
 
-	/* ICONS */
+	/* Component tokens */
 	
+	/* ICONS */
+	/* need to relocate
+	don't know where yet */
 	--footer-icon-size: 1.8rem;
-	--footer-icon-margin: .5rem;
 
 	/* BUTTONS */
 
 	/* backgrounds */
 	--btn-white-bg1: var(--aery-smokewhite1);
+	--btn-white-bg3: var(--aery-smokewhite3);
 	--btn-gray-bg1: var(--aery-gray2);
-	--btn-gray-bg2: var(--aery-gray3);
 
 	--form-button-bg: var(--aery-gray2);
-	--form-button-bg-hover: #B1B1B1;
-	--form-button-bg-active: #A0A0A0;
+	--form-button-bg-hover: var(--aery-darkgray1);
+	--form-button-bg-active: var(--aery-darkgray2);
 
 	/* button font color */
-	--btn-gray-color1: var(--aery-gray3);
 	--btn-gray-color2: #AAA;
 
-	--gallerycard-button: var(--aery-black);
-	--gallerycard-button-hover: var(--secondary);
-	--gallerycard-button-active: var(--primary);
-	--gallerycard-button-checked: var(--secondary-faded);
+	/* ADMIN VARIABLES */
 
-	/* IMG */
-
-	/* background of img containers */
-	--img-bg: var(--aery-gray1);
-
-	/* admin variables */
+	/* defining height for the
+	header bar since the dashboard
+	is not a header's child so
+	cannot calc dashboards height
+	through inheritance. */
 	--header-height: 70px;
 	--filters-panel-height: 2.1rem;
 	--filters-panel-margin: 2px;
 
+	/* the dashboard height takes
+	the remaining after the header */
 	--dashboard-height: calc(
 		100vh -
 		var(--header-height) -
 		var(--filters-panel-height) -
 		var(--filters-panel-margin) * 2
 	);
-
-	--card-title-size: 1rem;
-	--card-data-text-size: .8rem;
-
-	--status-icon-active-color: #03E513;
 }

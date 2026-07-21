@@ -39,7 +39,7 @@
 			</div>
 		</section>
 
-		<section class="filters-panel" hidden>
+		<section class="filters-panel">
 			<button class="btn btn-filter" id="btn-status-filter">
 				<span>Estado</span>
 				<i class="fas fa-caret-down"></i>
@@ -95,7 +95,7 @@
 			</aside>
 
 			<aside id="dashboard-content-view">
-				<article id="galleries" hidden>
+				<article id="galleries">
 					<div class="card-wrapper">
 						<div class="card">
 							<img src="/assets/carousel/gigi1.jpg">
@@ -280,13 +280,13 @@
 					</form>
 				</article>
 
-				<article id="gallery-config-view">
+				<article id="gallery-config-view" hidden>
 					<form id="frm-gallery-config" action="#" novalidate>
 						<hgroup>
 							<h1>Opciones generales</h1>
 						</hgroup>
 
-						<fieldset class="field-set">
+						<fieldset class="field-set-v">
 							<legend>
 								T&iacute;tulo y descripci&oacute;n
 							</legend>
@@ -323,7 +323,7 @@
 
 								<div class="field-group">
 									<label for="ck-selection-email-required">
-										<input type="checkbox" name="ck-selection-email-required" id="ck-selection-email-required">
+										<input type="checkbox" name="ck-selection-email-required" id="ck-selection-email-required" checked>
 										<span>Exigir email</span>
 									</label>
 								</div>
@@ -338,12 +338,12 @@
 								<div class="field-group">
 									<label for="number-favorite-limit">
 										<span>L&iacute;mite de favoritos</span>
-										<input type="number" name="number-favorite-limit" id="number-favorite-limit" min="0" max="99">
+										<input type="number" name="number-favorite-limit" id="number-favorite-limit" step="1" min="0" max="99" value="5">
 									</label>
 								</div>
 							</section>
 
-							<fieldset class="field-set borderless">
+							<fieldset class="field-set-v borderless">
 								<legend>Calidad de descarga</legend>
 
 								<label for="rdo-quality-640">

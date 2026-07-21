@@ -26,7 +26,7 @@
 	height: 40px;
 	display: flex;
 	padding-inline: .4rem;
-	background-color: var(--page-bg);
+	background-color: var(--bg-white1);
 }
 
 .action-container {
@@ -37,13 +37,14 @@
 }
 
 .action-container.is-active {
-	box-shadow: inset 0 -2px 0 0 var(--primary);
+	box-shadow: inset 0 -3.5px 0 0 var(--aery-primary);
+	background-color: var(--btn-gray-bg1);
 }
 
 /* the active container must style the 
 button too */
 .action-container.is-active .btn-setting {
-	color: var(--primary);
+	color: var(--aery-primary);
 }
 
 .active-action-main {
@@ -62,7 +63,7 @@ button too */
 }
 
 .active-action-content {
-	background-color: var(--page-bg);
+	background-color: var(--bg-white1);
 	padding-block: .4rem;
 	padding-inline: 1rem;
 	display: flex;

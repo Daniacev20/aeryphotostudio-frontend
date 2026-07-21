@@ -6,7 +6,7 @@ visual attraction, meant for index, but reusable */
 .a-buttons {
 	display: inline-block;
 	padding: 1.3rem 2rem;
-	background-color: var(--secondary);
+	background-color: var(--aery-secondary);
 	color: var(--aery-white);
 	text-decoration: none;
 	border-radius: .8em;
@@ -15,7 +15,7 @@ visual attraction, meant for index, but reusable */
 }
 
 .a-buttons:hover, .a-buttons:focus {
-	background-color: var(--primary);
+	background-color: var(--aery-primary);
 	box-shadow: .12rem .25rem .25rem .1rem rgba(86, 41, 18, .4);
 }
 
@@ -28,9 +28,9 @@ visual attraction, meant for index, but reusable */
 
 .form-button {
 	background-color: var(--form-button-bg);
-	border: 1px solid var(--primary);
+	border: 1px solid var(--aery-primary);
 	border-radius: .3rem;
-	color: var(--primary);
+	color: var(--aery-primary);
 	font-family: inherit;
 	font-size: 1.1rem;
 	font-weight: bold;
@@ -43,20 +43,20 @@ visual attraction, meant for index, but reusable */
 .form-button:hover,
 .form-button:hover,
 .form-button:not(.icon-wrapper):hover {
-	box-shadow: inset -1px -1px 3px var(--secondary);
+	box-shadow: inset -1px -1px 3px var(--aery-secondary);
  	background-color: var(--form-button-bg-hover);
 }
 
 .form-button:focus,
 .form-button:focus,
 .form-button:not(.icon-wrapper):focus {
-	box-shadow: inset -1px -1px 1.5px var(--secondary);
+	box-shadow: inset -1px -1px 1.5px var(--aery-secondary);
 }
 
 .form-button:active,
 .form-button:active,
 .form-button:not(.icon-wrapper):active {
-	background-color: var(--form-button-bg-focus);
+	background-color: var(--form-button-bg-active);
 	box-shadow: none;
 }
 
@@ -65,7 +65,7 @@ visual attraction, meant for index, but reusable */
 	border: none;
 	padding: .5rem;
 	background-color: var(--form-button-bg);
-	color: var(--primary);
+	color: var(--aery-primary);
 }
 
 .btn:hover {

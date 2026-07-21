@@ -11,7 +11,7 @@ month label and buttons */
 	justify-content: space-between;
 	font-weight: bold;
 	font-size: 3rem;
-	background-color: var(--primary);
+	background-color: var(--aery-primary);
 	opacity: .89;
 	color: var(--aery-white);
 }
@@ -75,11 +75,12 @@ with an ol for the hours */
 	font-weight: bold;
 	font-size: 1.5rem;
 	border-bottom: 1px solid var(--aery-black);
+	background-color: var(--aery-gray1);
 	padding: .2rem;
 }
 
 .day > span:hover {
-	background-color: var(--btn-white-bg1);
+	background-color: var(--aery-gray2);
 }
 
 /* ol containing hours of
@@ -95,19 +96,19 @@ the parent day */
 	text-indent: 2.5rem;
 	padding: .3rem 0;
 	border-bottom: 1px solid var(--aery-black);
-	background-color: var(--btn-gray-bg1);
+	background-color: var(--bg-white1);
 }
 
 /* hover effect of hours
 when not selected  */
 .hours-list li:not(.is-selected):not(.is-scheduled):hover {
-	background-color: var(--btn-gray-bg2);
+	background-color: var(--bg-white3);
 	cursor: pointer;
 }
 
 /* hours color when selected */
 .hours-list .is-selected {
-	background-color: var(--booking-selected);
+	background-color: var(--bg-white4);
 	cursor: pointer;
 }
 

@@ -12,9 +12,9 @@ input[type=time],
 input[type=email],
 input[type=search],
 textarea {
-	border: 1px solid var(--secondary);
+	border: 1px solid var(--aery-secondary);
 	border-radius: .3rem;
-	color: var(--secondary);
+	color: var(--aery-secondary);
 	font-family: inherit;
 	font-size: 1.1rem;
 	margin: .5rem 0;
@@ -32,7 +32,7 @@ input[type=time]:hover,
 input[type=email]:hover,
 input[type=search]:hover,
 textarea:hover {
-	box-shadow: inset -1px -1px 3px var(--secondary);
+	box-shadow: inset -1px -1px 3px var(--aery-secondary);
 }
 
 input[type=text]:focus,
@@ -44,7 +44,7 @@ input[type=time]:focus,
 input[type=email]:focus,
 input[type=search]:focus,
 textarea:focus {
-	box-shadow: inset -1px -1px 1.5px var(--secondary);
+	box-shadow: inset -1px -1px 1.5px var(--aery-secondary);
 }
 
 input[type=text]::placeholder,
@@ -54,5 +54,5 @@ input[type=password]::placeholder,
 input[type=email]::placeholder,
 input[type=search]::placeholder,
 textarea::placeholder {
-	color: var(--secondary);
+	color: var(--aery-secondary);
 }

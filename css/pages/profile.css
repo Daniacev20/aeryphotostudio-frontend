@@ -55,7 +55,7 @@ buttons width equally */
 }
 
 .form-field .eye-icon:hover {
-	color: var(--primary);
+	color: var(--aery-primary);
 }
 
 .form-field .eye-icon:active {
@@ -65,7 +65,7 @@ buttons width equally */
 /* edit icon */
 #edit-pencil:hover,
 span:hover > #edit-pencil {
-	color: var(--primary);
+	color: var(--aery-primary);
 }
 
 #edit-pencil:active,

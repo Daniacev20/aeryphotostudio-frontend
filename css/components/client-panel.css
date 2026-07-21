@@ -19,10 +19,7 @@
 	flex: 1;
 }
 
-#download-full-gallery {
-	font-size: var(--client-panel-icons-size);
-}
-
+#download-full-gallery,
 .back-to {
-	font-size: var(--client-panel-icons-size);
+	font-size: 1.4rem;
 }

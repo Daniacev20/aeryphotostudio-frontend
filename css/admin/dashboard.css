@@ -1,5 +1,13 @@
 /* dashboard.css */
 
+/* Containers' styles:
+general styles for the
+containers, commonlly found
+elements and classes to use
+on the admin dashboard. */
+
+/* galleries */
+
 #galleries {
 	--card-size: 200px;
 	--columns-count: 5;
@@ -31,13 +39,14 @@
 	resize: vertical;
 }
 
-.field-set {
+.field-set-v {
 	margin-block: .5rem;
 	display: flex;
 	flex-direction: column;
 }
 
 .field-set-h {
+	margin-block: .5rem;
 	display: flex;
 	flex-direction: row;
 }
@@ -46,14 +55,9 @@
 	flex: 1;
 }
 
-.field-set.borderless,
-.field-subset.borderless {
+.field-set-v.borderless,
+.field-set-h.borderless {
 	border: none;
-}
-
-.field-subset {
-	display: flex;
-	flex-direction: column;
 }
 
 .field-group {
@@ -62,25 +66,4 @@
 	gap: 1rem;
 	align-items: center;
 	margin-block: .4rem;
-}
-
-#txt-gallery-pin {
-	font-size: 1rem;
-	padding: 1px;
-	text-indent: .2rem;
-	width: 10ch;
-}
-
-#number-favorite-limit {
-	font-size: 1rem;
-	padding: 1px;
-	text-indent: .2rem;
-	width: 6ch;
-
-	/* line aspect */
-	background-color: var(--aery-transparent);
-	border: none;
-	border-radius: 0;
-	border-bottom: 1px solid var(--primary);
-	outline: none;
 }

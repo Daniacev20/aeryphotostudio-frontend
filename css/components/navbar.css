@@ -20,7 +20,7 @@
 }
 
 .navigation-menu li {
-	background-color: #F4F4F4;
+	background-color: var(--bg-white1);
 }
 
 /* rounded borders of first and last ul DIRECT child's
@@ -35,14 +35,14 @@ so it doesn't make middle subchildren look squared */
 
 .navigation-menu li a {
 	display: block;
-	color: var(--secondary);
+	color: var(--aery-secondary);
 	text-decoration: none;
 	padding: 1rem 1.5rem;
 	font-weight: bold;
 }
 
 .navigation-menu li:hover {
-	background-color: #E4E4E4;
+	background-color: var(--aery-smokewhite3);
 }
 
 /* secondary menu (li -> ul dropdown) */
@@ -59,7 +59,7 @@ so it doesn't make middle subchildren look squared */
 }
 
 .submenu-content li {
-	background-color: #F4F4F4;
+	background-color: var(--bg-white1);
 	white-space: nowrap;
 }
 
@@ -109,7 +109,7 @@ kept it just in case.
 
 	.navigation-menu li {
 		display: none;
-		background-color: #E4E4E4;
+		background-color: var(--aery-smokewhite3);
 	}
 
 	.navigation-menu li:hover {
@@ -133,7 +133,7 @@ kept it just in case.
 
 	#btn-toggle {
 		display: inline-block;
-		background-color: #E4E4E4;
+		background-color: var(--aery-smokewhite3);
 		color: black;
 		padding: 1rem;
 	}
@@ -163,7 +163,7 @@ kept it just in case.
 
 	.navigation-menu li {
 		display: none;
-		background-color: #E4E4E4;
+		background-color: var(--aery-smokewhite3);
 	}
 
 	.navigation-menu li:hover {
@@ -183,7 +183,7 @@ kept it just in case.
 
 	#btn-toggle {
 		display: inline-block;
-		background-color: #E4E4E4;
+		background-color: var(--aery-smokewhite3);
 		color: black;
 		padding: 1rem;
 	}

@@ -7,11 +7,11 @@ in the exact same order across the pages.
 For example: header>nav>main>section>footer */
 
 body {
-	background-color: var(--page-bg);
+	background-color: var(--bg-white1);
 }
 
 main a {
-	color: var(--primary);
+	color: var(--aery-primary);
 }
 
 main a:hover {

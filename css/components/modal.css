@@ -26,7 +26,7 @@ modal not shared with other modals */
 	max-height: unset;
 	max-width: unset;
 	z-index: 900;
-	color: var(--primary);
+	color: var(--aery-primary);
 }
 
 #pin-prompt-modal .modal-header {
@@ -104,7 +104,7 @@ such as, navigation arrows, confirm and close */
 	width: auto;
 	max-height: unset;
 	max-width: unset;
-	background-color: var(--page-bg);
+	background-color: var(--bg-white1);
 	color: var(--text-color);
 	z-index: 1000;
 }

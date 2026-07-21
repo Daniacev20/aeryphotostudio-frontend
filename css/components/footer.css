@@ -5,7 +5,7 @@ footer component that appears on every page
 including its children styles. */
 
 footer {
-	background-color: var(--primary);
+	background-color: var(--aery-primary);
 	opacity: .89;
 	padding: 1.5rem 1.5rem 0.5rem 1.5rem;
 }
@@ -19,11 +19,11 @@ footer a:hover {
 }
 
 footer address {
-	font-size: var(--footer-address-size);
+	font-size: 1.1rem;
 	text-align: center;
 	padding: .5rem;
 }
 
 footer .iconos {
-	margin: var(--footer-icon-margin);
+	margin: .5rem;
 }

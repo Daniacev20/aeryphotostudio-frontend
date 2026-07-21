@@ -9,6 +9,11 @@ overlay component. */
 
 /* CARD BASE */
 .card {
+	--gallerycard-button: var(--aery-black);
+	--gallerycard-button-hover: var(--aery-secondary);
+	--gallerycard-button-active: var(--aery-primary);
+	--gallerycard-button-checked: var(--secondary-faded);
+	
 	position: relative;
 	aspect-ratio: 1;
 	width: 100%;

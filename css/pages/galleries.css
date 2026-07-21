@@ -24,7 +24,7 @@ controls. */
 
 #search-gallery:focus {
 	outline: none;
-	box-shadow: inset -1px -1px 5px var(--secondary);
+	box-shadow: inset -1px -1px 5px var(--aery-secondary);
 }
 
 /* grid container */

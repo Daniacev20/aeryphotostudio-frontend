@@ -24,7 +24,7 @@
 }
 
 .tbl-services tr:nth-child(even) {
-	background-color: var(--secondary);
+	background-color: var(--aery-secondary);
 	color: var(--aery-white);
 }
 
@@ -33,5 +33,5 @@
 }
 
 .tbl-services th {
-	background-color: var(--bg-table-header);
+	background-color: var(--primary-faded);
 }

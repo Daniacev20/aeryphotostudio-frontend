@@ -1,0 +1,22 @@
+/* gallery.config.css */
+
+#txt-gallery-pin {
+	font-size: 1rem;
+	padding: 1px;
+	text-indent: .2rem;
+	width: 8.5ch;
+}
+
+#number-favorite-limit {
+	font-size: 1rem;
+	padding: 1px;
+	text-indent: .2rem;
+	width: 5.1ch;
+
+	/* line aspect */
+	background-color: var(--aery-transparent);
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid var(--aery-primary);
+	outline: none;
+}

@@ -1,15 +1,29 @@
 /* admin.cards.css */
 
+.card-wrapper {
+	/* variables to set styles
+	of existing elements inside
+	the cards. */
+	--card-title-size: 1rem;
+	--card-data-text-size: .8rem;
+	--status-icon-active-color: #03E513;
+}
+
 .card {
 	/* important to show card
 	a little wider */
-	/*aspect-ratio: 4 / 3;*/
+	aspect-ratio: 4 / 3;
 
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	gap: .2rem;
 	padding-inline: .5rem;
+}
+
+.card img {
+	object-fit: cover;
+	object-position: top center;
 }
 
 /* card footer text */
