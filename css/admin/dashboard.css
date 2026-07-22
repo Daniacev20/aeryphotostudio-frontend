@@ -11,11 +11,13 @@ on the admin dashboard. */
 #galleries {
 	--card-size: 200px;
 	--columns-count: 5;
+	margin-top: 1rem;
 }
 
 #dashboard-content-view {
 	display: flex;
 	justify-content: center;
+	border: 1px solid teal;
 }
 
 #dashboard-content-view article[id*=view] {

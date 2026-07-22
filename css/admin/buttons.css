@@ -1,16 +1,22 @@
 /* buttons.css */
 
+.btn-previous-view {
+	outline: none;
+	border: none;
+	cursor: pointer;
+	background-color: var(--aery-transparent);
+	color: var(--aery-white);
+	font-size: 2rem;
+}
+
 .btn-filter {
+	height: 1.8rem;
 	font-size: .9rem;
-	height: 2rem;
+	border-radius: .4rem;
 }
 
 .btn-setting {
 	font-size: 1.2rem;
 	background-color: var(--aery-transparent);
 	color: var(--btn-gray-color2);
-}
-
-.btn-setting:hover {
-	color: var(--aery-black);
 }

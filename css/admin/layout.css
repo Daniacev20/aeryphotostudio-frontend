@@ -37,15 +37,6 @@ inner elements */
 	display: flex;
 }
 
-.btn-previous-view {
-	outline: none;
-	border: none;
-	cursor: pointer;
-	background-color: var(--aery-transparent);
-	color: var(--aery-white);
-	font-size: 2rem;
-}
-
 #frm-search-galleries {
 	flex: 1;
 	margin-inline: 1rem;
@@ -66,10 +57,6 @@ inner elements */
 	align-items: center;
 	margin-block:
 		var(--filters-panel-margin);
-}
-
-.btn-filter {
-	border-radius: 12rem;
 }
 
 #dashboard {

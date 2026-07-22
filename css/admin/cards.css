@@ -19,6 +19,7 @@
 	flex-direction: column;
 	gap: .2rem;
 	padding-inline: .5rem;
+	background-color: var(--bg-white3);
 }
 
 .card img {

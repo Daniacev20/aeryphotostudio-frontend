@@ -95,7 +95,7 @@
 			</aside>
 
 			<aside id="dashboard-content-view">
-				<article id="galleries">
+				<article id="galleries" hidden>
 					<div class="card-wrapper">
 						<div class="card">
 							<img src="/assets/carousel/gigi1.jpg">
@@ -364,9 +364,67 @@
 						</fieldset>
 					</form>
 				</article>
-			</aside>
-		</section>
-	</main>
-	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
+
+				<article id="activity">
+					<hgroup class="activity-header">
+						<h1>Actividad del cliente</h1>
+					</hgroup>
+
+					<section class="activity-filters">
+						<h2>Filters</h2>
+
+						<button class="btn btn-filter">
+							<span>Email A-Z</span>
+							<i class="fas fa-sort"></i>
+						</button>
+					</section>
+
+					<div class="table-wrapper">
+						<table class="tbl-activity">
+							<caption>Resumen de actividad</caption>
+
+							<thead>
+								<tr>
+									<th>Email</th>
+									<th>Archivo</th>
+									<th>Favorito</th>
+									<th>Descargado</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>fake1@gmail.com</td>
+									<td>fake_filename1.jpg</td>
+									<td>Yes</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>fake_filename2.jpg</td>
+									<td>fake2@gmail.com</td>
+									<td>Yes</td>
+									<td>No</td>
+								</tr>
+								<tr>
+								</tr>
+									<td>fake3@gmail.com</td>
+									<td>fake_filename3.jpg</td>
+									<td>No</td>
+									<td>Yes</td>
+								<tr>
+									<td>fake4@gmail.com</td>
+									<td>fake_filename4.jpg</td>
+									<td>No</td>
+									<td>No</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+			</article>
+		</aside>
+	</section>
+</main>
+<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
 </body>
 </html>

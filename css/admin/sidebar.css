@@ -36,6 +36,14 @@
 	align-items: center;
 }
 
+.action-container:hover {
+	background-color: var(--bg-white3);
+}
+
+.action-container:hover .btn-setting {
+	color: var(--aery-black);
+}
+
 .action-container.is-active {
 	box-shadow: inset 0 -3.5px 0 0 var(--aery-primary);
 	background-color: var(--btn-gray-bg1);

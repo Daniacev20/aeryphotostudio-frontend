@@ -9,3 +9,4 @@
 
 /* views' individual styles */
 @import url("./views/gallery.config.css");
+@import url("./views/activity.css");
