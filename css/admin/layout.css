@@ -37,13 +37,14 @@ inner elements */
 	display: flex;
 }
 
-#frm-search-galleries {
+#galleries-search-container {
 	flex: 1;
 	margin-inline: 1rem;
 }
 
 #search-gallery {
-	width: 100%;
+	width: 35vw;
+	max-width: 700px;
 	padding: .4rem .5rem;
 }
 

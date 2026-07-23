@@ -16,14 +16,20 @@ on the admin dashboard. */
 
 #dashboard-content-view {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	/*justify-content: center;*/
+	align-items: center;
 }
 
-#dashboard-content-view article[id$="-view"]:not(.full-width-view) {
+.dashboard-view-sm {
+	width: 50%;
+}
+
+.dashboard-view-md {
 	width: 70%;
 }
 
-.full-width-view {
+.dashboard-view-lg {
 	width: 100%;
 }
 

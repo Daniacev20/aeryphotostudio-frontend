@@ -72,17 +72,6 @@ so it doesn't make middle subchildren look squared */
 	flex-direction: column;
 }
 
-/*
-I don't remember why I put this here
-but it used to break when deleted
-and it no longer does...
-kept it just in case.
-
-[hidden] {
-	display: none !important;
-}
-*/
-
 /* MEDIA QUERIES */
 
 /* standard cellphones and tablets */

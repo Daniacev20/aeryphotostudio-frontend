@@ -1,0 +1,11 @@
+/* gallery.css */
+
+.galleries-actions {
+	margin: 0;
+	padding: .5rem;
+	min-height: 40px;
+	max-height: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}

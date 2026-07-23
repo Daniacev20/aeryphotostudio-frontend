@@ -1,0 +1,102 @@
+/* add-media-modal.css */
+
+/* Force column layout
+upon opening since this
+is determined dynamically */
+dialog[open] {
+	display: flex;
+	flex-direction: column;
+}
+
+/* default layout */
+#add-media-modal {
+	/* variables */
+	--modal-height: 90%;
+	--modal-header-height: 100px;
+	--modal-body-height: calc(
+		var(--modal-height) -
+		var(--modal-header-height)
+	);
+
+	/* reset */
+	border: none;
+	outline: none;
+	margin: auto;
+	padding: 0;
+
+	inset: 0;
+	background-color: var(--aery-white);
+	border-radius: .4rem;
+	padding-inline: 45px;
+	
+	/* dimensions */
+	min-height: 10vh;
+	min-width: 10vw;
+	height: var(--modal-height);
+	width: 45%;
+
+	/* blurry borders */
+	box-shadow:
+		-1px -1px 3px var(--aery-gray1),
+		1px -1px 3px var(--aery-gray1),
+		-1px 1px 3px var(--aery-gray1),
+		1px 1px 3px var(--aery-gray1);
+}
+
+/* default backdrop */
+#add-media-modal::backdrop {
+	background-color: var(--aery-black);
+	opacity: .6;
+}
+
+.title-bar {
+	min-height: var(--modal-header-height);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modal-content {
+	/* default style */
+	height: var(--modal-body-height);
+	border: 1px dashed var(--aery-gray3);
+
+	/* layout */
+	display: flex;
+	justify-content: center;
+}
+
+#frm-add-media {
+	--gap: 1rem;
+	--form-header-height: 200px;
+	--form-body-height: calc(
+		100% -
+		var(--form-header-height) -
+		var(--gap)
+	);
+
+	display: flex;
+	flex-direction: column;
+}
+
+.form-titles {
+	height: var(--form-header-height);
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+	justify-content: center;
+	align-items: center;
+}
+
+.upload-field {
+	height: var(--form-body-height);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.upload-field .btn-upload-pictures {
+	padding-inline: 1.5rem;
+	padding-block: .7rem;
+}

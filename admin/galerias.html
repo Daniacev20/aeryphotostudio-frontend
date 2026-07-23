@@ -12,29 +12,23 @@
 	<header class="admin-header">
 		<section class="admin-header-top">
 			<hgroup class="main-title">
-				<button class="btn-previous-view" hidden>
+				<button class="btn-previous-view">
 					<i class="fas fa-angle-left"></i>
 				</button>
 				<h1 class="view-title">Galer&iacute;as</h1>
-				<!-- <h1 class="view-title">Gigi b-day</h1> -->
-				<!-- <h1 class="view-title">Nueva galer&iacute;a</h1> -->
 			</hgroup>
 
-			<form id="frm-search-galleries" action="#" novalidate>
+			<div id="galleries-search-container">
 				<input type="search" id="search-gallery" maxlength="60" autocomplete="off" inputmode="text" placeholder="Buscar galer&iacute;a">
-			</form>
+			</div>
 
 			<div class="header-actions">
-				<button class="btn" id="btn-notifications">
-					<i class="fas fa-bell"></i>
-				</button>
-
-				<button class="btn" id="btn-new-gallery">
+				<button class="btn" id="btn-new-gallery" hidden>
 					<span>Nueva galer&iacute;a</span>
 					<i class="fas fa-plus"></i>
 				</button>
 
-				<button class="btn" id="btn-get-link" hidden>
+				<button class="btn" id="btn-get-link">
 					<span>Obtener enlace</span>
 					<i class="fas fa-link"></i>
 				</button>
@@ -72,12 +66,12 @@
 							<i class="fas fa-paintbrush"></i>
 						</span>
 					</div>
-					<div class="action-container is-active">
+					<div class="action-container">
 						<span class="btn-setting">
 							<i class="fas fa-gear"></i>
 						</span>
 					</div>
-					<div class="action-container">
+					<div class="action-container is-active">
 						<span class="btn-setting">
 							<i class="fas fa-wifi"></i>
 						</span>
@@ -85,10 +79,10 @@
 				</section>
 
 				<section class="active-action-main">
-					<h3 id="active-action-title">Highlights</h3>
+					<h3 id="active-action-title">Versi&oacute;n de galer&iacute;a</h3>
 					<article class="active-action-content">
 						<div>
-							Preview
+							In&eacute;dito
 							<!-- Mas un texto que esta mas que comprobado que no cabe para ver como se va a comportar el contenedor de este texto. -->
 						</div>
 						<span><i class="fas fa-check"></i></span>
@@ -97,7 +91,14 @@
 			</aside>
 
 			<aside id="dashboard-content-view">
-				<article id="galleries" hidden>
+				<article class="galleries-actions">
+					<button class="btn btn-add-media">
+						<span>Subir fotos</span>
+						<i class="fas fa-plus"></i>
+					</button>
+				</article>
+
+				<article id="galleries">
 					<div class="card-wrapper">
 						<div class="card">
 							<img src="/assets/carousel/gigi1.jpg">
@@ -255,8 +256,8 @@
 					</div>
 				</article>
 
-				<article id="new-gallery-view" hidden>
-					<form id="frm-new-gallery" action="#" novalidate>
+				<article id="new-gallery-view" class="dashboard-view-sm" hidden>
+					<form id="frm-new-gallery" action="#">
 						<fieldset>
 							<legend>
 								<h1>Crea una nueva galer&iacute;a</h1>
@@ -282,8 +283,8 @@
 					</form>
 				</article>
 
-				<article id="gallery-config-view" hidden>
-					<form id="frm-gallery-config" action="#" novalidate>
+				<article id="gallery-config-view" class="dashboard-view-md" hidden>
+					<form id="frm-gallery-config" action="#">
 						<hgroup>
 							<h1>Opciones generales</h1>
 						</hgroup>
@@ -367,13 +368,13 @@
 					</form>
 				</article>
 
-				<article id="activity-view" class="full-width-view">
+				<article id="activity-view" class="dashboard-view-lg" hidden>
 					<hgroup class="activity-header">
 						<h1>Actividad del cliente</h1>
 					</hgroup>
 
 					<section class="activity-filters">
-						<h2>Filters</h2>
+						<h2>Filtros</h2>
 
 						<div class="field-group">
 							<label>
@@ -468,11 +469,38 @@
 						</table>
 					</div>
 				</article>
-			</article>
-		</aside>
-	</section>
-</main>
+			</aside>
+		</section>
+	</main>
 
-<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
+	<dialog id="add-media-modal">
+		<section class="title-bar">
+			<h2 class="modal-title">
+				Subir fotos
+			</h2>
+
+			<span class="btn-close-modal">
+				<i class="fas fa-close"></i>
+			</span>
+		</section>
+
+		<section class="modal-content">
+			<form id="frm-add-media" action="#">
+				<hgroup class="form-titles">
+					<h3>Arrastre aqu&iacute; para subir</h3>
+					<h5>O subir desde su PC:</h5>
+				</hgroup>
+
+				<div class="upload-field">
+					<button class="btn btn-upload-pictures">
+						<i class="fas fa-computer"></i>
+						<span>Agregar fotos</span>
+					</button>
+					<input type="file" hidden>
+				</div>
+			</form>
+		</section>
+	</dialog>
+	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
 </body>
 </html>
