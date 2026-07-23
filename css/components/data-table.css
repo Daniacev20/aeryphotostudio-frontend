@@ -1,0 +1,40 @@
+/* data-table.css */
+
+.data-table {
+	width: 100%;
+	border-collapse: collapse;
+	caption-side: bottom;
+}
+
+.data-table caption {
+	color: var(--aery-black);
+	margin-block: .5rem;
+}
+
+.data-table tr {
+	border-bottom:
+		1px solid var(--aery-gray3);
+}
+
+.data-table tbody tr:hover {
+	background-color: 
+		var(--bg-white2);
+}
+
+.data-table tbody td:hover {
+	background-color: 
+		var(--bg-white4);
+}
+
+.data-table th,
+.data-table td {
+	text-align: left;
+	padding: .6rem;;
+}
+
+.data-table .in-cell-img {
+	display: flex;
+	flex-flow: row wrap;
+	gap: .7rem;
+	align-items: center;
+}

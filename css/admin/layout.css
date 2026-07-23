@@ -51,7 +51,7 @@ inner elements */
 	color: var(--aery-gray);
 }
 
-.filters-panel {
+.filters-bar {
 	display: flex;
 	gap: .5rem;
 	align-items: center;

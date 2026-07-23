@@ -1,31 +1,31 @@
 /* activity.css */
 
-#activity {
-	width: 100%;
+#activity-view {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px solid cyan;
+}
+
+.activity-header {
+	margin-block: .6rem;
 }
 
 .activity-filters {
 	width: 100%;
+	max-height: 45px;
 	padding-inline: 1rem;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid palegoldenrod;
 }
 
 .table-wrapper {
 	flex: 1;
 	width: 100%;
-	border: 1px solid yellow;
-}
-
-.tbl-activity {
-	width: 100%;
-	caption-side: bottom;
-	border: 1px solid magenta;
+	
+	/* override margin
+	works on the client side
+	but it's too separate here. */
+	margin-block: 1rem;
 }

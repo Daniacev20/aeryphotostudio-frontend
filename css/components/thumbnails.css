@@ -1,0 +1,16 @@
+/* thumbnails.css */
+
+.img-thumbnail {
+	display: inline-block;
+	min-height: 48px;
+	min-width: 48px;
+	max-height: 48px;
+	max-width: 48px;
+}
+
+.img-thumbnail img {
+	height: 48px;
+	width: 48px;
+	object-fit: cover;
+	object-position: top center;
+}

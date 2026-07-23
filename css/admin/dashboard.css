@@ -17,11 +17,14 @@ on the admin dashboard. */
 #dashboard-content-view {
 	display: flex;
 	justify-content: center;
-	border: 1px solid teal;
 }
 
-#dashboard-content-view article[id*=view] {
+#dashboard-content-view article[id$="-view"]:not(.full-width-view) {
 	width: 70%;
+}
+
+.full-width-view {
+	width: 100%;
 }
 
 #dashboard-content-view form {

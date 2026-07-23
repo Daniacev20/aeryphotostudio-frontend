@@ -1,22 +1,30 @@
 /* buttons.css */
 
+/* main back-to button
+on header */
 .btn-previous-view {
 	outline: none;
 	border: none;
 	cursor: pointer;
-	background-color: var(--aery-transparent);
+	background-color:
+		var(--aery-transparent);
 	color: var(--aery-white);
 	font-size: 2rem;
 }
 
+/* filter buttons and selects */
 .btn-filter {
-	height: 1.8rem;
+	border: 1px solid var(--aery-primary);
 	font-size: .9rem;
-	border-radius: .4rem;
+}
+
+.btn-filter:open {
+	border-bottom-color: var(--aery-transparent);
 }
 
 .btn-setting {
 	font-size: 1.2rem;
-	background-color: var(--aery-transparent);
+	background-color:
+		var(--aery-transparent);
 	color: var(--btn-gray-color2);
 }
