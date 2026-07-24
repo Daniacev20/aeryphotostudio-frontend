@@ -1,5 +1,23 @@
 /* gallery.css */
 
+/* This view reuses inherited
+styles for the #galleries
+container which is a complete
+compoinent itself.
+So here only its variables 
+are changed and added styles
+necessary to blend with the
+admin environment.
+And styles a "toolbar" that
+should only be seen while
+on this view. */
+
+#galleries {
+	--card-size: 200px;
+	--columns-count: 5;
+	margin-top: 1rem;
+}
+
 .galleries-actions {
 	margin: 0;
 	padding: .5rem;

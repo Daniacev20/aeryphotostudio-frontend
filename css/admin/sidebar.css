@@ -25,7 +25,6 @@
 	overflow: hidden;
 	height: 40px;
 	display: flex;
-	padding-inline: .4rem;
 	background-color: var(--bg-white1);
 }
 
