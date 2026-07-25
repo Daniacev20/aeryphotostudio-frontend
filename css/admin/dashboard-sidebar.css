@@ -1,0 +1,78 @@
+/* dashboard-sidebar.css */
+
+.sidebar-header {
+	height: 40px;
+	max-height: 40px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sidebar-body {
+	flex-grow: 1;
+}
+
+.sidebar-options {
+	/* variables */
+	--li-height: 48px;
+	--li-gap: .3rem;
+	--a-color: var(--text-color);
+	--a-bg-color: var(--bg-white1);
+	--a-bg-color-hover: var(--bg-white3);
+	--a-color-active: var(--aery-primary);
+	--a-bg-color-active: var(--aery-gray3);
+
+	/* reset */
+	list-style-type: none;
+
+	/* layout */
+	display: flex;
+	flex-direction: column;
+	gap: .2rem;
+}
+
+.sidebar-options > li {
+	min-height: var(--li-height);
+	height: var(--li-height);
+}
+
+.sidebar-options > li a {
+	/* text positioning */
+	display: flex;
+	align-items: center;
+	gap: var(--li-gap);
+
+	/* appearance */
+	height: 100%;
+	text-decoration: none;
+	background-color: var(--a-bg-color);
+	padding-left: .5rem;
+	color: var(--a-color);
+	font-size: 1.2rem;
+}
+
+.sidebar-options > li a:not(.is-active):hover {
+	background-color: var(--a-bg-color-hover);
+}
+
+.sidebar-options > li a.is-active {
+	background-color: var(--a-bg-color-active);
+	color: var(--a-color-active);
+	cursor: default;
+}
+
+.sidebar-footer {
+	min-height: 40px;
+	max-height: 50px;
+	height: 50px;
+	overflow: hidden;
+	margin-block: .4rem;
+}
+
+.admin-actions {
+	display: flex;
+	flex-direction: column;
+	gap: .3rem;
+	padding-inline: .5rem;
+}

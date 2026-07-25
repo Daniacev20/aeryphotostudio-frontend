@@ -68,10 +68,27 @@ inner elements */
 		var(--dashboard-height);
 	width: 100%;
 	display: flex;
+	/* this gap separates the 
+	content-view from the sidebar
+	remove if all views look
+	good without the spacing */
 	gap: .3rem;
 }
 
+/* dashboard content box layout */
 #dashboard-content-view {
 	flex-grow: 1;
 	overflow-y: auto;
+}
+
+/* general sidebar layout
+to keep any current and
+future sidebars with this
+class the same size */
+.sidebar {
+	width: 250px;
+	overflow: hidden;
+	background-color: var(--aery-white);
+	display: flex;
+	flex-direction: column;
 }

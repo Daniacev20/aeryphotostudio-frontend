@@ -1,12 +1,4 @@
-/* sidebar.css */
-
-.sidebar {
-	width: 250px;
-	overflow: hidden;
-	background-color: var(--aery-white);
-	display: flex;
-	flex-direction: column;
-}
+/* gallery-sidebar.css */
 
 .cover-container {
 	overflow: hidden;
@@ -54,7 +46,7 @@ button too */
 	color: var(--aery-primary);
 }
 
-.active-action-main {
+.sidebar-content {
 	overflow-x: hidden;
 	overflow-y: auto;
 	flex: 1;
@@ -62,14 +54,14 @@ button too */
 	flex-direction: column;
 }
 
-#active-action-title {
+#sidebar-content-title {
 	height: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.active-action-content {
+.sidebar-content-main {
 	background-color: var(--bg-white1);
 	padding-block: .4rem;
 	padding-inline: 1rem;
