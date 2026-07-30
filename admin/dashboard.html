@@ -12,13 +12,13 @@
 	<header class="admin-header">
 		<section class="admin-header-top">
 			<hgroup class="main-title">
-				<button class="btn-previous-view">
+				<button class="btn-previous-view" id="btn-previous-view">
 					<i class="fas fa-angle-left"></i>
 				</button>
-				<h1 class="view-title">Galer&iacute;as</h1>
+				<h1 class="view-title" id="view-title">Galer&iacute;as</h1>
 			</hgroup>
 
-			<div id="galleries-search-container">
+			<div class="galleries-search-container">
 				<input type="search" id="search-gallery" maxlength="60" autocomplete="off" inputmode="text" placeholder="Buscar galer&iacute;a">
 			</div>
 
@@ -51,25 +51,32 @@
 	<main>
 		<section id="dashboard">
 			<!-- dashboard sidebar -->
-			<aside class="sidebar">
+			<aside class="sidebar" id="admin-sidebar" hidden>
 				<section class="sidebar-header">
-					<h3>Bienvenida, Cammy</h3>
+					<h3 id="sidebar-title">Bienvenida, Cammy</h3>
 				</section>
 
 				<section class="sidebar-body">
 					<ul class="sidebar-options">
 						<li>
-							<a href="#" class="is-active">
+							<a href="dashboard.html?view=galleries" class="is-active">
 								<i class="fas fa-palette"></i>
 								Galer&iacute;as
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="dashboard.html?view=appointments">
 								<i class="fas fa-calendar"></i>
 								Citas
 							</a>
 						</li>
+
+						<!--
+						test how the menu will look like with many items:
+						copy the line below after this comment and press tab.
+
+						li*10>a[href=#]>i.fas.fa-gear+{Opcion de relleno}
+						-->
 					</ul>
 				</section>
 
@@ -88,28 +95,28 @@
 			</aside>
 
 			<!-- in-gallery sidebar -->
-			<aside class="sidebar" hidden>
+			<aside class="sidebar" id="gallery-sidebar" hidden>
 				<div class="cover-container">
-					<img src="/assets/carousel/gigi5.jpg">
+					<img id="sidebar-cover" src="/assets/carousel/gigi5.jpg">
 				</div>
 
 				<section class="sidebar-actions">
-					<div class="action-container">
+					<div class="action-container" id="action-images">
 						<span class="btn-setting">
 							<i class="fas fa-image"></i>
 						</span>
 					</div>
-					<div class="action-container">
+					<div class="action-container" id="action-design">
 						<span class="btn-setting">
 							<i class="fas fa-paintbrush"></i>
 						</span>
 					</div>
-					<div class="action-container">
+					<div class="action-container" id="action-settings">
 						<span class="btn-setting">
 							<i class="fas fa-gear"></i>
 						</span>
 					</div>
-					<div class="action-container is-active">
+					<div class="action-container is-active" id="action-activity">
 						<span class="btn-setting">
 							<i class="fas fa-wifi"></i>
 						</span>
@@ -118,7 +125,7 @@
 
 				<section class="sidebar-content">
 					<h3 id="sidebar-content-title">Versi&oacute;n de galer&iacute;a</h3>
-					<article class="sidebar-content-main">
+					<article class="sidebar-content-main" id="sidebar-content-main">
 						<div>
 							In&eacute;dito
 							<!-- Mas un texto que esta mas que comprobado que no cabe para ver como se va a comportar el contenedor de este texto. -->
@@ -129,14 +136,14 @@
 			</aside>
 
 			<aside id="dashboard-content-view">
-				<article class="galleries-actions">
+				<article class="galleries-actions" hidden>
 					<button class="btn btn-add-media">
 						<span>Subir fotos</span>
 						<i class="fas fa-plus"></i>
 					</button>
 				</article>
 
-				<article id="galleries">
+				<article id="galleries" hidden>
 					<div class="card-wrapper">
 						<div class="card">
 							<img src="/assets/carousel/gigi1.jpg">
@@ -507,6 +514,12 @@
 						</table>
 					</div>
 				</article>
+
+				<article id="appointments-view">
+					<section>
+						<h3>Appointments</h3>
+					</section>
+				</article>
 			</aside>
 		</section>
 	</main>
@@ -539,6 +552,8 @@
 			</form>
 		</section>
 	</dialog>
+
 	<script src="https://kit.fontawesome.com/258d3c20f8.js" crossorigin="anonymous"></script>
+	<script src="../js/admin/main.js" type="module"></script>
 </body>
 </html>

@@ -37,7 +37,7 @@ inner elements */
 	display: flex;
 }
 
-#galleries-search-container {
+.galleries-search-container {
 	flex: 1;
 	margin-inline: 1rem;
 }

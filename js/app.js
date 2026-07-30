@@ -15,13 +15,6 @@ const PAGE_ROUTES = {
 	"portafolio.html": initPortfolio
 };
 
-function bootstrapApp() {
-	initGlobalUI();
-
-	const page = getCurrentPage();
-	PAGE_ROUTES[page]?.();
-}
-
 function initGlobalUI() {
 	setMenuDisplayListeners();
 	showGuestOrUserOnMenu();
@@ -32,6 +25,9 @@ function getCurrentPage() {
 	return window.location.pathname.split("/").pop();
 }
 
-export {
-	bootstrapApp
+export function bootstrapApp() {
+	initGlobalUI();
+
+	const page = getCurrentPage();
+	PAGE_ROUTES[page]?.();
 }
