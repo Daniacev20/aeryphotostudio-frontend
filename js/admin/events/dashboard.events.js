@@ -1,17 +1,16 @@
 // dashboard.events.js
 
+import { ViewRouter } from '../navigation/view.router.js';
 import { Header } from '../layout/header.js';
 import { Sidebar } from '../layout/sidebar.js';
+import { Views } from '../views/views.js';
 
 export const DashboardEvents = {
-	get currentView() {
-		const params = 
-			new URLSearchParams(location.search);
-
-		return params.get("view");
-	},
 	configureLayout() {
-		Header.configure(this.currentView);
-		Sidebar.configure(this.currentView);
+		const view = ViewRouter.current;
+		ViewRouter.replace(view);
+		Header.configure(view);
+		Sidebar.configure(view);
+		Views.configure(view);
 	}
 };

@@ -1,4 +1,4 @@
-// View.js
+// view.js
 
 export class View {
 	constructor(selector) {

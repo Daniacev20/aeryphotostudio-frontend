@@ -20,6 +20,14 @@ export const HEADER_CONFIG = {
 			"btnPreviousView"
 		]
 	},
+	[ADMIN_VIEWS.GALLERY]: {
+		title: "Galeria de :Cliente:",
+		controls: [
+			"title",
+			"btnPreviousView",
+			"btnGetLink"
+		]
+	},
 	[ADMIN_VIEWS.GALLERY_CONFIG]: {
 		title: "- Opciones",
 		controls: [
@@ -36,7 +44,7 @@ export const HEADER_CONFIG = {
 			"btnGetLink"
 		]
 	},
-	[ADMIN_VIEWS.APPOINTMENT]: {
+	[ADMIN_VIEWS.APPOINTMENTS]: {
 		title: "Citas",
 		controls: [
 			"title"
