@@ -13,15 +13,9 @@ export const Header = {
 		btnGetLink: document.getElementById("btn-get-link")
 	},
 
-	hideAllControls() {
+	configure(view = "galleries") {
 		Object.values(this.controls)
 			.forEach(v => v.hidden = true);
-	},
-
-	configure(view = "galleries") {
-		if (view === null) view = "galleries";
-		
-		this.hideAllControls();
 		
 		this.controls.title.textContent =
 			HEADER_CONFIG[view].title;
