@@ -17,9 +17,11 @@ const VIEWS = {
 };
 
 export const Views = {
+	current: null,
 	configure(view = ADMIN_VIEWS.GALLERIES) {
 		Object.values(VIEWS).forEach(v => v.hide());
 
-		VIEWS[view].show();
+		this.current = VIEWS[view];
+		this.current.show();
 	}
 };

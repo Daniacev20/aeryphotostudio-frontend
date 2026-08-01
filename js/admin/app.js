@@ -3,5 +3,5 @@
 import { DashboardEvents } from './events/dashboard.events.js';
 
 export function initAdminApp() {
-	DashboardEvents.configureLayout();
+	DashboardEvents.init();
 }
