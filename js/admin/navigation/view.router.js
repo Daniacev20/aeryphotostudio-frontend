@@ -30,7 +30,7 @@ export const ViewRouter = {
 		if (document.referrer.startsWith(location.origin))
 			history.back();
 		else
-			throw new Error("No hay mas historial para volver.");
+			this.goTo(ADMIN_VIEWS.GALLERIES);
 	},
 
 	replace(view) {

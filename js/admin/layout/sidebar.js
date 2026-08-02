@@ -12,11 +12,13 @@ export const Sidebar = {
 		const notInViewList =
 			!Object.keys(SIDEBAR_CONFIG).includes(view)
 
-		if (view === null || notInViewList)
+		if (notInViewList)
 			view = ADMIN_VIEWS.GALLERIES;
 
-		Object.values(SIDEBAR_CONFIG)
-			.forEach(v => v.hide());
+		const uniqueSidebars = 
+			new Set(Object.values(SIDEBAR_CONFIG));
+			
+		uniqueSidebars.forEach(sb => sb.hide());
 
 		this.current = SIDEBAR_CONFIG[view];
 		this.current.show();
