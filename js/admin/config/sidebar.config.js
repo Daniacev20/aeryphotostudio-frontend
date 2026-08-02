@@ -7,5 +7,6 @@ import { GallerySidebar } from '../layout/gallery-sidebar.js';
 export const SIDEBAR_CONFIG = {
 	[ADMIN_VIEWS.GALLERIES]: AdminSidebar,
 	[ADMIN_VIEWS.GALLERY]: GallerySidebar,
-	[ADMIN_VIEWS.GALLERY_CONFIG]: GallerySidebar
+	[ADMIN_VIEWS.GALLERY_CONFIG]: GallerySidebar,
+	[ADMIN_VIEWS.APPOINTMENTS]: AdminSidebar
 };

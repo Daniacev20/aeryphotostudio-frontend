@@ -7,6 +7,7 @@ import { ADMIN_VIEWS } from '../config/views.config.js';
 // requested by the view param
 
 export const Sidebar = {
+	current: null,
 	configure(view = ADMIN_VIEWS.GALLERIES) {
 		const notInViewList =
 			!Object.keys(SIDEBAR_CONFIG).includes(view)
@@ -17,6 +18,8 @@ export const Sidebar = {
 		Object.values(SIDEBAR_CONFIG)
 			.forEach(v => v.hide());
 
-		SIDEBAR_CONFIG[view].show();
+		this.current = SIDEBAR_CONFIG[view];
+		this.current.show();
+		this.current.setActive(view);
 	}
 }

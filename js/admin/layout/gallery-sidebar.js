@@ -22,5 +22,14 @@ export const GallerySidebar = {
 
 	hide() {
 		this.element.hidden = true;
+	},
+	setActive(view) {
+		this.element.querySelectorAll("[data-view]")
+			.forEach(b => b.classList.remove("is-active"));
+
+		const active =
+			this.element.querySelector(`[data-view=${view}]`);
+
+		active?.classList.add("is-active");
 	}
 };

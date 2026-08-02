@@ -15,6 +15,7 @@ export const DashboardEvents = {
 	},
 	configureLayout() {
 		const view = ViewRouter.current;
+
 		ViewRouter.replace(view);
 		Header.configure(view);
 		Sidebar.configure(view);
