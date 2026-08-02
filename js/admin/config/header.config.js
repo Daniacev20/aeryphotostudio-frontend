@@ -28,6 +28,14 @@ export const HEADER_CONFIG = {
 			"btnGetLink"
 		]
 	},
+	[ADMIN_VIEWS.GALLERY_DESIGN]: {
+		title: "Galeria de :Cliente:",
+		controls: [
+			"title",
+			"btnPreviousView",
+			"btnGetLink"
+		]
+	},
 	[ADMIN_VIEWS.GALLERY_CONFIG]: {
 		title: "- Opciones",
 		controls: [

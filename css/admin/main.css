@@ -10,6 +10,8 @@
 
 /* views' individual styles */
 @import url("./views/gallery.config.css");
+@import url("./views/gallery-design.css");
 @import url("./views/activity.css");
 @import url("./views/gallery.css");
 @import url("./views/add-media-modal.css");
+@import url("./views/in-progress.view.css");

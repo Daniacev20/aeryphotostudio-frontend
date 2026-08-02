@@ -1,0 +1,14 @@
+/* gallery-design.css */
+
+/* View for the gallery
+thumbnail design.
+
+In progress, for now only
+centered the dummy content. */
+
+#gallery-design-view {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+	align-items: center;
+}

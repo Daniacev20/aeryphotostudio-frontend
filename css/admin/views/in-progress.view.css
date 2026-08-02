@@ -1,0 +1,21 @@
+/* in-progress.view.css */
+
+/* Styles of the informative
+content of a view which design
+is still not ready.
+
+Normally, a container with a
+single icon, e.g. div>h2+i.fa */
+
+.in-progress-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	text-align: center;
+	margin-block: 2rem;
+}
+
+.in-progress-container > i {
+	font-size: 10rem;
+}
