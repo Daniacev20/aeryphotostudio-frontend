@@ -1,5 +1,7 @@
 // admin-sidebar.js
 
+import { MAX_HANDHELD_WIDTH } from '../config/responsive.config.js';
+
 export const AdminSidebar = {
 	element: document.getElementById("admin-sidebar"),
 	controls: {
@@ -9,7 +11,9 @@ export const AdminSidebar = {
 	},
 
 	show() {
-		this.element.hidden = false;
+		document.querySelectorAll(".sidebar")
+			.forEach(sb => sb.hidden = true);
+		this.element.hidden = (window.innerWidth <= MAX_HANDHELD_WIDTH);
 	},
 
 	hide() {

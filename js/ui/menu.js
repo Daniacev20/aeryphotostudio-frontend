@@ -15,9 +15,12 @@ function toggleMenu(menuItems) {
 function adjustMenuDisplay(menuItems) {
 	for (let item of menuItems) {
 		// ocultar el boton de barras y mostrar menu 
-		// si la pantalla se vuelve mas ancha que la tablet mas estrecha 712px
+		// si la pantalla se vuelve mas ancha que la tablet mas estrecha 772px
 		// este valor en la expresion debe coincidir con el media query en estilos_base.css
-		item.style.display = (screen.width > 772 && screen.availWidth > 1024) ? "block" : "none";
+		item.style.display =
+			(window.innerWidth <= 772)
+			? "block"
+			: "none";
 	}
 }
 

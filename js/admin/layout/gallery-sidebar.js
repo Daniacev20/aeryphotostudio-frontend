@@ -1,5 +1,7 @@
 // gallery-sidebar.js
 
+import { MAX_HANDHELD_WIDTH } from '../config/responsive.config.js';
+
 export const GallerySidebar = {
 	element: document.getElementById("gallery-sidebar"),
 	controls: {
@@ -17,7 +19,8 @@ export const GallerySidebar = {
 	show() {
 		document.querySelectorAll(".sidebar")
 			.forEach(sb => sb.hidden = true);
-		this.element.hidden = false;
+		this.element.hidden =
+			(window.innerWidth <= MAX_HANDHELD_WIDTH);
 	},
 
 	hide() {

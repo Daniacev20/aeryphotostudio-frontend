@@ -4,15 +4,18 @@ import { ViewRouter } from '../navigation/view.router.js';
 import { Header } from '../layout/header.js';
 import { Sidebar } from '../layout/sidebar.js';
 import { Views } from '../views/views.js';
+import { MAX_HANDHELD_WIDTH } from '../config/responsive.config.js';
 
 // event handling objects
 import { HeaderEvents } from './header.events.js';
+import { SidebarEvents } from './sidebar.events.js';
 
 export const DashboardEvents = {
 	init() {
 		this.configureLayout();
 		this.registerEvents();
 	},
+
 	configureLayout() {
 		const view = ViewRouter.current;
 
@@ -21,10 +24,14 @@ export const DashboardEvents = {
 		Sidebar.configure(view);
 		Views.configure(view);
 	},
+
 	registerEvents() {
 		document.addEventListener("click", this.changeView_clickEvents);
 		document.addEventListener("click", HeaderEvents.previousView_clickEvents);
+		document.addEventListener("click", SidebarEvents.toggleSidebar_clickEvents);
+		window.addEventListener("resize", e => Sidebar.updateResponsiveState());
 	},
+
 	changeView_clickEvents(event) {
 		const target = event.target.closest("[data-view]");
 
