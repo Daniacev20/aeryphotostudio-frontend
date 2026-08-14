@@ -126,9 +126,46 @@ async function toggleFavorite(imageId) {
 }
 
 async function downloadGallery(slug) {
-	window.open(
-		`${BASE_URL}/gallery/${slug}/download`
+	const response = await fetch(
+		`${BASE_URL}/gallery/${slug}/download`,
+		{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			// wip: adapt page to send email according to server
+			body: JSON.stringify({ email: "" })
+		}
 	);
+
+	if (!response.ok) {
+		const error = await response.json();
+		console.error("Error al descargar: ", error.message);
+		return;
+	}
+
+	const blob = await response.blob();
+
+	const url = URL.createObjectURL(blob);
+
+	const link = document.createElement("a");
+	link.href = url;
+
+	const disposition = response.headers.get(
+		"Content-Disposition"
+	);
+
+	const match = disposition?.match(
+		/filename="([^"]+)"/
+	);
+
+	link.download = match
+	? match[1]
+	: `${slug}.zip`;
+
+	link.click();
+
+	URL.revokeObjectURL(url);
 }
 
 export {
